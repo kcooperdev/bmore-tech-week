@@ -41,6 +41,16 @@ export const EVENTS: TechEvent[] = [
     link: 'https://luma.com/ueap4iyk'
   },
   {
+    id: '5',
+    date: 'February 26',
+    time: '8:00pm–12:00am',
+    location: "Mama Koko's",
+    title: 'Black Then Black Now',
+    category: 'NETWORKING',
+    description: 'Baltimore’s luxury multisensory experience returns — this time in all black. Live sax layered with R&B, Afro Beats, funk, and soul. Curated cocktails tuned to the frequencies of the music. Live art unfolding in real time, exploring the legacy of Black dandyism, with a tailor on-site sewing a suit jacket inspired by self-expression and style.',
+    link: 'https://posh.vip/e/high-notes-hidden-stories?t=linktree'
+  },
+  {
     id: '4',
     date: 'February 27',
     time: '10:00am–5:30pm',
