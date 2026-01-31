@@ -1,0 +1,83 @@
+
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+
+interface NavbarProps {
+  onNavigate: (view: 'landing' | 'events' | 'about', hash?: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'HOME', view: 'landing', hash: '#' },
+    { name: 'ABOUT', view: 'about', hash: '#about-full' },
+    { name: 'EVENTS', view: 'events', hash: '#events-full' },
+  ];
+
+  const handleLinkClick = (view: any, hash: string) => {
+    onNavigate(view, hash);
+    setMobileMenuOpen(false);
+  };
+
+  return (
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-6'}`}>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <button 
+          onClick={() => handleLinkClick('landing', '#')}
+          className="flex items-center space-x-2 group cursor-pointer"
+        >
+          <div className="bg-[#FFB400] text-black font-extrabold p-1 px-2 text-xl transform group-hover:scale-110 transition-transform">B</div>
+          <span className="font-mono font-bold tracking-tighter text-sm md:text-base flex items-center text-left">
+            BALTIMORE<span className="text-[#FFB400]">_TECH_WEEK</span>
+            <span className="text-[#0050FF] ml-1.5 text-[10px] md:text-xs lowercase font-normal tracking-normal hidden sm:inline">(unofficial)</span>
+          </span>
+        </button>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-12">
+          {navLinks.map((link) => (
+            <button 
+              key={link.name} 
+              onClick={() => handleLinkClick(link.view, link.hash)}
+              className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase"
+            >
+              {link.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Mobile Toggle */}
+        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-black border-b border-white/10 p-6 space-y-4 animate-in fade-in slide-in-from-top-4">
+          {navLinks.map((link) => (
+            <button 
+              key={link.name} 
+              onClick={() => handleLinkClick(link.view, link.hash)}
+              className="block w-full text-left font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest py-2 font-bold uppercase"
+            >
+              {link.name}
+            </button>
+          ))}
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
