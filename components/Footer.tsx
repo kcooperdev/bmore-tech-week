@@ -1,8 +1,7 @@
-
-import React from 'react';
+import React from "react";
 
 interface FooterProps {
-  onNavigate: (view: 'landing' | 'events', hash?: string) => void;
+  onNavigate: (view: "landing" | "events", hash?: string) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -12,16 +11,22 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="mb-20">
           <div className="max-w-2xl">
             <div className="flex items-center space-x-2 mb-8">
-              <div className="bg-[#FFB400] text-black font-extrabold p-1 px-2 text-xl">B</div>
+              <div className="bg-[#FFB400] text-black font-extrabold p-1 px-2 text-xl">
+                B
+              </div>
               <span className="font-mono font-bold tracking-tighter text-lg">
                 BALTIMORE<span className="text-[#FFB400]">_TECH_WEEK</span>
-                <span className="text-[#0050FF] ml-1 text-sm">(UNOFFICIAL)</span>
+                <span className="text-[#0050FF] ml-1 text-sm">
+                  (UNOFFICIAL)
+                </span>
               </span>
             </div>
-            <p className="text-white/40 font-mono text-xs tracking-widest mb-6 uppercase font-bold">FEBRUARY 24–27, 2025</p>
+            <p className="text-white/40 font-mono text-xs tracking-widest mb-6 uppercase font-bold">
+              FEBRUARY 24–27, 2025
+            </p>
             <p className="text-white/50 text-base leading-relaxed">
-              A community‑curated week of tech, culture, and innovation. 
-              Built to amplify the momentum of Baltimore's tech ecosystem.
+              A community‑curated week of tech, culture, and innovation. Built
+              to amplify the momentum of Baltimore's tech ecosystem.
             </p>
           </div>
         </div>
@@ -37,7 +42,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
           <div className="max-w-xl md:text-right">
             <p className="text-[#0050FF] text-[11px] md:text-sm font-mono uppercase tracking-[0.1em] font-black leading-relaxed">
-              Disclaimer: This is a community‑curated calendar. All events are independently organized by their respective hosts.
+              Disclaimer: This is a community‑curated calendar. All events are
+              independently organized by their respective hosts.
             </p>
           </div>
         </div>
