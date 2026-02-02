@@ -13,7 +13,7 @@ const SubmitEvent: React.FC = () => {
           ADD YOUR <span className="text-[#FFB400]">EVENT</span>
         </h2>
         <p className="text-lg md:text-xl text-white/70 mb-12 font-light max-w-2xl mx-auto">
-          Hosting something during February 24–27? Add it to the community calendar. 
+          Hosting something during February 23–27? Add it to the community calendar. 
           All tech, innovation, startup, creative, and ecosystem‑building events are welcome.
         </p>
         <button className="bg-white text-black font-mono font-bold text-sm tracking-widest px-10 py-5 uppercase hover:bg-[#FFB400] transition-colors flex items-center mx-auto group">

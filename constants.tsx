@@ -22,13 +22,13 @@ export const EVENTS: TechEvent[] = [
   {
     id: "2",
     date: "February 25",
-    time: "6:00pm–8:30pm",
+    time: "6:30pm–8:30pm",
     location: "Nola Seafood",
-    title: "Palava Night #2: Grassroots to Groundbreakers",
+    title: "Palava Night #2: Grassroot to Groundbreaker",
     category: "FIRESIDE CHAT",
     description:
       "A fireside-style gathering exploring how grassroots builders become ecosystem leaders.",
-    link: "https://lu.ma/4m9u2z4n",
+    link: "https://luma.com/fhaiqk41",
   },
   {
     id: "5",

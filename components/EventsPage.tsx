@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { EVENTS } from '../constants';
 import EventCard from './EventCard';
 
-const DATES = ['All', 'February 24', 'February 25', 'February 26', 'February 27'];
+const DATES = ['All', 'February 23', 'February 24', 'February 25', 'February 26', 'February 27'];
 
 // Added interface for EventsPageProps to include onNavigate
 interface EventsPageProps {
