@@ -20,7 +20,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="inline-flex items-center space-x-3 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full mb-8 backdrop-blur-sm">
           <span className="flex h-2 w-2 rounded-full bg-[#FFB400] animate-pulse"></span>
           <span className="font-mono text-[10px] md:text-xs tracking-[0.2em] text-white/70">
-            SYSTEM_ONLINE // FEB 24–27, 2025
+            SYSTEM_ONLINE // FEB 23–27, 2026
           </span>
         </div>
 

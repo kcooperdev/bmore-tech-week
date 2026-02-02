@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </span>
             </div>
             <p className="text-white/40 font-mono text-xs tracking-widest mb-6 uppercase font-bold">
-              FEBRUARY 24–27, 2025
+              FEBRUARY 23–27, 2026
             </p>
             <p className="text-white/50 text-base leading-relaxed">
               A community‑curated week of tech, culture, and innovation. Built
@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between gap-8 items-start md:items-center">
           <div>
             <p className="text-white/30 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] mb-2">
-              © 2025 Baltimore Tech Week (Unofficial).
+              © 2026 Baltimore Tech Week (Unofficial).
             </p>
             <p className="text-white/20 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]">
               Made in Baltimore.
