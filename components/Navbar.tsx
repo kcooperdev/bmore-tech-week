@@ -39,7 +39,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           <div className="bg-[#FFB400] text-black font-extrabold p-1 px-2 text-xl transform group-hover:scale-110 transition-transform">B</div>
           <span className="font-mono font-bold tracking-tighter text-sm md:text-base flex items-center text-left">
             BALTIMORE<span className="text-[#FFB400]">_TECH_WEEK</span>
-            <span className="text-[#0050FF] ml-1.5 text-[10px] md:text-xs lowercase font-normal tracking-normal hidden sm:inline">(unofficial)</span>
           </span>
         </button>
 

@@ -21,7 +21,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             PURE <span className="text-[#FFB400] italic">CHARM.</span>
           </h1>
           <p className="text-xl md:text-3xl text-white/90 font-light leading-relaxed mb-10">
-            Baltimore Tech Week (Unofficial) is a <span className="text-[#0050FF] font-bold">community-powered movement</span> celebrating the builders, founders, and creatives who make this city pulse with innovation.
+            Baltimore Tech Week is a <span className="text-[#0050FF] font-bold">community-powered movement</span> celebrating the builders, founders, and creatives who make this city pulse with innovation.
           </p>
           <div className="flex flex-wrap gap-4">
             <div className="px-4 py-2 bg-white/5 border border-white/10 font-mono text-[10px] uppercase tracking-widest flex items-center">
@@ -113,7 +113,6 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         <div className="bg-[#FFB400] py-32 transform skew-y-1">
           <div className="transform -skew-y-1 max-w-7xl mx-auto px-6 text-center">
             <h2 className="text-5xl md:text-8xl font-black text-black uppercase tracking-tighter mb-8">
-              UNOFFICIAL <br />
               <span className="text-white stroke-black" style={{ WebkitTextStroke: '2px black' }}>BUT IMPACTFUL.</span>
             </h2>
             <p className="max-w-2xl mx-auto text-black font-bold text-xl md:text-2xl leading-tight">

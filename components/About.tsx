@@ -22,7 +22,7 @@ const About: React.FC = () => {
             </h2>
             <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-white/80 leading-relaxed font-light">
               <p>
-                Baltimore Tech Week (Unofficial) is a curated collection of independent tech events happening across the city from February 23–27. 
+                Baltimore Tech Week is a curated collection of independent tech events happening across the city from February 23–27. 
               </p>
               
               <div className="border-l-4 border-[#0050FF] pl-6 md:pl-8 py-2 bg-white/[0.02]">

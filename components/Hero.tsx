@@ -29,7 +29,6 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <br />
           <span className="text-[#FFB400]">TECH_WEEK</span>
           <span className="block text-xl md:text-3xl font-mono text-[#0050FF] mt-4 lowercase tracking-tight">
-            (Unofficial)
           </span>
         </h1>
 

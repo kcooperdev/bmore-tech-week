@@ -17,7 +17,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <span className="font-mono font-bold tracking-tighter text-lg">
                 BALTIMORE<span className="text-[#FFB400]">_TECH_WEEK</span>
                 <span className="text-[#0050FF] ml-1 text-sm">
-                  (UNOFFICIAL)
                 </span>
               </span>
             </div>
@@ -34,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between gap-8 items-start md:items-center">
           <div>
             <p className="text-white/30 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] mb-2">
-              © 2026 Baltimore Tech Week (Unofficial).
+              © 2026 Baltimore Tech Week.
             </p>
             <p className="text-white/20 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]">
               Made in Baltimore.
