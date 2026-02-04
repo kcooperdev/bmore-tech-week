@@ -53,6 +53,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               {link.name}
             </button>
           ))}
+          <a 
+            href="https://www.charmcitycowork.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase"
+          >
+            CHARM CITY COWORK
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -73,6 +81,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               {link.name}
             </button>
           ))}
+          <a 
+            href="https://www.charmcitycowork.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block w-full text-left font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest py-2 font-bold uppercase"
+          >
+            CHARM CITY COWORK
+          </a>
         </div>
       )}
     </nav>
