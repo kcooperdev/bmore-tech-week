@@ -51,7 +51,7 @@ const EventCard: React.FC<Props> = ({ event }) => {
         rel={event.link.startsWith('http') ? "noopener noreferrer" : ""}
         className="inline-block py-3 text-center font-mono text-xs tracking-[0.2em] uppercase transition-all border border-white/10 text-white hover:bg-[#FFB400] hover:text-black hover:border-[#FFB400] hover:font-bold hover:glow-gold"
       >
-        Learn More
+        RSVP for Event
       </a>
     </div>
   );
