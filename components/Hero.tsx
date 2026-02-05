@@ -3,7 +3,10 @@ import { ArrowRight } from "lucide-react";
 
 // Added interface for HeroProps to include onNavigate
 interface HeroProps {
-  onNavigate: (view: "landing" | "events" | "about" | "team", hash?: string) => void;
+  onNavigate: (
+    view: "landing" | "events" | "about" | "team",
+    hash?: string
+  ) => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
@@ -28,8 +31,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           BALTIMORE
           <br />
           <span className="text-[#FFB400]">TECH_WEEK</span>
-          <span className="block text-xl md:text-3xl font-mono text-[#0050FF] mt-4 lowercase tracking-tight">
-          </span>
+          <span className="block text-xl md:text-3xl font-mono text-[#0050FF] mt-4 lowercase tracking-tight"></span>
         </h1>
 
         <p className="max-w-2xl mx-auto text-base md:text-xl text-white/70 mb-12 font-light px-4">

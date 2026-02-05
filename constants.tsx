@@ -9,6 +9,17 @@ export const COLORS = {
 
 export const EVENTS: TechEvent[] = [
   {
+    id: "7",
+    date: "February 23",
+    time: "6:30pm–8:30pm",
+    location: "The Harbor Bank of Maryland",
+    title: "Baltimore Tech Week Presents: Tech at the Harbor",
+    category: "NETWORKING",
+    description:
+      "The official kickoff event for Baltimore Tech Week, bringing together the city's tech community to celebrate the start of an exciting week of innovation and connection.",
+    link: "",
+  },
+  {
     id: "1",
     date: "February 24",
     time: "6:00pm–8:30pm",
