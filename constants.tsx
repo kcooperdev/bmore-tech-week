@@ -17,7 +17,7 @@ export const EVENTS: TechEvent[] = [
     category: "NETWORKING",
     description:
       "The official kickoff event for Baltimore Tech Week, bringing together the city's tech community to celebrate the start of an exciting week of innovation and connection.",
-    link: "",
+    link: "https://luma.com/g74prkcu",
   },
   {
     id: "1",
