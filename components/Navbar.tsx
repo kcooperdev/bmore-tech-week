@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
-  onNavigate: (view: 'landing' | 'events' | 'about', hash?: string) => void;
+  onNavigate: (view: 'landing' | 'events' | 'about' | 'team', hash?: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
@@ -22,6 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     { name: 'HOME', view: 'landing', hash: '#' },
     { name: 'ABOUT', view: 'about', hash: '#about-full' },
     { name: 'EVENTS', view: 'events', hash: '#events-full' },
+    { name: 'TEAM', view: 'team', hash: '#team-full' },
   ];
 
   const handleLinkClick = (view: any, hash: string) => {
@@ -43,12 +44,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         </button>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-12">
+        <div className="hidden lg:flex items-center space-x-8">
           {navLinks.map((link) => (
             <button 
               key={link.name} 
               onClick={() => handleLinkClick(link.view, link.hash)}
-              className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase"
+              className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase whitespace-nowrap"
             >
               {link.name}
             </button>
@@ -57,21 +58,21 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             href="https://www.charmcitycowork.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase"
+            className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase whitespace-nowrap"
           >
             CHARM CITY COWORK
           </a>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button className="lg:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black border-b border-white/10 p-6 space-y-4 animate-in fade-in slide-in-from-top-4">
+        <div className="lg:hidden bg-black border-b border-white/10 p-6 space-y-4 animate-in fade-in slide-in-from-top-4">
           {navLinks.map((link) => (
             <button 
               key={link.name} 

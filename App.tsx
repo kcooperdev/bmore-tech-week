@@ -8,9 +8,10 @@ import WhyMatters from './components/WhyMatters';
 import Footer from './components/Footer';
 import EventsPage from './components/EventsPage';
 import AboutPage from './components/AboutPage';
+import TeamPage from './components/TeamPage';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'landing' | 'events' | 'about'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'events' | 'about' | 'team'>('landing');
 
   // Sync state with URL hash for a better UX
   useEffect(() => {
@@ -20,6 +21,8 @@ const App: React.FC = () => {
         setCurrentView('events');
       } else if (hash === '#about-full') {
         setCurrentView('about');
+      } else if (hash === '#team-full') {
+        setCurrentView('team');
       } else {
         setCurrentView('landing');
       }
@@ -29,7 +32,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  const navigateTo = (view: 'landing' | 'events' | 'about', hash: string = '') => {
+  const navigateTo = (view: 'landing' | 'events' | 'about' | 'team', hash: string = '') => {
     setCurrentView(view);
     
     // Safely attempt to update location hash
@@ -64,9 +67,13 @@ const App: React.FC = () => {
           <div className="animate-in fade-in duration-700">
             <EventsPage onNavigate={navigateTo} />
           </div>
-        ) : (
+        ) : currentView === 'about' ? (
           <div className="animate-in fade-in duration-700">
             <AboutPage onNavigate={navigateTo} />
+          </div>
+        ) : (
+          <div className="animate-in fade-in duration-700">
+            <TeamPage onNavigate={navigateTo} />
           </div>
         )}
       </main>

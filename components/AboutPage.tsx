@@ -2,7 +2,7 @@ import React from 'react';
 import { Heart, Rocket, Terminal, Code, Cpu, Sparkles, Coffee, MapPin, Zap } from 'lucide-react';
 
 interface AboutPageProps {
-  onNavigate: (view: 'landing' | 'events' | 'about', hash?: string) => void;
+  onNavigate: (view: 'landing' | 'events' | 'about' | 'team', hash?: string) => void;
 }
 
 const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {

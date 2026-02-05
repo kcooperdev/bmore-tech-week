@@ -1,7 +1,7 @@
 import React from "react";
 
 interface FooterProps {
-  onNavigate: (view: "landing" | "events", hash?: string) => void;
+  onNavigate: (view: "landing" | "events" | "about" | "team", hash?: string) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {

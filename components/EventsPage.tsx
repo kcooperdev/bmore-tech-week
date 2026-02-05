@@ -7,7 +7,7 @@ const DATES = ['All', 'February 23', 'February 24', 'February 25', 'February 26'
 
 // Added interface for EventsPageProps to include onNavigate
 interface EventsPageProps {
-  onNavigate: (view: 'landing' | 'events' | 'about', hash?: string) => void;
+  onNavigate: (view: 'landing' | 'events' | 'about' | 'team', hash?: string) => void;
 }
 
 const EventsPage: React.FC<EventsPageProps> = ({ onNavigate }) => {
