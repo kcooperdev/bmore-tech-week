@@ -13,7 +13,7 @@ import {
 
 interface AboutPageProps {
   onNavigate: (
-    view: "landing" | "events" | "about" | "team",
+    view: "landing" | "events" | "about" | "team" | "vision",
     hash?: string
   ) => void;
 }

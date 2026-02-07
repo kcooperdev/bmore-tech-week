@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
-  onNavigate: (view: 'landing' | 'events' | 'about' | 'team', hash?: string) => void;
+  onNavigate: (view: 'landing' | 'events' | 'about' | 'team' | 'vision', hash?: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
@@ -22,6 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     { name: 'HOME', view: 'landing', hash: '#' },
     { name: 'ABOUT', view: 'about', hash: '#about-full' },
     { name: 'EVENTS', view: 'events', hash: '#events-full' },
+    { name: 'THE VISION', view: 'vision', hash: '#vision-full' },
     { name: 'TEAM', view: 'team', hash: '#team-full' },
   ];
 

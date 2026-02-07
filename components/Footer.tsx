@@ -2,7 +2,7 @@ import React from "react";
 
 interface FooterProps {
   onNavigate: (
-    view: "landing" | "events" | "about" | "team",
+    view: "landing" | "events" | "about" | "team" | "vision",
     hash?: string
   ) => void;
 }

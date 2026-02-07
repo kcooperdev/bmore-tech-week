@@ -1,8 +1,8 @@
 import React from 'react';
-import { Users, Target, TrendingUp, Rocket, Heart, Building2, DollarSign, Sparkles } from 'lucide-react';
+import { Users, Target, Rocket, Heart, Sparkles } from 'lucide-react';
 
 interface TeamPageProps {
-  onNavigate: (view: 'landing' | 'events' | 'about' | 'team', hash?: string) => void;
+  onNavigate: (view: 'landing' | 'events' | 'about' | 'team' | 'vision', hash?: string) => void;
 }
 
 interface TeamMember {
@@ -136,67 +136,6 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Future Impact Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <TrendingUp className="text-[#FFB404]" size={24} />
-            <span className="font-mono text-xs tracking-[0.4em] text-[#0050FF] uppercase font-bold">5–10 Year Outlook</span>
-          </div>
-          <h2 className="text-4xl md:text-7xl font-extrabold uppercase tracking-tighter mb-8 leading-none">
-            ECONOMIC <span className="text-[#FFB404]">VISION</span>
-          </h2>
-          <p className="max-w-3xl mx-auto text-xl text-white/70 font-light">
-            Where we think Baltimore can be over the next 5–10 years if we do this right.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="p-10 border border-white/10 bg-white/[0.02] text-center">
-            <DollarSign className="w-10 h-10 mx-auto mb-6 text-[#FFB404]" />
-            <div className="text-5xl font-black text-[#FFB404] mb-4">$500M+</div>
-            <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">In New Revenue</p>
-            <p className="text-white/40 text-sm">Tech-driven economic activity flowing into Baltimore from startups, investments, and companies choosing to build here.</p>
-          </div>
-          <div className="p-10 border border-white/10 bg-white/[0.02] text-center">
-            <Building2 className="w-10 h-10 mx-auto mb-6 text-[#0050FF]" />
-            <div className="text-5xl font-black text-[#0050FF] mb-4">200+</div>
-            <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">New Companies</p>
-            <p className="text-white/40 text-sm">Startups founded, relocated, or scaled in Baltimore. Real companies with real funding and real employees.</p>
-          </div>
-          <div className="p-10 border border-white/10 bg-white/[0.02] text-center">
-            <Users className="w-10 h-10 mx-auto mb-6 text-[#FFB404]" />
-            <div className="text-5xl font-black text-[#FFB404] mb-4">10,000+</div>
-            <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">Jobs</p>
-            <p className="text-white/40 text-sm">Tech jobs for Baltimore residents. Engineers, designers, ops, sales—the full stack of a real ecosystem.</p>
-          </div>
-        </div>
-
-        {/* Vision Statement */}
-        <div className="relative p-10 border-l-2 border-[#FFB404] bg-white/[0.02]">
-          <h3 className="text-xl md:text-2xl font-bold mb-4">
-            The goal is simple: make Baltimore a place where people want to start companies.
-          </h3>
-          <p className="text-white/60 leading-relaxed">
-            Not because of tax breaks or incentives. Because there's talent here, community here, and momentum here. Tech Week is one piece of that. We're betting on this city because we've seen what's already happening—and we think the next decade is ours.
-          </p>
-        </div>
-      </div>
-
-      {/* Yellow Impact Band */}
-      <div className="relative overflow-hidden mb-32">
-        <div className="bg-[#FFB404] py-24 transform skew-y-1">
-          <div className="transform -skew-y-1 max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-7xl font-black text-black uppercase tracking-tighter mb-6">
-              CHARM CITY <span className="text-white" style={{ WebkitTextStroke: '2px black' }}>RISING.</span>
-            </h2>
-            <p className="max-w-2xl mx-auto text-black font-bold text-xl leading-tight">
-              Join us in building a tech ecosystem that represents the best of Baltimore—innovative, inclusive, and unstoppable.
-            </p>
           </div>
         </div>
       </div>

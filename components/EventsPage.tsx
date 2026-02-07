@@ -14,7 +14,7 @@ const DATES = [
 // Added interface for EventsPageProps to include onNavigate
 interface EventsPageProps {
   onNavigate: (
-    view: "landing" | "events" | "about" | "team",
+    view: "landing" | "events" | "about" | "team" | "vision",
     hash?: string
   ) => void;
 }

@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 // Added interface for HeroProps to include onNavigate
 interface HeroProps {
   onNavigate: (
-    view: "landing" | "events" | "about" | "team",
+    view: "landing" | "events" | "about" | "team" | "vision",
     hash?: string
   ) => void;
 }
