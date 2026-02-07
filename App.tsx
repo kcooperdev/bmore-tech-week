@@ -62,7 +62,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen selection:bg-[#FFB400] selection:text-black">
+    <div className="min-h-screen selection:bg-[#FFB404] selection:text-black">
       <Navbar onNavigate={navigateTo} />
 
       <main className="transition-all duration-500">

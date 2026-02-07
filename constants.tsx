@@ -1,10 +1,13 @@
 import { TechEvent } from "./types";
 
 export const COLORS = {
-  black: "#000000",
-  gold: "#FFB400",
-  white: "#FFFFFF",
-  royalBlue: "#0050FF",
+  onyx: "#0A0A0A",        // primary background
+  black: "#0A0A0A",
+  amberFlame: "#FFB404",   // primary accent
+  gold: "#FFB404",
+  royalBlue: "#0050FF",    // secondary accent
+  silver: "#B5B6B8",       // tertiary / muted text
+  white: "#FBFBFB",        // text / light backgrounds
 };
 
 export const EVENTS: TechEvent[] = [
@@ -42,17 +45,6 @@ export const EVENTS: TechEvent[] = [
     link: "https://luma.com/fhaiqk41",
   },
   {
-    id: "5",
-    date: "February 25",
-    time: "6:00pm–8:00pm",
-    location: "Union Craft Brewing",
-    title: "Baltimore Climate Tech Meetup",
-    category: "NETWORKING",
-    description:
-      "Baltimore's climate tech community gets together every month. Founders, funders, engineers, career transitioners, and the climate curious all hang out. No agenda. No presentations. Just good people, good drinks, and real conversations about building a climate positive future.",
-    link: "https://luma.com/u95k4bjl",
-  },
-  {
     id: "3",
     date: "February 26",
     time: "5:30pm–7pm",
@@ -63,17 +55,6 @@ export const EVENTS: TechEvent[] = [
     description:
       "Built With Charm is a signature meetup run by Baltimore Tech, bringing together founders, builders, and creatives shaping the city's innovation culture.",
     link: "https://luma.com/ueap4iyk",
-  },
-  {
-    id: "6",
-    date: "February 26",
-    time: "8:00pm–12:00am",
-    location: "Mama Koko's",
-    title: "Black Then Black Now",
-    category: "NETWORKING",
-    description:
-      "Baltimore's luxury multisensory experience returns — this time in all black. Live sax layered with R&B, Afro Beats, funk, and soul. Curated cocktails tuned to the frequencies of the music. Live art unfolding in real time, exploring the legacy of Black dandyism, with a tailor on-site sewing a suit jacket inspired by self-expression and style.",
-    link: "https://posh.vip/e/high-notes-hidden-stories?t=linktree",
   },
   {
     id: "4",

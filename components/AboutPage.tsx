@@ -26,17 +26,17 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
     >
       {/* Intro Hero with extra "fun" accents */}
       <div className="max-w-7xl mx-auto px-6 mb-24 relative">
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FFB400] rounded-full blur-[100px] opacity-20 animate-pulse"></div>
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FFB404] rounded-full blur-[100px] opacity-20 animate-pulse"></div>
         <div className="max-w-4xl relative z-10">
           <div className="flex items-center space-x-2 mb-6">
-            <Sparkles className="text-[#FFB400]" size={20} />
+            <Sparkles className="text-[#FFB404]" size={20} />
             <span className="font-mono text-xs tracking-[0.4em] text-[#0050FF] uppercase font-bold">
               EST. 2026 // CHARM CITY
             </span>
           </div>
           <h1 className="text-6xl md:text-9xl font-extrabold uppercase tracking-tighter mb-8 leading-[0.85]">
             BUILT WITH <br />
-            PURE <span className="text-[#FFB400] italic">CHARM.</span>
+            PURE <span className="text-[#FFB404] italic">CHARM.</span>
           </h1>
           <p className="text-xl md:text-3xl text-white/90 font-light leading-relaxed mb-10">
             Baltimore Tech Week is a{" "}
@@ -48,13 +48,13 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </p>
           <div className="flex flex-wrap gap-4">
             <div className="px-4 py-2 bg-white/5 border border-white/10 font-mono text-[10px] uppercase tracking-widest flex items-center">
-              <Cpu size={14} className="mr-2 text-[#FFB400]" /> Hardware & IoT
+              <Cpu size={14} className="mr-2 text-[#FFB404]" /> Hardware & IoT
             </div>
             <div className="px-4 py-2 bg-white/5 border border-white/10 font-mono text-[10px] uppercase tracking-widest flex items-center">
               <Code size={14} className="mr-2 text-[#0050FF]" /> Software Dev
             </div>
             <div className="px-4 py-2 bg-white/5 border border-white/10 font-mono text-[10px] uppercase tracking-widest flex items-center">
-              <Coffee size={14} className="mr-2 text-[#FFB400]" /> Community
+              <Coffee size={14} className="mr-2 text-[#FFB404]" /> Community
             </div>
             <div className="px-4 py-2 bg-[#0050FF]/20 border border-[#0050FF]/50 font-mono text-[10px] uppercase tracking-widest flex items-center">
               <Zap size={14} className="mr-2 text-white" /> Innovation
@@ -75,7 +75,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
         <div className="absolute bottom-20 left-6 md:left-24 max-w-xl z-10">
           <div className="flex items-center space-x-2 mb-4">
-            <MapPin size={16} className="text-[#FFB400]" />
+            <MapPin size={16} className="text-[#FFB404]" />
             <p className="font-mono text-xs tracking-[0.5em] text-white uppercase font-bold">
               39.2904° N, 76.6122° W
             </p>
@@ -85,7 +85,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <span className="text-[#0050FF]">OUR CITY.</span>
           </h2>
           <div className="flex space-x-4">
-            <div className="w-16 h-1 bg-[#FFB400]"></div>
+            <div className="w-16 h-1 bg-[#FFB404]"></div>
             <div className="w-16 h-1 bg-white"></div>
             <div className="w-16 h-1 bg-[#0050FF]"></div>
           </div>
@@ -97,7 +97,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         <div>
           <h3 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight mb-8 leading-none">
             A MOVEMENT, <br />
-            <span className="text-[#FFB400]">NOT A MEETING.</span>
+            <span className="text-[#FFB404]">NOT A MEETING.</span>
           </h3>
           <div className="space-y-6 text-white/70 leading-relaxed text-lg font-light">
             <p>
@@ -121,8 +121,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="p-8 border border-white/5 bg-white/[0.02] hover:border-[#FFB400]/40 transition-all group">
-            <div className="text-[#FFB400] text-3xl font-mono font-black mb-6 group-hover:scale-110 transition-transform">
+          <div className="p-8 border border-white/5 bg-white/[0.02] hover:border-[#FFB404]/40 transition-all group">
+            <div className="text-[#FFB404] text-3xl font-mono font-black mb-6 group-hover:scale-110 transition-transform">
               &gt;_
             </div>
             <h4 className="font-mono text-base font-bold uppercase mb-4 tracking-widest">
@@ -146,10 +146,10 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               for the city's future.
             </p>
           </div>
-          <div className="p-8 border border-white/5 bg-white/[0.02] hover:border-[#FFB400]/40 transition-all group sm:col-span-2">
+          <div className="p-8 border border-white/5 bg-white/[0.02] hover:border-[#FFB404]/40 transition-all group sm:col-span-2">
             <div className="flex items-center space-x-4 mb-6">
-              <div className="h-10 w-10 rounded-full bg-[#FFB400]/20 flex items-center justify-center">
-                <Heart className="text-[#FFB400] fill-[#FFB400]" size={20} />
+              <div className="h-10 w-10 rounded-full bg-[#FFB404]/20 flex items-center justify-center">
+                <Heart className="text-[#FFB404] fill-[#FFB404]" size={20} />
               </div>
               <h4 className="font-mono text-base font-bold uppercase tracking-widest">
                 Built with Grit
@@ -165,8 +165,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
       {/* Fun Section with "Energy" */}
       <div className="relative overflow-hidden mb-32">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FFB400] to-transparent"></div>
-        <div className="bg-[#FFB400] py-32 transform skew-y-1">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FFB404] to-transparent"></div>
+        <div className="bg-[#FFB404] py-32 transform skew-y-1">
           <div className="transform -skew-y-1 max-w-7xl mx-auto px-6 text-center">
             <h2 className="text-5xl md:text-8xl font-black text-black uppercase tracking-tighter mb-8">
               <span
@@ -182,7 +182,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FFB400] to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FFB404] to-transparent"></div>
       </div>
 
       {/* Final Call to Action */}

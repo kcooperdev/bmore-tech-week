@@ -47,12 +47,12 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#0050FF] rounded-full blur-[100px] opacity-20 animate-pulse"></div>
         <div className="max-w-4xl relative z-10">
           <div className="flex items-center space-x-2 mb-6">
-            <Users className="text-[#FFB400]" size={20} />
+            <Users className="text-[#FFB404]" size={20} />
             <span className="font-mono text-xs tracking-[0.4em] text-[#0050FF] uppercase font-bold">The People // The Vision</span>
           </div>
           <h1 className="text-6xl md:text-9xl font-extrabold uppercase tracking-tighter mb-8 leading-[0.85]">
             MEET THE <br />
-            <span className="text-[#FFB400] italic">TEAM.</span>
+            <span className="text-[#FFB404] italic">TEAM.</span>
           </h1>
           <p className="text-xl md:text-3xl text-white/90 font-light leading-relaxed">
             The passionate builders behind Baltimore Tech Week who are committed to transforming our city's tech ecosystem.
@@ -66,7 +66,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           {teamMembers.map((member) => (
             <article 
               key={member.name} 
-              className="group p-5 text-center border border-transparent hover:border-[#FFB400] transition-all duration-200"
+              className="group p-5 text-center border border-transparent hover:border-[#FFB404] transition-all duration-200"
             >
               {member.image ? (
                 <img 
@@ -80,8 +80,8 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
                 </div>
               )}
 
-              <h3 className="text-lg font-bold mb-1 group-hover:text-[#FFB400] transition-colors">{member.name}</h3>
-              <p className="text-[#FFB400] text-xs font-mono uppercase tracking-wider mb-3 bg-transparent">{member.role}</p>
+              <h3 className="text-lg font-bold mb-1 group-hover:text-[#FFB404] transition-colors">{member.name}</h3>
+              <p className="text-[#FFB404] text-xs font-mono uppercase tracking-wider mb-3 bg-transparent">{member.role}</p>
               <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors">{member.bio}</p>
             </article>
           ))}
@@ -97,7 +97,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
               <div>
                 <div className="flex items-center space-x-3 mb-6">
                   <Target className="text-[#0050FF]" size={24} />
-                  <span className="font-mono text-xs tracking-[0.4em] text-[#FFB400] uppercase font-bold">Our Mission</span>
+                  <span className="font-mono text-xs tracking-[0.4em] text-[#FFB404] uppercase font-bold">Our Mission</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tighter mb-8 leading-none">
                   BUILDING <br />
@@ -113,9 +113,9 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
               <div className="space-y-6">
-                <div className="p-6 border border-white/10 bg-black/50 hover:border-[#FFB400]/40 transition-all">
+                <div className="p-6 border border-white/10 bg-black/50 hover:border-[#FFB404]/40 transition-all">
                   <div className="flex items-center space-x-4 mb-4">
-                    <Sparkles className="text-[#FFB400]" size={24} />
+                    <Sparkles className="text-[#FFB404]" size={24} />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-widest">Empower Builders</h4>
                   </div>
                   <p className="text-white/50 text-sm">Providing a platform for local innovators to showcase their work and connect with resources.</p>
@@ -127,9 +127,9 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
                   </div>
                   <p className="text-white/50 text-sm">Creating meaningful connections that extend beyond a single week of events.</p>
                 </div>
-                <div className="p-6 border border-white/10 bg-black/50 hover:border-[#FFB400]/40 transition-all">
+                <div className="p-6 border border-white/10 bg-black/50 hover:border-[#FFB404]/40 transition-all">
                   <div className="flex items-center space-x-4 mb-4">
-                    <Rocket className="text-[#FFB400]" size={24} />
+                    <Rocket className="text-[#FFB404]" size={24} />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-widest">Accelerate Growth</h4>
                   </div>
                   <p className="text-white/50 text-sm">Catalyzing partnerships and investments that drive Baltimore's tech sector forward.</p>
@@ -144,11 +144,11 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-6 mb-32">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center space-x-3 mb-6">
-            <TrendingUp className="text-[#FFB400]" size={24} />
+            <TrendingUp className="text-[#FFB404]" size={24} />
             <span className="font-mono text-xs tracking-[0.4em] text-[#0050FF] uppercase font-bold">5–10 Year Outlook</span>
           </div>
           <h2 className="text-4xl md:text-7xl font-extrabold uppercase tracking-tighter mb-8 leading-none">
-            ECONOMIC <span className="text-[#FFB400]">VISION</span>
+            ECONOMIC <span className="text-[#FFB404]">VISION</span>
           </h2>
           <p className="max-w-3xl mx-auto text-xl text-white/70 font-light">
             Where we think Baltimore can be over the next 5–10 years if we do this right.
@@ -157,8 +157,8 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="p-10 border border-white/10 bg-white/[0.02] text-center">
-            <DollarSign className="w-10 h-10 mx-auto mb-6 text-[#FFB400]" />
-            <div className="text-5xl font-black text-[#FFB400] mb-4">$500M+</div>
+            <DollarSign className="w-10 h-10 mx-auto mb-6 text-[#FFB404]" />
+            <div className="text-5xl font-black text-[#FFB404] mb-4">$500M+</div>
             <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">In New Revenue</p>
             <p className="text-white/40 text-sm">Tech-driven economic activity flowing into Baltimore from startups, investments, and companies choosing to build here.</p>
           </div>
@@ -169,15 +169,15 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
             <p className="text-white/40 text-sm">Startups founded, relocated, or scaled in Baltimore. Real companies with real funding and real employees.</p>
           </div>
           <div className="p-10 border border-white/10 bg-white/[0.02] text-center">
-            <Users className="w-10 h-10 mx-auto mb-6 text-[#FFB400]" />
-            <div className="text-5xl font-black text-[#FFB400] mb-4">10,000+</div>
+            <Users className="w-10 h-10 mx-auto mb-6 text-[#FFB404]" />
+            <div className="text-5xl font-black text-[#FFB404] mb-4">10,000+</div>
             <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">Jobs</p>
             <p className="text-white/40 text-sm">Tech jobs for Baltimore residents. Engineers, designers, ops, sales—the full stack of a real ecosystem.</p>
           </div>
         </div>
 
         {/* Vision Statement */}
-        <div className="relative p-10 border-l-2 border-[#FFB400] bg-white/[0.02]">
+        <div className="relative p-10 border-l-2 border-[#FFB404] bg-white/[0.02]">
           <h3 className="text-xl md:text-2xl font-bold mb-4">
             The goal is simple: make Baltimore a place where people want to start companies.
           </h3>
@@ -189,7 +189,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
       {/* Yellow Impact Band */}
       <div className="relative overflow-hidden mb-32">
-        <div className="bg-[#FFB400] py-24 transform skew-y-1">
+        <div className="bg-[#FFB404] py-24 transform skew-y-1">
           <div className="transform -skew-y-1 max-w-7xl mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-7xl font-black text-black uppercase tracking-tighter mb-6">
               CHARM CITY <span className="text-white" style={{ WebkitTextStroke: '2px black' }}>RISING.</span>
@@ -214,7 +214,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           </button>
           <button
             onClick={() => onNavigate('about', '#about-full')}
-            className="px-16 py-6 border-2 border-white/20 text-white font-mono font-bold uppercase tracking-[0.2em] text-sm hover:border-[#FFB400] hover:text-[#FFB400] transition-all active:scale-95"
+            className="px-16 py-6 border-2 border-white/20 text-white font-mono font-bold uppercase tracking-[0.2em] text-sm hover:border-[#FFB404] hover:text-[#FFB404] transition-all active:scale-95"
           >
             Learn More
           </button>

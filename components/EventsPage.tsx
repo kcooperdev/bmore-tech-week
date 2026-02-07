@@ -50,7 +50,7 @@ const EventsPage: React.FC<EventsPageProps> = ({ onNavigate }) => {
                 onClick={() => setActiveDate(date)}
                 className={`px-6 py-2.5 font-mono text-[10px] tracking-widest uppercase border transition-all ${
                   activeDate === date
-                    ? "bg-[#FFB400] text-black border-[#FFB400] font-bold shadow-[0_0_15px_rgba(255,180,0,0.2)]"
+                    ? "bg-[#FFB404] text-black border-[#FFB404] font-bold shadow-[0_0_15px_rgba(255,180,0,0.2)]"
                     : "border-white/10 hover:border-white/30 text-white/60"
                 }`}
               >
@@ -81,10 +81,10 @@ const EventsPage: React.FC<EventsPageProps> = ({ onNavigate }) => {
         )}
 
         {/* Unofficial Disclaimer Reminder - Highlighted Bold */}
-        <div className="mt-20 p-8 border border-[#FFB400] bg-[#FFB400]/5 relative overflow-hidden group">
-          <div className="absolute top-0 left-0 w-1 h-full bg-[#FFB400]"></div>
+        <div className="mt-20 p-8 border border-[#FFB404] bg-[#FFB404]/5 relative overflow-hidden group">
+          <div className="absolute top-0 left-0 w-1 h-full bg-[#FFB404]"></div>
           <p className="text-white text-base font-bold text-center font-mono tracking-tight uppercase">
-            <span className="text-[#FFB400]">Disclaimer:</span> This is a
+            <span className="text-[#FFB404]">Disclaimer:</span> This is a
             community‑curated calendar. All events are independently organized
             by their respective hosts. Please verify individual registration
             links for details.

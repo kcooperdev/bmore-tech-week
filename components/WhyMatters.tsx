@@ -15,8 +15,8 @@ const WhyMatters: React.FC = () => {
             </p>
           </div>
           <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4">
-             <div className="aspect-square bg-white/[0.03] border border-white/10 flex flex-col justify-center items-center p-8 group hover:bg-[#FFB400]/10 transition-colors">
-                <span className="text-4xl font-extrabold text-[#FFB400] mb-2">4+</span>
+             <div className="aspect-square bg-white/[0.03] border border-white/10 flex flex-col justify-center items-center p-8 group hover:bg-[#FFB404]/10 transition-colors">
+                <span className="text-4xl font-extrabold text-[#FFB404] mb-2">4+</span>
                 <span className="font-mono text-[10px] tracking-widest uppercase opacity-40">DAYS</span>
              </div>
              <div className="aspect-square bg-white/[0.03] border border-white/10 flex flex-col justify-center items-center p-8 group hover:bg-[#0050FF]/10 transition-colors">
@@ -27,8 +27,8 @@ const WhyMatters: React.FC = () => {
                 <span className="text-4xl font-extrabold text-[#0050FF] mb-2">500+</span>
                 <span className="font-mono text-[10px] tracking-widest uppercase opacity-40">ATTENDEES</span>
              </div>
-             <div className="aspect-square bg-white/[0.03] border border-white/10 flex flex-col justify-center items-center p-8 group hover:bg-[#FFB400]/10 transition-colors">
-                <span className="text-4xl font-extrabold text-[#FFB400] mb-2">CITY</span>
+             <div className="aspect-square bg-white/[0.03] border border-white/10 flex flex-col justify-center items-center p-8 group hover:bg-[#FFB404]/10 transition-colors">
+                <span className="text-4xl font-extrabold text-[#FFB404] mb-2">CITY</span>
                 <span className="font-mono text-[10px] tracking-widest uppercase opacity-40">WIDE</span>
              </div>
           </div>

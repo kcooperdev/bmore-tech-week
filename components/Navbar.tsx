@@ -37,9 +37,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           onClick={() => handleLinkClick('landing', '#')}
           className="flex items-center space-x-2 group cursor-pointer"
         >
-          <div className="bg-[#FFB400] text-black font-extrabold p-1 px-2 text-xl transform group-hover:scale-110 transition-transform">B</div>
-          <span className="font-mono font-bold tracking-tighter text-sm md:text-base flex items-center text-left">
-            BALTIMORE<span className="text-[#FFB400]">_TECH_WEEK</span>
+          <div className="bg-[#FFB404] text-[#0A0A0A] font-extrabold p-1 px-2 text-xl transform group-hover:scale-110 transition-transform">B</div>
+          <span className="font-mono font-bold tracking-tighter text-sm md:text-base flex flex-col items-start text-left leading-tight">
+            <span>ALTIMORE</span>
+            <span className="text-[#FFB404]">_TECH_WEEK</span>
           </span>
         </button>
 
@@ -49,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <button 
               key={link.name} 
               onClick={() => handleLinkClick(link.view, link.hash)}
-              className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase whitespace-nowrap"
+              className="font-mono text-xs hover:text-[#FFB404] transition-colors tracking-widest font-bold uppercase whitespace-nowrap"
             >
               {link.name}
             </button>
@@ -58,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             href="https://www.charmcitycowork.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest font-bold uppercase whitespace-nowrap"
+            className="font-mono text-xs hover:text-[#FFB404] transition-colors tracking-widest font-bold uppercase whitespace-nowrap"
           >
             CHARM CITY COWORK
           </a>
@@ -77,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <button 
               key={link.name} 
               onClick={() => handleLinkClick(link.view, link.hash)}
-              className="block w-full text-left font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest py-2 font-bold uppercase"
+              className="block w-full text-left font-mono text-xs hover:text-[#FFB404] transition-colors tracking-widest py-2 font-bold uppercase"
             >
               {link.name}
             </button>
@@ -86,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             href="https://www.charmcitycowork.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="block w-full text-left font-mono text-xs hover:text-[#FFB400] transition-colors tracking-widest py-2 font-bold uppercase"
+            className="block w-full text-left font-mono text-xs hover:text-[#FFB404] transition-colors tracking-widest py-2 font-bold uppercase"
           >
             CHARM CITY COWORK
           </a>

@@ -10,13 +10,13 @@ const SubmitEvent: React.FC = () => {
 
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-4xl md:text-6xl font-extrabold uppercase mb-8 tracking-tighter">
-          ADD YOUR <span className="text-[#FFB400]">EVENT</span>
+          ADD YOUR <span className="text-[#FFB404]">EVENT</span>
         </h2>
         <p className="text-lg md:text-xl text-white/70 mb-12 font-light max-w-2xl mx-auto">
           Hosting something during February 23–27? Add it to the community calendar. 
           All tech, innovation, startup, creative, and ecosystem‑building events are welcome.
         </p>
-        <button className="bg-white text-black font-mono font-bold text-sm tracking-widest px-10 py-5 uppercase hover:bg-[#FFB400] transition-colors flex items-center mx-auto group">
+        <button className="bg-white text-black font-mono font-bold text-sm tracking-widest px-10 py-5 uppercase hover:bg-[#FFB404] transition-colors flex items-center mx-auto group">
           <Plus className="mr-2 group-hover:rotate-90 transition-transform" />
           Submit an Event
         </button>

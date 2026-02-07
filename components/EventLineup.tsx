@@ -8,8 +8,8 @@ interface Props {
 }
 
 const EventLineup: React.FC<Props> = ({ onSeeAll }) => {
-  // Only show the first 4 events, excluding "Black Then Black Now"
-  const featuredEvents = EVENTS.filter(e => e.title !== 'Black Then Black Now').slice(0, 4);
+  // Only show the first 4 events
+  const featuredEvents = EVENTS.slice(0, 4);
 
   return (
     <section id="events" className="py-24 bg-black relative">
@@ -24,7 +24,7 @@ const EventLineup: React.FC<Props> = ({ onSeeAll }) => {
           </div>
           <button
             onClick={onSeeAll}
-            className="font-mono text-xs text-white/60 hover:text-[#FFB400] flex items-center tracking-widest uppercase group transition-colors"
+            className="font-mono text-xs text-white/60 hover:text-[#FFB404] flex items-center tracking-widest uppercase group transition-colors"
           >
             View Full Schedule
             <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>

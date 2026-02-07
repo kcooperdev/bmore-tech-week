@@ -4,9 +4,9 @@ import { ShieldCheck, Users, Zap, Search, ChevronRight } from 'lucide-react';
 const About: React.FC = () => {
   const points = [
     { icon: <ShieldCheck className="text-[#0050FF]" size={24} />, title: "Independent events", desc: "Organized by the community, for the community. We support the builders directly." },
-    { icon: <Users className="text-[#FFB400]" size={24} />, title: "Community-driven", desc: "Built on grassroots energy. This is a spotlight on existing city momentum." },
+    { icon: <Users className="text-[#FFB404]" size={24} />, title: "Community-driven", desc: "Built on grassroots energy. This is a spotlight on existing city momentum." },
     { icon: <Zap className="text-[#0050FF]" size={24} />, title: "Open to all", desc: "Inclusion is at our core. From students to VCs, everyone has a seat at the table." },
-    { icon: <Search className="text-[#FFB400]" size={24} />, title: "Built to highlight", desc: "Spotlighting the innovators and underground builders making real waves." }
+    { icon: <Search className="text-[#FFB404]" size={24} />, title: "Built to highlight", desc: "Spotlighting the innovators and underground builders making real waves." }
   ];
 
   return (
@@ -17,7 +17,7 @@ const About: React.FC = () => {
           <div className="lg:col-span-5 lg:sticky lg:top-32 mb-12 lg:mb-0 z-10">
             <h2 className="text-4xl md:text-6xl xl:text-7xl font-extrabold mb-8 uppercase tracking-tighter leading-[0.9] md:leading-none">
               WHAT IS <br/>
-              <span className="text-[#FFB400]">BALTIMORE</span> <br/>
+              <span className="text-[#FFB404]">BALTIMORE</span> <br/>
               <span className="text-[#0050FF]">TECH_WEEK?</span>
             </h2>
             <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-white/80 leading-relaxed font-light">
@@ -30,7 +30,7 @@ const About: React.FC = () => {
                   "This is not an official organization — it’s a community-powered spotlight on the momentum already building in Baltimore’s tech ecosystem."
                 </p>
               </div>
-              <p className="font-mono text-[#FFB400] font-bold uppercase tracking-[0.2em] text-xs md:text-sm">
+              <p className="font-mono text-[#FFB404] font-bold uppercase tracking-[0.2em] text-xs md:text-sm">
                 We amplify. We connect. We celebrate.
               </p>
             </div>
@@ -44,7 +44,7 @@ const About: React.FC = () => {
                 <div className="mb-6 transform group-hover:-translate-y-1 transition-transform inline-block">{point.icon}</div>
                 <h3 className="font-mono text-sm md:text-base font-bold uppercase tracking-widest mb-4 flex items-center">
                   {point.title}
-                  <ChevronRight size={14} className="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-[#FFB400]" />
+                  <ChevronRight size={14} className="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-[#FFB404]" />
                 </h3>
                 <p className="text-white/50 text-sm md:text-base leading-relaxed">{point.desc}</p>
               </div>

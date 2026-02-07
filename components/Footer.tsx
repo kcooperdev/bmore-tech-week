@@ -14,12 +14,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="mb-20">
           <div className="max-w-2xl">
             <div className="flex items-center space-x-2 mb-8">
-              <div className="bg-[#FFB400] text-black font-extrabold p-1 px-2 text-xl">
+              <div className="bg-[#FFB404] text-[#0A0A0A] font-extrabold p-1 px-2 text-xl">
                 B
               </div>
-              <span className="font-mono font-bold tracking-tighter text-lg">
-                BALTIMORE<span className="text-[#FFB400]">_TECH_WEEK</span>
-                <span className="text-[#0050FF] ml-1 text-sm"></span>
+              <span className="font-mono font-bold tracking-tighter text-lg flex flex-col items-start leading-tight">
+                <span>ALTIMORE</span>
+                <span className="text-[#FFB404]">_TECH_WEEK</span>
               </span>
             </div>
             <p className="text-white/40 font-mono text-xs tracking-widest mb-6 uppercase font-bold">
@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             href="https://www.tiktok.com/@baltimoretechweek"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/50 hover:text-[#FFB400] transition-colors"
+            className="text-white/50 hover:text-[#FFB404] transition-colors"
             aria-label="TikTok"
           >
             <svg
@@ -55,7 +55,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             href="https://www.instagram.com/baltimoretechweekofficial/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/50 hover:text-[#FFB400] transition-colors"
+            className="text-white/50 hover:text-[#FFB404] transition-colors"
             aria-label="Instagram"
           >
             <svg
@@ -78,7 +78,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             href="https://www.linkedin.com/company/baltimore-tech-week"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/50 hover:text-[#FFB400] transition-colors"
+            className="text-white/50 hover:text-[#FFB404] transition-colors"
             aria-label="LinkedIn"
           >
             <svg
