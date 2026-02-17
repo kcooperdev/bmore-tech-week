@@ -1,13 +1,13 @@
 import { TechEvent } from "./types";
 
 export const COLORS = {
-  onyx: "#0A0A0A",        // primary background
+  onyx: "#0A0A0A", // primary background
   black: "#0A0A0A",
-  amberFlame: "#FFB404",   // primary accent
+  amberFlame: "#FFB404", // primary accent
   gold: "#FFB404",
-  royalBlue: "#0050FF",    // secondary accent
-  silver: "#B5B6B8",       // tertiary / muted text
-  white: "#FBFBFB",        // text / light backgrounds
+  royalBlue: "#0050FF", // secondary accent
+  silver: "#B5B6B8", // tertiary / muted text
+  white: "#FBFBFB", // text / light backgrounds
 };
 
 export const EVENTS: TechEvent[] = [
@@ -57,6 +57,18 @@ export const EVENTS: TechEvent[] = [
     link: "https://luma.com/ueap4iyk",
   },
   {
+    id: "8",
+    date: "February 26",
+    time: "9:00am–5:00pm",
+    location: "Red Emma's",
+    locationLink: "https://redemmas.org/",
+    title: "Charm City Cowork: Red Emma's",
+    category: "COWORKING",
+    description:
+      "A full day of coworking at Red Emma's. Bring your laptop and work alongside Baltimore's tech community.",
+    link: "",
+  },
+  {
     id: "4",
     date: "February 27",
     time: "10:00am–5:30pm",
@@ -66,5 +78,27 @@ export const EVENTS: TechEvent[] = [
     description:
       "A major anchor event during CIAA Week featuring panels, workshops, and networking with HBCU talent and tech leaders.",
     link: "https://baltimore.org/event/ciaa-tech-summit/",
+  },
+  {
+    id: "9",
+    date: "February 24",
+    time: "12:00pm–3:00pm",
+    location: "Adee's Coffee & Bar",
+    title: "Mid-Day Exclusive Happy Hour",
+    category: "NETWORKING",
+    description:
+      "A mid-day happy hour at Adee's Coffee & Bar. Come out for drinks, networking, and hanging with the community.",
+    link: "https://luma.com/7f7j7tbf",
+  },
+  {
+    id: "10",
+    date: "February 25",
+    time: "11:00am–5:00pm",
+    location: "1010 St Paul St, Baltimore",
+    title: "Charm City Cowork: Tech Cafe",
+    category: "COWORKING",
+    description:
+      "A full day of coworking at Tech Cafe. Bring your laptop and work alongside Baltimore's tech community.",
+    link: "https://luma.com/pbeegk9h",
   },
 ];

@@ -3,6 +3,7 @@ export interface TechEvent {
   date: string;
   time?: string;
   location?: string;
+  locationLink?: string;
   title: string;
   description: string;
   category: string;
@@ -11,9 +12,9 @@ export interface TechEvent {
 }
 
 export enum Section {
-  HERO = 'hero',
-  ABOUT = 'about',
-  EVENTS = 'events',
-  SUBMIT = 'submit',
-  WHY = 'why'
+  HERO = "hero",
+  ABOUT = "about",
+  EVENTS = "events",
+  SUBMIT = "submit",
+  WHY = "why",
 }

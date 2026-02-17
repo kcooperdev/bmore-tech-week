@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { Calendar, Clock, ArrowUpRight, MapPin } from 'lucide-react';
-import { TechEvent } from '../types';
+import React from "react";
+import { Calendar, Clock, ArrowUpRight, MapPin } from "lucide-react";
+import { TechEvent } from "../types";
 
 interface Props {
   event: TechEvent;
@@ -15,7 +14,10 @@ const EventCard: React.FC<Props> = ({ event }) => {
       <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#FFB404]"></div>
 
       <div className="flex justify-end items-start mb-6">
-        <ArrowUpRight className="text-white/30 group-hover:text-[#FFB404] transition-colors" size={20} />
+        <ArrowUpRight
+          className="text-white/30 group-hover:text-[#FFB404] transition-colors"
+          size={20}
+        />
       </div>
 
       <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:text-[#FFB404] transition-colors leading-tight">
@@ -36,7 +38,18 @@ const EventCard: React.FC<Props> = ({ event }) => {
         {event.location && (
           <div className="flex items-center text-white/50 text-sm font-mono">
             <MapPin size={14} className="mr-2 text-[#FFB404]" />
-            {event.location}
+            {event.locationLink ? (
+              <a
+                href={event.locationLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2"
+              >
+                {event.location}
+              </a>
+            ) : (
+              event.location
+            )}
           </div>
         )}
       </div>
@@ -47,9 +60,9 @@ const EventCard: React.FC<Props> = ({ event }) => {
 
       <a
         href={event.link}
-        target={event.link.startsWith('http') ? "_blank" : "_self"}
-        rel={event.link.startsWith('http') ? "noopener noreferrer" : ""}
-        className="inline-block py-3 text-center font-mono text-xs tracking-[0.2em] uppercase transition-all border border-white/10 text-white hover:bg-[#FFB404] hover:text-black hover:border-[#FFB404] hover:font-bold hover:glow-gold"
+        target={event.link.startsWith("http") ? "_blank" : "_self"}
+        rel={event.link.startsWith("http") ? "noopener noreferrer" : ""}
+        className="inline-block py-3 text-center font-mono text-xs tracking-[0.2em] uppercase transition-all border border-white/10 text-white hover:bg-[#FFB404] hover:text-black hover:border-[#FFB404] hover:font-bold"
       >
         Learn More
       </a>
