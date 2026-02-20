@@ -113,4 +113,16 @@ export const EVENTS: TechEvent[] = [
       "Baltimore's climate tech community gets together every month. No agenda. No presentations. Just good people, good drinks, and real conversations about building a climate positive future. Whether this is your fifth meetup or your first, you belong here.",
     link: "https://luma.com/u95k4bjl",
   },
+  {
+    id: "12",
+    date: "February 27",
+    time: "7:30pm–9:30pm",
+    location: "The Empanada Lady",
+    locationLink: "https://maps.google.com/?q=10+South+St+STE+100+Baltimore+MD+21202",
+    title: "Baltimore Tech Week Closing Event",
+    category: "CLOSING",
+    description:
+      "Join us as we close out the very first Baltimore Tech Week together. Partnering with the Baltimore City Chamber of Commerce for a community‑powered closing event that brings everyone back into the same room. Complimentary empanadas (first come, first serve). No agenda. No panels. Just good energy, good people, and a moment to appreciate what we built.",
+    link: "https://luma.com/mwgdqash",
+  },
 ];
