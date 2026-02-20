@@ -42,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
           {/* Changed <a> to <button> to use onNavigate for consistent app behavior */}
           <button
-            onClick={() => onNavigate("landing", "#events")}
+            onClick={() => onNavigate("events", "#events-full")}
             className="group relative bg-[#FFB404] text-black px-10 md:px-12 py-4 md:py-5 font-mono font-bold text-sm tracking-widest uppercase flex items-center transition-all hover:scale-105 active:scale-95 glow-gold"
           >
             Explore Events

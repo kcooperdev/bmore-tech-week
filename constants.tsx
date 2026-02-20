@@ -66,7 +66,7 @@ export const EVENTS: TechEvent[] = [
     category: "COWORKING",
     description:
       "A full day of coworking at Red Emma's. Bring your laptop and work alongside Baltimore's tech community.",
-    link: "",
+    link: "https://luma.com/dcfsuxe2",
   },
   {
     id: "4",
@@ -100,5 +100,17 @@ export const EVENTS: TechEvent[] = [
     description:
       "A full day of coworking at Tech Cafe. Bring your laptop and work alongside Baltimore's tech community.",
     link: "https://luma.com/pbeegk9h",
+  },
+  {
+    id: "11",
+    date: "February 25",
+    time: "6:00pm–8:00pm",
+    location: "Union Craft Brewing",
+    locationLink: "https://maps.google.com/?q=1700+W+41st+St+%23420+Baltimore+MD+21211",
+    title: "Baltimore Climate Tech Meetup (Feb 2026)",
+    category: "CLIMATE TECH",
+    description:
+      "Baltimore's climate tech community gets together every month. No agenda. No presentations. Just good people, good drinks, and real conversations about building a climate positive future. Whether this is your fifth meetup or your first, you belong here.",
+    link: "https://luma.com/u95k4bjl",
   },
 ];
