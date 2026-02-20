@@ -43,7 +43,7 @@ const EventCard: React.FC<Props> = ({ event }) => {
                 href={event.locationLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2"
+                className="no-underline"
               >
                 {event.location}
               </a>
