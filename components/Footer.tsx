@@ -101,6 +101,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <p className="text-white/20 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]">
               Made in Baltimore.
             </p>
+            <p className="text-white/30 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] mt-2">
+              Powered by BLK Tech Connect
+            </p>
           </div>
           <div className="max-w-xl md:text-right">
             <p className="text-[#0050FF] text-[11px] md:text-sm font-mono uppercase tracking-[0.1em] font-black leading-relaxed">
