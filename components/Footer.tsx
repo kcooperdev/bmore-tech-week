@@ -109,7 +109,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </p>
           </div>
         </div>
-        <p className="text-white/40 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] text-center mt-12 pt-8 border-t border-white/5">
+        <p className="text-white/40 hover:text-[#FFB404] transition-colors text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] text-center mt-12 pt-8 border-t border-white/5 cursor-default">
           Powered by BLK Tech Connect
         </p>
       </div>
