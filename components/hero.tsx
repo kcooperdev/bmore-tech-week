@@ -7,7 +7,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10">
         <img
           src="/images/hero-mural.png"
-          alt="Vibrant graffiti mural of the Baltimore skyline"
+          alt="Baltimore Tech Week mural of the Charm City skyline — where tech meets culture"
           className="h-full w-full object-cover animate-hero-zoom"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />

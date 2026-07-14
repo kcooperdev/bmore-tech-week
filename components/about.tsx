@@ -51,7 +51,7 @@ export function About() {
             <div className="overflow-hidden rounded-sm border-2 border-border">
               <img
                 src="/images/art-block.png"
-                alt="Colorful abstract graffiti mural detail"
+                alt="Baltimore street art mural representing Baltimore Tech Week culture and creativity"
                 className="aspect-[4/3] w-full object-cover"
               />
             </div>

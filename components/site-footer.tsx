@@ -6,7 +6,13 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-10 md:flex-row md:items-center md:px-8">
         <div>
           <p className="font-display text-xl text-foreground">Baltimore Tech Week</p>
-          <p className="mt-1 text-sm text-muted-foreground">{EVENT.city}</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {EVENT.dates} · {EVENT.city}
+          </p>
+          <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+            The official home of Baltimore Tech Week {EVENT.year} — Charm City&apos;s week of
+            technology, art, and community.
+          </p>
         </div>
         <a
           href={EVENT.infoSessionUrl}
