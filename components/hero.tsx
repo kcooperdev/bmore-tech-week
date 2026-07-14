@@ -19,9 +19,11 @@ export function Hero() {
           {EVENT.dates}
         </span>
 
-        <h1 className="max-w-4xl animate-fade-up font-display text-6xl leading-[0.85] text-cream text-shadow-pop [animation-delay:80ms] sm:text-7xl md:text-8xl lg:text-9xl text-balance">
-          Baltimore{' '}
-          <span className="text-primary">Tech</span> Week
+        <h1 className="max-w-4xl animate-fade-up font-display text-6xl leading-[1.05] text-cream text-shadow-pop [animation-delay:80ms] sm:text-7xl md:text-8xl lg:text-9xl text-balance">
+          <span className="block">Baltimore</span>
+          <span className="block">
+            <span className="text-primary">Tech</span> Week
+          </span>
         </h1>
 
         <p className="mt-6 max-w-xl animate-fade-up font-display text-2xl text-secondary [animation-delay:140ms] sm:text-3xl">
