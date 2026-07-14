@@ -1,0 +1,75 @@
+import { MapPin, ArrowRight } from 'lucide-react'
+import { EVENT, STATS } from '@/lib/data'
+
+export function Hero() {
+  return (
+    <section id="top" className="grain relative isolate overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/images/hero-mural.png"
+          alt="Vibrant graffiti mural of the Baltimore skyline"
+          className="h-full w-full object-cover animate-hero-zoom"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
+      </div>
+
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 pb-16 pt-28 md:px-8">
+        <span className="mb-6 inline-flex w-fit animate-fade-up rotate-sticker items-center gap-2 rounded-sm bg-secondary px-4 py-2 text-xs font-bold uppercase tracking-widest text-secondary-foreground">
+          {EVENT.dates}
+        </span>
+
+        <h1 className="max-w-4xl animate-fade-up font-display text-6xl leading-[0.85] text-cream text-shadow-pop [animation-delay:80ms] sm:text-7xl md:text-8xl lg:text-9xl text-balance">
+          Baltimore{' '}
+          <span className="text-primary">Tech</span> Week
+        </h1>
+
+        <p className="mt-6 max-w-xl animate-fade-up font-display text-2xl text-secondary [animation-delay:140ms] sm:text-3xl">
+          {EVENT.theme}
+        </p>
+
+        <p className="mt-5 max-w-lg animate-fade-up text-lg leading-relaxed text-muted-foreground [animation-delay:200ms] text-pretty">
+          A week-long celebration of technology, creativity, and community across Charm City.
+          Talks, demos, mixers, and murals — {EVENT.tagline.toLowerCase()}
+        </p>
+
+        <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up [animation-delay:260ms]">
+          <a
+            href={EVENT.infoSessionUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-4 text-base font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:-translate-y-1"
+          >
+            RSVP for the Info Session
+            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href="#about"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-cream px-7 py-4 text-base font-bold uppercase tracking-wide text-cream transition-colors hover:bg-cream hover:text-charcoal"
+          >
+            Learn More
+          </a>
+        </div>
+
+        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 animate-fade-up text-sm font-semibold text-cream [animation-delay:320ms]">
+          <span className="inline-flex items-center gap-2">
+            <MapPin className="size-4 text-secondary" /> {EVENT.city}
+          </span>
+        </div>
+      </div>
+
+      <div className="relative border-y border-border bg-charcoal/80 backdrop-blur">
+        <dl className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="flex flex-col gap-1 px-4 py-6 text-center md:py-8">
+              <dt className="order-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                {stat.label}
+              </dt>
+              <dd className="order-1 font-display text-4xl text-primary md:text-5xl">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  )
+}
