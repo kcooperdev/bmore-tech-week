@@ -19,16 +19,26 @@ export function SiteNav() {
         scrolled ? 'bg-background/90 backdrop-blur border-b border-border' : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
-        <a href="#top" className="flex items-center gap-2" aria-label="Baltimore Tech Week home">
-          <span className="flex size-9 items-center justify-center rounded-sm bg-primary font-display text-lg text-primary-foreground rotate-sticker">
-            BTW
-          </span>
-          <span className="hidden font-display text-lg leading-none text-foreground sm:flex sm:flex-col sm:gap-1">
-            <span>Baltimore</span>
-            <span>Tech Week</span>
-          </span>
-        </a>
+      <nav
+        className={`mx-auto flex max-w-7xl items-center px-4 py-3 md:px-8 ${
+          scrolled ? 'justify-between' : 'justify-end'
+        }`}
+      >
+        {scrolled && (
+          <a
+            href="#top"
+            className="flex items-center gap-2 animate-fade-up"
+            aria-label="Baltimore Tech Week home"
+          >
+            <span className="flex size-9 items-center justify-center rounded-sm bg-primary font-display text-lg text-primary-foreground rotate-sticker">
+              BTW
+            </span>
+            <span className="hidden font-display text-lg leading-none text-foreground sm:flex sm:flex-col sm:gap-1">
+              <span>Baltimore</span>
+              <span>Tech Week</span>
+            </span>
+          </a>
+        )}
 
         <div className="flex items-center gap-6">
           <a

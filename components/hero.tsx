@@ -27,7 +27,7 @@ export function Hero() {
         </h1>
 
         <p className="mt-6 max-w-xl animate-fade-up font-display text-2xl text-secondary [animation-delay:140ms] sm:text-3xl">
-          {EVENT.theme}
+          he<span className="text-primary">ART</span>beat of Baltimore
         </p>
 
         <p className="mt-5 max-w-lg animate-fade-up text-lg leading-relaxed text-muted-foreground [animation-delay:200ms] text-pretty">

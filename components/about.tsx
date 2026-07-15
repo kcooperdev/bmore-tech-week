@@ -28,22 +28,23 @@ export function About() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <span className="font-display text-sm uppercase tracking-widest text-secondary">
-              // The Art of Baltimore
+              // he<span className="text-primary">ART</span>beat of Baltimore
             </span>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground sm:text-5xl md:text-6xl text-balance">
-              Art is the <span className="text-primary">heartbeat</span> of this city
+              The he<span className="text-primary">ART</span>beat of art, culture &amp; tech
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
-              From Graffiti Alley&apos;s ever-changing walls to Open Walls murals that lit up Station
-              North, Baltimore doesn&apos;t hide its creativity — it paints it across whole
-              neighborhoods. This is a city that turns alleys into galleries, festivals into
-              block parties, and every blank brick into a dare.
+              Baltimore&apos;s pulse isn&apos;t just code or canvas — it&apos;s both. From Graffiti
+              Alley&apos;s ever-changing walls to Open Walls murals that lit up Station North, this
+              city paints its identity across whole neighborhoods and builds what comes next in the
+              same breath.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
-              That pulse — DIY, loud, and unmistakably Charm City — is what powers Tech Week.
-              For seven days we plug builders, founders, and artists into the same electric
-              current that runs through Artscape crowds, Motor House studios, and Fells Point
-              stoops. No velvet ropes. Just the city&apos;s creative heart, turned all the way up.
+              That he<span className="text-primary">ART</span>beat — DIY, loud, and unmistakably
+              Charm City — is what powers Tech Week. For seven days we plug builders, founders, and
+              artists into the same electric current that runs through Artscape crowds, Motor House
+              studios, and Fells Point stoops. Art. Culture. Tech. No velvet ropes — just the
+              city&apos;s creative heart, turned all the way up.
             </p>
           </div>
 
