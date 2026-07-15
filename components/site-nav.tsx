@@ -24,10 +24,9 @@ export function SiteNav() {
           <span className="flex size-9 items-center justify-center rounded-sm bg-primary font-display text-lg text-primary-foreground rotate-sticker">
             BTW
           </span>
-          <span className="hidden font-display text-lg leading-snug text-foreground sm:inline">
-            Baltimore
-            <br />
-            Tech Week
+          <span className="hidden font-display text-lg leading-none text-foreground sm:flex sm:flex-col sm:gap-1">
+            <span>Baltimore</span>
+            <span>Tech Week</span>
           </span>
         </a>
 
