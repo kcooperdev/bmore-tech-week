@@ -17,9 +17,9 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-const title = 'Baltimore Tech Week 2027 | April 26–May 2 | Charm City'
+const title = 'Baltimore Tech Week 2027 | April 27–May 1 | Charm City'
 const description =
-  'Baltimore Tech Week is Charm City’s week of technology, creativity, and community — April 26 to May 2, 2027. Talks, workshops, murals, and mixers across Baltimore, MD. RSVP for the free launch info session.'
+  'Baltimore Tech Week is Charm City’s week of technology, creativity, and community — April 27 to May 1, 2027. Talks, workshops, murals, and mixers across Baltimore, MD. RSVP for the free launch info session.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Baltimore Tech Week 2027',
     short_name: 'BTW 2027',
     description:
-      'Baltimore Tech Week — April 26 to May 2, 2027. Where tech meets culture in Charm City.',
+      'Baltimore Tech Week — April 27 to May 1, 2027. Where tech meets culture in Charm City.',
     start_url: '/',
     display: 'standalone',
     background_color: '#17171a',

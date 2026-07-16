@@ -5,9 +5,9 @@ export const EVENT = {
   year: '2027',
   theme: 'heARTbeat of Baltimore',
   themePlain: 'Heartbeat of Baltimore',
-  dates: 'April 26 – May 2, 2027',
-  startDate: '2027-04-26',
-  endDate: '2027-05-02',
+  dates: 'April 27 – May 1, 2027',
+  startDate: '2027-04-27',
+  endDate: '2027-05-01',
   city: 'Baltimore, MD',
   locationName: 'Baltimore',
   region: 'MD',
@@ -17,7 +17,7 @@ export const EVENT = {
 }
 
 export const STATS = [
-  { value: '7', label: 'Days of programming' },
+  { value: '5', label: 'Days of programming' },
   { value: '60+', label: 'Events & workshops' },
   { value: '120', label: 'Speakers & artists' },
   { value: '15', label: 'Neighborhoods' },

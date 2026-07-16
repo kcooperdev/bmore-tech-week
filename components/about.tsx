@@ -41,7 +41,7 @@ export function About() {
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
               That he<span className="text-primary">ART</span>beat — DIY, loud, and unmistakably
-              Charm City — is what powers Tech Week. For seven days we plug builders, founders, and
+              Charm City — is what powers Tech Week. For five days we plug builders, founders, and
               artists into the same electric current that runs through Artscape crowds, Motor House
               studios, and Fells Point stoops. Art. Culture. Tech. No velvet ropes — just the
               city&apos;s creative heart, turned all the way up.
