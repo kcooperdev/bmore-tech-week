@@ -18,7 +18,6 @@ export const EVENT = {
 
 export const STATS = [
   { value: '5', label: 'Days of programming' },
-  { value: '60+', label: 'Events & workshops' },
-  { value: '120', label: 'Speakers & artists' },
-  { value: '15', label: 'Neighborhoods' },
+  { value: '30+', label: 'Events' },
+  { value: '4', label: 'Mixers' },
 ]

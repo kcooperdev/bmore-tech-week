@@ -61,7 +61,7 @@ export function Hero() {
       </div>
 
       <div className="relative border-y border-border bg-charcoal/80 backdrop-blur">
-        <dl className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
+        <dl className="mx-auto grid max-w-7xl grid-cols-3 divide-x divide-border">
           {STATS.map((stat) => (
             <div key={stat.label} className="flex flex-col gap-1 px-4 py-6 text-center md:py-8">
               <dt className="order-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
