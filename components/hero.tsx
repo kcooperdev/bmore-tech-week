@@ -46,6 +46,14 @@ export function Hero() {
             <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
           </a>
           <a
+            href={EVENT.infoSessionVolunteerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-sm bg-secondary px-7 py-4 text-base font-bold uppercase tracking-wide text-secondary-foreground transition-transform hover:-translate-y-1"
+          >
+            Volunteer for the Info Session
+          </a>
+          <a
             href="#about"
             className="inline-flex items-center gap-2 rounded-sm border-2 border-cream px-7 py-4 text-base font-bold uppercase tracking-wide text-cream transition-colors hover:bg-cream hover:text-charcoal"
           >

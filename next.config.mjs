@@ -7,6 +7,11 @@ const nextConfig = {
     unoptimized: true,
   },
   async headers() {
+    // Only send HSTS / upgrade rules in production — they break local http://localhost
+    if (process.env.NODE_ENV !== 'production') {
+      return []
+    }
+
     return [
       {
         source: '/:path*',

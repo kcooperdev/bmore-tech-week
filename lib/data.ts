@@ -14,6 +14,10 @@ export const EVENT = {
   country: 'US',
   tagline: 'Where tech meets culture in Charm City.',
   infoSessionUrl: 'https://luma.com/on6frsgw',
+  infoSessionVolunteerUrl: 'https://app.youform.com/forms/rggnoncr',
+  instagramUrl: 'https://www.instagram.com/baltimoretechweekhq',
+  instagramHandle: '@baltimoretechweekhq',
+  linkedinUrl: 'https://www.linkedin.com/company/baltimore-tech-week-2027',
 }
 
 export const STATS = [

@@ -17,7 +17,7 @@ export function JsonLd() {
         name: 'Maryland',
       },
     },
-    sameAs: [EVENT.infoSessionUrl],
+    sameAs: [EVENT.instagramUrl, EVENT.linkedinUrl, EVENT.infoSessionUrl],
   }
 
   const event = {

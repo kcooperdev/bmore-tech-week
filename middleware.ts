@@ -3,21 +3,19 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   const proto = request.headers.get('x-forwarded-proto')
-  const host = request.headers.get('host') ?? 'www.bmoretechweek.com'
+  const host = request.headers.get('host') ?? ''
 
-  // Force HTTPS when behind a proxy that still reports http
-  if (proto === 'http') {
-    const url = request.nextUrl.clone()
-    url.protocol = 'https:'
-    url.host = host.startsWith('www.') ? host : `www.${host.replace(/^www\./, '')}`
-    return NextResponse.redirect(url, 308)
+  // Only rewrite the real production domain — never touch localhost / LAN / preview hosts
+  const isApex = host === 'bmoretechweek.com'
+  const isWww = host === 'www.bmoretechweek.com'
+  if (!isApex && !isWww) {
+    return NextResponse.next()
   }
 
-  // Prefer www canonical host
-  if (host === 'bmoretechweek.com') {
+  if (proto === 'http' || isApex) {
     const url = request.nextUrl.clone()
-    url.host = 'www.bmoretechweek.com'
     url.protocol = 'https:'
+    url.host = 'www.bmoretechweek.com'
     return NextResponse.redirect(url, 308)
   }
 
