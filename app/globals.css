@@ -7,6 +7,7 @@
 @theme inline {
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-anton), 'Impact', sans-serif;
+  --font-playful: var(--font-comic), 'Comic Sans MS', 'Comic Sans', cursive;
   --color-teal: var(--teal);
   --color-teal-blue: var(--teal-blue);
   --color-magenta: var(--magenta);
@@ -129,6 +130,10 @@
   .font-display {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
+  }
+
+  .font-playful {
+    font-family: var(--font-playful);
   }
 
   .text-shadow-pop {
@@ -280,25 +285,139 @@
     cursor: none;
   }
 
+  .paint-letter-idle {
+    pointer-events: none;
+  }
+
+  .paint-letter-live {
+    pointer-events: auto;
+    cursor: none;
+    position: relative;
+    z-index: 1;
+    padding-inline: 0.02em;
+    margin-inline: -0.02em;
+  }
+
+  .paint-hero-active {
+    position: relative;
+    z-index: 1;
+  }
+
+  .paint-studio-tab {
+    position: fixed;
+    top: 42%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    border: 2px solid color-mix(in oklab, var(--primary) 60%, transparent);
+    border-right: 0;
+    border-radius: 1rem 0 0 1rem;
+    background: color-mix(in oklab, var(--background) 92%, transparent);
+    padding: 0.85rem 0.55rem 0.85rem 0.65rem;
+    box-shadow: -3px 3px 0 color-mix(in oklab, var(--magenta) 45%, transparent);
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .paint-studio-tab:hover {
+    background: color-mix(in oklab, var(--background) 98%, var(--primary));
+    transform: translateX(-2px);
+  }
+
+  .paint-studio-tab-icon {
+    display: inline-flex;
+    size: 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .paint-studio-tab-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 767px) {
+    .paint-studio-tab {
+      top: auto;
+      bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+      right: 0;
+      padding: 0.7rem 0.5rem 0.7rem 0.55rem;
+    }
+  }
+
+  .paint-studio-sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0.75rem;
+    display: flex;
+    width: 7.25rem;
+    max-height: min(80svh, 36rem);
+    flex-direction: column;
+    border-radius: 1.25rem;
+    border: 2px solid var(--cream);
+    background: linear-gradient(180deg, #242428 0%, #17171a 100%);
+    padding: 0.9rem 0.7rem 0.8rem;
+    box-shadow:
+      5px 5px 0 var(--magenta),
+      0 16px 36px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translate(110%, -50%);
+    pointer-events: none;
+    transition:
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.22s ease;
+  }
+
+  .paint-studio-sidebar.is-open {
+    opacity: 1;
+    transform: translate(0, -50%);
+    pointer-events: auto;
+  }
+
+  @media (max-width: 767px) {
+    .paint-studio-sidebar {
+      top: auto;
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      right: 0.65rem;
+      max-height: min(68svh, 30rem);
+      transform: translateX(120%);
+    }
+    .paint-studio-sidebar.is-open {
+      transform: translateX(0);
+    }
+  }
+
   @media (pointer: fine) {
-    .paint-letter {
+    .paint-letter-live {
       touch-action: none;
     }
   }
 
   @media (pointer: coarse) {
-    .paint-letter {
-      touch-action: manipulation;
-      padding-inline: 0.02em;
+    .paint-letter-live {
+      touch-action: none;
+      padding-inline: 0.04em;
     }
     html.paint-cursor,
     html.paint-cursor * {
       cursor: auto !important;
     }
+    html.paint-studio-open .paint-letter-live {
+      cursor: pointer !important;
+    }
   }
 
-  .paint-letter:hover {
-    filter: brightness(1.08);
+  .paint-letter-live:hover {
+    filter: brightness(1.12);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -309,8 +428,11 @@
     .animate-hero-zoom,
     .heartbeat-art,
     .ambient-pulse,
-    .paint-dab {
+    .paint-dab,
+    .paint-studio-sidebar,
+    .paint-studio-tab {
       animation: none !important;
+      transition: none !important;
     }
     .reveal {
       opacity: 1;

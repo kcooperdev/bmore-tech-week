@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Eraser, RotateCcw } from 'lucide-react'
-import { PAINT_COLORS, usePaint } from '@/components/paint-context'
+import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
+import { usePaint } from '@/components/paint-context'
 
 type LetterDef = {
   id: string
@@ -18,59 +17,83 @@ function buildLetters(word: string, defaultColor: string, prefix: string): Lette
   }))
 }
 
-function WordLine({
-  letters,
-  className = '',
-}: {
-  letters: LetterDef[]
-  className?: string
-}) {
-  const { tool, setIsPainting, resetKey } = usePaint()
-  const defaults = useMemo(
-    () => Object.fromEntries(letters.map((l) => [l.id, l.defaultColor])),
-    [letters],
-  )
-  const [colors, setColors] = useState<Record<string, string>>(defaults)
-  const defaultsRef = useRef(defaults)
-  const toolRef = useRef(tool)
+function letterIdFromPoint(clientX: number, clientY: number): string | null {
+  const stack = document.elementsFromPoint(clientX, clientY)
+  for (const node of stack) {
+    if (!(node instanceof HTMLElement)) continue
+    const letter = node.closest('[data-paint-letter]') as HTMLElement | null
+    const id = letter?.dataset.letterId
+    if (id) return id
+  }
+  return null
+}
 
-  useEffect(() => {
-    defaultsRef.current = defaults
-  }, [defaults])
+export function PaintableWordmark() {
+  const { tool, setIsPainting, resetKey, studioOpen } = usePaint()
+
+  const baltimore = useMemo(() => buildLetters('Baltimore', '#fdf0d5', 'b'), [])
+  const tech = useMemo(() => buildLetters('Tech', '#00afb9', 't'), [])
+  const week = useMemo(() => buildLetters('Week', '#fdf0d5', 'w'), [])
+  const allLetters = useMemo(
+    () => [...baltimore, ...tech, ...week],
+    [baltimore, tech, week],
+  )
+  const defaults = useMemo(
+    () => Object.fromEntries(allLetters.map((l) => [l.id, l.defaultColor])),
+    [allLetters],
+  )
+
+  const [colors, setColors] = useState<Record<string, string>>(defaults)
+  const toolRef = useRef(tool)
+  const studioRef = useRef(studioOpen)
+  const defaultsRef = useRef(defaults)
+  const paintingRef = useRef(false)
 
   useEffect(() => {
     toolRef.current = tool
   }, [tool])
 
   useEffect(() => {
+    studioRef.current = studioOpen
+  }, [studioOpen])
+
+  useEffect(() => {
+    defaultsRef.current = defaults
+  }, [defaults])
+
+  useEffect(() => {
     setColors(defaults)
   }, [resetKey, defaults])
 
-  const paintById = (id: string) => {
+  const paintById = useCallback((id: string | null) => {
+    if (!id || !studioRef.current) return
     const fallback = defaultsRef.current[id]
     if (!fallback) return
     const active = toolRef.current
-    setColors((prev) => ({
-      ...prev,
-      [id]: active.kind === 'erase' ? fallback : active.color,
-    }))
-  }
+    const next = active.kind === 'erase' ? fallback : active.color
+    setColors((prev) => {
+      if (prev[id] === next) return prev
+      return { ...prev, [id]: next }
+    })
+  }, [])
+
+  const stopPainting = useCallback(() => {
+    paintingRef.current = false
+    setIsPainting(false)
+  }, [setIsPainting])
 
   useEffect(() => {
-    // Drag-paint only on fine pointers (desktop). Mobile uses tap.
-    const fine = window.matchMedia('(pointer: fine)').matches
-    if (!fine) return
-
     const onMove = (e: PointerEvent) => {
-      if (e.buttons !== 1) return
-      const el = document.elementFromPoint(e.clientX, e.clientY)
-      const letter = el?.closest('[data-paint-letter]') as HTMLElement | null
-      const id = letter?.dataset.letterId
-      if (id) paintById(id)
+      if (!paintingRef.current || !studioRef.current) return
+      if (e.pointerType === 'mouse' && e.buttons !== 1) {
+        stopPainting()
+        return
+      }
+      paintById(letterIdFromPoint(e.clientX, e.clientY))
     }
-    const onUp = () => setIsPainting(false)
+    const onUp = () => stopPainting()
 
-    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointermove', onMove, { passive: true })
     window.addEventListener('pointerup', onUp)
     window.addEventListener('pointercancel', onUp)
     return () => {
@@ -78,106 +101,60 @@ function WordLine({
       window.removeEventListener('pointerup', onUp)
       window.removeEventListener('pointercancel', onUp)
     }
-  }, [setIsPainting])
+  }, [paintById, stopPainting])
 
-  return (
-    <span className={`inline-flex flex-wrap ${className}`}>
+  const startPaint = (e: ReactPointerEvent<HTMLElement>, id: string) => {
+    if (!studioOpen) return
+    if (e.pointerType === 'mouse' && e.button !== 0) return
+    e.preventDefault()
+    paintingRef.current = true
+    setIsPainting(true)
+    paintById(id)
+  }
+
+  const renderWord = (letters: LetterDef[]) => (
+    <span className="inline-flex flex-wrap">
       {letters.map((letter) => (
         <span
           key={letter.id}
           data-paint-letter
           data-letter-id={letter.id}
-          className="paint-letter inline-block select-none transition-colors duration-150"
+          className={`paint-letter inline-block select-none transition-colors duration-100 ${
+            studioOpen ? 'paint-letter-live' : 'paint-letter-idle'
+          }`}
           style={{ color: colors[letter.id] ?? letter.defaultColor }}
-          onPointerDown={(e) => {
-            if (e.pointerType === 'mouse' && e.button !== 0) return
-            setIsPainting(true)
-            paintById(letter.id)
-          }}
+          onPointerDown={(e) => startPaint(e, letter.id)}
         >
           {letter.char}
         </span>
       ))}
     </span>
   )
-}
-
-export function PaintableWordmark() {
-  const { tool, setColor, setErase, bumpReset } = usePaint()
-
-  const baltimore = useMemo(() => buildLetters('Baltimore', '#fdf0d5', 'b'), [])
-  const tech = useMemo(() => buildLetters('Tech', '#00afb9', 't'), [])
-  const week = useMemo(() => buildLetters('Week', '#fdf0d5', 'w'), [])
 
   return (
-    <div className="animate-fade-up [animation-delay:80ms]" data-paint-zone>
-      <h1 className="max-w-4xl font-display text-[2.75rem] uppercase leading-[0.95] tracking-wide text-shadow-pop sm:text-6xl md:text-8xl lg:text-9xl text-balance">
+    <div
+      id="paint-zone"
+      className={`animate-fade-up [animation-delay:80ms] ${studioOpen ? 'paint-hero-active' : ''}`}
+    >
+      <h1
+        className="max-w-4xl font-display text-[2.75rem] uppercase leading-[0.95] tracking-wide text-shadow-pop sm:text-6xl md:text-8xl lg:text-9xl text-balance"
+        data-paint-zone={studioOpen ? 'true' : undefined}
+      >
         <span className="sr-only">Baltimore Tech Week</span>
         <span aria-hidden className="block">
-          <WordLine letters={baltimore} />
+          {renderWord(baltimore)}
         </span>
         <span aria-hidden className="mt-1 block sm:mt-0">
-          <WordLine letters={tech} />
+          {renderWord(tech)}
           <span className="inline-block w-[0.2em]" />
-          <WordLine letters={week} />
+          {renderWord(week)}
         </span>
       </h1>
-
-      <div className="mt-4 rounded-2xl border border-border/60 bg-background/55 p-3 backdrop-blur-sm sm:mt-5 sm:bg-transparent sm:p-0 sm:backdrop-blur-none sm:border-0">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="w-full text-[11px] font-semibold uppercase tracking-widest text-muted-foreground sm:mr-1 sm:w-auto sm:text-xs">
-            Paint the name
-          </span>
-          {PAINT_COLORS.map((swatch) => {
-            const active = tool.kind === 'color' && tool.color === swatch.value
-            return (
-              <button
-                key={swatch.id}
-                type="button"
-                title={swatch.label}
-                aria-label={`Paint with ${swatch.label}`}
-                aria-pressed={active}
-                onClick={() => setColor(swatch.value)}
-                className={`size-10 shrink-0 rounded-full border-2 transition-transform active:scale-95 sm:size-8 sm:hover:-translate-y-0.5 ${
-                  active ? 'scale-110 border-cream' : 'border-white/20 sm:border-transparent'
-                }`}
-                style={{ backgroundColor: swatch.value }}
-              />
-            )
-          })}
-          <button
-            type="button"
-            title="Erase letter back to default"
-            aria-label="Eraser"
-            aria-pressed={tool.kind === 'erase'}
-            onClick={setErase}
-            className={`inline-flex h-10 items-center gap-1.5 rounded-full border px-3 text-xs font-semibold uppercase tracking-wide transition-colors sm:h-8 ${
-              tool.kind === 'erase'
-                ? 'border-cream bg-muted text-cream'
-                : 'border-border bg-card text-muted-foreground hover:text-cream'
-            }`}
-          >
-            <Eraser className="size-3.5" />
-            Erase
-          </button>
-          <button
-            type="button"
-            title="Reset all letters"
-            aria-label="Reset colors"
-            onClick={bumpReset}
-            className="inline-flex h-10 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground transition-colors hover:text-cream sm:h-8"
-          >
-            <RotateCcw className="size-3.5" />
-            Reset
-          </button>
-        </div>
-        <p className="mt-2 text-[11px] leading-snug text-muted-foreground/80 sm:text-xs">
-          <span className="sm:hidden">Tap a letter to paint. Erase undoes one letter.</span>
-          <span className="hidden sm:inline">
-            Drag across letters to paint. Use Erase to undo a letter, Reset for the whole name.
-          </span>
+      {studioOpen && (
+        <p className="mt-3 font-playful text-sm font-bold text-primary sm:text-base">
+          Drag across the letters
         </p>
-      </div>
+      )}
     </div>
   )
 }

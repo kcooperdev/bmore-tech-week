@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { CTA, EVENT } from '@/lib/data'
+import { usePaint } from '@/components/paint-context'
 
 export function StickyRsvp() {
+  const { studioOpen } = usePaint()
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export function StickyRsvp() {
     return () => observer.disconnect()
   }, [])
 
-  if (!show) return null
+  if (!show || studioOpen) return null
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/90 p-3 backdrop-blur-md md:hidden pb-[max(0.75rem,env(safe-area-inset-bottom))]">

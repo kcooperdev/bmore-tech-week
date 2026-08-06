@@ -46,14 +46,6 @@ export function SiteFooter() {
           >
             {CTA.short}
           </a>
-          <a
-            href={EVENT.infoSessionVolunteerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-cta-outline w-full justify-center sm:w-auto"
-          >
-            Volunteer
-          </a>
         </div>
       </div>
       <div className="border-t border-border px-4 py-5 text-center text-sm text-muted-foreground md:px-8">

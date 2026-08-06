@@ -40,18 +40,9 @@ export function Hero() {
             rel="noopener noreferrer"
             className="group inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:-translate-y-1 sm:w-auto sm:px-7 sm:py-4 sm:text-base"
           >
-            <span className="sm:hidden">RSVP Info Session</span>
+            <span className="sm:hidden">RSVP</span>
             <span className="hidden sm:inline">RSVP for the Info Session</span>
             <ArrowRight className="size-4 shrink-0 transition-transform group-hover:translate-x-1 sm:size-5" />
-          </a>
-          <a
-            href={EVENT.infoSessionVolunteerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-secondary px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-secondary-foreground transition-transform hover:-translate-y-1 sm:w-auto sm:px-7 sm:py-4 sm:text-base"
-          >
-            <span className="sm:hidden">Volunteer</span>
-            <span className="hidden sm:inline">Volunteer for the Info Session</span>
           </a>
           <a
             href="#what-is"

@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Anton, Space_Grotesk } from 'next/font/google'
+import { Anton, Comic_Neue, Space_Grotesk } from 'next/font/google'
 import { EVENT, SITE_URL } from '@/lib/data'
 import './globals.css'
 
@@ -14,6 +14,13 @@ const anton = Anton({
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
+const comicNeue = Comic_Neue({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-comic',
   display: 'swap',
 })
 
@@ -105,7 +112,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${anton.variable} ${spaceGrotesk.variable} bg-background`}>
+    <html
+      lang="en"
+      className={`${anton.variable} ${spaceGrotesk.variable} ${comicNeue.variable} bg-background`}
+    >
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

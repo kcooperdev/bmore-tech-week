@@ -12,12 +12,12 @@ type Dab = {
 }
 
 export function PaintCursor() {
-  const { tool } = usePaint()
-  const [enabled, setEnabled] = useState(false)
+  const { tool, studioOpen } = usePaint()
+  const [finePointer, setFinePointer] = useState(false)
   const [pos, setPos] = useState({ x: -100, y: -100 })
-  const [mode, setMode] = useState<'default' | 'paint' | 'interactive'>('default')
   const [dabs, setDabs] = useState<Dab[]>([])
   const toolRef = useRef(tool)
+  const studioRef = useRef(studioOpen)
   const dabSeq = useRef(0)
 
   useEffect(() => {
@@ -25,12 +25,33 @@ export function PaintCursor() {
   }, [tool])
 
   useEffect(() => {
+    studioRef.current = studioOpen
+  }, [studioOpen])
+
+  useEffect(() => {
     const fine = window.matchMedia('(pointer: fine)').matches
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (!fine || reduce) return
+    setFinePointer(true)
+  }, [])
 
-    setEnabled(true)
-    document.documentElement.classList.add('paint-cursor')
+  useEffect(() => {
+    if (!finePointer) return
+
+    if (studioOpen) {
+      document.documentElement.classList.add('paint-cursor')
+    } else {
+      document.documentElement.classList.remove('paint-cursor')
+      setDabs([])
+    }
+
+    return () => {
+      document.documentElement.classList.remove('paint-cursor')
+    }
+  }, [finePointer, studioOpen])
+
+  useEffect(() => {
+    if (!finePointer || !studioOpen) return
 
     let lastDab = 0
 
@@ -39,14 +60,6 @@ export function PaintCursor() {
 
       const target = e.target as HTMLElement | null
       const inPaintZone = Boolean(target?.closest('[data-paint-zone]'))
-      const interactive = Boolean(
-        target?.closest('a, button, [role="button"], input, textarea, select, label'),
-      )
-
-      if (inPaintZone) setMode('paint')
-      else if (interactive) setMode('interactive')
-      else setMode('default')
-
       if (!inPaintZone) return
 
       const now = performance.now()
@@ -69,11 +82,8 @@ export function PaintCursor() {
     }
 
     window.addEventListener('mousemove', onMove, { passive: true })
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-      document.documentElement.classList.remove('paint-cursor')
-    }
-  }, [])
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [finePointer, studioOpen])
 
   useEffect(() => {
     if (!dabs.length) return
@@ -81,37 +91,40 @@ export function PaintCursor() {
     return () => window.clearTimeout(timer)
   }, [dabs])
 
-  if (!enabled) return null
+  if (!finePointer || !studioOpen) return null
 
   const tip = tool.kind === 'color' ? tool.color : '#7a7a7a'
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[100] hidden md:block" aria-hidden>
-      {mode === 'paint' &&
-        dabs.map((dab) => (
-          <span
-            key={dab.id}
-            className="paint-dab absolute rounded-full"
-            style={{
-              left: dab.x,
-              top: dab.y,
-              width: dab.size,
-              height: dab.size,
-              background: dab.color,
-              transform: 'translate(-50%, -50%)',
-            }}
-          />
-        ))}
-
-      {mode === 'paint' ? (
-        <div
-          className="paint-brush absolute"
+      {dabs.map((dab) => (
+        <span
+          key={dab.id}
+          className="paint-dab absolute rounded-full"
           style={{
-            left: pos.x,
-            top: pos.y,
-            transform: 'translate(-18%, -18%) rotate(-28deg) scale(1.15)',
+            left: dab.x,
+            top: dab.y,
+            width: dab.size,
+            height: dab.size,
+            background: dab.color,
+            transform: 'translate(-50%, -50%)',
           }}
-        >
+        />
+      ))}
+
+      <div
+        className="paint-brush absolute"
+        style={{
+          left: pos.x,
+          top: pos.y,
+          transform: 'translate(-50%, -50%)',
+        }}
+      >
+        <span
+          className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cream/80"
+          style={{ backgroundColor: tip }}
+        />
+        <div className="absolute left-1/2 top-1/2 -translate-x-[30%] -translate-y-[110%] rotate-[-28deg]">
           {tool.kind === 'erase' ? (
             <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
               <rect
@@ -145,41 +158,7 @@ export function PaintCursor() {
             </svg>
           )}
         </div>
-      ) : (
-        <div
-          className="absolute"
-          style={{
-            left: pos.x,
-            top: pos.y,
-            transform: `translate(-50%, -50%) scale(${mode === 'interactive' ? 1.2 : 1})`,
-            transition: 'transform 120ms ease-out',
-          }}
-        >
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect
-              x="1"
-              y="1"
-              width="20"
-              height="20"
-              rx="3"
-              fill="#00AFB9"
-              stroke={mode === 'interactive' ? '#FDF0D5' : 'transparent'}
-              strokeWidth="1.5"
-            />
-            <text
-              x="11"
-              y="15"
-              textAnchor="middle"
-              fill="#10131A"
-              fontFamily="Impact, Haettenschweiler, sans-serif"
-              fontSize="8"
-              letterSpacing="0.5"
-            >
-              BTW
-            </text>
-          </svg>
-        </div>
-      )}
+      </div>
     </div>
   )
 }

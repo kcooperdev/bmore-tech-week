@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -28,6 +29,10 @@ type PaintContextValue = {
   bumpReset: () => void
   isPainting: boolean
   setIsPainting: (v: boolean) => void
+  studioOpen: boolean
+  openStudio: () => void
+  closeStudio: () => void
+  toggleStudio: () => void
 }
 
 const PaintContext = createContext<PaintContextValue | null>(null)
@@ -35,10 +40,11 @@ const PaintContext = createContext<PaintContextValue | null>(null)
 export function PaintProvider({ children }: { children: ReactNode }) {
   const [tool, setTool] = useState<PaintTool>({
     kind: 'color',
-    color: PAINT_COLORS[0].value,
+    color: PAINT_COLORS[1].value,
   })
   const [resetKey, setResetKey] = useState(0)
   const [isPainting, setIsPainting] = useState(false)
+  const [studioOpen, setStudioOpen] = useState(false)
 
   const setColor = useCallback((color: string) => {
     setTool({ kind: 'color', color })
@@ -52,6 +58,27 @@ export function PaintProvider({ children }: { children: ReactNode }) {
     setResetKey((k) => k + 1)
   }, [])
 
+  const openStudio = useCallback(() => setStudioOpen(true), [])
+  const closeStudio = useCallback(() => {
+    setStudioOpen(false)
+    setIsPainting(false)
+  }, [])
+  const toggleStudio = useCallback(() => {
+    setStudioOpen((v) => {
+      if (v) setIsPainting(false)
+      return !v
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!studioOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeStudio()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [studioOpen, closeStudio])
+
   const value = useMemo(
     () => ({
       tool,
@@ -61,8 +88,23 @@ export function PaintProvider({ children }: { children: ReactNode }) {
       bumpReset,
       isPainting,
       setIsPainting,
+      studioOpen,
+      openStudio,
+      closeStudio,
+      toggleStudio,
     }),
-    [tool, setColor, setErase, resetKey, bumpReset, isPainting],
+    [
+      tool,
+      setColor,
+      setErase,
+      resetKey,
+      bumpReset,
+      isPainting,
+      studioOpen,
+      openStudio,
+      closeStudio,
+      toggleStudio,
+    ],
   )
 
   return <PaintContext.Provider value={value}>{children}</PaintContext.Provider>
