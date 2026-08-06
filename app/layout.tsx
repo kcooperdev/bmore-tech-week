@@ -17,9 +17,9 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-const title = 'Baltimore Tech Week 2027 | April 27–May 1 | Charm City'
+const title = 'Baltimore Tech Week 2027 | April 26 to 30 | Charm City'
 const description =
-  'Baltimore Tech Week is Charm City’s week of technology, creativity, and community — April 27 to May 1, 2027. Talks, workshops, murals, and mixers across Baltimore, MD. RSVP for the free launch info session.'
+  'Baltimore Tech Week is five days of tech talks, fireside chats, demos, and mixers in Charm City. April 26 to 30, 2027. Free to attend. RSVP for the info session.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,8 +40,6 @@ export const metadata: Metadata = {
     'Charm City tech',
     'Baltimore startup week',
     'Baltimore tech conference',
-    'Baltimore murals tech',
-    'Station North',
     'tech meets culture',
     'Baltimore MD events April 2027',
   ],
@@ -60,7 +58,7 @@ export const metadata: Metadata = {
         url: '/images/hero-mural.png',
         width: 1200,
         height: 630,
-        alt: 'Baltimore Tech Week mural — tech meets culture in Charm City',
+        alt: 'Baltimore Tech Week in Charm City',
       },
     ],
   },
@@ -84,6 +82,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/icon.png', type: 'image/png', sizes: '512x512' },
     ],
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],

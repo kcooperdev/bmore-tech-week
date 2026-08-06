@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="Baltimore Tech Week">
+  <title>Baltimore Tech Week</title>
+  <g transform="rotate(-2 48 60)">
+    <rect x="12" y="24" width="72" height="72" rx="6" fill="#00AFB9"/>
+    <text x="48" y="74" text-anchor="middle" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="36" fill="#10131A" letter-spacing="0.5">BTW</text>
+  </g>
+  <text x="110" y="52" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="36" fill="#FDF0D5" letter-spacing="1">BALTIMORE</text>
+  <text x="110" y="92" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="36" fill="#FDF0D5" letter-spacing="1">TECH WEEK</text>
+</svg>

@@ -1,5 +1,6 @@
 import { MapPin, ArrowRight } from 'lucide-react'
 import { EVENT, STATS } from '@/lib/data'
+import { PaintableWordmark } from '@/components/paintable-wordmark'
 
 export function Hero() {
   return (
@@ -7,7 +8,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10">
         <img
           src="/images/hero-mural.png"
-          alt="Baltimore Tech Week mural of the Charm City skyline — where tech meets culture"
+          alt="Baltimore Tech Week Charm City skyline backdrop"
           className="h-full w-full object-cover animate-hero-zoom"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />
@@ -19,23 +20,17 @@ export function Hero() {
           {EVENT.dates}
         </span>
 
-        <h1 className="max-w-4xl animate-fade-up font-display text-6xl leading-[1.05] text-cream text-shadow-pop [animation-delay:80ms] sm:text-7xl md:text-8xl lg:text-9xl text-balance">
-          <span className="block">Baltimore</span>
-          <span className="block">
-            <span className="text-primary">Tech</span> Week
-          </span>
-        </h1>
+        <PaintableWordmark />
 
-        <p className="mt-6 max-w-xl animate-fade-up font-display text-2xl text-secondary [animation-delay:140ms] sm:text-3xl">
-          he<span className="text-primary">ART</span>beat of Baltimore
+        <p className="mt-6 max-w-xl animate-fade-up font-display text-2xl uppercase tracking-wide text-secondary [animation-delay:140ms] sm:text-3xl">
+          he<span className="heartbeat-art text-primary">ART</span>beat of Baltimore
         </p>
 
         <p className="mt-5 max-w-lg animate-fade-up text-lg leading-relaxed text-muted-foreground [animation-delay:200ms] text-pretty">
-          A week-long celebration of technology, creativity, and community across Charm City.
-          Talks, demos, mixers, and murals — {EVENT.tagline.toLowerCase()}
+          Talks, fireside chats, demos, and mixers across Charm City.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up [animation-delay:260ms]">
+        <div id="hero-rsvp" className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up [animation-delay:260ms]">
           <a
             href={EVENT.infoSessionUrl}
             target="_blank"
@@ -54,7 +49,7 @@ export function Hero() {
             Volunteer for the Info Session
           </a>
           <a
-            href="#about"
+            href="#what-is"
             className="inline-flex items-center gap-2 rounded-sm border-2 border-cream px-7 py-4 text-base font-bold uppercase tracking-wide text-cream transition-colors hover:bg-cream hover:text-charcoal"
           >
             Learn More
@@ -70,12 +65,18 @@ export function Hero() {
 
       <div className="relative border-y border-border bg-charcoal/80 backdrop-blur">
         <dl className="mx-auto grid max-w-7xl grid-cols-3 divide-x divide-border">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="flex flex-col gap-1 px-4 py-6 text-center md:py-8">
+          {STATS.map((stat, i) => (
+            <div
+              key={stat.label}
+              className="flex flex-col gap-1 px-4 py-6 text-center animate-fade-up md:py-8"
+              style={{ animationDelay: `${400 + i * 80}ms` }}
+            >
               <dt className="order-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 {stat.label}
               </dt>
-              <dd className="order-1 font-display text-4xl text-primary md:text-5xl">{stat.value}</dd>
+              <dd className="order-1 font-display text-4xl uppercase text-primary md:text-5xl">
+                {stat.value}
+              </dd>
             </div>
           ))}
         </dl>

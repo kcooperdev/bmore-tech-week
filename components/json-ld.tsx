@@ -25,7 +25,7 @@ export function JsonLd() {
     '@type': 'Event',
     name: `${EVENT.name} ${EVENT.year}`,
     description:
-      'A week-long celebration of technology, creativity, and community across Baltimore, Maryland — where tech meets culture.',
+      'A five day celebration of technology, creativity, and community across Baltimore, Maryland where tech meets culture.',
     startDate: EVENT.startDate,
     endDate: EVENT.endDate,
     eventStatus: 'https://schema.org/EventScheduled',
@@ -61,7 +61,6 @@ export function JsonLd() {
       'Baltimore tech events',
       'Charm City',
       'technology',
-      'art',
       'community',
     ],
   }

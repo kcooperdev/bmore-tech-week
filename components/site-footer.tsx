@@ -1,17 +1,21 @@
-import { EVENT } from '@/lib/data'
+import { CTA, EVENT } from '@/lib/data'
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 py-10 md:flex-row md:items-center md:px-8">
         <div>
-          <p className="font-display text-xl text-foreground">Baltimore Tech Week</p>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <a href="#top" className="inline-flex items-center gap-2.5">
+            <img src="/images/btw-mark.svg" alt="" className="size-9" width={36} height={36} />
+            <span className="font-display text-xl uppercase tracking-wide text-foreground">
+              Baltimore Tech Week
+            </span>
+          </a>
+          <p className="mt-3 text-sm text-muted-foreground">
             {EVENT.dates} · {EVENT.city}
           </p>
           <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-            The official home of Baltimore Tech Week {EVENT.year} — Charm City&apos;s week of
-            technology, art, and community.
+            Baltimore Tech Week {EVENT.year}. Built here, for here.
           </p>
           <div className="mt-5 flex flex-col gap-2 text-sm">
             <a
@@ -38,15 +42,15 @@ export function SiteFooter() {
             href={EVENT.infoSessionUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm bg-secondary px-5 py-3 text-sm font-bold uppercase tracking-wide text-secondary-foreground transition-transform hover:-translate-y-0.5"
+            className="btn-cta-secondary"
           >
-            Info Session
+            {CTA.short}
           </a>
           <a
             href={EVENT.infoSessionVolunteerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm border-2 border-secondary px-5 py-3 text-sm font-bold uppercase tracking-wide text-secondary transition-colors hover:bg-secondary hover:text-secondary-foreground"
+            className="btn-cta-outline"
           >
             Volunteer
           </a>
