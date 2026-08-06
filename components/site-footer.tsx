@@ -2,12 +2,12 @@ import { CTA, EVENT } from '@/lib/data'
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-background pb-20 md:pb-0">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 py-10 md:flex-row md:items-center md:px-8">
         <div>
           <a href="#top" className="inline-flex items-center gap-2.5">
-            <img src="/images/btw-mark.svg" alt="" className="size-9" width={36} height={36} />
-            <span className="font-display text-xl uppercase tracking-wide text-foreground">
+            <img src="/images/btw-mark.svg" alt="" className="size-8 sm:size-9" width={36} height={36} />
+            <span className="font-display text-lg uppercase tracking-wide text-foreground sm:text-xl">
               Baltimore Tech Week
             </span>
           </a>
@@ -37,12 +37,12 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
           <a
             href={EVENT.infoSessionUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-cta-secondary"
+            className="btn-cta-secondary w-full justify-center sm:w-auto"
           >
             {CTA.short}
           </a>
@@ -50,7 +50,7 @@ export function SiteFooter() {
             href={EVENT.infoSessionVolunteerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-cta-outline"
+            className="btn-cta-outline w-full justify-center sm:w-auto"
           >
             Volunteer
           </a>

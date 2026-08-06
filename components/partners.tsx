@@ -5,9 +5,9 @@ export function Partners() {
   const venue = PARTNERS[0]
 
   return (
-    <section id="partners" className="section-anchor relative overflow-hidden bg-background py-20 md:py-28">
+    <section id="partners" className="section-anchor relative overflow-hidden bg-background py-14 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+        <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-12">
           <Reveal className="lg:col-span-7">
             <div className="group overflow-hidden rounded-2xl">
               <img
@@ -31,12 +31,12 @@ export function Partners() {
               <img
                 src={venue.logo}
                 alt={venue.name}
-                className="h-10 w-auto object-contain"
+                className="h-9 w-auto object-contain sm:h-10"
                 width={160}
                 height={40}
               />
             </a>
-            <p className="mt-5 text-base leading-relaxed text-cream">
+            <p className="mt-4 text-sm leading-relaxed text-cream sm:mt-5 sm:text-base">
               {venue.address}
               <br />
               {venue.city}
@@ -45,7 +45,7 @@ export function Partners() {
               href={venue.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex text-sm font-semibold text-primary transition-colors hover:text-cream"
+              className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-primary transition-colors hover:text-cream sm:mt-5"
             >
               4mlk.com →
             </a>

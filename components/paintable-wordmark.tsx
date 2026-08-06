@@ -57,6 +57,10 @@ function WordLine({
   }
 
   useEffect(() => {
+    // Drag-paint only on fine pointers (desktop). Mobile uses tap.
+    const fine = window.matchMedia('(pointer: fine)').matches
+    if (!fine) return
+
     const onMove = (e: PointerEvent) => {
       if (e.buttons !== 1) return
       const el = document.elementFromPoint(e.clientX, e.clientY)
@@ -86,7 +90,7 @@ function WordLine({
           className="paint-letter inline-block select-none transition-colors duration-150"
           style={{ color: colors[letter.id] ?? letter.defaultColor }}
           onPointerDown={(e) => {
-            if (e.button !== 0) return
+            if (e.pointerType === 'mouse' && e.button !== 0) return
             setIsPainting(true)
             paintById(letter.id)
           }}
@@ -107,68 +111,73 @@ export function PaintableWordmark() {
 
   return (
     <div className="animate-fade-up [animation-delay:80ms]" data-paint-zone>
-      <h1 className="max-w-4xl font-display text-6xl uppercase leading-[1.05] tracking-wide text-shadow-pop sm:text-7xl md:text-8xl lg:text-9xl text-balance">
+      <h1 className="max-w-4xl font-display text-[2.75rem] uppercase leading-[0.95] tracking-wide text-shadow-pop sm:text-6xl md:text-8xl lg:text-9xl text-balance">
         <span className="sr-only">Baltimore Tech Week</span>
         <span aria-hidden className="block">
           <WordLine letters={baltimore} />
         </span>
-        <span aria-hidden className="block">
+        <span aria-hidden className="mt-1 block sm:mt-0">
           <WordLine letters={tech} />
-          <span className="inline-block w-[0.25em]" />
+          <span className="inline-block w-[0.2em]" />
           <WordLine letters={week} />
         </span>
       </h1>
 
-      <div className="mt-5 flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Paint the name
-        </span>
-        {PAINT_COLORS.map((swatch) => {
-          const active = tool.kind === 'color' && tool.color === swatch.value
-          return (
-            <button
-              key={swatch.id}
-              type="button"
-              title={swatch.label}
-              aria-label={`Paint with ${swatch.label}`}
-              aria-pressed={active}
-              onClick={() => setColor(swatch.value)}
-              className={`size-8 rounded-full border-2 transition-transform hover:-translate-y-0.5 ${
-                active ? 'scale-110 border-cream' : 'border-transparent'
-              }`}
-              style={{ backgroundColor: swatch.value }}
-            />
-          )
-        })}
-        <button
-          type="button"
-          title="Erase letter back to default"
-          aria-label="Eraser"
-          aria-pressed={tool.kind === 'erase'}
-          onClick={setErase}
-          className={`inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-xs font-semibold uppercase tracking-wide transition-colors ${
-            tool.kind === 'erase'
-              ? 'border-cream bg-muted text-cream'
-              : 'border-border bg-card text-muted-foreground hover:text-cream'
-          }`}
-        >
-          <Eraser className="size-3.5" />
-          Erase
-        </button>
-        <button
-          type="button"
-          title="Reset all letters"
-          aria-label="Reset colors"
-          onClick={bumpReset}
-          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground transition-colors hover:text-cream"
-        >
-          <RotateCcw className="size-3.5" />
-          Reset
-        </button>
+      <div className="mt-4 rounded-2xl border border-border/60 bg-background/55 p-3 backdrop-blur-sm sm:mt-5 sm:bg-transparent sm:p-0 sm:backdrop-blur-none sm:border-0">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="w-full text-[11px] font-semibold uppercase tracking-widest text-muted-foreground sm:mr-1 sm:w-auto sm:text-xs">
+            Paint the name
+          </span>
+          {PAINT_COLORS.map((swatch) => {
+            const active = tool.kind === 'color' && tool.color === swatch.value
+            return (
+              <button
+                key={swatch.id}
+                type="button"
+                title={swatch.label}
+                aria-label={`Paint with ${swatch.label}`}
+                aria-pressed={active}
+                onClick={() => setColor(swatch.value)}
+                className={`size-10 shrink-0 rounded-full border-2 transition-transform active:scale-95 sm:size-8 sm:hover:-translate-y-0.5 ${
+                  active ? 'scale-110 border-cream' : 'border-white/20 sm:border-transparent'
+                }`}
+                style={{ backgroundColor: swatch.value }}
+              />
+            )
+          })}
+          <button
+            type="button"
+            title="Erase letter back to default"
+            aria-label="Eraser"
+            aria-pressed={tool.kind === 'erase'}
+            onClick={setErase}
+            className={`inline-flex h-10 items-center gap-1.5 rounded-full border px-3 text-xs font-semibold uppercase tracking-wide transition-colors sm:h-8 ${
+              tool.kind === 'erase'
+                ? 'border-cream bg-muted text-cream'
+                : 'border-border bg-card text-muted-foreground hover:text-cream'
+            }`}
+          >
+            <Eraser className="size-3.5" />
+            Erase
+          </button>
+          <button
+            type="button"
+            title="Reset all letters"
+            aria-label="Reset colors"
+            onClick={bumpReset}
+            className="inline-flex h-10 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground transition-colors hover:text-cream sm:h-8"
+          >
+            <RotateCcw className="size-3.5" />
+            Reset
+          </button>
+        </div>
+        <p className="mt-2 text-[11px] leading-snug text-muted-foreground/80 sm:text-xs">
+          <span className="sm:hidden">Tap a letter to paint. Erase undoes one letter.</span>
+          <span className="hidden sm:inline">
+            Drag across letters to paint. Use Erase to undo a letter, Reset for the whole name.
+          </span>
+        </p>
       </div>
-      <p className="mt-2 text-xs text-muted-foreground/80">
-        Drag across letters to paint. Use Erase to undo a letter, Reset for the whole name.
-      </p>
     </div>
   )
 }

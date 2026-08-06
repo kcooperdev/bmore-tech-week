@@ -28,12 +28,12 @@ export function SiteNav() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 md:px-8">
-        <a href="#top" className="flex items-center gap-2.5" aria-label="Baltimore Tech Week home">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-8 md:py-3.5">
+        <a href="#top" className="flex min-w-0 items-center gap-2" aria-label="Baltimore Tech Week home">
           <img
             src="/images/btw-mark.svg"
             alt=""
-            className="size-9"
+            className="size-8 shrink-0 sm:size-9"
             width={36}
             height={36}
           />
@@ -43,7 +43,7 @@ export function SiteNav() {
           </span>
         </a>
 
-        <div className="flex items-center gap-7">
+        <div className="flex shrink-0 items-center gap-4 md:gap-7">
           {LINKS.map((link) => (
             <a
               key={link.href}
@@ -57,7 +57,7 @@ export function SiteNav() {
             href={EVENT.infoSessionUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-cta-secondary px-5 py-2.5 text-sm"
+            className="btn-cta-secondary px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm"
           >
             {CTA.short}
           </a>

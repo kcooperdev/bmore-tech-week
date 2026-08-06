@@ -278,8 +278,25 @@
 
   .paint-letter {
     cursor: none;
-    touch-action: none;
   }
+
+  @media (pointer: fine) {
+    .paint-letter {
+      touch-action: none;
+    }
+  }
+
+  @media (pointer: coarse) {
+    .paint-letter {
+      touch-action: manipulation;
+      padding-inline: 0.02em;
+    }
+    html.paint-cursor,
+    html.paint-cursor * {
+      cursor: auto !important;
+    }
+  }
+
   .paint-letter:hover {
     filter: brightness(1.08);
   }
