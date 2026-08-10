@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const proto = request.headers.get('x-forwarded-proto')
   const host = request.headers.get('host') ?? ''
 
-  // Only rewrite the real production domain — never touch localhost / LAN / preview hosts
+  // Only rewrite the real production domain, never touch localhost / LAN / preview hosts
   const isApex = host === 'bmoretechweek.com'
   const isWww = host === 'www.bmoretechweek.com'
   if (!isApex && !isWww) {

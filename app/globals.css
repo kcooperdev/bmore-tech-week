@@ -420,6 +420,185 @@
     filter: brightness(1.12);
   }
 
+  .ea-snap-row {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .ea-snap-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ea-snap-card {
+    min-height: 10.5rem;
+  }
+
+  .ea-role-line {
+    cursor: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (pointer: coarse) {
+    .ea-role-line {
+      cursor: pointer;
+    }
+  }
+
+  .ea-role-cursor {
+    will-change: transform, left, top;
+  }
+
+  .ea-input {
+    @apply w-full rounded-sm border-2 border-cream/30 bg-background/40 px-4 py-3 text-base text-cream outline-none transition-colors placeholder:text-cream/40 focus:border-primary;
+  }
+
+  .ea-marquee {
+    overflow: hidden;
+    border-block: 1px solid color-mix(in oklab, var(--primary) 35%, transparent);
+    background: color-mix(in oklab, var(--card) 80%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .ea-marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+    animation: ea-marquee 42s linear infinite;
+  }
+
+  .ea-marquee-chip {
+    flex-shrink: 0;
+    border: 1px solid color-mix(in oklab, var(--cream) 25%, transparent);
+    background: color-mix(in oklab, var(--background) 70%, transparent);
+    padding: 0.45rem 0.9rem;
+    font-family: var(--font-playful);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cream);
+    white-space: nowrap;
+  }
+
+  @keyframes ea-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .ea-mosaic-tile {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  }
+
+  .ea-vault {
+    position: relative;
+  }
+
+  .ea-ticket {
+    clip-path: polygon(
+      0 0,
+      calc(100% - 18px) 0,
+      100% 18px,
+      100% 100%,
+      18px 100%,
+      0 calc(100% - 18px)
+    );
+  }
+
+  .domino-plant {
+    width: 100%;
+  }
+
+  .domino-plant-stage {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid color-mix(in oklab, var(--cream) 20%, transparent);
+    background: #0a0a0c;
+    padding: 0;
+    aspect-ratio: 16 / 10;
+    cursor: pointer;
+  }
+
+  .domino-plant-photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 52% 22%;
+    transition:
+      filter 0.55s ease,
+      transform 0.55s ease,
+      opacity 0.55s ease;
+  }
+
+  .domino-plant-stage.is-off .domino-plant-photo {
+    filter: grayscale(0.7) brightness(0.42) contrast(1.08) saturate(0.35);
+    opacity: 0.92;
+  }
+
+  .domino-plant-stage.is-on .domino-plant-photo {
+    filter: grayscale(0) brightness(1.08) contrast(1.1) saturate(1.25);
+    transform: scale(1.015);
+  }
+
+  .domino-plant-scrim {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(23, 23, 26, 0.55), transparent 42%);
+    transition: opacity 0.55s ease;
+  }
+
+  .domino-plant-stage.is-on .domino-plant-scrim {
+    opacity: 0.25;
+  }
+
+  .domino-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .domino-toggle {
+    position: relative;
+    width: 3.5rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklab, var(--cream) 35%, transparent);
+    background: #2a2a2f;
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .domino-toggle.is-on {
+    border-color: #ff3b3b;
+    background: color-mix(in oklab, #ff3b3b 35%, #17171a);
+    box-shadow: 0 0 16px rgba(255, 59, 59, 0.45);
+  }
+
+  .domino-toggle-knob {
+    position: absolute;
+    top: 50%;
+    left: 0.2rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    translate: 0 -50%;
+    border-radius: 999px;
+    background: var(--cream);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    transition: left 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .domino-toggle.is-on .domino-toggle-knob {
+    left: calc(100% - 1.55rem);
+    background: #ffd0d0;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -430,7 +609,8 @@
     .ambient-pulse,
     .paint-dab,
     .paint-studio-sidebar,
-    .paint-studio-tab {
+    .paint-studio-tab,
+    .ea-marquee-track {
       animation: none !important;
       transition: none !important;
     }

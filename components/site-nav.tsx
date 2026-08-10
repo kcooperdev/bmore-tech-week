@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { CTA, EVENT } from '@/lib/data'
 
@@ -29,21 +30,17 @@ export function SiteNav() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-8 md:py-3.5">
-        <a href="#top" className="flex min-w-0 items-center gap-2" aria-label="Baltimore Tech Week home">
+        <a href="#top" className="shrink-0" aria-label="Baltimore Tech Week home">
           <img
             src="/images/btw-mark.svg"
             alt=""
-            className="size-8 shrink-0 sm:size-9"
-            width={36}
-            height={36}
+            className="size-9 sm:size-10"
+            width={40}
+            height={40}
           />
-          <span className="hidden font-display text-lg uppercase leading-none tracking-wide text-foreground sm:flex sm:flex-col sm:gap-0.5">
-            <span>Baltimore</span>
-            <span>Tech Week</span>
-          </span>
         </a>
 
-        <div className="flex shrink-0 items-center gap-4 md:gap-7">
+        <div className="flex shrink-0 items-center gap-3 md:gap-5 lg:gap-6">
           {LINKS.map((link) => (
             <a
               key={link.href}
@@ -53,11 +50,25 @@ export function SiteNav() {
               {link.label}
             </a>
           ))}
+          <Link
+            href={EVENT.earlyAccessPath}
+            title={CTA.earlyAccessNav}
+            className="hidden text-sm font-bold uppercase tracking-wide text-secondary transition-colors hover:text-cream lg:inline"
+          >
+            {CTA.earlyAccessShort}
+          </Link>
+          <Link
+            href={EVENT.earlyAccessPath}
+            title={CTA.earlyAccessNav}
+            className="inline-flex items-center rounded-sm bg-secondary px-3 py-2 text-xs font-bold text-secondary-foreground transition-transform hover:-translate-y-0.5 sm:px-4 sm:py-2.5 sm:text-sm lg:hidden"
+          >
+            {CTA.earlyAccessShort}
+          </Link>
           <a
             href={EVENT.infoSessionUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-cta-secondary px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm"
+            className="btn-cta-outline hidden px-4 py-2 text-xs sm:inline-flex sm:px-5 sm:py-2.5 sm:text-sm"
           >
             {CTA.short}
           </a>

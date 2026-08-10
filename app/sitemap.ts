@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { SITE_URL } from '@/lib/data'
+import { EVENT, SITE_URL } from '@/lib/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -8,6 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}${EVENT.earlyAccessPath}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
   ]
 }
