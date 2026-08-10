@@ -1,7 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="BTW">
   <title>BTW</title>
-  <g transform="rotate(-2 48 48)">
-    <rect x="8" y="8" width="80" height="80" rx="6" fill="#00AFB9"/>
-    <text x="48" y="64" text-anchor="middle" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="40" fill="#10131A" letter-spacing="0.5">BTW</text>
-  </g>
+  <!-- Magenta offset shadow -->
+  <rect x="14" y="14" width="74" height="74" rx="10" fill="#C71585"/>
+  <!-- Teal face -->
+  <rect x="6" y="6" width="74" height="74" rx="10" fill="#00AFB9"/>
+  <text
+    x="43"
+    y="56"
+    text-anchor="middle"
+    font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', Arial Black, sans-serif"
+    font-size="32"
+    font-weight="700"
+    fill="#10131A"
+    letter-spacing="1"
+  >BTW</text>
 </svg>
