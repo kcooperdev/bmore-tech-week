@@ -6,8 +6,10 @@ __v0_jsx-dev-runtime.ts
 .v0-trash/
 .vercel/
 
-# Environment variables
-.env*.local
+# Environment variables. Keep .env.example.
+.env
+.env.*
+!.env.example
 
 # Local store (not for production / Vercel)
 data/btw-store.json
@@ -15,5 +17,6 @@ data/btw-store.json
 # Common ignores
 node_modules
 .next/
+*.tsbuildinfo
 .DS_Store
 .vercel
