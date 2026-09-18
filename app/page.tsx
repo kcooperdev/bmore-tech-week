@@ -1,32 +1,29 @@
 import { SiteNav } from '@/components/site-nav'
 import { Hero } from '@/components/hero'
-import { WhatIs } from '@/components/what-is'
-import { WhoShouldAttend } from '@/components/who-should-attend'
-import { Partners } from '@/components/partners'
-import { JoinCommunity } from '@/components/join-community'
+import { HowItWorks } from '@/components/how-it-works'
+import { ConnectorCtas } from '@/components/connector-ctas'
 import { SiteFooter } from '@/components/site-footer'
 import { StickyRsvp } from '@/components/sticky-rsvp'
-import { PaintCursor } from '@/components/paint-cursor'
-import { PaintStudio } from '@/components/paint-studio'
-import { PaintProvider } from '@/components/paint-context'
 import { JsonLd } from '@/components/json-ld'
+import { EVENT } from '@/lib/data'
+import { listPublishedEvents } from '@/lib/store'
 
-export default function Page() {
+export const dynamic = 'force-dynamic'
+
+export default async function Page() {
+  const events = await listPublishedEvents()
+
   return (
-    <PaintProvider>
+    <>
       <JsonLd />
-      <PaintCursor />
-      <PaintStudio />
-      <SiteNav />
-      <main>
+      <SiteNav hasSchedule={events.length > 0} />
+      <main id="main">
         <Hero />
-        <WhatIs />
-        <WhoShouldAttend />
-        <Partners />
-        <JoinCommunity />
+        <HowItWorks />
+        <ConnectorCtas />
       </main>
-      <SiteFooter />
-      <StickyRsvp />
-    </PaintProvider>
+      <SiteFooter hasSchedule={events.length > 0} />
+      {EVENT.submissionsOpen ? <StickyRsvp /> : null}
+    </>
   )
 }

@@ -3,29 +3,24 @@ import { SITE_URL } from '@/lib/data'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Baltimore Tech Week 2027',
-    short_name: 'BTW 2027',
+    name: 'Baltimore Tech Week Night Edition',
+    short_name: 'BTW Night',
     description:
-      'Baltimore Tech Week. April 26 to 30, 2027. Where tech meets culture in Charm City.',
+      'Five nights of talks across Baltimore, April 26–30, 6PM–10PM.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#17171a',
-    theme_color: '#17171a',
+    background_color: '#080512',
+    theme_color: '#241773',
     lang: 'en-US',
     icons: [
       {
-        src: '/favicon.ico',
-        sizes: '32x32',
-        type: 'image/x-icon',
+        src: '/icon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
       },
       {
-        src: '/icon.png',
+        src: '/icon',
         sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        src: '/apple-icon.png',
-        sizes: '180x180',
         type: 'image/png',
       },
     ],

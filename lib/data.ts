@@ -2,23 +2,34 @@ export const SITE_URL = 'https://www.bmoretechweek.com'
 
 export const EVENT = {
   name: 'Baltimore Tech Week',
+  edition: 'Night Edition',
   year: '2027',
   theme: 'heARTbeat of Baltimore',
   themePlain: 'Heartbeat of Baltimore',
   dates: 'April 26 to 30, 2027',
+  datesShort: 'April 26–30',
+  nightWindow: '6PM–10PM',
   startDate: '2027-04-26',
   endDate: '2027-04-30',
   city: 'Baltimore, MD',
   locationName: 'Baltimore',
   region: 'MD',
   country: 'US',
-  tagline: 'Where tech meets culture in Charm City.',
+  tagline: 'Talks after 6, all over town.',
+  ticketsStatus: 'coming soon' as const,
+  submissionsOpen: false,
   infoSessionUrl: 'https://luma.com/on6frsgw',
   infoSessionVolunteerUrl: 'https://app.youform.com/forms/rggnoncr',
   infoSessionDate: 'August 27',
   infoSessionStatus: 'sold out' as const,
-  earlyAccessPath: '/early-access',
   buildRoomPath: '/buildroom',
+  eventsPath: '/events',
+  talksPath: '/talks',
+  venuesPath: '/venues',
+  venueSubmitPath: '/venues/submit',
+  speakerSubmitPath: '/speakers/submit',
+  volunteerSubmitPath: '/volunteers/submit',
+  adminPath: '/admin',
   contactEmail: 'team@bmoretechweek.com',
   instagramUrl: 'https://www.instagram.com/baltimoretechweekhq',
   instagramHandle: '@baltimoretechweekhq',
@@ -26,26 +37,66 @@ export const EVENT = {
 }
 
 export const CTA = {
-  label: 'RSVP for the Info Session',
-  short: 'Info Session',
-  volunteer: 'Volunteer for the Info Session',
-  earlyAccess: 'Join Early Access',
-  earlyAccessShort: 'Early Access',
-  earlyAccessNav: 'Early Access. Can’t make the info session? Start here.',
-  missedEvent: 'Can’t make the info session',
+  submitVenue: 'Host a night',
+  submitTalk: 'Give a talk',
+  submitVolunteer: 'Volunteer',
+  viewEvents: 'See what’s on',
+  getInvolved: 'Get involved',
+  comingSoon: 'Coming soon',
 } as const
 
 export const STATS = [
-  { value: '5', label: 'Days of programming' },
-  { value: '30+', label: 'Events' },
-  { value: '4', label: 'Mixers' },
+  { value: '5', label: 'Nights' },
+  { value: '6–10', label: 'Every evening' },
+  { value: 'Citywide', label: 'Walkable rooms' },
 ]
 
+export const HOW_IT_WORKS = [
+  {
+    step: '01',
+    title: 'Open a room',
+    body: 'If you’ve got space after 6, bar, office, gallery, studio, we can put a night in it.',
+  },
+  {
+    step: '02',
+    title: 'Bring a talk',
+    body: 'Something you’d actually say in a room. Panel, fireside, workshop, or just people talking.',
+  },
+  {
+    step: '03',
+    title: 'We pair them up',
+    body: 'Same night, same neighborhood, a room that fits. Then it goes on the schedule.',
+  },
+  {
+    step: '04',
+    title: 'Crew the night',
+    body: 'Check-in, set up, breakdown. That’s how a room actually runs.',
+  },
+] as const
+
+export const VOLUNTEER_ROLES = [
+  {
+    id: 'check-in',
+    label: 'Check-in',
+    body: 'Greet people, get names down, keep the door moving.',
+  },
+  {
+    id: 'set-up',
+    label: 'Set up',
+    body: 'Chairs, signs, water, AV. Show up early and make the room ready.',
+  },
+  {
+    id: 'breakdown',
+    label: 'Breakdown',
+    body: 'Stack chairs, pack cables, leave the room better than we found it.',
+  },
+] as const
+
 export const VISION = [
-  'It’s five days in Baltimore for people building, shipping, and showing up for tech.',
-  'Days are for tech talks, fireside chats, and demos. Nights are for mixers.',
+  'It’s five nights in Baltimore for people building, shipping, and showing up for tech.',
+  'Events run 6PM to 10PM. Days stay yours. Nights belong to the city.',
+  'Venues open rooms. Speakers bring talks. We match them into official events.',
   'We’re building it with the city, not dropping a conference on top of it.',
-  'It’s free. You just need to RSVP.',
   'Most of it sits between Harbor East, Downtown, and 4MLK so you can walk it.',
 ]
 
@@ -69,45 +120,63 @@ export const PARTNERS = [
   },
 ]
 
-export const EARLY_ACCESS = {
-  heroEyebrow: 'Baltimore Tech Week 2027',
-  heroTitle: 'Five days of curated community, culture, and technology.',
-  heroSupport: 'See Baltimore tech through Baltimore eyes.',
-  whatsComing: [
-    'Tech talks featuring Baltimore builders',
-    'Live demos from emerging startups',
-    'Fireside chats with voices shaping the city',
-    'Mixers connecting founders, creators, technologists',
-    'Nighttime events blending tech, culture, and community',
-    'A curated week designed to feel like Baltimore, not Silicon Valley',
-  ],
-  programmingNote:
-    'The full programming will be announced after the August 27 info session.',
-  programmingSupport:
-    'If you want first access to events, speakers, venues, and experiences, join the early access list.',
-  missedTitle: 'You’re still early',
-  missedLead:
-    'August 27 is sold out. Join Early Access for the recap and everything that drops next.',
-  missedCta: 'Can’t make the info session',
-  missedPerks: [
-    'The full recap',
-    'The first programming drop',
-    'Host onboarding',
-    'Sponsor opportunities',
-    'Invitations to pre-week mixers and community events',
-  ],
-  whyMatters: [
-    'Baltimore deserves a tech week that reflects its identity: bold, creative, community-rooted, and full of momentum.',
-    'This isn’t a week with 100+ scattered events. It’s a curated five-day experience built with intention.',
-  ],
-  whoFor: [
-    'Founders',
-    'Engineers',
-    'Designers',
-    'Artists',
-    'Students',
-    'Investors',
-    'Creators',
-    'Community leaders',
-  ],
-} as const
+export const WEEK_DATES = [
+  { iso: '2027-04-26', weekday: 'Monday', label: 'Monday, April 26', short: 'Apr 26' },
+  { iso: '2027-04-27', weekday: 'Tuesday', label: 'Tuesday, April 27', short: 'Apr 27' },
+  { iso: '2027-04-28', weekday: 'Wednesday', label: 'Wednesday, April 28', short: 'Apr 28' },
+  { iso: '2027-04-29', weekday: 'Thursday', label: 'Thursday, April 29', short: 'Apr 29' },
+  { iso: '2027-04-30', weekday: 'Friday', label: 'Friday, April 30', short: 'Apr 30' },
+] as const
+
+export const TIME_SLOTS = [
+  '6:00 PM – 7:30 PM',
+  '6:30 PM – 8:00 PM',
+  '7:00 PM – 8:30 PM',
+  '7:30 PM – 9:00 PM',
+  '8:00 PM – 10:00 PM',
+  '6:00 PM – 10:00 PM',
+] as const
+
+export const NEIGHBORHOODS = [
+  'Harbor East',
+  'Downtown',
+  '4MLK / Westside',
+  'Fells Point',
+  'Federal Hill',
+  'Mount Vernon',
+  'Station North',
+  'Hampden',
+  'Canton',
+  'Remington',
+  'Other',
+] as const
+
+export const TOPICS = [
+  'AI',
+  'Cyber',
+  'Startup',
+  'Product',
+  'Data',
+  'Design',
+  'Engineering',
+  'Community',
+] as const
+
+export const FORMATS = ['panel', 'fireside', 'workshop', 'social talk'] as const
+
+export const VENUE_TYPES = ['tech', 'social', 'hybrid'] as const
+
+export const COST_TYPES = ['Free', 'Low-Cost', 'Standard'] as const
+
+export const AMENITIES = [
+  'AV',
+  'Seating',
+  'Bar',
+  'WiFi',
+  'Projector',
+  'Microphone',
+  'Stage',
+  'Outdoor space',
+  'Accessible',
+  'Parking',
+] as const

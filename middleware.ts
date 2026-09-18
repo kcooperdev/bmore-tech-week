@@ -1,11 +1,23 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { adminCookieName, isAdminToken } from '@/lib/auth'
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
+    const token = request.cookies.get(adminCookieName())?.value
+    if (!(await isAdminToken(token))) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/admin/login'
+      url.searchParams.set('from', pathname)
+      return NextResponse.redirect(url)
+    }
+  }
+
   const proto = request.headers.get('x-forwarded-proto')
   const host = request.headers.get('host') ?? ''
 
-  // Only rewrite the real production domain, never touch localhost / LAN / preview hosts
   const isApex = host === 'bmoretechweek.com'
   const isWww = host === 'www.bmoretechweek.com'
   if (!isApex && !isWww) {

@@ -1,7 +1,8 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Anton, Comic_Neue, Space_Grotesk } from 'next/font/google'
+import { Anton, Space_Grotesk } from 'next/font/google'
 import { EVENT, SITE_URL } from '@/lib/data'
+import { SkipLink } from '@/components/skip-link'
 import './globals.css'
 
 const anton = Anton({
@@ -17,16 +18,9 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-const comicNeue = Comic_Neue({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-comic',
-  display: 'swap',
-})
-
-const title = 'Baltimore Tech Week 2027 | April 26 to 30 | Charm City'
+const title = 'Baltimore Tech Week | April 26–30 | After 6'
 const description =
-  'Baltimore Tech Week is five days of tech talks, fireside chats, demos, and mixers in Charm City. April 26 to 30, 2027. Free to attend. RSVP for the info session.'
+  'Baltimore Tech Week, April 26–30, after 6. Tickets and signups coming soon.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -42,11 +36,13 @@ export const metadata: Metadata = {
   category: 'technology',
   keywords: [
     'Baltimore Tech Week',
+    'Baltimore Tech Week Night Edition',
     'Baltimore Tech Week 2027',
     'Baltimore technology events',
     'Charm City tech',
     'Baltimore startup week',
-    'Baltimore tech conference',
+    'submit a venue Baltimore',
+    'submit a talk Baltimore',
     'tech meets culture',
     'Baltimore MD events April 2027',
   ],
@@ -62,7 +58,7 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: '/images/hero-mural.png',
+        url: '/images/hero-inner-harbor.jpg',
         width: 1200,
         height: 630,
         alt: 'Baltimore Tech Week in Charm City',
@@ -73,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title,
     description,
-    images: ['/images/hero-mural.png'],
+    images: ['/images/hero-inner-harbor.jpg'],
   },
   robots: {
     index: true,
@@ -87,13 +83,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '32x32' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
-    ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: '/favicon.ico',
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
   },
   other: {
     'event:start_time': EVENT.startDate,
@@ -103,7 +93,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#17171a',
+  themeColor: '#080512',
 }
 
 export default function RootLayout({
@@ -114,9 +104,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${spaceGrotesk.variable} ${comicNeue.variable} bg-background`}
+      className={`${anton.variable} ${spaceGrotesk.variable} bg-background`}
     >
       <body className="font-sans antialiased">
+        <SkipLink />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

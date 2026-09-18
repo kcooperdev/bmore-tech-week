@@ -7,8 +7,9 @@ export function JsonLd() {
     name: EVENT.name,
     url: SITE_URL,
     logo: `${SITE_URL}/icon.svg`,
+    email: EVENT.contactEmail,
     description:
-      'Baltimore Tech Week is a community-led celebration of technology, creativity, and culture across Charm City.',
+      'Baltimore Tech Week is five nights of talks, rooms, and people across Charm City.',
     areaServed: {
       '@type': 'City',
       name: 'Baltimore',
@@ -17,20 +18,20 @@ export function JsonLd() {
         name: 'Maryland',
       },
     },
-    sameAs: [EVENT.instagramUrl, EVENT.linkedinUrl, EVENT.infoSessionUrl],
+    sameAs: [EVENT.instagramUrl, EVENT.linkedinUrl],
   }
 
   const event = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    name: `${EVENT.name} ${EVENT.year}`,
+    name: `${EVENT.name} ${EVENT.edition} ${EVENT.year}`,
     description:
-      'A five day celebration of technology, creativity, and community across Baltimore, Maryland where tech meets culture.',
+      'Five nights of tech talks and gatherings across Baltimore, April 26 to 30, 6PM to 10PM.',
     startDate: EVENT.startDate,
     endDate: EVENT.endDate,
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    image: [`${SITE_URL}/images/hero-mural.png`],
+    image: [`${SITE_URL}/images/hero-inner-harbor.jpg`],
     url: SITE_URL,
     organizer: {
       '@type': 'Organization',
@@ -47,21 +48,13 @@ export function JsonLd() {
         addressCountry: 'US',
       },
     },
-    offers: {
-      '@type': 'Offer',
-      url: EVENT.infoSessionUrl,
-      price: '0',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      validFrom: new Date().toISOString().slice(0, 10),
-      name: 'Baltimore Tech Week Launch Party / Info Session',
-    },
     keywords: [
       'Baltimore Tech Week',
+      'Night Edition',
       'Baltimore tech events',
       'Charm City',
-      'technology',
-      'community',
+      'venues',
+      'speakers',
     ],
   }
 

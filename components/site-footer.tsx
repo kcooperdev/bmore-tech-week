@@ -1,51 +1,87 @@
+import Link from 'next/link'
+import { ComingSoonButton } from '@/components/coming-soon'
 import { CTA, EVENT } from '@/lib/data'
+import { Wordmark } from '@/components/wordmark'
 
-export function SiteFooter() {
+export function SiteFooter({ hasSchedule = false }: { hasSchedule?: boolean }) {
+  const links = [
+    ...(hasSchedule ? [{ href: EVENT.eventsPath, label: 'Schedule' }] : []),
+    ...(EVENT.submissionsOpen
+      ? [
+          { href: EVENT.venueSubmitPath, label: 'Host a night' },
+          { href: EVENT.speakerSubmitPath, label: 'Give a talk' },
+          { href: EVENT.volunteerSubmitPath, label: 'Volunteer' },
+        ]
+      : []),
+    { href: '/#how-it-works', label: 'How it works' },
+  ]
+
   return (
-    <footer className="border-t border-border bg-background pb-20 md:pb-0">
-      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 py-10 md:flex-row md:items-center md:px-8">
+    <footer className="border-t border-gold/15 bg-background">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:gap-12 md:grid-cols-[1.4fr_1fr_1fr] md:px-8 md:py-16">
         <div>
-          <a href="#top" className="inline-flex items-center" aria-label="Baltimore Tech Week home">
-            <img src="/images/btw-mark.svg" alt="" className="size-9 sm:size-10" width={40} height={40} />
-          </a>
-          <p className="mt-3 text-sm text-muted-foreground">
-            {EVENT.dates} · {EVENT.city}
+          <Wordmark />
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-cream/60">
+            {EVENT.dates} · {EVENT.nightWindow}
+            <br />
+            {EVENT.city}
           </p>
-          <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-            Baltimore Tech Week {EVENT.year}. Built here, for here.
-          </p>
-          <div className="mt-5 flex flex-col gap-2 text-sm">
+          <p className="mt-3 text-sm text-cream/55">Built here, for here.</p>
+        </div>
+
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-gold">The week</p>
+          <nav className="mt-4 flex flex-col gap-2.5 text-sm font-medium">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-cream/65 transition-colors hover:text-cream"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-gold">Reach us</p>
+          <div className="mt-4 flex flex-col gap-2.5 text-sm">
+            <a
+              href={`mailto:${EVENT.contactEmail}`}
+              className="break-all text-cream/65 transition-colors hover:text-cream"
+            >
+              {EVENT.contactEmail}
+            </a>
             <a
               href={EVENT.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="text-cream/65 transition-colors hover:text-cream"
             >
-              Follow us on Instagram{' '}
-              <span className="font-semibold text-foreground">{EVENT.instagramHandle}</span>
+              Instagram {EVENT.instagramHandle}
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
             <a
               href={EVENT.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="text-cream/65 transition-colors hover:text-cream"
             >
-              Follow us on LinkedIn
+              LinkedIn
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
-        </div>
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
-          <a
-            href={EVENT.infoSessionUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-cta-secondary w-full justify-center sm:w-auto"
-          >
-            {CTA.short}
-          </a>
+          {EVENT.submissionsOpen ? (
+            <Link href={EVENT.volunteerSubmitPath} className="btn-cta-outline mt-6 w-full sm:w-auto">
+              {CTA.submitVolunteer}
+            </Link>
+          ) : (
+            <ComingSoonButton variant="outline" className="mt-6 w-full sm:w-auto" />
+          )}
         </div>
       </div>
-      <div className="border-t border-border px-4 py-5 text-center text-sm text-muted-foreground md:px-8">
+      <div className="border-t border-cream/10 px-4 py-5 text-center text-xs tracking-wide text-cream/45 md:px-8">
         © {EVENT.year} {EVENT.name}. {EVENT.tagline}
       </div>
     </footer>

@@ -19,9 +19,9 @@ export function Partners() {
 
         <div className="relative mx-auto flex min-h-[70svh] max-w-7xl flex-col justify-end px-4 py-14 md:min-h-[78svh] md:px-8 md:py-20">
           <Reveal>
-            <p className="font-playful text-sm font-bold text-primary">Info session host</p>
+            <p className="font-playful text-sm font-bold text-gold">A venue already in the mix</p>
             <h2 className="mt-2 font-display text-4xl uppercase leading-[0.95] tracking-wide text-cream sm:text-5xl md:text-6xl">
-              Meet at 4MLK
+              Rooms like 4MLK
             </h2>
           </Reveal>
 
