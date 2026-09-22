@@ -18,15 +18,14 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-const title = 'Baltimore Tech Week | April 26–30 | After 6'
-const description =
-  'Baltimore Tech Week, April 26–30, after 6. Tickets and signups coming soon.'
+const title = 'BMore Tech Nights | Baltimore'
+const description = 'Baltimore Tech Week Night Edition. April 26–30, 2027. Nights, 5:30–10pm.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: title,
-    template: '%s | Baltimore Tech Week',
+    template: '%s | BMore Tech Nights',
   },
   description,
   applicationName: 'Baltimore Tech Week',
@@ -58,10 +57,10 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: '/images/hero-inner-harbor.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Baltimore Tech Week in Charm City',
+        url: '/images/harbor-sunset.png',
+        width: 1376,
+        height: 768,
+        alt: 'Painted Baltimore harbor at sunset for Tech Week Night Edition',
       },
     ],
   },
@@ -69,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title,
     description,
-    images: ['/images/hero-inner-harbor.jpg'],
+    images: ['/images/harbor-sunset.png'],
   },
   robots: {
     index: true,
@@ -93,7 +92,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#080512',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#2f7fa8' },
+    { media: '(prefers-color-scheme: dark)', color: '#070b16' },
+  ],
 }
 
 export default function RootLayout({

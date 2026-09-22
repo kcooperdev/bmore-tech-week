@@ -8,14 +8,14 @@ export const EVENT = {
   themePlain: 'Heartbeat of Baltimore',
   dates: 'April 26 to 30, 2027',
   datesShort: 'April 26–30',
-  nightWindow: '6PM–10PM',
+  nightWindow: '5:30–10PM',
   startDate: '2027-04-26',
   endDate: '2027-04-30',
   city: 'Baltimore, MD',
   locationName: 'Baltimore',
   region: 'MD',
   country: 'US',
-  tagline: 'Talks after 6, all over town.',
+  tagline: 'Talks after 5:30, all over town.',
   ticketsStatus: 'coming soon' as const,
   submissionsOpen: false,
   infoSessionUrl: 'https://luma.com/on6frsgw',
@@ -24,6 +24,7 @@ export const EVENT = {
   infoSessionStatus: 'sold out' as const,
   buildRoomPath: '/buildroom',
   eventsPath: '/events',
+  programmingPath: '/programming',
   talksPath: '/talks',
   venuesPath: '/venues',
   venueSubmitPath: '/venues/submit',
@@ -42,12 +43,12 @@ export const CTA = {
   submitVolunteer: 'Volunteer',
   viewEvents: 'See what’s on',
   getInvolved: 'Get involved',
-  comingSoon: 'Coming soon',
+  comingSoon: 'More details coming soon',
 } as const
 
 export const STATS = [
   { value: '5', label: 'Nights' },
-  { value: '6–10', label: 'Every evening' },
+  { value: '5:30–10', label: 'Every evening' },
   { value: 'Citywide', label: 'Walkable rooms' },
 ]
 
@@ -55,7 +56,7 @@ export const HOW_IT_WORKS = [
   {
     step: '01',
     title: 'Open a room',
-    body: 'If you’ve got space after 6, bar, office, gallery, studio, we can put a night in it.',
+    body: 'If you’ve got space after 5:30, bar, office, gallery, studio, we can put a night in it.',
   },
   {
     step: '02',
