@@ -26,10 +26,16 @@ html:has(.bmore) body {
   color: var(--copy);
   font-family: 'Space Grotesk', var(--font-space-grotesk), sans-serif;
   scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html:has(.bmore) {
+  overflow-x: clip;
 }
 
 html:has(.bmore) body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .bmore {
@@ -213,6 +219,10 @@ html:has(.bmore) body {
   text-transform: none;
 }
 
+.hint-sub-short {
+  display: none;
+}
+
 .scroll-hint.is-on {
   pointer-events: auto;
 }
@@ -261,6 +271,10 @@ html:has(.bmore) body {
   visibility: visible;
 }
 
+.topbar > * {
+  min-width: 0;
+}
+
 .harbor-pin.is-night .topbar {
   visibility: hidden;
   pointer-events: none;
@@ -303,6 +317,10 @@ html:has(.bmore) body {
   opacity: 0.86;
 }
 
+.soon-short {
+  display: none;
+}
+
 .coming-soon-hero {
   color: var(--gold);
   font-size: 0.74rem;
@@ -311,6 +329,7 @@ html:has(.bmore) body {
   text-transform: uppercase;
   word-spacing: 0.22em;
   opacity: 0.9;
+  text-wrap: balance;
 }
 
 .cycle-progress {
@@ -360,11 +379,19 @@ html:has(.bmore) body {
   color: var(--gold);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   .topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.5rem;
+    padding: max(0.85rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+      0.85rem max(1rem, env(safe-area-inset-left));
+    font-size: 0.62rem;
     letter-spacing: 0.08em;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  }
+
+  .topbar-mark {
+    letter-spacing: 0.06em;
   }
 
   .date-full {
@@ -375,13 +402,31 @@ html:has(.bmore) body {
     display: inline;
   }
 
+  .soon-full {
+    display: none;
+  }
+
+  .soon-short {
+    display: inline;
+  }
+
+  .topbar .coming-soon {
+    max-width: none;
+    letter-spacing: 0.08em;
+  }
+
   .night-title {
     right: 0;
     left: 0;
     align-items: center;
     max-width: none;
-    padding: max(5.25rem, calc(env(safe-area-inset-top) + 3.75rem)) 1.4rem 0;
+    padding: max(5rem, calc(env(safe-area-inset-top) + 3.5rem)) max(1.25rem, env(safe-area-inset-right))
+      0 max(1.25rem, env(safe-area-inset-left));
     text-align: center;
+  }
+
+  .night-kicker {
+    letter-spacing: 0.22em;
   }
 
   .night-kicker::after {
@@ -390,20 +435,166 @@ html:has(.bmore) body {
   }
 
   .night-title h1 {
-    font-size: clamp(2.4rem, 12vw, 3.6rem);
+    font-size: clamp(2.2rem, 11.5vw, 3.4rem);
     letter-spacing: 0.04em;
   }
 
-  .topbar .coming-soon {
-    max-width: 7.5rem;
-    justify-self: end;
-    text-align: right;
-    line-height: 1.25;
+  .night-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1.1rem;
+    font-size: 0.84rem;
     letter-spacing: 0.04em;
+  }
+
+  .night-meta-dot {
+    display: none;
+  }
+
+  .coming-soon-hero,
+  .night-cta {
+    display: block;
+    margin-top: 1.35rem;
+    max-width: 16rem;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+  }
+
+  .scroll-hint {
+    top: 34%;
+    gap: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  .scroll-hint-sub {
+    max-width: 12.5rem;
+    font-size: 0.62rem;
+    line-height: 1.35;
   }
 
   .plate {
-    object-position: 32% 58%;
+    object-position: 28% 56%;
+  }
+
+  .mode-toggle {
+    left: max(1rem, env(safe-area-inset-left));
+    right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'mark soon'
+      'dates dates';
+    row-gap: 0.2rem;
+    column-gap: 0.5rem;
+    font-size: 0.58rem;
+  }
+
+  .topbar-mark {
+    grid-area: mark;
+  }
+
+  .topbar-dates {
+    grid-area: dates;
+    justify-self: center;
+  }
+
+  .topbar .coming-soon {
+    grid-area: soon;
+    justify-self: end;
+  }
+
+  .night-title {
+    padding-top: max(4.4rem, calc(env(safe-area-inset-top) + 3rem));
+  }
+
+  .night-title h1 {
+    font-size: clamp(2rem, 12.8vw, 2.85rem);
+  }
+
+  .night-kicker {
+    font-size: 0.64rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .coming-soon-hero,
+  .night-cta {
+    max-width: 13.5rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+  }
+
+  .hint-sub-full {
+    display: none;
+  }
+
+  .hint-sub-short {
+    display: inline;
+  }
+
+  .scroll-hint-sub {
+    max-width: none;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 900px) {
+  .night-title {
+    padding-top: max(4rem, calc(env(safe-area-inset-top) + 2.8rem));
+  }
+
+  .night-title h1 {
+    font-size: clamp(1.95rem, 10vw, 2.7rem);
+  }
+
+  .night-kicker {
+    margin-bottom: 0.7rem;
+  }
+
+  .night-meta,
+  .coming-soon-hero,
+  .night-cta {
+    margin-top: 0.85rem;
+  }
+}
+
+@media (max-height: 520px) and (max-width: 900px) {
+  .night-title {
+    padding-top: max(3.2rem, calc(env(safe-area-inset-top) + 2.2rem));
+  }
+
+  .night-title h1 {
+    font-size: clamp(1.7rem, 7.5vw, 2.4rem);
+  }
+
+  .night-kicker {
+    margin-bottom: 0.45rem;
+  }
+
+  .night-meta,
+  .coming-soon-hero,
+  .night-cta {
+    margin-top: 0.55rem;
+  }
+
+  .scroll-hint {
+    top: 44%;
+  }
+
+  .scroll-hint-sub {
+    display: none;
+  }
+
+  .plate {
+    object-position: 36% 42%;
   }
 }
 

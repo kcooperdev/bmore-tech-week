@@ -128,7 +128,8 @@ export function CycleScene() {
           </time>
         </p>
         <p className="coming-soon">
-          More details coming soon
+          <span className="soon-full">More details coming soon</span>
+          <span className="soon-short">Soon</span>
         </p>
       </header>
 
@@ -172,7 +173,9 @@ export function CycleScene() {
           </h1>
           <p className="night-meta">
             <time dateTime="2027-04-26/2027-04-30">April 26 – 30, 2027</time>
-            <span aria-hidden="true"> · </span>
+            <span className="night-meta-dot" aria-hidden="true">
+              ·
+            </span>
             <span>{EVENT.nightWindow}</span>
           </p>
           {EVENT.submissionsOpen ? (
@@ -202,7 +205,10 @@ export function CycleScene() {
           }}
         >
           <span className="scroll-hint-copy">Scroll into night</span>
-          <span className="scroll-hint-sub">Night Edition · April 26–30, 2027</span>
+          <span className="scroll-hint-sub">
+            <span className="hint-sub-full">Night Edition · April 26–30, 2027</span>
+            <span className="hint-sub-short">Apr 26–30, 2027</span>
+          </span>
           <svg className="scroll-hint-arrow" viewBox="0 0 24 24" aria-hidden="true">
             <path
               d="M6 9.2 12 15l6-5.8"
