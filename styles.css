@@ -613,6 +613,21 @@ html:has(.bmore-page) body {
 }
 
 @media (max-width: 860px) {
+  html:has(.harbor-pin),
+  html:has(.harbor-pin) body {
+    overscroll-behavior: none;
+  }
+
+  .harbor-pin {
+    height: 200svh;
+    height: 200dvh;
+  }
+
+  .harbor-fixed {
+    height: 100svh;
+    height: 100dvh;
+  }
+
   .topbar {
     align-items: center;
     gap: 0.5rem;
@@ -653,7 +668,7 @@ html:has(.bmore-page) body {
     align-items: center;
     max-width: none;
     padding: max(5rem, calc(env(safe-area-inset-top) + 3.5rem)) max(1.25rem, env(safe-area-inset-right))
-      max(1.75rem, 4vh) max(1.25rem, env(safe-area-inset-left));
+      max(5.25rem, calc(env(safe-area-inset-bottom) + 4rem)) max(1.25rem, env(safe-area-inset-left));
     text-align: center;
   }
 
