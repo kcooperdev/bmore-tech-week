@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Anton, Space_Grotesk } from 'next/font/google'
 import { EVENT, SITE_URL } from '@/lib/data'
+import { PoweredBy } from '@/components/powered-by'
 import { SkipLink } from '@/components/skip-link'
 import './globals.css'
 
@@ -114,6 +115,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <SkipLink />
         {children}
+        <PoweredBy />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

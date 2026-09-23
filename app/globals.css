@@ -257,3 +257,27 @@
     }
   }
 }
+
+.powered-by {
+  position: fixed;
+  z-index: 80;
+  left: max(0.85rem, env(safe-area-inset-left));
+  bottom: max(0.85rem, env(safe-area-inset-bottom));
+  padding: 0.5rem 0.75rem;
+  background: #000;
+  color: #e2b13c;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.powered-by:hover {
+  color: #f3ead7;
+}
+
+.powered-by:focus-visible {
+  outline: 2px solid #e2b13c;
+  outline-offset: 3px;
+}
