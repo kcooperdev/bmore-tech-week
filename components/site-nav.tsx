@@ -9,7 +9,8 @@ import { CTA, EVENT } from '@/lib/data'
 import { Wordmark } from '@/components/wordmark'
 
 const BASE_LINKS = [
-  { href: '/#how-it-works', label: 'How it works' },
+  { href: EVENT.weekPath, label: 'The Week' },
+  { href: EVENT.speakersPath, label: 'Speakers' },
   ...(EVENT.submissionsOpen
     ? [
         { href: EVENT.volunteerSubmitPath, label: 'Volunteer' },
@@ -18,10 +19,7 @@ const BASE_LINKS = [
     : []),
 ]
 
-const MENU_BASE = [
-  ...BASE_LINKS,
-  ...(EVENT.submissionsOpen ? [{ href: EVENT.speakerSubmitPath, label: 'Give a talk' }] : []),
-]
+const MENU_BASE = [...BASE_LINKS]
 
 function scrollToHash(href: string) {
   const hash = href.includes('#') ? href.slice(href.indexOf('#')) : ''
@@ -158,7 +156,11 @@ export function SiteNav({ hasSchedule = false }: { hasSchedule?: boolean }) {
                 </Link>
               )
             })}
-            {EVENT.submissionsOpen ? (
+            {EVENT.speakerCallOpen ? (
+              <Link href={EVENT.speakersPath} className="btn-cta-secondary px-4 py-2 text-sm">
+                {CTA.submitTalk}
+              </Link>
+            ) : EVENT.submissionsOpen ? (
               <Link href={EVENT.speakerSubmitPath} className="btn-cta-secondary px-4 py-2 text-sm">
                 {CTA.submitTalk}
               </Link>
@@ -214,19 +216,21 @@ export function SiteNav({ hasSchedule = false }: { hasSchedule?: boolean }) {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2 border-t border-cream/10 px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-            {EVENT.submissionsOpen ? (
+            {EVENT.speakerCallOpen || EVENT.submissionsOpen ? (
               <>
+                {EVENT.submissionsOpen ? (
+                  <Link
+                    href={EVENT.volunteerSubmitPath}
+                    onClick={() => setOpen(false)}
+                    className="btn-cta-outline"
+                  >
+                    {CTA.submitVolunteer}
+                  </Link>
+                ) : null}
                 <Link
-                  href={EVENT.volunteerSubmitPath}
+                  href={EVENT.speakersPath}
                   onClick={() => setOpen(false)}
-                  className="btn-cta-outline"
-                >
-                  {CTA.submitVolunteer}
-                </Link>
-                <Link
-                  href={EVENT.speakerSubmitPath}
-                  onClick={() => setOpen(false)}
-                  className="btn-cta-secondary"
+                  className={`btn-cta-secondary ${EVENT.submissionsOpen ? '' : 'col-span-2'}`}
                 >
                   {CTA.submitTalk}
                 </Link>

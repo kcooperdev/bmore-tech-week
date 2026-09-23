@@ -6,14 +6,14 @@ import { Wordmark } from '@/components/wordmark'
 export function SiteFooter({ hasSchedule = false }: { hasSchedule?: boolean }) {
   const links = [
     ...(hasSchedule ? [{ href: EVENT.eventsPath, label: 'Schedule' }] : []),
+    { href: EVENT.speakersPath, label: CTA.callForSpeakers },
     ...(EVENT.submissionsOpen
       ? [
           { href: EVENT.venueSubmitPath, label: 'Host a night' },
-          { href: EVENT.speakerSubmitPath, label: 'Give a talk' },
           { href: EVENT.volunteerSubmitPath, label: 'Volunteer' },
         ]
       : []),
-    { href: '/#how-it-works', label: 'How it works' },
+    { href: '/', label: 'Home' },
   ]
 
   return (
@@ -72,7 +72,11 @@ export function SiteFooter({ hasSchedule = false }: { hasSchedule?: boolean }) {
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
-          {EVENT.submissionsOpen ? (
+          {EVENT.speakerCallOpen ? (
+            <Link href={EVENT.speakersPath} className="btn-cta-secondary mt-6 w-full sm:w-auto">
+              {CTA.submitTalk}
+            </Link>
+          ) : EVENT.submissionsOpen ? (
             <Link href={EVENT.volunteerSubmitPath} className="btn-cta-outline mt-6 w-full sm:w-auto">
               {CTA.submitVolunteer}
             </Link>

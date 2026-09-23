@@ -48,12 +48,25 @@ export type Speaker = {
   year: Year
   name: string
   email: string
+  phone: string
+  company: string
+  title: string
+  cityState: string
   talkTitle: string
   talkDescription: string
+  takeaways: string
   topic: Topic
+  topics: string[]
   format: TalkFormat
   preferredNeighborhood: Neighborhood | 'Any'
   preferredDate: WeekDate | 'Any'
+  preferredNights: Array<WeekDate | 'Any'>
+  audienceLevel: string
+  spokenBefore: boolean
+  previousTalks: string
+  accessibility: string
+  panelistFallback: boolean
+  notes: string
   linkedinUrl: string
   websiteUrl: string
   portfolioUrl: string

@@ -41,7 +41,6 @@ export function CycleScene() {
   const announced = useRef(false)
   const [reduce, setReduce] = useState(false)
   const [mode, setMode] = useState<'sunset' | 'night'>('night')
-  const [isNight, setIsNight] = useState(false)
   const [hintOn, setHintOn] = useState(true)
   const [live, setLive] = useState('')
 
@@ -58,8 +57,7 @@ export function CycleScene() {
     if (!pin) return
 
     const goTo = (t: number) => {
-      const { night, title } = applyCycle(pin, t)
-      setIsNight(night > 0.5)
+      const { title } = applyCycle(pin, t)
       setHintOn(t < 0.22)
       if (title > 0.8 && !announced.current) {
         announced.current = true
@@ -77,7 +75,8 @@ export function CycleScene() {
       document.getElementById('main')?.focus()
     }
 
-    if (reduce) {
+    const reduced = reduce || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) {
       goTo(mode === 'night' ? 1 : 0)
       return
     }
@@ -116,20 +115,6 @@ export function CycleScene() {
         {live}
       </p>
 
-      <header className="topbar" inert={isNight}>
-        <p className="topbar-mark">Baltimore, MD</p>
-        <p className="topbar-dates" id="intro">
-          <time dateTime="2027-04-26/2027-04-30">
-            <span className="date-full">April 26–30, 2027</span>
-            <span className="date-short">Apr 26–30, 2027</span>
-          </time>
-        </p>
-        <p className="coming-soon">
-          <span className="soon-full">More details coming soon</span>
-          <span className="soon-short">Soon</span>
-        </p>
-      </header>
-
       {reduce ? (
         <div className="mode-toggle">
           <button type="button" aria-pressed={mode === 'sunset'} onClick={() => setMode('sunset')}>
@@ -162,29 +147,40 @@ export function CycleScene() {
         />
         <div className="plate-veil" />
 
-        <div className="night-title" id="main" tabIndex={-1}>
+        <main className="night-title" id="main" tabIndex={-1}>
           <p className="night-kicker">Night Edition</p>
           <h1>
             <span>Baltimore</span>
             <span>Tech Week</span>
           </h1>
           <p className="night-meta">
-            <time dateTime="2027-04-26/2027-04-30">April 26 – 30, 2027</time>
-            <span className="night-meta-dot" aria-hidden="true">
-              ·
-            </span>
-            <span>{EVENT.nightWindow}</span>
+            <time dateTime="2027-04-26/2027-04-30">April 26–30, 2027</time>
           </p>
-          {EVENT.submissionsOpen ? (
-            <a className="night-cta" href={EVENT.eventsPath}>
-              {CTA.viewEvents}
-            </a>
-          ) : (
-            <p id="register" className="coming-soon coming-soon-hero">
-              {CTA.comingSoon}
+          <div className="night-foot">
+            <p className="night-nav">
+              <a className="harbor-link" href={EVENT.weekPath}>
+                The Week
+              </a>
+              {EVENT.speakerCallOpen ? (
+                <span className="night-speak">
+                  <a className="harbor-btn" href={EVENT.speakersPath}>
+                    {CTA.callForSpeakers}
+                  </a>
+                  <span className="night-speak-note">Opens Nov 1st, 2026</span>
+                </span>
+              ) : null}
             </p>
-          )}
-        </div>
+            {EVENT.speakerCallOpen ? null : EVENT.submissionsOpen ? (
+              <a className="night-cta" href={EVENT.eventsPath}>
+                {CTA.viewEvents}
+              </a>
+            ) : (
+              <p id="register" className="coming-soon coming-soon-hero">
+                {CTA.comingSoon}
+              </p>
+            )}
+          </div>
+        </main>
 
         <button
           className={`scroll-hint${hintOn ? ' is-on' : ''}`}

@@ -11,6 +11,10 @@ export const EVENT = {
   nightWindow: '5:30–10PM',
   startDate: '2027-04-26',
   endDate: '2027-04-30',
+  speakerDeadline: 'February 1, 2027',
+  speakerDeadlineIso: '2027-02-01',
+  speakerDecision: 'March 1',
+  speakerDecisionIso: '2027-03-01',
   city: 'Baltimore, MD',
   locationName: 'Baltimore',
   region: 'MD',
@@ -18,6 +22,7 @@ export const EVENT = {
   tagline: 'Talks after 5:30, all over town.',
   ticketsStatus: 'coming soon' as const,
   submissionsOpen: false,
+  speakerCallOpen: true,
   infoSessionUrl: 'https://luma.com/on6frsgw',
   infoSessionVolunteerUrl: 'https://app.youform.com/forms/rggnoncr',
   infoSessionDate: 'August 27',
@@ -28,7 +33,9 @@ export const EVENT = {
   talksPath: '/talks',
   venuesPath: '/venues',
   venueSubmitPath: '/venues/submit',
-  speakerSubmitPath: '/speakers/submit',
+  weekPath: '/week',
+  speakersPath: '/speakers',
+  speakerSubmitPath: '/speakers',
   volunteerSubmitPath: '/volunteers/submit',
   adminPath: '/admin',
   contactEmail: 'team@bmoretechweek.com',
@@ -39,7 +46,8 @@ export const EVENT = {
 
 export const CTA = {
   submitVenue: 'Host a night',
-  submitTalk: 'Give a talk',
+  submitTalk: 'Apply to speak',
+  callForSpeakers: 'Call for Speakers',
   submitVolunteer: 'Volunteer',
   viewEvents: 'See what’s on',
   getInvolved: 'Get involved',
@@ -163,7 +171,7 @@ export const TOPICS = [
   'Community',
 ] as const
 
-export const FORMATS = ['panel', 'fireside', 'workshop', 'social talk'] as const
+export const FORMATS = ['panel', 'fireside', 'workshop', 'lightning', 'social talk'] as const
 
 export const VENUE_TYPES = ['tech', 'social', 'hybrid'] as const
 

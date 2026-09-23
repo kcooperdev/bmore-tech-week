@@ -5,6 +5,7 @@ const nextConfig = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [70, 75, 78],
   },
   async headers() {
     // Only send HSTS / upgrade rules in production. They break local http://localhost

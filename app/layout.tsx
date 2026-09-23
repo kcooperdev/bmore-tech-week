@@ -18,14 +18,14 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-const title = 'BMore Tech Nights | Baltimore'
+const title = 'Baltimore Tech Week'
 const description = 'Baltimore Tech Week Night Edition. April 26–30, 2027. Nights, 5:30–10pm.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: title,
-    template: '%s | BMore Tech Nights',
+    template: '%s | Baltimore Tech Week',
   },
   description,
   applicationName: 'Baltimore Tech Week',
@@ -42,6 +42,8 @@ export const metadata: Metadata = {
     'Baltimore startup week',
     'submit a venue Baltimore',
     'submit a talk Baltimore',
+    'Baltimore Tech Week call for speakers',
+    'speak at Baltimore Tech Week',
     'tech meets culture',
     'Baltimore MD events April 2027',
   ],

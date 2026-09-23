@@ -6,7 +6,7 @@ import { appendToSheet, speakerSheetFields } from '@/lib/sheets'
 import type { Speaker } from '@/lib/models'
 
 export async function POST(request: Request) {
-  if (!EVENT.submissionsOpen) {
+  if (!EVENT.speakerCallOpen) {
     return NextResponse.json({ error: 'Coming soon' }, { status: 503 })
   }
 

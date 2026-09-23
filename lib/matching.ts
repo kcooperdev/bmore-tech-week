@@ -21,8 +21,11 @@ function formatFitsLayout(format: TalkFormat, venue: Venue): string | null {
   if (format === 'workshop' && venue.capacity >= 24) {
     return 'Capacity fits a workshop'
   }
-  if (format === 'social talk' && (venue.venueType === 'social' || venue.amenities.includes('Bar'))) {
-    return 'Layout fits a social talk'
+  if (
+    (format === 'social talk' || format === 'lightning') &&
+    (venue.venueType === 'social' || venue.amenities.includes('Bar'))
+  ) {
+    return 'Layout fits a short talk'
   }
   if (
     (format === 'panel' || format === 'fireside') &&
@@ -40,15 +43,11 @@ export function scoreMatch(speaker: Speaker, venue: Venue): MatchResult {
   let score = 0
   const reasons: string[] = []
 
-  const dateOk =
-    speaker.preferredDate === 'Any' || venue.availableDates.includes(speaker.preferredDate)
+  const nights = speaker.preferredNights?.length ? speaker.preferredNights : [speaker.preferredDate]
+  const dateOk = nights.includes('Any') || nights.some((night) => night !== 'Any' && venue.availableDates.includes(night))
   if (dateOk) {
     score += 40
-    reasons.push(
-      speaker.preferredDate === 'Any'
-        ? 'Venue dates are open'
-        : 'Date matches venue availability',
-    )
+    reasons.push(nights.includes('Any') ? 'Venue dates are open' : 'Date matches venue availability')
   }
 
   const neighborhoodOk =

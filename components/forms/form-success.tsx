@@ -41,15 +41,17 @@ export function FormSuccess({
         >
           {resetLabel}
         </button>
-        {others.map((role) => (
-          <Link
-            key={role.id}
-            href={role.href}
-            className="text-sm font-semibold text-cream/70 underline-offset-2 hover:text-cream hover:underline"
-          >
-            {role.label}
-          </Link>
-        ))}
+        {EVENT.submissionsOpen
+          ? others.map((role) => (
+              <Link
+                key={role.id}
+                href={role.href}
+                className="text-sm font-semibold text-cream/70 underline-offset-2 hover:text-cream hover:underline"
+              >
+                {role.label}
+              </Link>
+            ))
+          : null}
       </div>
     </div>
   )
