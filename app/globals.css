@@ -281,3 +281,19 @@
   outline: 2px solid #e2b13c;
   outline-offset: 3px;
 }
+
+@media (max-width: 860px) {
+  .powered-by {
+    top: calc(4.6rem + env(safe-area-inset-top));
+    right: auto;
+    bottom: auto;
+    z-index: 45;
+    max-width: calc(100vw - 5.5rem);
+    padding: 0.4rem 0.55rem;
+    font-size: 0.64rem;
+  }
+
+  .powered-by-harbor {
+    top: max(0.7rem, env(safe-area-inset-top));
+  }
+}
