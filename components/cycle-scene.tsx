@@ -24,7 +24,7 @@ function applyCycle(root: HTMLElement, progress: number) {
   document.documentElement.style.setProperty('--copy', copy)
   root.classList.toggle('is-night', night > 0.5)
   root.querySelector('.scroll-hint')?.classList.toggle('is-on', hint > 0.2)
-  document.documentElement.style.background = night > 0.5 ? '#070b16' : '#2f7fa8'
+  document.documentElement.style.background = night > 0.5 ? '#070b16' : '#1a4d6a'
 
   const theme = document.querySelector('meta[name="theme-color"]')
   if (theme) theme.setAttribute('content', night > 0.5 ? '#070b16' : '#2f7fa8')
@@ -32,8 +32,8 @@ function applyCycle(root: HTMLElement, progress: number) {
   return { night, title }
 }
 
-function viewportHeight() {
-  return window.visualViewport?.height ?? window.innerHeight
+function pinViewport(pin: HTMLElement) {
+  return pin.offsetHeight / 2
 }
 
 export function CycleScene() {
@@ -72,8 +72,7 @@ export function CycleScene() {
     }
 
     const goToEnd = () => {
-      const target = pin.offsetTop + pin.offsetHeight - viewportHeight()
-      window.scrollTo({ top: target })
+      window.scrollTo({ top: pin.offsetTop + pinViewport(pin) })
       goTo(1)
       document.getElementById('main')?.focus()
     }
@@ -84,7 +83,7 @@ export function CycleScene() {
     }
 
     const update = () => {
-      const total = pin.offsetHeight - viewportHeight()
+      const total = pinViewport(pin)
       const p = total <= 0 ? 0 : clamp(-pin.getBoundingClientRect().top / total)
       goTo(p)
     }
@@ -99,14 +98,12 @@ export function CycleScene() {
 
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
-    window.visualViewport?.addEventListener('resize', update)
     window.addEventListener('hashchange', goToEnd)
     document.querySelector('a[href="#main"]')?.addEventListener('click', onSkip)
 
     return () => {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
-      window.visualViewport?.removeEventListener('resize', update)
       window.removeEventListener('hashchange', goToEnd)
       document.querySelector('a[href="#main"]')?.removeEventListener('click', onSkip)
     }
@@ -199,7 +196,7 @@ export function CycleScene() {
             const pin = pinRef.current
             if (!pin) return
             window.scrollTo({
-              top: pin.offsetTop + pin.offsetHeight - viewportHeight(),
+              top: pin.offsetTop + pinViewport(pin),
               behavior: 'smooth',
             })
           }}
