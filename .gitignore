@@ -17,6 +17,16 @@ data/btw-store.json
 # Common ignores
 node_modules
 .next/
+out/
+dist/
+coverage/
+.turbo/
 *.tsbuildinfo
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.pem
 .DS_Store
-.vercel
+.idea/

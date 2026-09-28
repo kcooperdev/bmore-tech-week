@@ -431,7 +431,7 @@ export function SpeakerForm({
       ) : null}
 
       <button type="button" className="cfp-btn" disabled>
-        Opening Nov 1st, 2026
+        Opening {EVENT.opensOn}
       </button>
     </form>
   )

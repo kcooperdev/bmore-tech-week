@@ -112,8 +112,8 @@ var TABS = {
   },
   tickets: {
     name: 'Tickets',
-    headers: ['Submitted', 'ID', 'Email'],
-    keys: ['submittedAt', 'id', 'email'],
+    headers: ['Submitted', 'ID', 'Email', 'Pass'],
+    keys: ['submittedAt', 'id', 'email', 'pass'],
   },
 }
 
@@ -166,11 +166,16 @@ function getOrCreateTab_(ss, spec) {
     sheet = ss.insertSheet(spec.name)
   }
   var lastCol = spec.headers.length
-  var header = sheet.getRange(1, 1, 1, lastCol).getValues()[0]
+  var width = Math.max(sheet.getLastColumn(), lastCol)
+  var header = sheet.getRange(1, 1, 1, width).getValues()[0]
   var blank = header.every(function (cell) {
     return cell === ''
   })
-  if (blank) {
+  var matchesPrefix = spec.headers.every(function (name, i) {
+    return !header[i] || header[i] === name
+  })
+  var missing = header[lastCol - 1] !== spec.headers[lastCol - 1]
+  if (blank || (matchesPrefix && missing)) {
     sheet.getRange(1, 1, 1, lastCol).setValues([spec.headers])
     sheet.setFrozenRows(1)
     sheet.getRange(1, 1, 1, lastCol).setFontWeight('bold')
@@ -193,6 +198,7 @@ function notify_(tabName, fields) {
       email ? 'Email: ' + email : '',
       fields.talkTitle ? 'Talk: ' + fields.talkTitle : '',
       fields.roles ? 'Roles: ' + fields.roles : '',
+      fields.pass ? 'Pass: ' + fields.pass : '',
       fields.neighborhood ? 'Neighborhood: ' + fields.neighborhood : '',
       fields.availableDates ? 'Nights: ' + fields.availableDates : '',
       '',

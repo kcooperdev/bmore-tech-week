@@ -204,6 +204,7 @@ export function parseVolunteerInput(body: Record<string, unknown>) {
 export function parseWaitlistInput(body: Record<string, unknown>) {
   return {
     email: email(body.email, 'Email'),
+    pass: str(body.pass, 'Pass', 80, false),
   }
 }
 

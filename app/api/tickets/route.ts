@@ -1,15 +1,11 @@
 import { NextResponse } from 'next/server'
-import { EVENT } from '@/lib/data'
 import { FormError, parseWaitlistInput } from '@/lib/validate'
 import { createTicketSignup } from '@/lib/store'
 import { appendToSheet, ticketSheetFields } from '@/lib/sheets'
+import { sendTicketConfirmation } from '@/lib/ticket-mail'
 import type { TicketSignup } from '@/lib/models'
 
 export async function POST(request: Request) {
-  if (!EVENT.submissionsOpen) {
-    return NextResponse.json({ error: 'Coming soon' }, { status: 503 })
-  }
-
   let body: Record<string, unknown>
   try {
     body = (await request.json()) as Record<string, unknown>
@@ -22,11 +18,13 @@ export async function POST(request: Request) {
     const signup: TicketSignup = {
       id: crypto.randomUUID(),
       email: input.email,
+      pass: input.pass,
       createdAt: new Date().toISOString(),
     }
     const saved = await createTicketSignup(signup)
     if (saved.id === signup.id) {
       await appendToSheet('tickets', ticketSheetFields(saved))
+      await sendTicketConfirmation(saved.email, saved.pass || '')
     }
     return NextResponse.json({ ok: true })
   } catch (err) {

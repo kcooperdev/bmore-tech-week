@@ -3,11 +3,12 @@ import type { Speaker, Venue, Volunteer } from '@/lib/models'
 
 type SheetTab = 'hosts' | 'speakers' | 'volunteers' | 'tickets'
 
-export function ticketSheetFields(signup: { id: string; email: string; createdAt: string }) {
+export function ticketSheetFields(signup: { id: string; email: string; pass?: string; createdAt: string }) {
   return {
     submittedAt: signup.createdAt,
     id: signup.id,
     email: signup.email,
+    pass: signup.pass || '',
   }
 }
 

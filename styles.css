@@ -296,7 +296,7 @@ html:has(.bmore-page) body {
   z-index: 8;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 0.75rem;
   padding: max(1.1rem, env(safe-area-inset-top)) 1.6rem 1.1rem;
   color: var(--copy);
@@ -367,6 +367,21 @@ html:has(.bmore-page) body {
   justify-content: flex-end;
   gap: 0;
   pointer-events: auto;
+}
+
+.topbar-links-start {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  justify-self: start;
+  gap: 1.15rem;
+  max-width: none;
+  margin-right: auto;
+  text-align: left;
+}
+
+.topbar-corner-item {
+  display: inline-flex;
+  align-items: flex-end;
 }
 
 .topbar-home {
@@ -456,6 +471,34 @@ html:has(.bmore-page) body {
   opacity: 1;
 }
 
+.topbar .topbar-corner-item .harbor-link {
+  align-items: center;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.topbar .topbar-corner-item .harbor-link:hover,
+.topbar .topbar-corner-item .harbor-link:focus-visible {
+  padding: 0 0.95rem;
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-shadow: none;
+}
+
+.topbar .topbar-corner-item .harbor-link:hover::after,
+.topbar .topbar-corner-item .harbor-link:focus-visible::after,
+.harbor-pin:not(.is-night) .topbar .topbar-corner-item .harbor-link:hover::after,
+.harbor-pin:not(.is-night) .topbar .topbar-corner-item .harbor-link:focus-visible::after {
+  opacity: 0;
+}
+
 .harbor-link.is-current,
 .harbor-link[aria-current='page'] {
   color: var(--gold);
@@ -479,16 +522,6 @@ html:has(.bmore-page) body {
 .harbor-link:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 6px;
-}
-
-.harbor-dot {
-  display: inline;
-  margin: 0 0.85rem;
-  color: inherit;
-  font-weight: 400;
-  letter-spacing: 0;
-  opacity: 0.38;
-  pointer-events: none;
 }
 
 .night-nav {
@@ -672,7 +705,8 @@ html:has(.bmore-page) body {
     text-align: center;
   }
 
-  .cfp-hero-speakers .night-title h1 {
+  .cfp-hero-speakers .night-title h1,
+  .cfp-hero-offer .night-title h1 {
     font-size: clamp(2.9rem, 13vw, 4.4rem);
   }
 
@@ -894,7 +928,8 @@ html:has(.bmore-page) body {
 }
 
 .cfp-hero-week .cfp-hero-plate,
-.cfp-hero-speakers .cfp-hero-plate {
+.cfp-hero-speakers .cfp-hero-plate,
+.cfp-hero-offer .cfp-hero-plate {
   object-position: center 46%;
 }
 
@@ -920,12 +955,14 @@ html:has(.bmore-page) body {
   padding-bottom: 0;
 }
 
-.cfp-hero-speakers {
+.cfp-hero-speakers,
+.cfp-hero-offer {
   align-items: flex-end;
   min-height: min(52svh, 30rem);
 }
 
-.cfp-hero-speakers .cfp-hero-veil {
+.cfp-hero-speakers .cfp-hero-veil,
+.cfp-hero-offer .cfp-hero-veil {
   background: linear-gradient(
     to bottom,
     rgb(7 11 22 / 0.2) 0%,
@@ -935,27 +972,32 @@ html:has(.bmore-page) body {
   );
 }
 
-.cfp-hero-speakers .cfp-hero-copy {
+.cfp-hero-speakers .cfp-hero-copy,
+.cfp-hero-offer .cfp-hero-copy {
   display: flex;
   max-width: 42rem;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.cfp-hero-speakers .night-title h1 {
+.cfp-hero-speakers .night-title h1,
+.cfp-hero-offer .night-title h1 {
   font-size: clamp(3.5rem, 8.6vw, 6.6rem);
   line-height: 0.86;
 }
 
-.cfp-hero-speakers + .cfp-main .cfp-section:first-of-type {
+.cfp-hero-speakers + .cfp-main .cfp-section:first-of-type,
+.cfp-hero-offer + .cfp-main .cfp-section:first-of-type {
   padding-top: 1.35rem;
 }
 
-.cfp-hero-speakers + .cfp-main .cfp-kicker::after {
+.cfp-hero-speakers + .cfp-main .cfp-kicker::after,
+.cfp-hero-offer + .cfp-main .cfp-kicker::after {
   display: none;
 }
 
-.cfp-hero-speakers .cfp-hero-copy .night-title {
+.cfp-hero-speakers .cfp-hero-copy .night-title,
+.cfp-hero-offer .cfp-hero-copy .night-title {
   flex: 1;
 }
 
@@ -1061,6 +1103,17 @@ html:has(.bmore-page) body {
   margin-top: 0.7rem;
 }
 
+.cfp-copy a:not(.harbor-btn) {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+.cfp-copy a:not(.harbor-btn):hover {
+  text-decoration-thickness: 1.5px;
+}
+
 .cfp-nights,
 .cfp-formats,
 .cfp-split,
@@ -1078,9 +1131,20 @@ html:has(.bmore-page) body {
 
 .cfp-nights li,
 .cfp-formats article,
+.cfp-offers > li,
 .cfp-select {
   padding-top: 0.85rem;
   border-top: 1px solid rgb(243 234 215 / 0.12);
+}
+
+.cfp-offers {
+  margin: 1.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cfp-offers > li + li {
+  margin-top: 1.15rem;
 }
 
 .cfp-select {
@@ -1340,9 +1404,14 @@ html:has(.bmore-page) body {
 }
 
 .harbor-btn:disabled,
+.harbor-btn:disabled:hover,
+.harbor-btn:disabled:focus-visible,
 .cfp-btn:disabled,
 .cfp-form .btn-cta-secondary:disabled {
-  opacity: 0.55;
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--gold);
+  color: var(--ink);
 }
 
 .cfp-btn:disabled,
@@ -1434,5 +1503,300 @@ html:has(.bmore-page) body {
   .cfp-foot {
     padding-left: max(1.25rem, env(safe-area-inset-left));
     padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  .cfp-hero-offer {
+    min-height: 34svh;
+  }
+
+  .cfp-hero-offer .cfp-hero-copy .night-title {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.cfp-hero-offer {
+  min-height: min(36svh, 20rem);
+}
+
+.offer-board {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.5rem 4.5rem;
+}
+
+.offer-lead {
+  max-width: 38rem;
+  margin: 0 0 1.15rem;
+  color: rgb(243 234 215 / 0.78);
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.offer-lead a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+.offer-lead a:hover {
+  text-decoration-thickness: 1.5px;
+}
+
+.offer-switch {
+  margin: -0.35rem 0 1.15rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.offer-switch a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+.offer-switch a:hover {
+  text-decoration-thickness: 1.5px;
+}
+
+.offer-rail {
+  display: flex;
+  gap: 0.7rem;
+  margin: 0 -0.15rem;
+  padding: 0.15rem 0.15rem 0.35rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.15rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(226 177 60 / 0.45) transparent;
+}
+
+.offer-card {
+  display: flex;
+  flex: 0 0 min(78vw, 16.5rem);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.28rem;
+  min-height: 11.5rem;
+  scroll-snap-align: start;
+  padding: 0.95rem 1rem 1.05rem;
+  border: 1px solid rgb(243 234 215 / 0.16);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.offer-card[aria-selected='true'] {
+  border-color: var(--gold);
+  background: rgb(226 177 60 / 0.08);
+}
+
+.offer-card:hover {
+  border-color: rgb(226 177 60 / 0.55);
+}
+
+.offer-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.offer-card-price {
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.offer-card-spots {
+  color: rgb(243 234 215 / 0.55);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.offer-card-name {
+  margin-top: 0.45rem;
+  color: var(--paper);
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.offer-card-fit {
+  display: -webkit-box;
+  margin-top: 0.35rem;
+  overflow: hidden;
+  color: rgb(243 234 215 / 0.68);
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.offer-detail {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.15rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(243 234 215 / 0.12);
+  outline: none;
+}
+
+.offer-detail:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 6px;
+}
+
+.offer-detail-name {
+  margin: 0.2rem 0 0;
+  color: var(--paper);
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.offer-shares {
+  align-self: start;
+  padding-top: 0.15rem;
+}
+
+@media (min-width: 800px) {
+  .offer-detail {
+    grid-template-columns: minmax(0, 1.5fr) minmax(14rem, 0.7fr);
+  }
+
+  .offer-detail:not(:has(.offer-shares)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 720px) {
+  .offer-gets.is-split {
+    columns: 2;
+    column-gap: 2.25rem;
+  }
+
+  .offer-gets.is-split li {
+    break-inside: avoid;
+  }
+}
+
+@media (min-width: 960px) {
+  .offer-rail {
+    overflow: visible;
+  }
+
+  .offer-card {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+.offer-book {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: 2.25rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--gold);
+  scroll-margin-top: 5.5rem;
+}
+
+.offer-book-copy {
+  max-width: 36rem;
+}
+
+.offer-book .cfp-kicker {
+  margin-bottom: 0.7rem;
+}
+
+.offer-book .cfp-kicker::after {
+  display: none;
+}
+
+.offer-book-title {
+  margin: 0;
+  color: var(--paper);
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.offer-book-note {
+  margin: 0.75rem 0 0;
+  max-width: 34rem;
+  color: rgb(243 234 215 / 0.55);
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.offer-book .harbor-btn {
+  margin-top: 0;
+}
+
+.offer-confirm {
+  white-space: pre-line;
+}
+
+.offer-remind {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.85rem 1rem;
+  width: min(100%, 28rem);
+}
+
+.offer-remind .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.offer-remind .cfp-input {
+  flex: 1 1 12rem;
+}
+
+.offer-remind-error {
+  flex: 1 1 100%;
+  margin: 0;
+  color: #f0b4a8;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .offer-board {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  .offer-book .harbor-btn {
+    width: 100%;
   }
 }

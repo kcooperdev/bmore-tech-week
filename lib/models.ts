@@ -111,6 +111,7 @@ export type EventRecord = {
 export type TicketSignup = {
   id: string
   email: string
+  pass?: string
   createdAt: string
 }
 

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import { HarborTopbar } from '@/components/harbor-topbar'
 import { CTA, EVENT } from '@/lib/data'
 
 function clamp(n: number, min = 0, max = 1) {
@@ -110,6 +111,7 @@ export function CycleScene() {
 
   return (
     <section ref={pinRef} className="harbor-pin" aria-label="Baltimore harbor from sunset to night">
+      <HarborTopbar current="home" />
       <div className="cycle-progress" aria-hidden="true" />
       <p className="sr-only" aria-live="polite">
         {live}
@@ -166,7 +168,7 @@ export function CycleScene() {
                   <a className="harbor-btn" href={EVENT.speakersPath}>
                     {CTA.callForSpeakers}
                   </a>
-                  <span className="night-speak-note">Opens Nov 1st, 2026</span>
+                  <span className="night-speak-note">Opens {EVENT.opensOn}</span>
                 </span>
               ) : null}
             </p>
