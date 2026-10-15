@@ -38,7 +38,7 @@ function pinViewport(pin: HTMLElement) {
 }
 
 const DOMINO = { right: 1018 / 1280, midY: 438 / 720 }
-const SIGN_GAP = 76
+const SIGN_GAP = 32
 
 function objectFraction(value: string) {
   if (value.endsWith('%')) return Number.parseFloat(value) / 100
@@ -73,36 +73,15 @@ function placeNightButton(root: HTMLElement) {
   const drawnWidth = 1280 * scale
   const drawnHeight = 720 * scale
   const [xPos, yPos] = getComputedStyle(night).objectPosition.trim().split(/\s+/)
-  let fractionX = objectFraction(xPos || 'center')
+  const fractionX = objectFraction(xPos || 'center')
   const fractionY = objectFraction(yPos || '58%')
-  const yToken = yPos || '58%'
-
-  const signAt = (fraction: number) => {
-    const offsetX = (box.width - drawnWidth) * fraction
-    const offsetY = (box.height - drawnHeight) * fractionY
-    return {
-      right: offsetX + DOMINO.right * drawnWidth,
-      mid: offsetY + DOMINO.midY * drawnHeight,
-    }
-  }
-
-  const edge = 28
-  const buttonWidth = button.offsetWidth
-  const limit = box.width - edge - buttonWidth
-  let sign = signAt(fractionX)
-
-  if (sign.right + SIGN_GAP > limit && drawnWidth > box.width + 1) {
-    const offsetX = limit - SIGN_GAP - DOMINO.right * drawnWidth
-    fractionX = clamp(offsetX / (box.width - drawnWidth), 0, 1)
-    sign = signAt(fractionX)
-    const next = `${fractionX * 100}% ${yToken}`
-    night.style.objectPosition = next
-    if (day) day.style.objectPosition = next
-  }
-
-  const left = sign.right + SIGN_GAP
+  const offsetX = (box.width - drawnWidth) * fractionX
+  const offsetY = (box.height - drawnHeight) * fractionY
+  const signRight = offsetX + DOMINO.right * drawnWidth
+  const signMid = offsetY + DOMINO.midY * drawnHeight
+  const left = signRight + SIGN_GAP
   const top = Math.min(
-    Math.max(12, sign.mid - button.offsetHeight / 2),
+    Math.max(12, signMid - button.offsetHeight / 2),
     Math.max(12, box.height - button.offsetHeight - 12),
   )
 
