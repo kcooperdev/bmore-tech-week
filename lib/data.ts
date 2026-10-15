@@ -20,7 +20,7 @@ export const EVENT = {
   locationName: 'Baltimore',
   region: 'MD',
   country: 'US',
-  tagline: 'Talks after 5:30, all over town.',
+  tagline: 'One week. Coworking by day, the conference at night.',
   ticketsStatus: 'coming soon' as const,
   submissionsOpen: false,
   speakerCallOpen: true,
@@ -35,6 +35,7 @@ export const EVENT = {
   venuesPath: '/venues',
   venueSubmitPath: '/venues/submit',
   weekPath: '/week',
+  whyPath: '/why',
   speakersPath: '/speakers',
   partnersPath: '/partners',
   sponsorsPath: '/sponsors',
@@ -61,31 +62,31 @@ export const CTA = {
 } as const
 
 export const STATS = [
-  { value: '5', label: 'Nights' },
+  { value: '5', label: 'Days in the city' },
   { value: '5:30–10', label: 'Every evening' },
-  { value: 'Citywide', label: 'Walkable rooms' },
+  { value: 'Shops', label: 'A new one each day' },
 ]
 
 export const HOW_IT_WORKS = [
   {
     step: '01',
-    title: 'Open a room',
-    body: 'If you’ve got space after 5:30, bar, office, gallery, studio, we can put a night in it.',
+    title: 'Show up',
+    body: 'Bring a laptop to that day’s coffee shop. The shop changes, so the neighborhood does too.',
   },
   {
     step: '02',
-    title: 'Bring a talk',
-    body: 'Something you’d actually say in a room. Panel, fireside, workshop, or just people talking.',
+    title: 'Work',
+    body: 'Grab a coffee. Get something done. Meet someone if you feel like it. Leave when you want.',
   },
   {
     step: '03',
-    title: 'We pair them up',
-    body: 'Same night, same neighborhood, a room that fits. Then it goes on the schedule.',
+    title: 'Stay for night',
+    body: 'The tech conference starts when the laptops close. Baltimore Tech Week, around the city.',
   },
   {
     step: '04',
-    title: 'Crew the night',
-    body: 'Check-in, set up, breakdown. That’s how a room actually runs.',
+    title: 'Or just the day',
+    body: 'You don’t have to do both. A coffee and a few hours still counts.',
   },
 ] as const
 
@@ -108,19 +109,19 @@ export const VOLUNTEER_ROLES = [
 ] as const
 
 export const VISION = [
-  'It’s five nights in Baltimore for people building, shipping, and showing up for tech.',
-  'Events run 6PM to 10PM. Days stay yours. Nights belong to the city.',
-  'Venues open rooms. Speakers bring talks. We match them into official events.',
-  'We’re building it with the city, not dropping a conference on top of it.',
-  'Most of it sits between Harbor East, Downtown, and 4MLK so you can walk it.',
+  'Baltimore Tech Week is one week. By day it’s Charm City CoWeek, in coffee shops across the city.',
+  'Bring a laptop. The shop changes through the week. You don’t have to network the whole day.',
+  'At night it’s the conference. Same week, when the laptops close.',
+  'It should feel easy. Coffee, a neighborhood, and whoever else is working.',
+  'Support the shop you’re in. See a part of the city you don’t always get to.',
 ]
 
 export const AUDIENCES = [
-  'People building companies here',
-  'Engineers, designers, and makers who want real rooms, not another Zoom',
-  'Founders who want fireside chats and demos, not a badge farm',
-  'Students trying to meet the people doing the work',
-  'Neighbors who are just curious what Baltimore’s cooking next',
+  'Anyone with a laptop and a free afternoon',
+  'Founders, developers, designers, and students',
+  'People who want a coffee shop, not a ballroom',
+  'Neighbors curious about what’s being built here',
+  'Anyone who might stay for the night, or might not',
 ]
 
 export const PARTNERS = [

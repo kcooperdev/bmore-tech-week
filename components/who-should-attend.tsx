@@ -24,8 +24,7 @@ export function WhoShouldAttend() {
               Who should attend?
             </h2>
             <p className="mt-4 max-w-sm font-playful text-base leading-relaxed text-cream/90 text-pretty sm:mt-5 sm:text-lg">
-              If any of this sounds like you, come. If it doesn’t, come anyway and tell us what we
-              missed.
+              Bring a laptop, or just come for the night. You don’t have to do the whole day.
             </p>
           </Reveal>
 

@@ -7,7 +7,7 @@ import '../../styles.css'
 
 const title = 'Community Partners'
 const description =
-  'Partner with Baltimore Tech Week 2027. Free for universities, meetups, nonprofits, and the groups that already gather the city. April 26–30.'
+  'Partner with Charm City CoWeek and Baltimore Tech Week. Free for the groups that already gather the city. April 26–30.'
 
 const offers: Offer[] = [
   {
@@ -70,7 +70,7 @@ export default function PartnersPage() {
       <main className="cfp-main" id="main" tabIndex={-1}>
         <OfferBoard
           railLabel="Community partner"
-          lead="Free, if you already gather people in Baltimore."
+          lead="Free, if you already bring people together in Baltimore."
           sibling={{ href: EVENT.sponsorsPath, label: 'Sponsor the week' }}
           offers={offers}
         />

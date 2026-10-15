@@ -2,43 +2,11 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { EVENT } from '@/lib/data'
 import { HarborTopbar } from '@/components/harbor-topbar'
-import { OfferBoard, type Offer } from '@/components/offer-board'
+import { TicketChooser } from '@/components/ticket-chooser'
 import '../../styles.css'
 
 const title = 'Tickets'
-const description = `Baltimore Tech Week 2027 passes go on sale ${EVENT.opensOn}. Community is free. Support is $25. VIP is $99, capped at 50.`
-
-const offers: Offer[] = [
-  {
-    id: 'community',
-    name: 'Community Pass',
-    price: 'Free',
-    spots: 'Open',
-    fit: 'The rooms, the showcases, and the drawings. No purchase required to enter.',
-    gets: [
-      'Open sessions, panels, and workshops',
-      'Networking and startup showcases',
-      'Nightly giveaways',
-      'A sticker',
-    ],
-  },
-  {
-    id: 'support',
-    name: 'Support Pass',
-    price: '$25',
-    spots: '150 spots',
-    fit: 'The free pass, with a seat held and a note before everyone else.',
-    gets: ['Everything in Community', 'A lanyard', 'Reserved seating', 'News before the public list'],
-  },
-  {
-    id: 'vip',
-    name: 'VIP Pass',
-    price: '$99',
-    spots: '50 spots',
-    fit: 'Front of the room, and one reception with the speakers.',
-    gets: ['Everything in Support', 'Front-row seating', 'A swag bag', 'One VIP reception'],
-  },
-]
+const description = `General Admission is $0. The Week Pass is $75 for April 26–30, with drink vouchers you redeem at a participating restaurant. Only 25 for the week. On sale ${EVENT.opensOn}.`
 
 export const metadata: Metadata = {
   title,
@@ -78,17 +46,7 @@ export default function TicketsPage() {
       </section>
 
       <main className="cfp-main" id="main" tabIndex={-1}>
-        <OfferBoard
-          railLabel="Ticket passes"
-          lead={`Three passes. They open together on ${EVENT.opensOn}.`}
-          offers={offers}
-          close={{
-            title: `On sale ${EVENT.opensOn}`,
-            body: 'Want a note that morning about the {name}? Leave it with us.',
-            label: 'Remind me',
-            remind: true,
-          }}
-        />
+        <TicketChooser />
       </main>
     </div>
   )

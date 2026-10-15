@@ -7,7 +7,7 @@ import '../../styles.css'
 
 const title = 'Call for Speakers'
 const description =
-  'Apply to speak at Baltimore Tech Week 2027. Five nights in local restaurants, coworking spaces, and neighborhood rooms. April 26–30.'
+  'Apply to speak at the Baltimore Tech Week conference. Evenings after the daytime coworking, April 26–30.'
 
 export const dynamic = 'force-dynamic'
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
   --gold: #e2b13c;
@@ -133,9 +133,9 @@ html:has(.bmore-page) body {
   outline: 1px solid #c9a6ff;
   outline-offset: 3px;
   color: #c9a6ff;
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.2em;
   line-height: 1;
   text-transform: uppercase;
   transform: rotate(-3.5deg);
@@ -146,22 +146,21 @@ html:has(.bmore-page) body {
 }
 
 .night-title > .night-kicker:first-child {
-  margin: 0 0 1.45rem;
+  margin: 0 0 1.85rem;
 }
 
 .night-foot {
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-self: center;
   gap: 0.95rem;
-  margin-top: auto;
+  margin-top: 1.2rem;
   text-align: center;
   pointer-events: none;
 }
 
 .night-title > .night-meta {
-  margin: 0.95rem 0 0;
+  margin: 1.2rem 0 0;
   color: var(--gold);
 }
 
@@ -218,6 +217,166 @@ html:has(.bmore-page) body {
 .night-title:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 8px;
+}
+
+.day-title {
+  position: absolute;
+  top: 16%;
+  right: 0;
+  left: 0;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+  text-align: center;
+  pointer-events: none;
+  opacity: var(--hint);
+  transform: translateY(calc((1 - var(--hint)) * 14px));
+}
+
+.day-kicker {
+  width: max-content;
+  margin: 0 0 1.7rem;
+  padding: 0.48rem 0.8rem 0.42rem;
+  border: 2px solid #16120c;
+  outline: 1px solid #16120c;
+  outline-offset: 3px;
+  color: #16120c;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-3.5deg);
+}
+
+.day-name {
+  margin: 0;
+  color: #16120c;
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: clamp(2.6rem, 6.4vw, 5rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  text-shadow: 0 2px 18px rgb(255 214 150 / 0.7);
+}
+
+.day-name span {
+  display: block;
+}
+
+.day-name span + span {
+  margin-top: 0.08em;
+}
+
+.day-line,
+.night-line {
+  margin: 1.45rem 0 0;
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.day-line,
+.day-date time {
+  color: #16120c;
+}
+
+.night-line {
+  color: var(--paper);
+}
+
+.day-date {
+  margin: 1.05rem 0 0;
+}
+
+.day-date time {
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.day-title .harbor-btn,
+.night-title > .harbor-btn,
+.day-scroll {
+  pointer-events: none;
+}
+
+.day-title.is-on .harbor-btn,
+.day-title.is-on .day-scroll,
+.harbor-pin.is-night .night-title > .harbor-btn {
+  pointer-events: auto;
+}
+
+.day-title .harbor-btn,
+.night-title > .harbor-btn {
+  margin-top: 1.9rem;
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.day-title .harbor-btn:hover,
+.night-title > .harbor-btn:hover {
+  background: #16120c;
+  border-color: #16120c;
+  color: var(--paper);
+}
+
+@media (min-width: 861px) {
+  .night-title > .harbor-btn {
+    position: absolute;
+    z-index: 7;
+    margin-top: 0;
+  }
+}
+
+.day-scroll {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.25rem;
+  margin-top: 1.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #16120c;
+  cursor: pointer;
+}
+
+.day-scroll svg {
+  width: 2.85rem;
+  height: 2.85rem;
+  filter: drop-shadow(0 2px 0 rgb(255 236 200 / 0.45));
+  animation: day-scroll-nudge 1.7s ease-in-out infinite;
+}
+
+@keyframes day-scroll-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.78;
+  }
+  50% {
+    transform: translateY(16px);
+    opacity: 1;
+  }
+}
+
+.day-scroll:focus-visible {
+  outline: 2px solid #16120c;
+  outline-offset: 4px;
 }
 
 .scroll-hint {
@@ -300,9 +459,9 @@ html:has(.bmore-page) body {
   gap: 0.75rem;
   padding: max(1.1rem, env(safe-area-inset-top)) 1.6rem 1.1rem;
   color: var(--copy);
-  font-size: 0.68rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   opacity: 1;
   pointer-events: none;
@@ -313,9 +472,10 @@ html:has(.bmore-page) body {
   display: inline-flex;
   align-items: flex-end;
   min-height: 44px;
-  padding: 0 0 0.2rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  padding: 0.4rem 0.15rem 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   text-transform: none;
 }
 
@@ -373,7 +533,7 @@ html:has(.bmore-page) body {
   flex-wrap: nowrap;
   justify-content: flex-start;
   justify-self: start;
-  gap: 1.15rem;
+  gap: 1.5rem;
   max-width: none;
   margin-right: auto;
   text-align: left;
@@ -547,8 +707,10 @@ html:has(.bmore-page) body {
   opacity: 0.55;
 }
 
-.night-nav .harbor-btn {
+.night-nav .harbor-btn,
+.night-foot .harbor-btn {
   margin-top: 0;
+  pointer-events: auto;
 }
 
 .night-speak {
@@ -663,11 +825,19 @@ html:has(.bmore-page) body {
 
   .topbar {
     align-items: center;
-    gap: 0.5rem;
-    padding: max(0.85rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
-      0.85rem max(1rem, env(safe-area-inset-left));
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    gap: 0.65rem;
+    padding: max(0.95rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+      0.95rem max(1rem, env(safe-area-inset-left));
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+  }
+
+  .topbar .harbor-link {
+    font-size: 0.95rem;
+  }
+
+  .topbar-links-start {
+    gap: 0.85rem;
   }
 
   .topbar-mark {
@@ -724,6 +894,23 @@ html:has(.bmore-page) body {
     letter-spacing: 0.04em;
   }
 
+  .day-title {
+    top: 18%;
+  }
+
+  .day-kicker {
+    letter-spacing: 0.2em;
+  }
+
+  .day-name {
+    font-size: clamp(2.15rem, 11vw, 3.2rem);
+  }
+
+  .day-line {
+    font-size: 0.92rem;
+    letter-spacing: 0.1em;
+  }
+
   .night-meta time {
     font-size: clamp(1.15rem, 4.8vw, 1.4rem);
   }
@@ -766,7 +953,17 @@ html:has(.bmore-page) body {
 @media (max-width: 420px) {
   .topbar {
     column-gap: 0.5rem;
-    font-size: 0.64rem;
+    font-size: 0.88rem;
+  }
+
+  .topbar .harbor-link {
+    font-size: 0.88rem;
+    padding-right: 0.05rem;
+    padding-left: 0.05rem;
+  }
+
+  .topbar-links-start {
+    gap: 0.45rem;
   }
 
   .topbar-links {
@@ -779,6 +976,10 @@ html:has(.bmore-page) body {
 
   .night-title h1 {
     font-size: clamp(2rem, 12.8vw, 2.85rem);
+  }
+
+  .day-name {
+    font-size: clamp(1.9rem, 11vw, 2.6rem);
   }
 
   .night-kicker {
@@ -879,6 +1080,7 @@ html:has(.bmore-page) body {
   }
 
   .scroll-hint-arrow,
+  .day-scroll svg,
   .harbor-link::after,
   .harbor-btn,
   .cfp-btn,
@@ -893,6 +1095,34 @@ html:has(.bmore-page) body {
   min-height: 100lvh;
   background: #070b16;
   color: var(--paper);
+}
+
+.story {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 5.5rem max(1.5rem, env(safe-area-inset-right)) 6.5rem max(1.5rem, env(safe-area-inset-left));
+}
+
+.story p {
+  margin: 0;
+  color: rgb(243 234 215 / 0.88);
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.5;
+}
+
+.story p + p {
+  margin-top: 2.4rem;
+}
+
+.story .harbor-btn {
+  margin-top: 0.4rem;
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .bmore-page .topbar {
@@ -1175,6 +1405,207 @@ html:has(.bmore-page) body {
 .cfp-split {
   display: grid;
   gap: 1.75rem;
+}
+
+.ticket-board {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 3.4rem max(1.75rem, env(safe-area-inset-right)) 5rem max(1.75rem, env(safe-area-inset-left));
+}
+
+.ticket-board-title {
+  margin: 0 0 1.75rem;
+  color: var(--paper);
+  font-family: 'Space Grotesk', var(--font-space-grotesk), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.ticket-choice {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.ticket-pick {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 1.85rem 1.8rem 1.95rem;
+  border: 1px solid rgb(243 234 215 / 0.14);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ticket-pick[aria-checked='true'] {
+  border-color: var(--gold);
+  background: rgb(226 177 60 / 0.08);
+}
+
+.ticket-pick:hover {
+  border-color: rgb(226 177 60 / 0.45);
+}
+
+.ticket-pick:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.ticket-pick-name,
+.ticket-detail-name {
+  color: var(--paper);
+  font-family: 'Space Grotesk', var(--font-space-grotesk), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+.ticket-pick-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  color: var(--gold);
+  font-family: 'Anton', var(--font-anton), sans-serif;
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+}
+
+.ticket-pick-limit {
+  color: rgb(243 234 215 / 0.72);
+  font-family: 'Space Grotesk', var(--font-space-grotesk), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+.ticket-pick-copy {
+  max-width: 34rem;
+  color: rgb(243 234 215 / 0.78);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.ticket-detail {
+  margin-top: 1.75rem;
+  padding: 0.35rem 0 0.2rem;
+  border: 0;
+  border-top: 1px solid rgb(243 234 215 / 0.14);
+  background: transparent;
+}
+
+.ticket-detail-name {
+  margin: 1.15rem 0 0;
+  font-size: 1.2rem;
+}
+
+.ticket-detail-plus {
+  margin: 0.85rem 0 0;
+  color: var(--paper);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.ticket-includes {
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ticket-includes li {
+  padding: 1rem 0;
+  border-top: 1px solid rgb(243 234 215 / 0.12);
+  color: rgb(243 234 215 / 0.84);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.ticket-includes strong {
+  color: var(--paper);
+  font-weight: 700;
+}
+
+.ticket-includes em {
+  color: rgb(243 234 215 / 0.62);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.ticket-remind {
+  max-width: 40rem;
+  margin-top: 2.4rem;
+}
+
+.ticket-remind .cfp-h2 {
+  font-family: 'Space Grotesk', var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  text-transform: none;
+}
+
+.ticket-remind .cfp-copy {
+  max-width: 36rem;
+  font-weight: 500;
+}
+
+.ticket-remind .ticket-note {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 36rem;
+  margin-top: 1.15rem;
+}
+
+.ticket-remind .harbor-btn {
+  margin-top: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.ticket-note {
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 860px) {
+  .ticket-choice {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 1.5rem;
+    row-gap: 0.85rem;
+  }
+
+  .ticket-pick {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    gap: 0;
+    padding: 2rem 1.9rem 2.1rem;
+  }
+
+  .ticket-remind .ticket-note {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
 }
 
 .cfp-compact {
@@ -1752,6 +2183,11 @@ html:has(.bmore-page) body {
 
 .offer-book .harbor-btn {
   margin-top: 0;
+}
+
+.offer-book > .form-footnote {
+  flex: 1 1 100%;
+  margin-top: 0.15rem;
 }
 
 .offer-confirm {

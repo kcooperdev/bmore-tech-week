@@ -11,6 +11,7 @@ import {
   TOPIC_GROUPS,
 } from '@/lib/cfp'
 import { ChipToggle, Field, FieldGroup, RadioChip } from '@/components/forms/field'
+import { FormFootnote } from '@/components/forms/form-footnote'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 type Errors = Partial<Record<string, string>>
@@ -433,6 +434,7 @@ export function SpeakerForm({
       <button type="button" className="cfp-btn" disabled>
         Opening {EVENT.opensOn}
       </button>
+      <FormFootnote />
     </form>
   )
 }

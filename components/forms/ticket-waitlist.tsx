@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
+import { FormFootnote } from '@/components/forms/form-footnote'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
@@ -75,6 +76,7 @@ export function TicketWaitlist() {
           {message}
         </p>
       ) : null}
+      <FormFootnote />
     </form>
   )
 }

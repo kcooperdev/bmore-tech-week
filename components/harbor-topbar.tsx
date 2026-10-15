@@ -1,8 +1,8 @@
 import { EVENT } from '@/lib/data'
 
 const CORNER_LINKS = [
-  { href: EVENT.partnersPath, label: 'Partners', id: 'partners' },
-  { href: EVENT.sponsorsPath, label: 'Sponsors', id: 'sponsors' },
+  { href: EVENT.weekPath, label: 'The Week', id: 'week' },
+  { href: EVENT.whyPath, label: 'Why Baltimore', id: 'why' },
   { href: EVENT.ticketsPath, label: 'Tickets', id: 'tickets' },
 ] as const
 
@@ -10,14 +10,14 @@ export function HarborTopbar({
   current,
   inert = false,
 }: {
-  current: 'home' | 'week' | 'speakers' | 'partners' | 'sponsors' | 'tickets'
+  current: 'home' | 'week' | 'why' | 'speakers' | 'partners' | 'sponsors' | 'tickets'
   inert?: boolean
 }) {
   const onHome = current === 'home'
 
   return (
     <header className="topbar" inert={inert || undefined}>
-      <nav className="topbar-links topbar-links-start" aria-label="Partners, sponsors, and tickets">
+      <nav className="topbar-links topbar-links-start" aria-label="The week, why Baltimore, and tickets">
         {CORNER_LINKS.map((link) => (
           <span key={link.id} className="topbar-corner-item">
             <a

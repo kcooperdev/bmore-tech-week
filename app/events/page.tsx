@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 
 const title = 'Schedule'
 const description =
-  'Tickets and nights are coming soon. Baltimore Tech Week, April 26–30, after 6.'
+  'The tech conference nights are still coming together. Days are coworking, April 26–30.'
 
 export const metadata: Metadata = {
   title,
@@ -29,7 +29,7 @@ export default async function EventsPage() {
       <PageIntro
         eyebrow="Not up yet"
         title="What’s on"
-        body="Nights land once rooms and talks get paired. Until then, host, talk, or crew."
+        body="The conference list lands once rooms and talks get paired. Days are coworking. You can still host, talk, or crew."
       />
       <div className="mx-auto max-w-7xl px-4 pb-20 md:px-8">
         <EventDirectory events={events} />

@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { EVENT } from '@/lib/data'
+import { FormFootnote } from '@/components/forms/form-footnote'
 import { ticketMessage } from '@/lib/ticket-copy'
 
 export type Offer = {
@@ -224,6 +225,7 @@ export function OfferBoard({
                 {closeLabel}
               </button>
             )}
+            <FormFootnote />
           </>
         )}
       </section>

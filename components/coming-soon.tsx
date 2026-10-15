@@ -1,4 +1,5 @@
 import { CTA, EVENT } from '@/lib/data'
+import { FormFootnote } from '@/components/forms/form-footnote'
 import { cn } from '@/lib/utils'
 
 export function ComingSoonButton({
@@ -38,6 +39,7 @@ export function ComingSoonNotice({
       <a href={`mailto:${EVENT.contactEmail}`} className="mt-4 inline-block text-sm font-semibold text-gold">
         {EVENT.contactEmail}
       </a>
+      <FormFootnote />
     </div>
   )
 }

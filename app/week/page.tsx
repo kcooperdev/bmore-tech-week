@@ -8,7 +8,7 @@ import '../../styles.css'
 
 const title = 'The Week'
 const description =
-  'Baltimore Tech Week 2027 is five nights in local restaurants, coworking spaces, and neighborhood rooms. April 26–30.'
+  'Baltimore Tech Week is one week with two parts. Charm City CoWeek by day, the tech conference at night. April 26–30, 2027.'
 
 export const metadata: Metadata = {
   title,
@@ -39,7 +39,7 @@ export default function WeekPage() {
         <div className="cfp-hero-veil" />
         <div className="cfp-hero-copy">
           <div className="night-title">
-            <p className="night-kicker">Night Edition</p>
+            <p className="night-kicker">Day and night</p>
             <h1>
               <span>The</span>
               <span>Week</span>
@@ -49,12 +49,20 @@ export default function WeekPage() {
       </section>
 
       <main className="cfp-main" id="main" tabIndex={-1}>
-        <section className="cfp-section">
-          <p className="cfp-kicker">Nights</p>
+        <section className="cfp-section" id="day">
+          <p className="cfp-kicker">Days</p>
           <h2 className="cfp-h2">April 26–30</h2>
           <p className="cfp-copy">
-            Five nights of talks and workshops in local restaurants, coworking spaces, and neighborhood rooms — a
-            festival, not a conference.
+            One week, two parts. By day it’s Charm City CoWeek: a featured Baltimore coffee shop, and the shop
+            changes through the week.
+          </p>
+          <p className="cfp-copy">
+            Show up, grab a coffee, and work. Meet someone if you feel like it. You don’t have to spend the day
+            networking.
+          </p>
+          <p className="cfp-copy" id="nights">
+            At night it’s the tech conference, still Baltimore Tech Week. Stay if you want. The coworking day
+            still counts if you don’t.
           </p>
           <ol className="cfp-nights">
             {PROGRAM_NIGHTS.map((night) => (
@@ -73,7 +81,7 @@ export default function WeekPage() {
           <p className="cfp-kicker">Speak</p>
           <h2 className="cfp-h2">We're looking for speakers</h2>
           <p className="cfp-copy">
-            About 12 sessions over the five nights. Workshops, panels, and shorter talks. If you want to do one,
+            The conference needs voices. Workshops, panels, and short talks across the five nights. If you want one,
             apply.
           </p>
           <p className="cfp-copy">

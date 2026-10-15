@@ -11,6 +11,7 @@ import {
   WEEK_DATES,
 } from '@/lib/data'
 import { ChipToggle, Field, FieldGroup } from '@/components/forms/field'
+import { FormFootnote } from '@/components/forms/form-footnote'
 import { FormSuccess } from '@/components/forms/form-success'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
@@ -244,6 +245,7 @@ export function VenueForm() {
           ) : null}
         </button>
       </div>
+      <FormFootnote />
     </form>
   )
 }

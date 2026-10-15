@@ -241,6 +241,21 @@
     @apply border-primary bg-primary/15 text-cream;
   }
 
+  .form-footnote {
+    margin: 1.25rem 0 0;
+    max-width: 40rem;
+    color: rgb(243 234 215 / 0.88);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .form-footnote-mark {
+    margin-right: 0.28em;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;

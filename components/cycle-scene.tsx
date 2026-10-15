@@ -37,6 +37,80 @@ function pinViewport(pin: HTMLElement) {
   return pin.offsetHeight / 2
 }
 
+const DOMINO = { right: 1018 / 1280, midY: 438 / 720 }
+const SIGN_GAP = 76
+
+function objectFraction(value: string) {
+  if (value.endsWith('%')) return Number.parseFloat(value) / 100
+  if (value === 'left' || value === 'top') return 0
+  if (value === 'right' || value === 'bottom') return 1
+  return 0.5
+}
+
+function placeNightButton(root: HTMLElement) {
+  const night = root.querySelector<HTMLElement>('.plate-night')
+  const day = root.querySelector<HTMLElement>('.plate-day')
+  const button = root.querySelector<HTMLElement>('.night-title > .harbor-btn')
+  if (!night || !button) return
+
+  const wide = window.matchMedia('(min-width: 861px)').matches
+  if (!wide) {
+    button.style.left = ''
+    button.style.top = ''
+    button.style.right = ''
+    night.style.objectPosition = ''
+    if (day) day.style.objectPosition = ''
+    return
+  }
+
+  night.style.objectPosition = ''
+  if (day) day.style.objectPosition = ''
+
+  const box = night.getBoundingClientRect()
+  const parent = button.offsetParent as HTMLElement | null
+  const parentBox = parent?.getBoundingClientRect() ?? box
+  const scale = Math.max(box.width / 1280, box.height / 720)
+  const drawnWidth = 1280 * scale
+  const drawnHeight = 720 * scale
+  const [xPos, yPos] = getComputedStyle(night).objectPosition.trim().split(/\s+/)
+  let fractionX = objectFraction(xPos || 'center')
+  const fractionY = objectFraction(yPos || '58%')
+  const yToken = yPos || '58%'
+
+  const signAt = (fraction: number) => {
+    const offsetX = (box.width - drawnWidth) * fraction
+    const offsetY = (box.height - drawnHeight) * fractionY
+    return {
+      right: offsetX + DOMINO.right * drawnWidth,
+      mid: offsetY + DOMINO.midY * drawnHeight,
+    }
+  }
+
+  const edge = 28
+  const buttonWidth = button.offsetWidth
+  const limit = box.width - edge - buttonWidth
+  let sign = signAt(fractionX)
+
+  if (sign.right + SIGN_GAP > limit && drawnWidth > box.width + 1) {
+    const offsetX = limit - SIGN_GAP - DOMINO.right * drawnWidth
+    fractionX = clamp(offsetX / (box.width - drawnWidth), 0, 1)
+    sign = signAt(fractionX)
+    const next = `${fractionX * 100}% ${yToken}`
+    night.style.objectPosition = next
+    if (day) day.style.objectPosition = next
+  }
+
+  const left = sign.right + SIGN_GAP
+  const top = Math.min(
+    Math.max(12, sign.mid - button.offsetHeight / 2),
+    Math.max(12, box.height - button.offsetHeight - 12),
+  )
+
+  button.style.left = `${box.left - parentBox.left + left}px`
+  button.style.top = `${box.top - parentBox.top + top}px`
+  button.style.right = 'auto'
+}
+
 export function CycleScene() {
   const pinRef = useRef<HTMLElement>(null)
   const announced = useRef(false)
@@ -62,7 +136,7 @@ export function CycleScene() {
       setHintOn(t < 0.22)
       if (title > 0.8 && !announced.current) {
         announced.current = true
-        setLive('Baltimore Tech Week, Night Edition')
+        setLive('Baltimore Tech Week, the conference')
       }
       if (title < 0.2) {
         announced.current = false
@@ -79,6 +153,7 @@ export function CycleScene() {
     const reduced = reduce || window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
       goTo(mode === 'night' ? 1 : 0)
+      placeNightButton(pin)
       return
     }
 
@@ -86,6 +161,7 @@ export function CycleScene() {
       const total = pinViewport(pin)
       const p = total <= 0 ? 0 : clamp(-pin.getBoundingClientRect().top / total)
       goTo(p)
+      placeNightButton(pin)
     }
 
     const onSkip = (event: Event) => {
@@ -94,6 +170,7 @@ export function CycleScene() {
     }
 
     update()
+    document.fonts?.ready.then(() => placeNightButton(pin))
     if (window.location.hash === '#main') goToEnd()
 
     window.addEventListener('scroll', update, { passive: true })
@@ -110,7 +187,7 @@ export function CycleScene() {
   }, [reduce, mode])
 
   return (
-    <section ref={pinRef} className="harbor-pin" aria-label="Baltimore harbor from sunset to night">
+    <section ref={pinRef} className="harbor-pin" aria-label="Baltimore Tech Week. Charm City CoWeek by day, the conference at night">
       <HarborTopbar current="home" />
       <div className="cycle-progress" aria-hidden="true" />
       <p className="sr-only" aria-live="polite">
@@ -149,29 +226,68 @@ export function CycleScene() {
         />
         <div className="plate-veil" />
 
+        <div className={`day-title${hintOn ? ' is-on' : ''}`}>
+          <p className="day-kicker">CoWeek</p>
+          <p className="day-name">
+            <span>Baltimore</span>
+            <span>Tech Week</span>
+          </p>
+          <p className="day-line">Coworking by day</p>
+          <p className="day-date">
+            <time dateTime="2027-04-26/2027-04-30">April 26–30, 2027</time>
+          </p>
+          <a className="harbor-btn" href={EVENT.ticketsPath}>
+            Come for the week
+          </a>
+          <button
+            className="day-scroll"
+            type="button"
+            aria-label="Baltimore Tech Week. Scroll into night"
+            tabIndex={hintOn ? 0 : -1}
+            onClick={() => {
+              const pin = pinRef.current
+              if (!pin) return
+              window.scrollTo({
+                top: pin.offsetTop + pinViewport(pin),
+                behavior: 'smooth',
+              })
+            }}
+          >
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path
+                d="M6 8.5 16 17.5 26 8.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6 17 16 26 26 17"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
         <main className="night-title" id="main" tabIndex={-1}>
-          <p className="night-kicker">Night Edition</p>
+          <p className="night-kicker">Conference</p>
           <h1>
             <span>Baltimore</span>
             <span>Tech Week</span>
           </h1>
+          <p className="night-line">Tech conference by night</p>
           <p className="night-meta">
             <time dateTime="2027-04-26/2027-04-30">April 26–30, 2027</time>
           </p>
+          <a className="harbor-btn" href={EVENT.ticketsPath}>
+            Come for the week
+          </a>
           <div className="night-foot">
-            <p className="night-nav">
-              <a className="harbor-link" href={EVENT.weekPath}>
-                The Week
-              </a>
-              {EVENT.speakerCallOpen ? (
-                <span className="night-speak">
-                  <a className="harbor-btn" href={EVENT.speakersPath}>
-                    {CTA.callForSpeakers}
-                  </a>
-                  <span className="night-speak-note">Opens {EVENT.opensOn}</span>
-                </span>
-              ) : null}
-            </p>
             {EVENT.speakerCallOpen ? null : EVENT.submissionsOpen ? (
               <a className="night-cta" href={EVENT.eventsPath}>
                 {CTA.viewEvents}
@@ -184,37 +300,6 @@ export function CycleScene() {
           </div>
         </main>
 
-        <button
-          className={`scroll-hint${hintOn ? ' is-on' : ''}`}
-          type="button"
-          aria-label="Scroll into night"
-          tabIndex={hintOn ? 0 : -1}
-          aria-hidden={!hintOn}
-          onClick={() => {
-            const pin = pinRef.current
-            if (!pin) return
-            window.scrollTo({
-              top: pin.offsetTop + pinViewport(pin),
-              behavior: 'smooth',
-            })
-          }}
-        >
-          <span className="scroll-hint-copy">Scroll into night</span>
-          <span className="scroll-hint-sub">
-            <span className="hint-sub-full">Night Edition · April 26–30, 2027</span>
-            <span className="hint-sub-short">Apr 26–30, 2027</span>
-          </span>
-          <svg className="scroll-hint-arrow" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M6 9.2 12 15l6-5.8"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
       </div>
     </section>
   )

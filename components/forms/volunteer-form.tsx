@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { CTA, NEIGHBORHOODS, VOLUNTEER_ROLES, WEEK_DATES } from '@/lib/data'
 import { ChipToggle, Field, FieldGroup } from '@/components/forms/field'
+import { FormFootnote } from '@/components/forms/form-footnote'
 import { FormSuccess } from '@/components/forms/form-success'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
@@ -163,6 +164,7 @@ export function VolunteerForm() {
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
         ) : null}
       </button>
+      <FormFootnote />
     </form>
   )
 }

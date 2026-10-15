@@ -7,7 +7,7 @@ import '../../styles.css'
 
 const title = 'Sponsors'
 const description =
-  'Sponsor Baltimore Tech Week 2027. Five tiers, from $500 to a single presenting sponsorship. April 26–30 in Baltimore.'
+  'Sponsor Charm City CoWeek by day and Baltimore Tech Week by night. April 26–30 in Baltimore.'
 
 const offers: Offer[] = [
   {
@@ -20,7 +20,7 @@ const offers: Offer[] = [
       'Small logo on the site and the nightly slides',
       'One mention, on one night',
       'One social post',
-      '2 VIP passes',
+      '2 Week passes',
     ],
   },
   {
@@ -33,7 +33,7 @@ const offers: Offer[] = [
       'Everything in Supporting',
       'A table on one night',
       'Medium logo on the site',
-      '4 VIP passes',
+      '4 Week passes',
       'Your own social post',
     ],
   },
@@ -47,7 +47,7 @@ const offers: Offer[] = [
       'Everything in Community',
       'A table on two nights',
       'A 2-minute welcome for one session',
-      '6 VIP passes',
+      '6 Week passes',
       'Your name on one nightly giveaway',
     ],
   },
@@ -62,7 +62,7 @@ const offers: Offer[] = [
       'Your name on one full night',
       'Five minutes on that night',
       'A space all five nights',
-      '8 VIP passes',
+      '8 Week passes',
       'Opted-in leads from people who visit your space',
     ],
   },
@@ -75,7 +75,7 @@ const offers: Offer[] = [
     gets: [
       'The title, and the largest logo on the home page',
       'Ten minutes on opening night',
-      '10 VIP passes',
+      '10 Week passes',
       'The closing-night grand prize',
       'First look at presenting in 2028',
     ],
@@ -121,7 +121,7 @@ export default function SponsorsPage() {
       <main className="cfp-main" id="main" tabIndex={-1}>
         <OfferBoard
           railLabel="Sponsor tiers"
-          lead="Five caps. Each price includes the tier under it."
+          lead="Five ways to back the week. Each price includes the one under it."
           sibling={{ href: EVENT.partnersPath, label: 'Partner with the week' }}
           offers={offers}
         />

@@ -65,7 +65,8 @@ export function SpeakersApply() {
           Speaker application
         </h2>
         <p className="cfp-copy">
-          Deadline is <time dateTime={EVENT.speakerDeadlineIso}>{EVENT.speakerDeadline}</time>. Decisions on{' '}
+          The evenings need voices from the city. Deadline is{' '}
+          <time dateTime={EVENT.speakerDeadlineIso}>{EVENT.speakerDeadline}</time>. Decisions on{' '}
           <time dateTime={EVENT.speakerDecisionIso}>{EVENT.speakerDecision}</time>.
         </p>
         {EVENT.speakerCallOpen ? (

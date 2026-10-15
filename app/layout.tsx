@@ -19,7 +19,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 const title = 'Baltimore Tech Week'
-const description = 'Baltimore Tech Week Night Edition. April 26–30, 2027. Nights, 5:30–10pm.'
+const description =
+  'One week, two parts. Charm City CoWeek is coworking by day. The tech conference is at night. April 26–30, 2027.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -34,11 +35,11 @@ export const metadata: Metadata = {
   publisher: 'Baltimore Tech Week',
   category: 'technology',
   keywords: [
+    'Charm City CoWeek',
     'Baltimore Tech Week',
-    'Baltimore Tech Week Night Edition',
     'Baltimore Tech Week 2027',
-    'Baltimore technology events',
-    'Charm City tech',
+    'Baltimore coffee shops',
+    'Charm City coworking',
     'Baltimore startup week',
     'submit a venue Baltimore',
     'submit a talk Baltimore',
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
         url: '/images/harbor-sunset.png',
         width: 1376,
         height: 768,
-        alt: 'Painted Baltimore harbor at sunset for Tech Week Night Edition',
+        alt: 'Painted Baltimore harbor at sunset for Baltimore Tech Week',
       },
     ],
   },

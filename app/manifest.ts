@@ -3,10 +3,10 @@ import { SITE_URL } from '@/lib/data'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Baltimore Tech Week Night Edition',
-    short_name: 'BTW Night',
+    name: 'Baltimore Tech Week',
+    short_name: 'BTW',
     description:
-      'Five nights of talks across Baltimore, April 26–30, 6PM–10PM.',
+      'One week. Charm City CoWeek by day, the tech conference at night. April 26–30.',
     start_url: '/',
     display: 'standalone',
     background_color: '#080512',

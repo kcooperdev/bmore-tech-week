@@ -14,7 +14,7 @@ export function HowItWorks() {
           </p>
           <div className="hairline-gold mt-4" />
           <h2 className="mt-5 max-w-md font-display text-[clamp(2rem,8vw,3.75rem)] uppercase leading-[0.9] text-cream text-balance">
-            How the week gets built
+            How the week goes
           </h2>
         </Reveal>
 

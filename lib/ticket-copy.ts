@@ -4,8 +4,9 @@ export function ticketAd() {
   return [
     `${EVENT.name} ${EVENT.year}.`,
     `${EVENT.dates}, after 5:30, all over town.`,
-    `Three passes open together on ${EVENT.opensOn}.`,
-    'Community is free. Support is $25. VIP is $99.',
+    `Two passes open together on ${EVENT.opensOn}.`,
+    'General Admission (Community Pass): $0.',
+    'Week Pass: $75. Only 25 for the week. Includes two drink vouchers.',
   ].join('\n')
 }
 

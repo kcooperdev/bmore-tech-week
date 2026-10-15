@@ -26,7 +26,7 @@ export function SiteFooter({ hasSchedule = false }: { hasSchedule?: boolean }) {
             <br />
             {EVENT.city}
           </p>
-          <p className="mt-3 text-sm text-cream/55">Built here, for here.</p>
+          <p className="mt-3 text-sm text-cream/55">One week. CoWeek by day, the conference at night.</p>
         </div>
 
         <div>

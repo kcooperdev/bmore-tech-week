@@ -48,35 +48,35 @@ export const PROGRAM_NIGHTS = [
     name: 'Launch Night',
     weekday: 'Monday',
     date: 'April 26',
-    body: 'Kick off the week with the state of the ecosystem, innovation, and room to grow.',
+    body: 'Opening night. The week starts here, in a room, not a ballroom.',
   },
   {
     iso: '2027-04-27' as WeekDate,
     name: 'Future of Tech Night',
     weekday: 'Tuesday',
     date: 'April 27',
-    body: 'AI, cybersecurity, GovTech, robotics, emerging tech, and the jobs coming next.',
+    body: 'What’s being built in Baltimore, and what people think comes next.',
   },
   {
     iso: '2027-04-28' as WeekDate,
     name: 'Builder Night',
     weekday: 'Wednesday',
     date: 'April 28',
-    body: 'Engineering, AI, product, UX, data, cloud, developer tools, and hands-on workshops.',
+    body: 'Hands-on. Make something, or sit close enough to watch it get made.',
   },
   {
     iso: '2027-04-29' as WeekDate,
     name: 'Founder Night',
     weekday: 'Thursday',
     date: 'April 29',
-    body: 'Startups, fundraising, sales, marketing, growth, and the lessons founders actually keep.',
+    body: 'People building companies here, talking the way they actually talk.',
   },
   {
     iso: '2027-04-30' as WeekDate,
     name: 'Community Night',
     weekday: 'Friday',
     date: 'April 30',
-    body: 'Careers, personal branding, networking, workforce, and what it takes to build here.',
+    body: 'Careers, neighbors, and the people who keep this city going.',
   },
 ] as const
 
@@ -104,11 +104,11 @@ export const TOPIC_GROUPS = ['Build', 'Founder', 'Community'] as const
 export const AUDIENCE_LEVELS = ['Beginner', 'Intermediate', 'Advanced', 'General Audience'] as const
 
 export const CFP_VALUES = [
-  'Practical insights',
-  'Real-world experience',
-  'Actionable takeaways',
-  'Diverse perspectives',
-  'Community impact',
+  'Something you actually know',
+  'A story from the work',
+  'A thing people can use',
+  'A point of view',
+  'Care for this city',
   'A room that actually talks back',
 ] as const
 
