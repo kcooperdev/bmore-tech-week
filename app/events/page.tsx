@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CTA, EVENT, involveLink } from '@/lib/data'
+import { pageSocial } from '@/lib/seo'
 import { PROGRAM_NIGHTS } from '@/lib/cfp'
 import { listPublishedEvents } from '@/lib/store'
 import { HarborTopbar } from '@/components/harbor-topbar'
@@ -19,11 +20,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: EVENT.eventsPath },
-  openGraph: {
-    title: `${title} | Baltimore Tech Week`,
-    description,
-    url: EVENT.eventsPath,
-  },
+  ...pageSocial({ title, description, path: EVENT.eventsPath }),
 }
 
 export default async function EventsPage() {

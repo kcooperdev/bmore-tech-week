@@ -2,6 +2,8 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Figtree } from 'next/font/google'
 import { EVENT, SITE_URL } from '@/lib/data'
+import { OG_IMAGE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from '@/lib/seo'
+import { JsonLd } from '@/components/json-ld'
 import { SkipLink } from '@/components/skip-link'
 import './globals.css'
 
@@ -11,33 +13,20 @@ const figtree = Figtree({
   display: 'swap',
 })
 
-const title = 'Baltimore Tech Week'
-const description =
-  'Baltimore’s first official tech conference week. Five nights, five industries, across the city. April 26–30, 2027.'
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: title,
+    default: SITE_TITLE,
     template: '%s | Baltimore Tech Week',
   },
-  description,
-  applicationName: 'Baltimore Tech Week',
-  authors: [{ name: 'Baltimore Tech Week' }],
-  creator: 'Baltimore Tech Week',
-  publisher: 'Baltimore Tech Week',
+  description: SITE_DESCRIPTION,
+  applicationName: EVENT.name,
+  authors: [{ name: EVENT.name, url: SITE_URL }],
+  creator: EVENT.name,
+  publisher: EVENT.name,
   category: 'technology',
-  keywords: [
-    'Baltimore Tech Week',
-    'Baltimore Tech Week 2027',
-    'Baltimore tech conference',
-    'Baltimore startup week',
-    'submit a venue Baltimore',
-    'submit a talk Baltimore',
-    'Baltimore Tech Week call for speakers',
-    'speak at Baltimore Tech Week',
-    'Baltimore MD events April 2027',
-  ],
+  keywords: SITE_KEYWORDS,
+  formatDetection: { email: false, address: false, telephone: false },
   alternates: {
     canonical: '/',
   },
@@ -45,23 +34,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: SITE_URL,
-    siteName: 'Baltimore Tech Week',
-    title,
-    description,
-    images: [
-      {
-        url: '/images/harbor-sunset.png',
-        width: 1376,
-        height: 768,
-        alt: 'Painted Baltimore harbor at sunset for Baltimore Tech Week',
-      },
-    ],
+    siteName: EVENT.name,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title,
-    description,
-    images: ['/images/harbor-sunset.png'],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
   robots: {
     index: true,
@@ -75,11 +57,18 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   other: {
-    'event:start_time': EVENT.startDate,
-    'event:end_time': EVENT.endDate,
+    'event:start_time': `${EVENT.startDate}T17:30:00-04:00`,
+    'event:end_time': `${EVENT.endDate}T22:00:00-04:00`,
+    'geo.region': 'US-MD',
+    'geo.placename': 'Baltimore',
   },
 }
 
@@ -87,8 +76,8 @@ export const viewport: Viewport = {
   colorScheme: 'dark',
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#2f7fa8' },
-    { media: '(prefers-color-scheme: dark)', color: '#070b16' },
+    { media: '(prefers-color-scheme: light)', color: '#f2b03a' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1208' },
   ],
 }
 
@@ -104,6 +93,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased" suppressHydrationWarning>
         <SkipLink />
+        <JsonLd />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

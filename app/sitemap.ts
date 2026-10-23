@@ -64,7 +64,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${SITE_URL}${EVENT.ticketsPath}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/apply/speak`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: `${SITE_URL}/apply/partner`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: `${SITE_URL}/apply/sponsor`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: `${SITE_URL}/apply/ambassador`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
     },
     {
       url: `${SITE_URL}${EVENT.volunteerSubmitPath}`,

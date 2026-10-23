@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { CTA, EVENT } from '@/lib/data'
+import { pageSocial } from '@/lib/seo'
 import { HarborTopbar } from '@/components/harbor-topbar'
 import { HarborFooter } from '@/components/harbor-footer'
 import { PageBanner } from '@/components/page-banner'
@@ -16,11 +17,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: EVENT.volunteerSubmitPath },
-  openGraph: {
-    title: `${title} | Baltimore Tech Week`,
-    description,
-    url: EVENT.volunteerSubmitPath,
-  },
+  ...pageSocial({ title, description, path: EVENT.volunteerSubmitPath }),
 }
 
 export default async function SubmitVolunteerPage({

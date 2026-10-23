@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { EVENT } from '@/lib/data'
+import { pageSocial } from '@/lib/seo'
 import { SPONSOR_PITCH } from '@/lib/involve'
 import { HarborTopbar } from '@/components/harbor-topbar'
 import { HarborFooter } from '@/components/harbor-footer'
@@ -89,11 +90,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: EVENT.sponsorsPath },
-  openGraph: {
-    title: `${title} | Baltimore Tech Week`,
-    description,
-    url: EVENT.sponsorsPath,
-  },
+  ...pageSocial({ title, description, path: EVENT.sponsorsPath }),
 }
 
 export default function SponsorsPage() {

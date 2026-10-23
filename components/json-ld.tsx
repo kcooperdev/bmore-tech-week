@@ -1,4 +1,5 @@
 import { EVENT, SITE_URL } from '@/lib/data'
+import { absoluteUrl, OG_IMAGE, SITE_DESCRIPTION } from '@/lib/seo'
 
 export function JsonLd() {
   const organization = {
@@ -6,10 +7,10 @@ export function JsonLd() {
     '@type': 'Organization',
     name: EVENT.name,
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
+    logo: absoluteUrl('/icon.png'),
+    image: absoluteUrl(OG_IMAGE.url),
     email: EVENT.contactEmail,
-    description:
-      'Baltimore Tech Week is five nights and five industries of conference programming across Baltimore. April 26–30.',
+    description: SITE_DESCRIPTION,
     areaServed: {
       '@type': 'City',
       name: 'Baltimore',
@@ -19,41 +20,75 @@ export function JsonLd() {
       },
     },
     sameAs: [EVENT.instagramUrl, EVENT.linkedinUrl],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: EVENT.contactEmail,
+      contactType: 'customer support',
+    },
   }
 
   const event = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    name: `${EVENT.name} ${EVENT.edition} ${EVENT.year}`,
-    description:
-      'Baltimore Tech Week, April 26 to 30. Five nights, five industries, across the city.',
-    startDate: EVENT.startDate,
-    endDate: EVENT.endDate,
+    name: `${EVENT.name} ${EVENT.year}`,
+    description: SITE_DESCRIPTION,
+    startDate: `${EVENT.startDate}T17:30:00-04:00`,
+    endDate: `${EVENT.endDate}T22:00:00-04:00`,
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    image: [`${SITE_URL}/images/hero-inner-harbor.jpg`],
+    isAccessibleForFree: true,
+    image: [absoluteUrl(OG_IMAGE.url), absoluteUrl('/images/btw-sunset.png')],
     url: SITE_URL,
     organizer: {
       '@type': 'Organization',
       name: EVENT.name,
       url: SITE_URL,
+      email: EVENT.contactEmail,
     },
     location: {
       '@type': 'Place',
-      name: 'Baltimore',
+      name: EVENT.city,
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Baltimore',
-        addressRegion: 'MD',
-        addressCountry: 'US',
+        addressLocality: EVENT.locationName,
+        addressRegion: EVENT.region,
+        addressCountry: EVENT.country,
       },
     },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'General Admission',
+        price: '0',
+        priceCurrency: 'USD',
+        url: absoluteUrl(EVENT.ticketsPath),
+        availability: 'https://schema.org/PreOrder',
+        validFrom: `${EVENT.opensOnIso}T00:00:00-04:00`,
+      },
+      {
+        '@type': 'Offer',
+        name: 'Single-Day VIP',
+        price: '45',
+        priceCurrency: 'USD',
+        url: absoluteUrl(EVENT.ticketsPath),
+        availability: 'https://schema.org/PreOrder',
+        validFrom: `${EVENT.opensOnIso}T00:00:00-04:00`,
+      },
+      {
+        '@type': 'Offer',
+        name: '5-Night Week VIP',
+        price: '125',
+        priceCurrency: 'USD',
+        url: absoluteUrl(EVENT.ticketsPath),
+        availability: 'https://schema.org/PreOrder',
+        validFrom: `${EVENT.opensOnIso}T00:00:00-04:00`,
+      },
+    ],
     keywords: [
       'Baltimore Tech Week',
       'Baltimore tech conference',
       'Baltimore tech events',
-      'venues',
-      'speakers',
+      'night conference',
     ],
   }
 
@@ -63,11 +98,15 @@ export function JsonLd() {
     name: EVENT.name,
     url: SITE_URL,
     description: EVENT.tagline,
+    inLanguage: 'en-US',
     publisher: {
       '@type': 'Organization',
       name: EVENT.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl('/icon.png'),
+      },
     },
-    inLanguage: 'en-US',
   }
 
   return (

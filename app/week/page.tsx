@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CTA, EVENT, HOW_IT_WORKS, involveLink } from '@/lib/data'
+import { pageSocial } from '@/lib/seo'
 import { PROGRAM_NIGHTS } from '@/lib/cfp'
 import { HarborTopbar } from '@/components/harbor-topbar'
 import { HarborFooter } from '@/components/harbor-footer'
@@ -15,11 +16,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: EVENT.weekPath },
-  openGraph: {
-    title: `${title} | Baltimore Tech Week`,
-    description,
-    url: EVENT.weekPath,
-  },
+  ...pageSocial({ title, description, path: EVENT.weekPath }),
 }
 
 const NIGHT_TONES = ['gold', 'sky', 'bronze', 'gold', 'sky'] as const

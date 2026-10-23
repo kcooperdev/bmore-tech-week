@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { EVENT } from '@/lib/data'
+import { pageSocial } from '@/lib/seo'
 import { AMBASSADOR_MOVES, AMBASSADOR_PITCH } from '@/lib/involve'
 import { HarborTopbar } from '@/components/harbor-topbar'
 import { HarborFooter } from '@/components/harbor-footer'
@@ -15,11 +16,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: EVENT.ambassadorsPath },
-  openGraph: {
-    title: `${title} | Baltimore Tech Week`,
-    description,
-    url: EVENT.ambassadorsPath,
-  },
+  ...pageSocial({ title, description, path: EVENT.ambassadorsPath }),
 }
 
 export default function AmbassadorsPage() {

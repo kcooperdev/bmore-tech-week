@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { EVENT, SITE_URL } from '@/lib/data'
+import { pageSocial } from '@/lib/seo'
 import { getPublishedEvent, listPublishedEvents } from '@/lib/store'
 import { formatWeekDate } from '@/lib/format'
 import { PublicShell } from '@/components/public-shell'
@@ -19,11 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: event.name,
     description,
     alternates: { canonical: `/events/${event.slug}` },
-    openGraph: {
-      title: `${event.name} | Baltimore Tech Week`,
-      description,
-      url: `/events/${event.slug}`,
-    },
+    ...pageSocial({ title: event.name, description, path: `/events/${event.slug}` }),
   }
 }
 
