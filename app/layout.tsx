@@ -1,26 +1,19 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Anton, Space_Grotesk } from 'next/font/google'
+import { Figtree } from 'next/font/google'
 import { EVENT, SITE_URL } from '@/lib/data'
 import { SkipLink } from '@/components/skip-link'
 import './globals.css'
 
-const anton = Anton({
-  weight: '400',
+const figtree = Figtree({
   subsets: ['latin'],
-  variable: '--font-anton',
-  display: 'swap',
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-figtree',
   display: 'swap',
 })
 
 const title = 'Baltimore Tech Week'
 const description =
-  'One week, two parts. Charm City CoWeek is coworking by day. The tech conference is at night. April 26–30, 2027.'
+  'Baltimore’s first official tech conference week. Five nights, five industries, across the city. April 26–30, 2027.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -35,17 +28,14 @@ export const metadata: Metadata = {
   publisher: 'Baltimore Tech Week',
   category: 'technology',
   keywords: [
-    'Charm City CoWeek',
     'Baltimore Tech Week',
     'Baltimore Tech Week 2027',
-    'Baltimore coffee shops',
-    'Charm City coworking',
+    'Baltimore tech conference',
     'Baltimore startup week',
     'submit a venue Baltimore',
     'submit a talk Baltimore',
     'Baltimore Tech Week call for speakers',
     'speak at Baltimore Tech Week',
-    'tech meets culture',
     'Baltimore MD events April 2027',
   ],
   alternates: {
@@ -110,7 +100,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${spaceGrotesk.variable} bg-background`}
+      className={`${figtree.variable} bg-background`}
     >
       <body className="font-sans antialiased" suppressHydrationWarning>
         <SkipLink />

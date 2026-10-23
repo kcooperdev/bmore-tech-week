@@ -9,7 +9,7 @@ export function JsonLd() {
     logo: `${SITE_URL}/icon.svg`,
     email: EVENT.contactEmail,
     description:
-      'Baltimore Tech Week is one week. Charm City CoWeek is coworking by day. The tech conference is at night.',
+      'Baltimore Tech Week is five nights and five industries of conference programming across Baltimore. April 26–30.',
     areaServed: {
       '@type': 'City',
       name: 'Baltimore',
@@ -26,7 +26,7 @@ export function JsonLd() {
     '@type': 'Event',
     name: `${EVENT.name} ${EVENT.edition} ${EVENT.year}`,
     description:
-      'Baltimore Tech Week, April 26 to 30. Coworking by day, the tech conference at night.',
+      'Baltimore Tech Week, April 26 to 30. Five nights, five industries, across the city.',
     startDate: EVENT.startDate,
     endDate: EVENT.endDate,
     eventStatus: 'https://schema.org/EventScheduled',
@@ -50,9 +50,8 @@ export function JsonLd() {
     },
     keywords: [
       'Baltimore Tech Week',
-      'Charm City CoWeek',
+      'Baltimore tech conference',
       'Baltimore tech events',
-      'Charm City',
       'venues',
       'speakers',
     ],

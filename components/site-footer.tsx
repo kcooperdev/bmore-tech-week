@@ -1,6 +1,7 @@
 import Link from 'next/link'
+import { ApplyLink } from '@/components/apply-link'
 import { ComingSoonButton } from '@/components/coming-soon'
-import { CTA, EVENT } from '@/lib/data'
+import { CTA, EVENT, isApplyOpenNow } from '@/lib/data'
 import { Wordmark } from '@/components/wordmark'
 
 export function SiteFooter({ hasSchedule = false }: { hasSchedule?: boolean }) {
@@ -26,7 +27,7 @@ export function SiteFooter({ hasSchedule = false }: { hasSchedule?: boolean }) {
             <br />
             {EVENT.city}
           </p>
-          <p className="mt-3 text-sm text-cream/55">One week. CoWeek by day, the conference at night.</p>
+          <p className="mt-3 text-sm text-cream/55">Five nights. One city. The conference after 5:30.</p>
         </div>
 
         <div>
@@ -72,10 +73,10 @@ export function SiteFooter({ hasSchedule = false }: { hasSchedule?: boolean }) {
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
-          {EVENT.speakerCallOpen ? (
-            <Link href={EVENT.speakersPath} className="btn-cta-secondary mt-6 w-full sm:w-auto">
+          {isApplyOpenNow() ? (
+            <ApplyLink kind="speak" className="btn-cta-secondary mt-6 w-full sm:w-auto">
               {CTA.submitTalk}
-            </Link>
+            </ApplyLink>
           ) : EVENT.submissionsOpen ? (
             <Link href={EVENT.volunteerSubmitPath} className="btn-cta-outline mt-6 w-full sm:w-auto">
               {CTA.submitVolunteer}

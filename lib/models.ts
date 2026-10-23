@@ -112,6 +112,11 @@ export type TicketSignup = {
   id: string
   email: string
   pass?: string
+  name?: string
+  organization?: string
+  role?: string
+  website?: string
+  notes?: string
   createdAt: string
 }
 

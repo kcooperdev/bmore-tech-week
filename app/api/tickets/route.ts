@@ -3,6 +3,7 @@ import { FormError, parseWaitlistInput } from '@/lib/validate'
 import { createTicketSignup } from '@/lib/store'
 import { appendToSheet, ticketSheetFields } from '@/lib/sheets'
 import { sendTicketConfirmation } from '@/lib/ticket-mail'
+import { syncToEventOps } from '@/lib/ops-sync'
 import type { TicketSignup } from '@/lib/models'
 
 export async function POST(request: Request) {
@@ -19,6 +20,11 @@ export async function POST(request: Request) {
       id: crypto.randomUUID(),
       email: input.email,
       pass: input.pass,
+      name: input.name || undefined,
+      organization: input.organization || undefined,
+      role: input.role || undefined,
+      website: input.website || undefined,
+      notes: input.notes || undefined,
       createdAt: new Date().toISOString(),
     }
     const saved = await createTicketSignup(signup)
@@ -26,6 +32,20 @@ export async function POST(request: Request) {
       await appendToSheet('tickets', ticketSheetFields(saved))
       await sendTicketConfirmation(saved.email, saved.pass || '')
     }
+    await syncToEventOps({
+      kind: 'updates',
+      category: 'updates',
+      name: saved.name || saved.email,
+      email: saved.email,
+      organization: saved.organization || '',
+      role: saved.role,
+      website: saved.website,
+      passType: saved.pass || 'Updates list',
+      primaryDetail: saved.pass || 'Updates list',
+      secondaryDetail: 'Homepage popup',
+      source: 'Homepage popup',
+      notes: saved.notes,
+    })
     return NextResponse.json({ ok: true })
   } catch (err) {
     if (err instanceof FormError) {

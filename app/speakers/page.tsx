@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { EVENT } from '@/lib/data'
+import { SPEAK_PITCH } from '@/lib/involve'
 import { HarborTopbar } from '@/components/harbor-topbar'
+import { HarborFooter } from '@/components/harbor-footer'
+import { PageBanner } from '@/components/page-banner'
+import { InvolveClose, InvolvePitch } from '@/components/involve-pitch'
 import { SpeakersApply } from '@/components/speakers-apply'
 import '../../styles.css'
 
-const title = 'Call for Speakers'
+const title = 'Give a Talk'
 const description =
-  'Apply to speak at the Baltimore Tech Week conference. Evenings after the daytime coworking, April 26–30.'
-
-export const dynamic = 'force-dynamic'
+  'Apply to speak at Baltimore Tech Week. Workshops, panels, and tech talks from people who do the work here. April 26 to 30, 2027.'
 
 export const metadata: Metadata = {
   title,
@@ -26,31 +27,15 @@ export default function SpeakersPage() {
   return (
     <div className="bmore bmore-page">
       <HarborTopbar current="speakers" />
+      <PageBanner title="Give a Talk" kicker="Get Involved" />
 
-      <section className="cfp-hero cfp-hero-speakers" aria-label="Call for Speakers">
-        <Image
-          className="cfp-hero-plate"
-          src="/images/harbor-night.png"
-          alt=""
-          fill
-          sizes="100vw"
-          priority
-          quality={78}
-        />
-        <div className="cfp-hero-veil" />
-        <div className="cfp-hero-copy">
-          <div className="night-title">
-            <h1>
-              <span>Call for</span>
-              <span>Speakers</span>
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      <main className="cfp-main" id="main" tabIndex={-1}>
+      <main id="main" tabIndex={-1}>
+        <InvolvePitch copy={SPEAK_PITCH} />
         <SpeakersApply />
+        <InvolveClose title="If you have a session in mind, send it." kind="speak" cta={SPEAK_PITCH.cta} />
       </main>
+
+      <HarborFooter />
     </div>
   )
 }

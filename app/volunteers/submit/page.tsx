@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
 import { CTA, EVENT } from '@/lib/data'
-import { PublicShell, PageIntro } from '@/components/public-shell'
-import { ComingSoonNotice } from '@/components/coming-soon'
+import { HarborTopbar } from '@/components/harbor-topbar'
+import { HarborFooter } from '@/components/harbor-footer'
+import { PageBanner } from '@/components/page-banner'
 import { VolunteerForm } from '@/components/forms/volunteer-form'
+import '../../../styles.css'
 
 const title = 'Volunteer'
 const description =
-  'Crew a night of Baltimore Tech Week. Check-in, set up, or breakdown. April 26–30, after 6.'
+  'Crew a night of Baltimore Tech Week. Check-in, set up, or breakdown. April 26–30, after 5:30 PM.'
 
 export const dynamic = 'force-dynamic'
 
@@ -21,17 +23,33 @@ export const metadata: Metadata = {
   },
 }
 
-export default function SubmitVolunteerPage() {
+export default async function SubmitVolunteerPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ demo?: string }>
+}) {
+  const { demo } = await searchParams
+  const isDemo = demo === '1'
   return (
-    <PublicShell sticky={false}>
-      <PageIntro
-        eyebrow="Crew"
-        title={CTA.submitVolunteer}
-        body="Check-in, set up, breakdown. Pick a role and a night. We’ll place you when the rooms lock."
-      />
-      <div className="mx-auto max-w-3xl px-4 pb-20 md:px-8">
-        {EVENT.submissionsOpen ? <VolunteerForm /> : <ComingSoonNotice />}
-      </div>
-    </PublicShell>
+    <div className="bmore bmore-page">
+      <HarborTopbar current="volunteers" />
+      <PageBanner title={CTA.submitVolunteer} kicker="Crew the week" />
+
+      <main className="cfp-main" id="main" tabIndex={-1}>
+        <section className="cfp-section">
+          <p className="cfp-kicker">Sign up to volunteer</p>
+          <h2 className="cfp-h2">Help run a room</h2>
+          <p className="cfp-copy">
+            Check-in, set up, or breakdown. Pick your role and the nights you can work (April 26–30). Volunteers get
+            full access to the sessions they crew.
+          </p>
+          <div style={{ marginTop: '2rem' }}>
+            <VolunteerForm demo={isDemo} />
+          </div>
+        </section>
+      </main>
+
+      <HarborFooter />
+    </div>
   )
 }

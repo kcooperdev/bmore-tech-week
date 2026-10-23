@@ -3,10 +3,11 @@ import { EVENT } from '@/lib/data'
 export function ticketAd() {
   return [
     `${EVENT.name} ${EVENT.year}.`,
-    `${EVENT.dates}, after 5:30, all over town.`,
-    `Two passes open together on ${EVENT.opensOn}.`,
-    'General Admission (Community Pass): $0.',
-    'Week Pass: $75. Only 25 for the week. Includes two drink vouchers.',
+    `${EVENT.dates}, after 5:30, in rooms around the city.`,
+    `Tickets open ${EVENT.opensOn}.`,
+    'General Admission is free.',
+    'A single-night VIP is $45: priority line, one drink ticket, front row, and a swag bag. 35 per night.',
+    'The 5-night Week VIP is $125: express line every night, three drink tickets, a t-shirt, swag, and front row.',
   ].join('\n')
 }
 
@@ -31,7 +32,7 @@ function renderHtml(text: string, unsubscribe: boolean) {
 export function ticketMessage(kind: 'confirm' | 'open', options?: { pass?: string; url?: string }) {
   const intro =
     kind === 'confirm'
-      ? `You're on the list${options?.pass ? ` for the ${options.pass}` : ''}. We'll write again on ${EVENT.opensOn}, from ${EVENT.contactEmail}, when the link is live.`
+      ? `Thanks. You are on the list${options?.pass && options.pass !== 'Updates list' ? ` for the ${options.pass}` : ''}. We will write on ${EVENT.opensOn} from ${EVENT.contactEmail}, when the ticket link is live.`
       : `Passes are on sale.${options?.url ? ` ${options.url}` : ''}`
   const text = `${intro}\n\n${ticketAd()}`
   const subject =

@@ -110,15 +110,26 @@ export async function createSpeaker(speaker: Speaker) {
   })
 }
 
-export async function createTicketSignup(signup: TicketSignup) {
+export function createTicketSignup(signup: TicketSignup) {
   return withLock(async () => {
     const store = await load()
-    const existing = store.ticketSignups.find((item) => item.email === signup.email)
-    if (existing) return existing
+    const existing = store.ticketSignups.find(
+      (item) => item.email === signup.email && (item.pass || '') === (signup.pass || ''),
+    )
+    if (existing) {
+      Object.assign(existing, signup, { id: existing.id })
+      await persist(store)
+      return existing
+    }
     store.ticketSignups.push(signup)
     await persist(store)
     return signup
   })
+}
+
+export async function listTicketSignups() {
+  const store = await getStore()
+  return store.ticketSignups
 }
 
 export async function createVolunteer(volunteer: Volunteer) {

@@ -3,6 +3,7 @@ import { EVENT } from '@/lib/data'
 import { FormError, parseVenueInput } from '@/lib/validate'
 import { createVenue } from '@/lib/store'
 import { appendToSheet, venueSheetFields } from '@/lib/sheets'
+import { syncToEventOps } from '@/lib/ops-sync'
 import type { Venue } from '@/lib/models'
 
 export async function POST(request: Request) {
@@ -28,6 +29,19 @@ export async function POST(request: Request) {
     }
     await createVenue(venue)
     await appendToSheet('hosts', venueSheetFields(venue))
+    await syncToEventOps({
+      kind: 'venue',
+      category: 'venues',
+      name: venue.name,
+      email: venue.contactEmail,
+      contactName: venue.contactName,
+      organization: venue.address,
+      neighborhood: venue.neighborhood,
+      venueType: venue.venueType,
+      capacity: venue.capacity,
+      availableDates: venue.availableDates,
+      notes: `${venue.costType}${venue.costAmount ? ` · ${venue.costAmount}` : ''}`,
+    })
     return NextResponse.json({ ok: true, id: venue.id })
   } catch (err) {
     if (err instanceof FormError) {

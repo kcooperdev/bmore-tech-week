@@ -3,6 +3,7 @@ import { EVENT } from '@/lib/data'
 import { FormError, parseVolunteerInput } from '@/lib/validate'
 import { createVolunteer } from '@/lib/store'
 import { appendToSheet, volunteerSheetFields } from '@/lib/sheets'
+import { syncToEventOps } from '@/lib/ops-sync'
 import type { Volunteer } from '@/lib/models'
 
 export async function POST(request: Request) {
@@ -28,6 +29,17 @@ export async function POST(request: Request) {
     }
     await createVolunteer(volunteer)
     await appendToSheet('volunteers', volunteerSheetFields(volunteer))
+    await syncToEventOps({
+      kind: 'volunteer',
+      category: 'volunteers',
+      name: volunteer.name,
+      email: volunteer.email,
+      phone: volunteer.phone,
+      organization: volunteer.preferredNeighborhood,
+      role: volunteer.roles.join(', '),
+      shift: volunteer.availableDates.join(', '),
+      notes: volunteer.notes,
+    })
     return NextResponse.json({ ok: true, id: volunteer.id })
   } catch (err) {
     if (err instanceof FormError) {

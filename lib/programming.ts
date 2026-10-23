@@ -161,9 +161,9 @@ export function toProgrammingMarkdown() {
 
 ## Locked team events
 
-1. **Opening Night** — Monday, April 26, 5:30–7:00 PM, Room A  
+1. **Opening Night.** Monday, April 26, 5:30–7:00 PM, Room A  
    Produced by the Tech Week team. Welcome, week map, first room.
-2. **Closing Night** — Friday, April 30, 9:00–10:00 PM, Room A  
+2. **Closing Night.** Friday, April 30, 9:00–10:00 PM, Room A  
    Produced by the Tech Week team. Recap, people, last hour together.
 
 Room B stays dark during those two hours so the city has one opening and one close.
@@ -205,7 +205,6 @@ ${daySections}
 
 AI, Cyber, UX, and Dev color a night or a room. They do not create four parallel conferences.
 
-—  
 Internal planning document. Not the public schedule.
 `
 }

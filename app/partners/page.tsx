@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { EVENT } from '@/lib/data'
+import { PARTNER_PITCH } from '@/lib/involve'
 import { HarborTopbar } from '@/components/harbor-topbar'
+import { HarborFooter } from '@/components/harbor-footer'
+import { PageBanner } from '@/components/page-banner'
+import { InvolveClose, InvolvePitch } from '@/components/involve-pitch'
 import { OfferBoard, type Offer } from '@/components/offer-board'
 import '../../styles.css'
 
 const title = 'Community Partners'
 const description =
-  'Partner with Charm City CoWeek and Baltimore Tech Week. Free for the groups that already gather the city. April 26–30.'
+  'Your people already trust you. Partner with Baltimore Tech Week. Free for the groups that already gather the city. April 26–30.'
 
 const offers: Offer[] = [
   {
@@ -45,36 +48,21 @@ export default function PartnersPage() {
   return (
     <div className="bmore bmore-page">
       <HarborTopbar current="partners" />
+      <PageBanner title="Community Partners" kicker="Get Involved" />
 
-      <section className="cfp-hero cfp-hero-offer" aria-label="Community partners">
-        <Image
-          className="cfp-hero-plate"
-          src="/images/harbor-night.png"
-          alt=""
-          fill
-          sizes="100vw"
-          priority
-          quality={78}
-        />
-        <div className="cfp-hero-veil" />
-        <div className="cfp-hero-copy">
-          <div className="night-title">
-            <h1>
-              <span>Community</span>
-              <span>Partners</span>
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      <main className="cfp-main" id="main" tabIndex={-1}>
+      <main id="main" tabIndex={-1}>
+        <InvolvePitch copy={PARTNER_PITCH} />
         <OfferBoard
           railLabel="Community partner"
           lead="Free, if you already bring people together in Baltimore."
-          sibling={{ href: EVENT.sponsorsPath, label: 'Sponsor the week' }}
+          applyKind="partner"
+          sibling={{ kind: 'sponsor', label: 'Sponsor' }}
           offers={offers}
         />
+        <InvolveClose title="If you already gather people, we would like to work with you." kind="partner" cta={PARTNER_PITCH.cta} />
       </main>
+
+      <HarborFooter />
     </div>
   )
 }

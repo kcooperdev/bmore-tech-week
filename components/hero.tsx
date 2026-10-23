@@ -35,7 +35,7 @@ export function Hero() {
         <div className="mt-6 h-px w-16 bg-gold/80 animate-fade-up [animation-delay:80ms] sm:mt-7" />
 
         <p className="mt-5 max-w-md animate-fade-up text-base leading-relaxed text-cream/78 [animation-delay:140ms] text-pretty sm:text-lg">
-          Baltimore Tech Week. Coworking by day, the conference at night.
+          Baltimore Tech Week. Five nights of conference programming across the city.
         </p>
 
         <div id="hero-rsvp" className="mt-8 animate-fade-up [animation-delay:200ms] sm:mt-9">

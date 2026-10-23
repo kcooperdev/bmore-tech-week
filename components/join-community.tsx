@@ -19,7 +19,7 @@ export function JoinCommunity() {
             Come through later
           </h2>
           <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-cream/80 text-pretty sm:text-lg">
-            One week. Coworking by day, the conference at night. Until then, help build it.
+            Five nights. One city. Until then, help build it.
           </p>
         </Reveal>
 

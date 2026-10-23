@@ -158,7 +158,7 @@ export function parseSpeakerInput(body: Record<string, unknown>) {
     preferredNights,
     audienceLevel: included(body.audienceLevel, AUDIENCE_SET, 'Audience level'),
     spokenBefore: yesNo(body.spokenBefore, 'Speaking experience'),
-    previousTalks: str(body.previousTalks, 'Previous talks', 800, false),
+    previousTalks: str(body.previousTalks, 'Previous talks', 2000, false),
     accessibility: str(body.accessibility, 'Accessibility accommodations', 400, false),
     panelistFallback: yesNo(body.panelistFallback, 'Panelist interest'),
     notes: str(body.notes, 'Additional information', 800, false),
@@ -204,7 +204,35 @@ export function parseVolunteerInput(body: Record<string, unknown>) {
 export function parseWaitlistInput(body: Record<string, unknown>) {
   return {
     email: email(body.email, 'Email'),
-    pass: str(body.pass, 'Pass', 80, false),
+    pass: str(body.pass, 'Pass', 120, false),
+    name: str(body.name, 'Name', 120, false),
+    organization: str(body.organization, 'Organization', 140, false),
+    role: str(body.role, 'Role / title', 140, false),
+    website: optionalUrl(body.website, 'Website'),
+    notes: str(body.notes, 'Notes', 800, false),
+  }
+}
+
+const APPLY_KINDS = new Set(['partner', 'sponsor', 'ambassador'] as const)
+
+export function parseApplyInput(body: Record<string, unknown>) {
+  const kind = included(body.kind, APPLY_KINDS, 'Application type')
+  const pass =
+    kind === 'partner'
+      ? 'Partner'
+      : kind === 'ambassador'
+        ? 'Ambassador'
+        : str(body.pass, 'Sponsor tier', 80)
+
+  return {
+    kind,
+    email: email(body.email, 'Email'),
+    name: str(body.name, 'Name', 120),
+    organization: str(body.organization, 'Organization', 160, kind !== 'ambassador'),
+    role: str(body.role, 'Role / title', 140, kind === 'sponsor'),
+    website: optionalUrl(body.website, 'Website'),
+    pass,
+    notes: str(body.notes, 'Details', 2500),
   }
 }
 

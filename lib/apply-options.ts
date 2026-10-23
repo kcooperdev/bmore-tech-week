@@ -1,0 +1,110 @@
+export const PRONOUNS = ['she / her', 'he / him', 'they / them', 'Prefer not to say', 'Something else'] as const
+
+export const HEARD_ABOUT = [
+  'Instagram',
+  'LinkedIn',
+  'A friend',
+  'A meetup or group',
+  'Campus',
+  'Work',
+  'Google',
+  'Other',
+] as const
+
+export const YEARS_AROUND = ['I live here now', 'A few years', 'Most of my life', 'Visiting / elsewhere'] as const
+
+export const PARTNER_TYPES = [
+  'Meetup',
+  'University / school',
+  'Accelerator',
+  'Nonprofit',
+  'Coworking space',
+  'Student organization',
+  'Workforce / talent program',
+  'Media / newsletter',
+  'Other',
+] as const
+
+export const PARTNER_SIZES = [
+  'Under 50 people',
+  '50–200 people',
+  '200–1,000 people',
+  '1,000+ people',
+] as const
+
+export const PARTNER_CHANNELS = [
+  'Newsletter',
+  'Instagram',
+  'LinkedIn',
+  'Slack / Discord',
+  'In-person meetup',
+  'Campus / classroom',
+  'Website',
+] as const
+
+export const PARTNER_HELP = [
+  'Share the week with our people',
+  'Host a room or satellite hang',
+  'Bring volunteers',
+  'Help with student tickets',
+  'Introduce sponsors or speakers',
+] as const
+
+export const SPONSOR_TIERS = [
+  { id: 'supporting', label: 'Supporting', price: '$500' },
+  { id: 'community', label: 'Community', price: '$1,000' },
+  { id: 'innovation', label: 'Innovation', price: '$2,500' },
+  { id: 'ecosystem', label: 'Ecosystem', price: '$5,000' },
+  { id: 'presenting', label: 'Presenting', price: '$10,000' },
+  { id: 'unsure', label: 'Not sure yet', price: 'Talk first' },
+] as const
+
+export const COMPANY_SIZES = ['1–10', '11–50', '51–200', '201–1,000', '1,000+'] as const
+
+export const SPONSOR_GOALS = [
+  'Brand in Baltimore',
+  'Recruiting / talent',
+  'Customers / pipeline',
+  'Community support',
+  'Product in front of builders',
+] as const
+
+export const SPONSOR_DECISIONS = [
+  'I can decide',
+  'I recommend, someone else signs',
+  'Exploring for later',
+] as const
+
+export const SPONSOR_CALL_SLOTS = [
+  { id: '2026-10-28-10', label: 'Wed, Oct 28 · 10:00–10:20 AM ET' },
+  { id: '2026-10-28-14', label: 'Wed, Oct 28 · 2:00–2:20 PM ET' },
+  { id: '2026-10-29-16', label: 'Thu, Oct 29 · 4:30–4:50 PM ET' },
+  { id: '2026-11-03-10', label: 'Tue, Nov 3 · 10:00–10:20 AM ET' },
+  { id: '2026-11-04-14', label: 'Wed, Nov 4 · 2:00–2:20 PM ET' },
+  { id: '2026-11-05-16', label: 'Thu, Nov 5 · 4:30–4:50 PM ET' },
+  { id: '2026-11-10-10', label: 'Tue, Nov 10 · 10:00–10:20 AM ET' },
+  { id: '2026-11-12-14', label: 'Thu, Nov 12 · 2:00–2:20 PM ET' },
+  { id: '2026-11-17-16', label: 'Tue, Nov 17 · 4:30–4:50 PM ET' },
+  { id: '2026-11-19-10', label: 'Thu, Nov 19 · 10:00–10:20 AM ET' },
+  { id: '2026-12-02-14', label: 'Wed, Dec 2 · 2:00–2:20 PM ET' },
+  { id: '2026-12-08-10', label: 'Tue, Dec 8 · 10:00–10:20 AM ET' },
+  { id: '2026-12-10-16', label: 'Thu, Dec 10 · 4:30–4:50 PM ET' },
+] as const
+
+export const AMBASSADOR_CHANNELS = [
+  'Instagram',
+  'LinkedIn',
+  'TikTok',
+  'Newsletter',
+  'Campus',
+  'Meetup / group',
+  'Word of mouth',
+  'Workplace',
+] as const
+
+export const AMBASSADOR_REACH = [
+  'A tight circle (under 50)',
+  'A regular group (50–200)',
+  'A wider network (200–1,000)',
+  'A large audience (1,000+)',
+] as const

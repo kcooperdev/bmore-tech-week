@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Baltimore Tech Week',
     short_name: 'BTW',
     description:
-      'One week. Charm City CoWeek by day, the tech conference at night. April 26–30.',
+      'Five nights. One city. Baltimore’s tech conference. April 26–30.',
     start_url: '/',
     display: 'standalone',
     background_color: '#080512',

@@ -1,83 +1,70 @@
-'use client'
-
-import { useState } from 'react'
-import { EVENT } from '@/lib/data'
 import { CFP_NOT_LOOKING, CFP_VALUES, SESSION_TYPES } from '@/lib/cfp'
-import { SpeakerForm } from '@/components/forms/speaker-form'
+import { ApplyLink } from '@/components/apply-link'
+
+const TONES = ['gold', 'sky', 'bronze'] as const
 
 export function SpeakersApply() {
-  const [format, setFormat] = useState('')
-
-  function pickFormat(id: string) {
-    setFormat(id)
-    const apply = document.getElementById('apply')
-    apply?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    document.getElementById('apply-title')?.focus({ preventScroll: true })
-  }
-
   return (
-    <>
-      <section className="cfp-section" id="formats">
-        <p className="cfp-kicker">Formats</p>
-        <h2 className="cfp-h2">Session types</h2>
-        <p className="cfp-copy">Choose a type to start the application.</p>
-        <div className="cfp-formats">
-          {SESSION_TYPES.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className={`cfp-select${format === item.id ? ' is-on' : ''}`}
-              onClick={() => pickFormat(item.id)}
-              aria-pressed={format === item.id}
-            >
-              <p className="cfp-format-meta">{item.length}</p>
-              <h3 className="cfp-h3">{item.label}</h3>
-              <p className="cfp-tight">{item.body}</p>
-            </button>
-          ))}
+    <div>
+      <section className="ed-dark-showcase" id="formats">
+        <div className="ed-container">
+          <div className="ed-want-row">
+            <div>
+              <p className="ed-service-kicker">We want</p>
+              <ul className="ed-clean-list">
+                {CFP_VALUES.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="ed-service-kicker">Not this</p>
+              <ul className="ed-clean-list">
+                {CFP_NOT_LOOKING.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <h2 className="ed-section-title">Pick a format</h2>
+
+          <div className="ed-card-stack">
+            {SESSION_TYPES.map((item, idx) => {
+              const tone = TONES[idx % TONES.length]
+              return (
+                <article key={item.id} className={`ed-service-card ed-tone-${tone}`}>
+                  <span className="ed-service-num" aria-hidden="true">
+                    0{idx + 1}
+                  </span>
+                  <div className="ed-service-copy">
+                    <span className="ed-service-kicker">{item.length}</span>
+                    <h3 className="ed-service-title">{item.label}</h3>
+                    <p className="ed-service-lead">{item.body}</p>
+                    {item.examples.length > 0 ? (
+                      <ul className="ed-service-list">
+                        {item.examples.slice(0, 3).map((ex) => (
+                          <li key={ex}>
+                            <span>{ex}</span>
+                            <span className="ed-service-plus" aria-hidden="true">
+                              +
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    <div className="ed-service-action">
+                      <ApplyLink kind="speak" query={`format=${item.id}`} className="ed-card-cta">
+                        Apply for {item.label} →
+                      </ApplyLink>
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
         </div>
       </section>
-
-      <section className="cfp-section">
-        <div className="cfp-split">
-          <div>
-            <p className="cfp-kicker">We want</p>
-            <ul className="cfp-compact">
-              {CFP_VALUES.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="cfp-kicker">Not this</p>
-            <ul className="cfp-compact">
-              {CFP_NOT_LOOKING.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="cfp-section" id="apply">
-        <p className="cfp-kicker">Apply</p>
-        <h2 className="cfp-h2" id="apply-title" tabIndex={-1}>
-          Speaker application
-        </h2>
-        <p className="cfp-copy">
-          The evenings need voices from the city. Deadline is{' '}
-          <time dateTime={EVENT.speakerDeadlineIso}>{EVENT.speakerDeadline}</time>. Decisions on{' '}
-          <time dateTime={EVENT.speakerDecisionIso}>{EVENT.speakerDecision}</time>.
-        </p>
-        {EVENT.speakerCallOpen ? (
-          <SpeakerForm format={format} onFormatChange={setFormat} />
-        ) : (
-          <p className="cfp-copy">
-            Applications open November 2026. The call is posted. Reach us at{' '}
-            <a href={`mailto:${EVENT.contactEmail}`}>{EVENT.contactEmail}</a> if you need us sooner.
-          </p>
-        )}
-      </section>
-    </>
+    </div>
   )
 }

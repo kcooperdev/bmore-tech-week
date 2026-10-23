@@ -31,7 +31,7 @@ export function FormSuccess({
       </p>
       <p className="mt-2 text-sm leading-relaxed text-cream/80">{body}</p>
       <p className="mt-4 text-sm leading-relaxed text-cream/65">
-        We read every one. If it fits a night, we email you. Nothing else to do right now.
+        We read every one. If it fits a night, we email you from {EVENT.contactEmail}. Nothing else to do right now.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <button

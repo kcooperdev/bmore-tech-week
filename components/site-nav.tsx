@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useId, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { ApplyLink } from '@/components/apply-link'
 import { ComingSoonButton } from '@/components/coming-soon'
-import { CTA, EVENT } from '@/lib/data'
+import { CTA, EVENT, isApplyOpenNow } from '@/lib/data'
 import { Wordmark } from '@/components/wordmark'
 
 const BASE_LINKS = [
   { href: EVENT.weekPath, label: 'The Week' },
-  { href: EVENT.speakersPath, label: 'Speakers' },
+  { href: EVENT.speakersPath, label: 'Give a Talk' },
   ...(EVENT.submissionsOpen
     ? [
         { href: EVENT.volunteerSubmitPath, label: 'Volunteer' },
@@ -156,10 +157,10 @@ export function SiteNav({ hasSchedule = false }: { hasSchedule?: boolean }) {
                 </Link>
               )
             })}
-            {EVENT.speakerCallOpen ? (
-              <Link href={EVENT.speakersPath} className="btn-cta-secondary px-4 py-2 text-sm">
+            {isApplyOpenNow() ? (
+              <ApplyLink kind="speak" className="btn-cta-secondary px-4 py-2 text-sm">
                 {CTA.submitTalk}
-              </Link>
+              </ApplyLink>
             ) : EVENT.submissionsOpen ? (
               <Link href={EVENT.speakerSubmitPath} className="btn-cta-secondary px-4 py-2 text-sm">
                 {CTA.submitTalk}
@@ -227,13 +228,12 @@ export function SiteNav({ hasSchedule = false }: { hasSchedule?: boolean }) {
                     {CTA.submitVolunteer}
                   </Link>
                 ) : null}
-                <Link
-                  href={EVENT.speakersPath}
-                  onClick={() => setOpen(false)}
+                <ApplyLink
+                  kind="speak"
                   className={`btn-cta-secondary ${EVENT.submissionsOpen ? '' : 'col-span-2'}`}
                 >
                   {CTA.submitTalk}
-                </Link>
+                </ApplyLink>
               </>
             ) : (
               <ComingSoonButton className="col-span-2" />

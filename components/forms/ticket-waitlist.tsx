@@ -39,7 +39,7 @@ export function TicketWaitlist() {
     return (
       <p className="mt-10 inline-flex items-center gap-2 text-sm text-cream/80" role="status">
         <Check className="size-4 text-gold" aria-hidden />
-        You are on the ticket list. We will email you when they drop.
+        Thanks. You are on the list. We will email you from team@bmoretechweek.com when tickets open.
       </p>
     )
   }

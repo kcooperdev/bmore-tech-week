@@ -78,11 +78,11 @@ export default function ProgrammingPage() {
               </h2>
               <ol className="mt-2 space-y-2 text-sm">
                 <li>
-                  <strong>Opening Night</strong> — Monday, April 26, 5:30–7:00 PM,
+                  <strong>Opening Night.</strong> Monday, April 26, 5:30–7:00 PM,
                   Room A. Produced by the Tech Week team.
                 </li>
                 <li>
-                  <strong>Closing Night</strong> — Friday, April 30, 9:00–10:00 PM,
+                  <strong>Closing Night.</strong> Friday, April 30, 9:00–10:00 PM,
                   Room A. Produced by the Tech Week team.
                 </li>
               </ol>

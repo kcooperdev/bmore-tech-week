@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
-import { EVENT } from '@/lib/data'
+import { applyLink } from '@/lib/data'
 
 export default function SubmitTalkRedirect() {
-  redirect(`${EVENT.speakersPath}#apply`)
+  redirect(applyLink('speak').href)
 }

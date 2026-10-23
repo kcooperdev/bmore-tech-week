@@ -12,6 +12,7 @@ export const EVENT = {
   startDate: '2027-04-26',
   endDate: '2027-04-30',
   opensOn: 'Nov 1st, 2026',
+  opensOnIso: '2026-11-01',
   speakerDeadline: 'February 1, 2027',
   speakerDeadlineIso: '2027-02-01',
   speakerDecision: 'March 1',
@@ -20,10 +21,10 @@ export const EVENT = {
   locationName: 'Baltimore',
   region: 'MD',
   country: 'US',
-  tagline: 'One week. Coworking by day, the conference at night.',
+  tagline: 'Five nights. Five industries. Across Baltimore.',
   ticketsStatus: 'coming soon' as const,
-  submissionsOpen: false,
-  speakerCallOpen: true,
+  submissionsOpen: true,
+  speakerCallOpen: false,
   infoSessionUrl: 'https://luma.com/on6frsgw',
   infoSessionVolunteerUrl: 'https://app.youform.com/forms/rggnoncr',
   infoSessionDate: 'August 27',
@@ -39,13 +40,17 @@ export const EVENT = {
   speakersPath: '/speakers',
   partnersPath: '/partners',
   sponsorsPath: '/sponsors',
+  ambassadorsPath: '/ambassadors',
+  demoPath: '/demo',
   ticketsPath: '/tickets',
   speakerSubmitPath: '/speakers',
   volunteerSubmitPath: '/volunteers/submit',
   adminPath: '/admin',
   contactEmail: 'team@bmoretechweek.com',
-  // Calendar URL for partner and sponsor calls. Empty until that link exists.
   speakBookingUrl: '',
+  speakApplyUrl: '',
+  partnerApplyUrl: '',
+  sponsorApplyUrl: '',
   instagramUrl: 'https://www.instagram.com/baltimoretechweekhq',
   instagramHandle: '@baltimoretechweekhq',
   linkedinUrl: 'https://www.linkedin.com/company/baltimore-tech-week-2027',
@@ -53,40 +58,87 @@ export const EVENT = {
 
 export const CTA = {
   submitVenue: 'Host a night',
-  submitTalk: 'Apply to speak',
-  callForSpeakers: 'Call for Speakers',
+  submitTalk: 'Give a Talk',
+  callForSpeakers: 'Give a Talk',
+  partnerWithUs: 'Partner',
+  sponsorUs: 'Sponsor',
+  beAmbassador: 'Be an Ambassador',
   submitVolunteer: 'Volunteer',
   viewEvents: 'See what’s on',
-  getInvolved: 'Get involved',
+  getInvolved: 'Get Involved',
   comingSoon: 'More details coming soon',
 } as const
 
+export type ApplyKind = 'speak' | 'partner' | 'sponsor' | 'ambassador'
+
+export function baltimoreDate(now = new Date()) {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(now)
+}
+
+export function isApplyOpenNow(now = new Date()) {
+  return baltimoreDate(now) >= EVENT.opensOnIso
+}
+
+export function applyRequestOpen(request: Request) {
+  return isApplyOpenNow() || request.headers.get('x-btw-demo') === '1'
+}
+
+export function applyFetchHeaders(demo = false): HeadersInit {
+  return {
+    'Content-Type': 'application/json',
+    ...(demo ? { 'x-btw-demo': '1' } : {}),
+  }
+}
+
+export function applyLink(kind: ApplyKind) {
+  return {
+    href: {
+      speak: '/apply/speak',
+      partner: '/apply/partner',
+      sponsor: '/apply/sponsor',
+      ambassador: '/apply/ambassador',
+    }[kind],
+    external: true,
+  }
+}
+
+export function involveLink(kind: ApplyKind) {
+  return {
+    href: {
+      speak: EVENT.speakersPath,
+      partner: EVENT.partnersPath,
+      sponsor: EVENT.sponsorsPath,
+      ambassador: EVENT.ambassadorsPath,
+    }[kind],
+  }
+}
+
 export const STATS = [
-  { value: '5', label: 'Days in the city' },
-  { value: '5:30–10', label: 'Every evening' },
-  { value: 'Shops', label: 'A new one each day' },
+  { value: '5:30', label: 'Doors each night' },
+  { value: '5', label: 'Neighborhoods' },
+  { value: '$0', label: 'Community tickets' },
 ]
 
 export const HOW_IT_WORKS = [
   {
     step: '01',
     title: 'Show up',
-    body: 'Bring a laptop to that day’s coffee shop. The shop changes, so the neighborhood does too.',
+    body: 'Doors open at 5:30. That night’s venue is somewhere in the city: a room, a restaurant, a studio.',
   },
   {
     step: '02',
-    title: 'Work',
-    body: 'Grab a coffee. Get something done. Meet someone if you feel like it. Leave when you want.',
+    title: 'Sit in a session',
+    body: 'Workshops, panels, and tech talks. Stay for one, or stay the whole night.',
   },
   {
     step: '03',
-    title: 'Stay for night',
-    body: 'The tech conference starts when the laptops close. Baltimore Tech Week, around the city.',
+    title: 'Talk to people after',
+    body: 'The room is small on purpose. VIP pass holders can also redeem drink tickets at participating spots.',
   },
   {
     step: '04',
-    title: 'Or just the day',
-    body: 'You don’t have to do both. A coffee and a few hours still counts.',
+    title: 'Come back tomorrow, if you want',
+    body: 'Five nights, five industries. You do not have to do every night. One still counts.',
   },
 ] as const
 
@@ -109,19 +161,19 @@ export const VOLUNTEER_ROLES = [
 ] as const
 
 export const VISION = [
-  'Baltimore Tech Week is one week. By day it’s Charm City CoWeek, in coffee shops across the city.',
-  'Bring a laptop. The shop changes through the week. You don’t have to network the whole day.',
-  'At night it’s the conference. Same week, when the laptops close.',
-  'It should feel easy. Coffee, a neighborhood, and whoever else is working.',
-  'Support the shop you’re in. See a part of the city you don’t always get to.',
+  'Five nights. Five industries. Across Baltimore.',
+  'Rooms in neighborhoods, not a single convention hall.',
+  'Talks, workshops, and panels from people who actually work here.',
+  'It should feel easy. A venue, a night, and whoever else showed up.',
+  'Support the room you’re in. See a part of the city you don’t always get to.',
 ]
 
 export const AUDIENCES = [
-  'Anyone with a laptop and a free afternoon',
   'Founders, developers, designers, and students',
-  'People who want a coffee shop, not a ballroom',
+  'People who want a neighborhood room, not a ballroom',
   'Neighbors curious about what’s being built here',
-  'Anyone who might stay for the night, or might not',
+  'Anyone free after 5:30 for one night or all five',
+  'Community groups and companies backing the week',
 ]
 
 export const PARTNERS = [
@@ -154,14 +206,16 @@ export const TIME_SLOTS = [
 ] as const
 
 export const NEIGHBORHOODS = [
+  'BioPark',
+  'Station North',
+  'Hampden',
+  'Inner Harbor',
   'Harbor East',
   'Downtown',
   '4MLK / Westside',
   'Fells Point',
   'Federal Hill',
   'Mount Vernon',
-  'Station North',
-  'Hampden',
   'Canton',
   'Remington',
   'Other',
@@ -178,7 +232,7 @@ export const TOPICS = [
   'Community',
 ] as const
 
-export const FORMATS = ['panel', 'fireside', 'workshop', 'lightning', 'social talk'] as const
+export const FORMATS = ['panel', 'workshop', 'tech talk', 'fireside', 'lightning', 'social talk'] as const
 
 export const VENUE_TYPES = ['tech', 'social', 'hybrid'] as const
 

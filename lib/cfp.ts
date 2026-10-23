@@ -27,79 +27,94 @@ export const SESSION_TYPES = [
     ],
   },
   {
-    id: 'fireside',
-    label: 'Fireside Chat',
-    length: '30–45 minutes',
-    body: 'A one-on-one conversation with a founder, executive, creator, or community leader.',
-    examples: [],
-  },
-  {
-    id: 'lightning',
-    label: 'Lightning Talk',
-    length: '10–20 minutes',
-    body: 'A short talk meant to inspire, teach, or start an argument worth having.',
-    examples: [],
+    id: 'techtalk',
+    label: 'Tech Talk',
+    length: '20–30 minutes',
+    body: 'A focused talk on something you built, learned, or are arguing for.',
+    examples: [
+      'How we shipped a product from Baltimore',
+      'A security lesson from the night shift',
+      'What broke, and what we changed',
+    ],
   },
 ] as const
 
 export const PROGRAM_NIGHTS = [
   {
     iso: '2027-04-26' as WeekDate,
-    name: 'Launch Night',
+    name: 'Deep & MedTech Night',
+    short: 'Deep & MedTech',
     weekday: 'Monday',
     date: 'April 26',
-    body: 'Opening night. The week starts here, in a room, not a ballroom.',
+    neighborhood: 'BioPark',
+    body: 'Healthcare, biotech, medical devices, life sciences, and deep tech, right next to the BioPark.',
+    activities: ['Keynotes and presentations', 'Healthcare and life-science panels', 'Check-in and networking'],
   },
   {
     iso: '2027-04-27' as WeekDate,
-    name: 'Future of Tech Night',
+    name: 'Creative Tech Night',
+    short: 'Creative Tech',
     weekday: 'Tuesday',
     date: 'April 27',
-    body: 'What’s being built in Baltimore, and what people think comes next.',
+    neighborhood: 'Station North',
+    body: 'AI tools, digital art, media tech, and creative technology in Station North.',
+    activities: ['Keynotes and panels', 'Evening lounges', 'Cocktails'],
   },
   {
     iso: '2027-04-28' as WeekDate,
-    name: 'Builder Night',
+    name: 'Hardware & Makerspace Night',
+    short: 'Hardware & Makerspace',
     weekday: 'Wednesday',
     date: 'April 28',
-    body: 'Hands-on. Make something, or sit close enough to watch it get made.',
+    neighborhood: 'Hampden',
+    body: 'Hardware, aerospace, manufacturing, and physical makerspaces on The Avenue in Hampden.',
+    activities: ['Workshops and prototyping demos', 'Open-air hangouts', 'Craft cocktails, bites, and networking'],
   },
   {
     iso: '2027-04-29' as WeekDate,
-    name: 'Founder Night',
+    name: 'Founders & Startups Night',
+    short: 'Founders & Startups',
     weekday: 'Thursday',
     date: 'April 29',
-    body: 'People building companies here, talking the way they actually talk.',
+    neighborhood: 'Inner Harbor',
+    body: 'Startup growth, pitches, venture, and climate tech overlooking the Inner Harbor.',
+    activities: ['Main-stage pitches', 'Investor panels', 'After-hours founder mixers'],
   },
   {
     iso: '2027-04-30' as WeekDate,
-    name: 'Community Night',
+    name: 'Community Night & Expo',
+    short: 'Community & Expo',
     weekday: 'Friday',
     date: 'April 30',
-    body: 'Careers, neighbors, and the people who keep this city going.',
+    neighborhood: 'Citywide finale',
+    body: 'Grand finale. Multi-floor expo, live tech, AI, and MedTech demos, community showcases, and closing remarks.',
+    activities: ['Vendor expo and booths', 'Live tech, AI, and MedTech demos', 'Ambient networking and closing remarks'],
   },
 ] as const
 
 export const SPEAKER_TOPICS = [
-  { id: 'Artificial Intelligence', match: 'AI', group: 'Build' },
-  { id: 'Cybersecurity', match: 'Cyber', group: 'Build' },
-  { id: 'Software Engineering', match: 'Engineering', group: 'Build' },
-  { id: 'Product Management', match: 'Product', group: 'Build' },
-  { id: 'UX / Design', match: 'Design', group: 'Build' },
-  { id: 'Data & Analytics', match: 'Data', group: 'Build' },
-  { id: 'GovTech', match: 'Cyber', group: 'Build' },
-  { id: 'Emerging Technology', match: 'AI', group: 'Build' },
+  { id: 'MedTech / Biotech', match: 'Engineering', group: 'MedTech' },
+  { id: 'Life Sciences', match: 'Engineering', group: 'MedTech' },
+  { id: 'Deep Tech', match: 'Engineering', group: 'MedTech' },
+  { id: 'Artificial Intelligence', match: 'AI', group: 'Creative' },
+  { id: 'Creative Technology', match: 'Design', group: 'Creative' },
+  { id: 'Digital Art / Media', match: 'Design', group: 'Creative' },
+  { id: 'UX / Design', match: 'Design', group: 'Creative' },
+  { id: 'Hardware / Manufacturing', match: 'Engineering', group: 'Maker' },
+  { id: 'Aerospace', match: 'Engineering', group: 'Maker' },
+  { id: 'Software Engineering', match: 'Engineering', group: 'Maker' },
+  { id: 'Cybersecurity', match: 'Cyber', group: 'Maker' },
+  { id: 'Product Management', match: 'Product', group: 'Founder' },
   { id: 'Startups', match: 'Startup', group: 'Founder' },
   { id: 'Entrepreneurship', match: 'Startup', group: 'Founder' },
-  { id: 'Marketing', match: 'Community', group: 'Founder' },
-  { id: 'Sales', match: 'Community', group: 'Founder' },
-  { id: 'Personal Branding', match: 'Community', group: 'Community' },
+  { id: 'Venture / Funding', match: 'Startup', group: 'Founder' },
+  { id: 'Climate / Sustainability', match: 'Startup', group: 'Founder' },
   { id: 'Careers', match: 'Community', group: 'Community' },
   { id: 'Community Building', match: 'Community', group: 'Community' },
   { id: 'Other', match: 'Community', group: 'Community' },
 ] as const
 
-export const TOPIC_GROUPS = ['Build', 'Founder', 'Community'] as const
+export const TOPIC_GROUPS = ['MedTech', 'Creative', 'Maker', 'Founder', 'Community'] as const
 
 export const AUDIENCE_LEVELS = ['Beginner', 'Intermediate', 'Advanced', 'General Audience'] as const
 
@@ -130,7 +145,7 @@ export const CFP_BENEFITS = [
 export const CFP_WHY = [
   'Strengthen Baltimore’s technology ecosystem',
   'Create opportunities for local talent',
-  'Support Baltimore restaurants, coworking spaces, and neighborhood rooms',
+  'Support Baltimore restaurants, venues, and neighborhood rooms',
   'Share knowledge with the next generation of builders',
   'Connect founders, technologists, investors, and community leaders',
   'Show Baltimore as a place where the work happens',
@@ -146,8 +161,9 @@ export function topicToMatch(topic: string): Topic {
 }
 
 export function sessionToFormat(session: string): TalkFormat {
+  if (session === 'techtalk' || session === 'tech talk') return 'tech talk'
   if (session === 'workshop' || session === 'panel' || session === 'fireside' || session === 'lightning') {
     return session
   }
-  return 'lightning'
+  return 'tech talk'
 }

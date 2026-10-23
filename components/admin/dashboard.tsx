@@ -8,13 +8,24 @@ import { formatCost, formatWeekDate } from '@/lib/format'
 import { rankVenuesForSpeaker } from '@/lib/matching'
 import type { EventRecord, Speaker, Venue, Volunteer } from '@/lib/models'
 
-type Tab = 'match' | 'venues' | 'speakers' | 'volunteers' | 'events'
+type Tab = 'match' | 'venues' | 'speakers' | 'volunteers' | 'signups' | 'events'
 
 type Payload = {
   venues: Venue[]
   speakers: Speaker[]
   events: EventRecord[]
   volunteers: Volunteer[]
+  ticketSignups?: Array<{
+    id: string
+    email: string
+    pass?: string
+    name?: string
+    organization?: string
+    role?: string
+    website?: string
+    notes?: string
+    createdAt: string
+  }>
 }
 
 export function AdminDashboard() {
@@ -130,6 +141,7 @@ export function AdminDashboard() {
     { label: 'Venues', value: data.venues.length },
     { label: 'Talks', value: data.speakers.length },
     { label: 'Crew', value: (data.volunteers ?? []).length },
+    { label: 'Signups / Partners / Sponsors', value: (data.ticketSignups ?? []).length },
     { label: 'Live', value: data.events.filter((e) => e.status === 'published').length },
   ]
 
@@ -169,6 +181,7 @@ export function AdminDashboard() {
               ['venues', 'Venues'],
               ['speakers', 'Speakers'],
               ['volunteers', 'Volunteers'],
+              ['signups', 'Partners / Sponsors / Tickets'],
               ['events', 'Events'],
             ] as const
           ).map(([id, label]) => (
@@ -436,6 +449,52 @@ export function AdminDashboard() {
                             })
                           }
                         />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </section>
+        ) : null}
+
+        {tab === 'signups' ? (
+          <section className="mt-8 overflow-x-auto">
+            {(data.ticketSignups ?? []).length === 0 ? (
+              <p className="text-sm text-cream/60">No partner, sponsor, or ticket signups yet.</p>
+            ) : (
+              <table className="min-w-full text-left text-sm">
+                <thead className="text-xs uppercase tracking-wide text-muted-foreground">
+                  <tr>
+                    <th className="py-2 pr-4">Type / Tier</th>
+                    <th className="py-2 pr-4">Contact</th>
+                    <th className="py-2 pr-4">Organization</th>
+                    <th className="py-2 pr-4">Notes</th>
+                    <th className="py-2 pr-4">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(data.ticketSignups ?? []).map((item) => (
+                    <tr key={item.id} className="border-t border-cream/10 align-top">
+                      <td className="py-3 pr-4 font-semibold text-gold">{item.pass || 'General Waitlist'}</td>
+                      <td className="py-3 pr-4">
+                        {item.name ? <p className="font-semibold text-cream">{item.name}</p> : null}
+                        <p className="text-xs text-cream/70">{item.email}</p>
+                        {item.role ? <p className="text-xs text-cream/50">{item.role}</p> : null}
+                      </td>
+                      <td className="py-3 pr-4 text-cream/80">
+                        {item.organization || 'None'}
+                        {item.website ? (
+                          <p className="text-xs text-gold">
+                            <a href={item.website} target="_blank" rel="noopener noreferrer">
+                              {item.website}
+                            </a>
+                          </p>
+                        ) : null}
+                      </td>
+                      <td className="py-3 pr-4 text-xs text-cream/70">{item.notes || 'None'}</td>
+                      <td className="py-3 pr-4 text-xs text-cream/55">
+                        {new Date(item.createdAt).toLocaleDateString()}
                       </td>
                     </tr>
                   ))}

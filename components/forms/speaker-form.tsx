@@ -154,11 +154,11 @@ export function SpeakerForm({
     return (
       <div className="cfp-success" role="status">
         <p className="cfp-h3" ref={successRef} tabIndex={-1}>
-          Got it.
+          Thanks. We have your session.
         </p>
         <p>
-          We review monthly and write only if it fits a room. If you said yes to paneling, that still counts if the
-          session isn’t picked.
+          We read every application. If it fits a night, we will write you. If you offered to sit on a panel, we may
+          still be in touch even if this session is not picked.
         </p>
         <p>Nothing else to do right now. Watch the inbox you listed.</p>
         <button type="button" className="cfp-btn" onClick={() => setStatus('idle')}>
@@ -257,7 +257,7 @@ export function SpeakerForm({
             required
             error={errors.description}
             errorId="err-desc"
-            hint={`${words} words. A few paragraphs on what happens in the room — not a bio.`}
+            hint={`${words} words. A few paragraphs on what happens in the room, not a bio.`}
           >
             <textarea
               name="talkDescription"
@@ -321,7 +321,7 @@ export function SpeakerForm({
                 >
                   {night.name}
                   <span className="cfp-chip-sub">
-                    {night.weekday.slice(0, 3)} · {night.date}
+                    {night.weekday.slice(0, 3)} · {night.date} · {night.neighborhood}
                   </span>
                 </ChipToggle>
               ))}
@@ -431,8 +431,8 @@ export function SpeakerForm({
         </p>
       ) : null}
 
-      <button type="button" className="cfp-btn" disabled>
-        Opening {EVENT.opensOn}
+      <button type="submit" className="cfp-btn" disabled={status === 'loading'}>
+        {status === 'loading' ? 'Submitting…' : 'Submit application'}
       </button>
       <FormFootnote />
     </form>

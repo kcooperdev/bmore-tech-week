@@ -22,7 +22,7 @@ function formatFitsLayout(format: TalkFormat, venue: Venue): string | null {
     return 'Capacity fits a workshop'
   }
   if (
-    (format === 'social talk' || format === 'lightning') &&
+    (format === 'social talk' || format === 'lightning' || format === 'tech talk') &&
     (venue.venueType === 'social' || venue.amenities.includes('Bar'))
   ) {
     return 'Layout fits a short talk'

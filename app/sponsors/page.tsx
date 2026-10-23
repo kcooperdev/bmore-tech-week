@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { EVENT } from '@/lib/data'
+import { SPONSOR_PITCH } from '@/lib/involve'
 import { HarborTopbar } from '@/components/harbor-topbar'
+import { HarborFooter } from '@/components/harbor-footer'
+import { PageBanner } from '@/components/page-banner'
+import { InvolveClose, InvolvePitch } from '@/components/involve-pitch'
 import { OfferBoard, type Offer } from '@/components/offer-board'
 import '../../styles.css'
 
 const title = 'Sponsors'
 const description =
-  'Sponsor Charm City CoWeek by day and Baltimore Tech Week by night. April 26–30 in Baltimore.'
+  'Year one is when your name becomes part of the story. Sponsor Baltimore Tech Week. Five nights, April 26–30.'
 
 const offers: Offer[] = [
   {
@@ -97,35 +100,21 @@ export default function SponsorsPage() {
   return (
     <div className="bmore bmore-page">
       <HarborTopbar current="sponsors" />
+      <PageBanner title="Sponsors" kicker="Get Involved" />
 
-      <section className="cfp-hero cfp-hero-offer" aria-label="Sponsors">
-        <Image
-          className="cfp-hero-plate"
-          src="/images/harbor-night.png"
-          alt=""
-          fill
-          sizes="100vw"
-          priority
-          quality={78}
-        />
-        <div className="cfp-hero-veil" />
-        <div className="cfp-hero-copy">
-          <div className="night-title">
-            <h1>
-              <span>Sponsors</span>
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      <main className="cfp-main" id="main" tabIndex={-1}>
+      <main id="main" tabIndex={-1}>
+        <InvolvePitch copy={SPONSOR_PITCH} />
         <OfferBoard
           railLabel="Sponsor tiers"
           lead="Five ways to back the week. Each price includes the one under it."
-          sibling={{ href: EVENT.partnersPath, label: 'Partner with the week' }}
+          applyKind="sponsor"
+          sibling={{ kind: 'partner', label: 'Partner' }}
           offers={offers}
         />
+        <InvolveClose title="If you want a table at year one, let’s talk." kind="sponsor" cta={SPONSOR_PITCH.cta} />
       </main>
+
+      <HarborFooter />
     </div>
   )
 }
