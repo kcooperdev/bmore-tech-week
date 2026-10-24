@@ -115,21 +115,6 @@ export function TicketChooser() {
           </div>
         </div>
       </section>
-
-      <section className="ed-cream-section vip-logistics-section" aria-label="Venue and parking">
-        <div className="ed-container">
-          <div className="vip-logistics">
-            <details>
-              <summary>Venue and parking guidance</summary>
-              <p>
-                Tech Week events are hosted across local coworking spaces and partner venues. Specific garage
-                recommendations, walking maps, and discount codes (where available) will be emailed to all ticket
-                holders before each evening.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
