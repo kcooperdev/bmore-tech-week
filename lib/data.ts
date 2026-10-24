@@ -24,7 +24,7 @@ export const EVENT = {
   tagline: 'Five nights. Five industries. Across Baltimore.',
   ticketsStatus: 'coming soon' as const,
   submissionsOpen: true,
-  speakerCallOpen: false,
+  speakerCallOpen: true,
   infoSessionUrl: 'https://luma.com/on6frsgw',
   infoSessionVolunteerUrl: 'https://app.youform.com/forms/rggnoncr',
   infoSessionDate: 'August 27',
@@ -71,12 +71,8 @@ export const CTA = {
 
 export type ApplyKind = 'speak' | 'partner' | 'sponsor' | 'ambassador'
 
-export function baltimoreDate(now = new Date()) {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(now)
-}
-
-export function isApplyOpenNow(now = new Date()) {
-  return baltimoreDate(now) >= EVENT.opensOnIso
+export function isApplyOpenNow() {
+  return true
 }
 
 export function applyRequestOpen(request: Request) {

@@ -5,13 +5,14 @@ import { SPONSOR_PITCH } from '@/lib/involve'
 import { HarborTopbar } from '@/components/harbor-topbar'
 import { HarborFooter } from '@/components/harbor-footer'
 import { PageBanner } from '@/components/page-banner'
+import Link from 'next/link'
 import { InvolveClose, InvolvePitch } from '@/components/involve-pitch'
 import { OfferBoard, type Offer } from '@/components/offer-board'
 import '../../styles.css'
 
 const title = 'Sponsors'
 const description =
-  'Year one is when your name becomes part of the story. Sponsor Baltimore Tech Week. Five nights, April 26–30.'
+  'Sponsor Baltimore Tech Week. A table in the room, agreed benefits, and a clear year-one budget. Not an investment return. Five nights, April 26 to 30.'
 
 const offers: Offer[] = [
   {
@@ -108,6 +109,23 @@ export default function SponsorsPage() {
           sibling={{ kind: 'partner', label: 'Partner' }}
           offers={offers}
         />
+        <section className="ed-cream-section">
+          <div className="ed-container">
+            <p className="ed-eyebrow">The case for the city</p>
+            <h2 className="ed-manifesto-title">
+              Why Baltimore, and what your support actually <span className="ed-highlight">pays for</span>
+            </h2>
+            <p className="ed-manifesto-sub">
+              The longer pitch lives on Why Baltimore: culture, talent, the year-one budget, and how we will report
+              results. Tiers and deliverables stay on this page.
+            </p>
+            <div className="ed-manifesto-cta">
+              <Link href={EVENT.whyPath} className="ed-pill-btn">
+                Read Why Baltimore
+              </Link>
+            </div>
+          </div>
+        </section>
         <InvolveClose title="If you want a table at year one, let’s talk." kind="sponsor" cta={SPONSOR_PITCH.cta} />
       </main>
 

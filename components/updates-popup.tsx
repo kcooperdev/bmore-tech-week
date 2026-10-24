@@ -152,8 +152,8 @@ export function UpdatesPopup({ skipAuto = false }: { skipAuto?: boolean }) {
               Thanks. We will write you.
             </h2>
             <p className="updates-copy">
-              Tickets and applications open {EVENT.opensOn}. You will hear from {EVENT.contactEmail} that day with
-              the sale link, and again if the nights or speakers change in a way worth knowing.
+              Tickets open {EVENT.opensOn}. You will hear from {EVENT.contactEmail} that day with the sale link, and
+              again if the nights or speakers change in a way worth knowing.
             </p>
             <p className="updates-fine">Nothing else to do right now. You can close this and keep looking around.</p>
             <button type="button" className="ed-pill-btn updates-submit" onClick={dismiss}>
@@ -167,8 +167,8 @@ export function UpdatesPopup({ skipAuto = false }: { skipAuto?: boolean }) {
               Want the ticket link when it goes live?
             </h2>
             <p className="updates-copy">
-              Tickets and applications open {EVENT.opensOn}. Leave your email and we will send the sale link that
-              day, plus the nights and speakers as they come together.
+              Tickets open {EVENT.opensOn}. Leave your email and we will send the sale link that day, plus the
+              nights and speakers as they come together.
             </p>
             <form className="updates-form" onSubmit={onSubmit}>
               <label htmlFor={fieldId} className="updates-label">

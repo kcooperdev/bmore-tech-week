@@ -32,7 +32,6 @@ const PASSES = [
       'Reserved front-row seating near main stage speakers',
       'Official VIP swag bag with sponsor gear and tech goodies',
     ],
-    scarcity: 'Limited to 35 VIP passes per night to keep the room premium.',
     cta: 'Get day VIP pass ($45)',
     featured: false,
     highlight: true,
@@ -54,15 +53,6 @@ const PASSES = [
     cta: 'Get 5-night Week VIP pass ($125)',
     featured: true,
   },
-] as const
-
-const COMPARE = [
-  { feature: 'Event entry', ga: 'Single night', day: 'Single night', week: 'All 5 nights' },
-  { feature: 'Check-in line', ga: 'Standard entry', day: 'Priority express line', week: 'Priority express line' },
-  { feature: 'Drink tickets', ga: 'None', day: '1 ticket ($18 value)', week: '3 tickets total' },
-  { feature: 'Stage seating', ga: 'GA seating', day: 'Reserved front row', week: 'Reserved front row' },
-  { feature: 'VIP swag bag', ga: 'None', day: 'Included', week: 'Included' },
-  { feature: 'Tech Week t-shirt', ga: 'None', day: 'None', week: 'Included' },
 ] as const
 
 export function TicketChooser() {
@@ -111,7 +101,6 @@ export function TicketChooser() {
                       <li key={feature}>{feature}</li>
                     ))}
                   </ul>
-                  {'scarcity' in item && item.scarcity ? <p className="vip-scarcity">{item.scarcity}</p> : null}
                   <button
                     type="button"
                     className="ed-pill-btn vip-cta"
@@ -127,35 +116,8 @@ export function TicketChooser() {
         </div>
       </section>
 
-      <section className="ed-cream-section vip-compare-section" aria-labelledby="vip-compare-heading">
+      <section className="ed-cream-section vip-logistics-section" aria-label="Venue and parking">
         <div className="ed-container">
-          <h2 id="vip-compare-heading" className="ed-section-title vip-compare-title">
-            What each pass includes
-          </h2>
-          <div className="vip-table-wrap">
-            <table className="vip-table">
-              <caption className="sr-only">Feature comparison for General Admission, Single-day VIP, and Week VIP</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Feature</th>
-                  <th scope="col">General Admission</th>
-                  <th scope="col">Single-day VIP ($45)</th>
-                  <th scope="col">5-night Week VIP ($125)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARE.map((row) => (
-                  <tr key={row.feature}>
-                    <th scope="row">{row.feature}</th>
-                    <td>{row.ga}</td>
-                    <td>{row.day}</td>
-                    <td>{row.week}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
           <div className="vip-logistics">
             <details>
               <summary>Venue and parking guidance</summary>

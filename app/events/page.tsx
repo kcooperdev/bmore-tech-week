@@ -64,8 +64,8 @@ export default async function EventsPage() {
           <p className="cfp-kicker">Self-Service</p>
           <h2 className="cfp-h2">Put your event, talk, or company on the calendar</h2>
           <p className="cfp-copy">
-            Speaker, partner, sponsor, and ambassador applications open {EVENT.opensOn}. You can still submit a
-            venue to host a night, or join the volunteer crew.
+            Apply to speak, partner, sponsor, or become an ambassador. You can also submit a venue to host a
+            night, or join the volunteer crew. Tickets open {EVENT.opensOn}.
           </p>
           <p className="cfp-copy cfp-actions">
             <Link className="harbor-btn" href={involveLink('speak').href}>

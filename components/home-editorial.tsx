@@ -1,79 +1,42 @@
 import Link from 'next/link'
-import { CTA, EVENT, STATS, involveLink, isApplyOpenNow, type ApplyKind } from '@/lib/data'
+import { EVENT, STATS, involveLink, isApplyOpenNow, type ApplyKind } from '@/lib/data'
 import { PROGRAM_NIGHTS } from '@/lib/cfp'
 import { TicketChooser } from '@/components/ticket-chooser'
 
-const TRACK_CARDS = [
+const TRACK_ROWS = [
   {
     id: 'speak',
-    tone: 'gold',
-    num: '01',
-    badge: isApplyOpenNow() ? `Closes ${EVENT.speakerDeadline}` : `Opens ${EVENT.opensOn}`,
-    title: 'Give a Talk',
-    lead: 'If you have something to share, we want you in a room. First-time speakers are welcome.',
-    meta: 'Workshop · Panel · Tech Talk',
-    bullets: [
-      'Share a skill, a story from the work, or a point of view',
-      'Workshop, panel, or a short tech talk. Whatever fits how you talk',
-      `Deadline ${EVENT.speakerDeadline}. We read every one.`,
-    ],
+    title: 'Give a talk',
+    note: isApplyOpenNow() ? `Apply by ${EVENT.speakerDeadline}` : `Opens ${EVENT.opensOn}`,
+    lead: 'Share what you’re building, working on, or learning. First-time speakers welcome.',
     kind: 'speak' as ApplyKind,
-    cta: CTA.submitTalk,
   },
   {
     id: 'partner',
-    tone: 'sky',
-    num: '02',
-    badge: isApplyOpenNow() ? 'Free · Open to groups' : `Opens ${EVENT.opensOn}`,
     title: 'Partner',
-    lead: 'If you already gather people in Baltimore, bring them with you. Partnership is free for community groups.',
-    meta: 'Meetups · Schools · Communities',
-    bullets: [
-      'Meetups, schools, accelerators, and student groups',
-      'We list you and send a link so you can see who came',
-      'No fee. You already have the circle.',
-    ],
+    note: 'Free to participate',
+    lead: 'Bring your community to the conversation. Help shape a session, co-host an event, or connect your members.',
     kind: 'partner' as ApplyKind,
-    cta: CTA.partnerWithUs,
   },
   {
     id: 'sponsor',
-    tone: 'bronze',
-    num: '03',
-    badge: isApplyOpenNow() ? '$500 to $10,000' : `Opens ${EVENT.opensOn}`,
     title: 'Sponsor',
-    lead: 'Sponsors get a table people can walk up to, not a logo buried on a wall. Tiers from $500 to $10,000.',
-    meta: 'Five tiers · Limited tables',
-    bullets: [
-      'Meet talent, founders, and operators after 5:30',
-      'A 20-minute intro first. Nothing to pay today',
-      'Only so many tables. Year one is small on purpose.',
-    ],
+    note: '$500 to $10,000',
+    lead: 'Put your business in the room. Meet attendees, showcase your work, and support the experience.',
     kind: 'sponsor' as ApplyKind,
-    cta: CTA.sponsorUs,
   },
   {
     id: 'ambassador',
-    tone: 'violet',
-    num: '04',
-    badge: isApplyOpenNow() ? 'Get the word out' : `Opens ${EVENT.opensOn}`,
-    title: 'Ambassador',
-    lead: 'Tell people you already know. A class, a group chat, a workplace. That is how rooms fill.',
-    meta: 'Friends · Classrooms · Rooms you already have',
-    bullets: [
-      'You do not need a following. You need a circle',
-      'Share the night, the time, and the ticket link',
-      'No booth. No quota. Just a real voice.',
-    ],
+    title: 'Become an ambassador',
+    note: 'Help get the word out',
+    lead: 'Share events with your network and introduce more people to the community.',
     kind: 'ambassador' as ApplyKind,
-    cta: CTA.beAmbassador,
   },
 ] as const
 
 export function HomeEditorial() {
   return (
     <div className="editorial-flow">
-      {/* 1. Cream Editorial Manifesto Block (Rebel Riot / Skillex inspired) */}
       <section className="ed-cream-section" aria-labelledby="ed-manifesto-heading">
         <div className="ed-container">
           <p className="ed-eyebrow">April 26 to 30, 2027 · Baltimore, MD</p>
@@ -107,42 +70,30 @@ export function HomeEditorial() {
         </div>
       </section>
 
-      {/* 2. Oversized Display Header + Overlapping Rounded Cards (Rebel Riot "SERVICES" inspired) */}
       <section className="ed-dark-showcase" id="get-involved" aria-labelledby="ed-involved-heading">
         <div className="ed-container">
           <div className="ed-involve-head">
             <h2 id="ed-involved-heading" className="ed-section-title">
-              Get Involved
+              Get involved
             </h2>
             <p className="ed-involve-sub">
-              Four ways to help build the week. Applications open {EVENT.opensOn}. Pick the one that fits how you
-              move through the city.
+              Applications are open. Tickets wait until {EVENT.opensOn}.
             </p>
           </div>
 
-          <div className="ed-involve-grid">
-            {TRACK_CARDS.map((card) => (
-              <Link
-                key={card.id}
-                href={involveLink(card.kind).href}
-                className={`ed-involve-card ed-involve-${card.tone}`}
-              >
-                <span className="ed-involve-num" aria-hidden="true">
-                  {card.num}
-                </span>
-                <span className="ed-involve-badge">{card.badge}</span>
-                <h3 className="ed-involve-title">{card.title}</h3>
-                <p className="ed-involve-lead">{card.lead}</p>
-                <p className="ed-involve-meta">{card.meta}</p>
-                <ul className="ed-involve-list">
-                  {card.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-                <span className="ed-involve-cta">{card.cta}</span>
-              </Link>
+          <ul className="ed-involve-list">
+            {TRACK_ROWS.map((row) => (
+              <li key={row.id}>
+                <Link href={involveLink(row.kind).href} className="ed-involve-row">
+                  <div className="ed-involve-line">
+                    <h3 className="ed-involve-title">{row.title}</h3>
+                    <span className="ed-involve-note">{row.note}</span>
+                  </div>
+                  <p className="ed-involve-lead">{row.lead}</p>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

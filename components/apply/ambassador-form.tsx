@@ -243,8 +243,7 @@ export function AmbassadorForm({ demo = false }: { demo?: boolean }) {
         {step === 1 ? (
           <div className="apply-stack">
             <p className="apply-call-lead">
-              Ambassadors get the word out. Tell the people you already talk to. No booth. No quota. A real voice in
-              the city.
+              Help get the word out. Share events with your network and introduce more people to the community.
             </p>
             <ApplyGroup label="Where will you share?" error={errors.channels}>
               <div className="apply-chips">

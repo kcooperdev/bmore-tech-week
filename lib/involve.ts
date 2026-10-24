@@ -112,7 +112,7 @@ export const AMBASSADOR_PITCH: InvolvePitchCopy = {
   kicker: isApplyOpenNow() ? 'Get the word out' : `Opens ${EVENT.opensOn} · Get the word out`,
   title: 'Baltimore hears this week from',
   highlight: 'someone they trust',
-  lead: 'Tell the people you already know. Campus, group chat, workplace, the feed. No booth. No quota. Just a real voice.',
+  lead: 'Help bring people out. Share events with your network and introduce more people to the community.',
   why: [
     {
       label: 'Why you',
