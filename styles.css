@@ -5430,6 +5430,13 @@ html:has(.apply-page) body {
   line-height: 1.5;
 }
 
+a.apply-book-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  text-decoration: none;
+}
+
 .apply-review-list {
   display: grid;
   gap: 0.85rem;

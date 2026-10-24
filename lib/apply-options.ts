@@ -75,22 +75,6 @@ export const SPONSOR_DECISIONS = [
   'Exploring for later',
 ] as const
 
-export const SPONSOR_CALL_SLOTS = [
-  { id: '2026-10-28-10', label: 'Wed, Oct 28 · 10:00–10:20 AM ET' },
-  { id: '2026-10-28-14', label: 'Wed, Oct 28 · 2:00–2:20 PM ET' },
-  { id: '2026-10-29-16', label: 'Thu, Oct 29 · 4:30–4:50 PM ET' },
-  { id: '2026-11-03-10', label: 'Tue, Nov 3 · 10:00–10:20 AM ET' },
-  { id: '2026-11-04-14', label: 'Wed, Nov 4 · 2:00–2:20 PM ET' },
-  { id: '2026-11-05-16', label: 'Thu, Nov 5 · 4:30–4:50 PM ET' },
-  { id: '2026-11-10-10', label: 'Tue, Nov 10 · 10:00–10:20 AM ET' },
-  { id: '2026-11-12-14', label: 'Thu, Nov 12 · 2:00–2:20 PM ET' },
-  { id: '2026-11-17-16', label: 'Tue, Nov 17 · 4:30–4:50 PM ET' },
-  { id: '2026-11-19-10', label: 'Thu, Nov 19 · 10:00–10:20 AM ET' },
-  { id: '2026-12-02-14', label: 'Wed, Dec 2 · 2:00–2:20 PM ET' },
-  { id: '2026-12-08-10', label: 'Tue, Dec 8 · 10:00–10:20 AM ET' },
-  { id: '2026-12-10-16', label: 'Thu, Dec 10 · 4:30–4:50 PM ET' },
-] as const
-
 export const AMBASSADOR_CHANNELS = [
   'Instagram',
   'LinkedIn',

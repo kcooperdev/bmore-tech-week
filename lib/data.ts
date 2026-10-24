@@ -51,6 +51,7 @@ export const EVENT = {
   speakApplyUrl: '',
   partnerApplyUrl: '',
   sponsorApplyUrl: '',
+  sponsorCallUrl: 'https://tidycal.com/bmore-tech-week/30-minute-meeting',
   instagramUrl: 'https://www.instagram.com/baltimoretechweekhq',
   instagramHandle: '@baltimoretechweekhq',
   linkedinUrl: 'https://www.linkedin.com/company/baltimore-tech-week-2027',

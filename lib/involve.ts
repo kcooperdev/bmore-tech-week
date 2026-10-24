@@ -92,7 +92,7 @@ export const SPONSOR_PITCH: InvolvePitchCopy = {
     {
       label: 'What you get',
       title: 'A night, a welcome, and a clear place',
-      body: 'Depending on the tier: logo, a mention, a table, a short welcome, or your name on a night. We will walk through it on a 20-minute call.',
+      body: 'Depending on the tier: logo, a mention, a table, a short welcome, or your name on a night. We will walk through it on a 30-minute call.',
     },
     {
       label: 'Why now',
@@ -101,8 +101,8 @@ export const SPONSOR_PITCH: InvolvePitchCopy = {
     },
   ],
   close: applyClose(
-    'Book a 20-minute intro, then send a short application. Nothing to pay today. The form opens in a new tab.',
-    `Book a 20-minute intro, then send a short application. Nothing to pay today. Applications open ${EVENT.opensOn}.`,
+    'Book a 30-minute intro, then send a short application. Nothing to pay today. The form opens in a new tab.',
+    `Book a 30-minute intro, then send a short application. Nothing to pay today. Applications open ${EVENT.opensOn}.`,
   ),
   cta: 'Book a call and apply',
 }

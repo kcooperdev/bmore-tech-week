@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import { applyFetchHeaders } from '@/lib/data'
-import { COMPANY_SIZES, HEARD_ABOUT, SPONSOR_CALL_SLOTS, SPONSOR_DECISIONS, SPONSOR_GOALS, SPONSOR_TIERS } from '@/lib/apply-options'
+import { applyFetchHeaders, EVENT } from '@/lib/data'
+import { COMPANY_SIZES, HEARD_ABOUT, SPONSOR_DECISIONS, SPONSOR_GOALS, SPONSOR_TIERS } from '@/lib/apply-options'
 import { DEMO_SPONSOR } from '@/lib/demo-data'
 import {
   dropError,
@@ -45,7 +45,6 @@ const empty = {
   tier: '',
   decision: '',
   heardAbout: '',
-  slot: '',
   booked: '',
   notes: '',
 }
@@ -65,7 +64,6 @@ export function SponsorForm({ initialTier = '', demo = false }: { initialTier?: 
         : '',
   })
   const tier = SPONSOR_TIERS.find((item) => item.id === form.tier)
-  const slot = SPONSOR_CALL_SLOTS.find((item) => item.id === form.slot)
 
   function set<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((prev) => ({ ...prev, [key]: value }))
@@ -88,8 +86,7 @@ export function SponsorForm({ initialTier = '', demo = false }: { initialTier?: 
       next.website = validUrl(form.website, 'Website')
     }
     if (index === 2) {
-      if (!form.slot && form.booked !== 'no') next.slot = 'Pick a 20-minute call'
-      next.booked = required(form.booked, 'Confirm you can take this call')
+      next.booked = required(form.booked, 'Confirm you booked a time, or that you need help')
       if (form.booked === 'no' && !form.notes.trim()) next.notes = 'Tell us a week that works'
     }
     return Object.fromEntries(Object.entries(next).filter(([, value]) => value)) as FieldErrors
@@ -126,7 +123,8 @@ export function SponsorForm({ initialTier = '', demo = false }: { initialTier?: 
       form.size && `Company size: ${form.size}`,
       `Goals: ${goals.join(', ')}`,
       `Decision: ${form.decision}`,
-      `Call booked: ${slot?.label || form.slot}`,
+      `Call booked: ${form.booked === 'yes' ? 'Yes, booked on TidyCal' : 'Needs another time'}`,
+      `Call link: ${EVENT.sponsorCallUrl}`,
       form.heardAbout && `Heard about us: ${form.heardAbout}`,
       form.phone && `Phone: ${form.phone}`,
       form.notes && `Notes: ${form.notes}`,
@@ -161,7 +159,7 @@ export function SponsorForm({ initialTier = '', demo = false }: { initialTier?: 
   if (status === 'success') {
     return (
       <ApplySuccess
-        title="Thanks. Your call is requested."
+        title="Thanks. We have your application."
         email={form.email}
         againLabel="Start another"
         onAgain={() => {
@@ -172,10 +170,10 @@ export function SponsorForm({ initialTier = '', demo = false }: { initialTier?: 
         }}
       >
         <p>
-          We will hold {slot?.label || 'your window'} and send a calendar invite. The call is 20 minutes: whether the
-          fit is right, which nights make sense, and what that tier actually includes.
+          If you booked the 30-minute intro, the calendar invite comes from TidyCal. We will use the call to talk
+          nights, placement, and what that tier actually includes.
         </p>
-        <p>Nothing to pay today. If the time has to move, we will say so before the week of the call.</p>
+        <p>Nothing to pay today. If you still need a time, we will write you with a few options.</p>
       </ApplySuccess>
     )
   }
@@ -297,31 +295,24 @@ export function SponsorForm({ initialTier = '', demo = false }: { initialTier?: 
         {step === 2 ? (
           <div className="apply-stack">
             <p className="apply-call-lead">
-              Sponsors book a 20-minute intro first. Pick a time. After you submit, we send the calendar invite. Then we
-              talk nights, placement, and the tier.
+              Sponsors book a 30-minute intro first. Open the calendar, pick a time, then come back here and confirm so
+              we have your application with the call.
             </p>
-            <ApplyGroup label="Pick a 20-minute window" error={errors.slot}>
-              <div className="apply-chips apply-chips-block">
-                {SPONSOR_CALL_SLOTS.map((item) => (
-                  <ApplyRadio
-                    key={item.id}
-                    name="slot"
-                    value={item.id}
-                    checked={form.slot === item.id}
-                    onChange={(value) => set('slot', value)}
-                  >
-                    {item.label}
-                  </ApplyRadio>
-                ))}
-              </div>
-            </ApplyGroup>
-            <ApplyGroup label="Can you take this call?" error={errors.booked}>
+            <a
+              className="apply-btn apply-book-link"
+              href={EVENT.sponsorCallUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a 30-minute call
+            </a>
+            <ApplyGroup label="Did you book a time?" error={errors.booked}>
               <div className="apply-chips">
                 <ApplyRadio name="booked" value="yes" checked={form.booked === 'yes'} onChange={(v) => set('booked', v)}>
-                  Yes, hold this time
+                  Yes, I booked a time
                 </ApplyRadio>
                 <ApplyRadio name="booked" value="no" checked={form.booked === 'no'} onChange={(v) => set('booked', v)}>
-                  I need a different week
+                  I need help finding a time
                 </ApplyRadio>
               </div>
             </ApplyGroup>
@@ -350,7 +341,10 @@ export function SponsorForm({ initialTier = '', demo = false }: { initialTier?: 
             <ReviewRow label="Tier" value={tier ? `${tier.label} · ${tier.price}` : ''} />
             <ReviewRow label="Goals" value={goals.join(', ')} />
             <ReviewRow label="Decision" value={form.decision} />
-            <ReviewRow label="Call" value={slot?.label || ''} />
+            <ReviewRow
+              label="Call"
+              value={form.booked === 'yes' ? 'Booked on TidyCal' : 'Needs help finding a time'}
+            />
           </dl>
         ) : null}
       </ApplyWizard>
