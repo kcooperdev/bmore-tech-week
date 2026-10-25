@@ -22,7 +22,7 @@ const TRACK_ROWS = [
     id: 'sponsor',
     title: 'Sponsor',
     note: '$500 to $10,000',
-    lead: 'Put your business in the room. Meet attendees, showcase your work, and support the experience.',
+    lead: 'Put your name on the week, or take a table in the room. You can do both.',
     kind: 'sponsor' as ApplyKind,
   },
   {

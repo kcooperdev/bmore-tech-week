@@ -54,7 +54,7 @@ export const DEMO_PARTNER = {
   },
   channels: ['Newsletter', 'Instagram', 'In-person meetup'],
   help: ['Share the week with our people', 'Help with student tickets'],
-  nights: ['Creative Tech', 'Community & Expo'],
+  nights: ['Creative Tech', 'AI'],
 }
 
 export const DEMO_SPONSOR = {

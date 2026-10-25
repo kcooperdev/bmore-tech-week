@@ -3963,6 +3963,28 @@ html:has(.bmore-page) body {
   letter-spacing: 0.04em;
 }
 
+.vip-lanes {
+  display: grid;
+  gap: 2.4rem;
+}
+
+.vip-lane-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.vip-lane-title {
+  margin: 0 0 1.1rem;
+  color: var(--cream);
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
 .vip-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -3972,7 +3994,7 @@ html:has(.bmore-page) body {
 
 @media (min-width: 960px) {
   .vip-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -4093,8 +4115,110 @@ html:has(.bmore-page) body {
 
 .vip-cta {
   width: 100%;
+}
+
+.vip-cta-wrap {
+  display: grid;
+  gap: 0.4rem;
+  width: 100%;
   margin-top: auto;
   padding-top: 1.15rem;
+  text-align: center;
+}
+
+.vip-gift-pick.is-apply-closed,
+.vip-gift-pick:disabled {
+  opacity: 0.42;
+  filter: grayscale(0.35);
+  cursor: not-allowed;
+}
+
+.vip-gift-section .ed-manifesto-title,
+.vip-gift-section .ed-manifesto-sub,
+.vip-gift-section .ed-eyebrow {
+  margin-left: 0;
+  text-align: left;
+}
+
+.vip-gift-panel {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.6rem 1.4rem;
+  border-radius: 1.35rem;
+  border: 1.5px solid rgb(22 18 12 / 0.12);
+  background: rgb(255 255 255 / 0.62);
+}
+
+.vip-gift-copy .ed-manifesto-title {
+  max-width: 22rem;
+}
+
+.vip-gift-copy .ed-manifesto-sub {
+  max-width: 32rem;
+}
+
+.vip-gift-picks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.vip-gift-pick {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.1rem 1.15rem;
+  border: 1.5px solid rgb(22 18 12 / 0.14);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 0.9);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.vip-gift-pick:hover,
+.vip-gift-pick:focus-visible {
+  border-color: var(--gold);
+}
+
+.vip-gift-pick.is-selected {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-color: var(--gold);
+}
+
+.vip-gift-pick-note {
+  color: rgb(22 18 12 / 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vip-gift-pick-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.vip-gift-pick-cta {
+  color: rgb(22 18 12 / 0.7);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+@media (min-width: 720px) {
+  .vip-gift-panel {
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.9fr);
+    align-items: center;
+    padding: 1.8rem 1.8rem;
+  }
+
+  .vip-gift-picks {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .ed-ticket-box {

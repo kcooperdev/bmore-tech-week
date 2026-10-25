@@ -82,13 +82,13 @@ export const PROGRAM_NIGHTS = [
   },
   {
     iso: '2027-04-30' as WeekDate,
-    name: 'Community Night & Expo',
-    short: 'Community & Expo',
+    name: 'AI Night',
+    short: 'AI',
     weekday: 'Friday',
     date: 'April 30',
-    neighborhood: 'Citywide finale',
-    body: 'Grand finale. Multi-floor expo, live tech, AI, and MedTech demos, community showcases, and closing remarks.',
-    activities: ['Vendor expo and booths', 'Live tech, AI, and MedTech demos', 'Ambient networking and closing remarks'],
+    neighborhood: 'Citywide',
+    body: 'Artificial intelligence, applied tools, and demos. Talks first. The week closes here.',
+    activities: ['AI talks and panels', 'Applied demos', 'Networking and closing remarks'],
   },
 ] as const
 

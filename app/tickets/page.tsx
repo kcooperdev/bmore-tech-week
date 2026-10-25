@@ -8,7 +8,7 @@ import { TicketChooser } from '@/components/ticket-chooser'
 import '../../styles.css'
 
 const title = 'Tickets and VIP passes'
-const description = `General Admission is free. Upgrade to a $45 single-night VIP or the $125 5-night Week VIP. Priority line, drinks, front row, and swag. On sale ${EVENT.opensOn}.`
+const description = `General Admission is $15 a night or $40 for the week. Sponsor a seat for someone else at the same prices. VIP is $45 a night or $125 for the week. On sale ${EVENT.opensOn}.`
 
 export const metadata: Metadata = {
   title,

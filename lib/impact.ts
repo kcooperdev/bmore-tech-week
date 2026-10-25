@@ -94,7 +94,7 @@ export const CULTURE_MAP = [
   { kind: 'night', name: 'Creative Tech Night', place: 'Station North · Tuesday' },
   { kind: 'night', name: 'Hardware & Makerspace Night', place: 'Hampden · Wednesday' },
   { kind: 'night', name: 'Founders & Startups Night', place: 'Inner Harbor · Thursday' },
-  { kind: 'night', name: 'Community Night & Expo', place: 'Citywide · Friday' },
+  { kind: 'night', name: 'AI Night', place: 'Citywide · Friday' },
 ] as const
 
 export const WEEK_PILLARS = [

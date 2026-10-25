@@ -113,7 +113,7 @@ export function involveLink(kind: ApplyKind) {
 export const STATS = [
   { value: '5:30', label: 'Doors each night' },
   { value: '5', label: 'Neighborhoods' },
-  { value: '$0', label: 'Community tickets' },
+  { value: '$15', label: 'Reserved night' },
 ]
 
 export const HOW_IT_WORKS = [
@@ -169,7 +169,7 @@ export const AUDIENCES = [
   'Founders, developers, designers, and students',
   'People who want a neighborhood room, not a ballroom',
   'Neighbors curious about what’s being built here',
-  'Anyone free after 5:30 for one night or all five',
+  'Anyone after 5:30 for one night or all five',
   'Community groups and companies backing the week',
 ]
 

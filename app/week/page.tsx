@@ -10,7 +10,7 @@ import '../../styles.css'
 
 const title = 'The Week'
 const description =
-  'Five nights, five industries: MedTech at the BioPark, Creative Tech in Station North, Hardware and Makerspace in Hampden, Founders at the Harbor, and a citywide finale. April 26–30, 2027.'
+  'Five nights, five industries: MedTech at the BioPark, Creative Tech in Station North, Hardware and Makerspace in Hampden, Founders at the Harbor, and AI Night. April 26 to 30, 2027.'
 
 export const metadata: Metadata = {
   title,
@@ -36,7 +36,7 @@ export default function WeekPage() {
           </h2>
           <p className="ed-manifesto-sub">
             Monday is MedTech at the BioPark. Tuesday is creative tech in Station North. Wednesday is hardware and
-            makerspace on The Avenue. Thursday is founders at the Harbor. Friday is a citywide finale. Doors at 5:30.
+            makerspace on The Avenue. Thursday is founders at the Harbor. Friday is AI Night. Doors at 5:30.
             One night still counts.
           </p>
 

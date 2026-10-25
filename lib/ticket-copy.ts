@@ -5,8 +5,9 @@ export function ticketAd() {
     `${EVENT.name} ${EVENT.year}.`,
     `${EVENT.dates}, after 5:30, in rooms around the city.`,
     `Tickets open ${EVENT.opensOn}.`,
-    'General Admission is free.',
-    'A single-night VIP is $45: priority line, one drink ticket, front row, and a swag bag. 35 per night.',
+    'General Admission is $15 a night or $40 for the week. Same talks.',
+    'You can also sponsor a seat for someone else at those same prices.',
+    'A single-night VIP is $45: priority line, one drink ticket, front row, and a swag bag.',
     'The 5-night Week VIP is $125: express line every night, three drink tickets, a t-shirt, swag, and front row.',
   ].join('\n')
 }

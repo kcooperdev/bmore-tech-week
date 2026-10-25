@@ -201,7 +201,8 @@ export function UpdatesPopup({ skipAuto = false }: { skipAuto?: boolean }) {
                 </p>
               ) : (
                 <p className="updates-fine" id={`${fieldId}-hint`}>
-                  General Admission is free. VIP starts at $45. We will not sell your email.
+                  General Admission is $15 a night or $40 for the week. You can sponsor a seat for someone else. VIP starts at
+                  $45. We will not sell your email.
                 </p>
               )}
             </form>

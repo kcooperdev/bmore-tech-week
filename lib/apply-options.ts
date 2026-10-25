@@ -56,6 +56,9 @@ export const SPONSOR_TIERS = [
   { id: 'innovation', label: 'Innovation', price: '$2,500' },
   { id: 'ecosystem', label: 'Ecosystem', price: '$5,000' },
   { id: 'presenting', label: 'Presenting', price: '$10,000' },
+  { id: 'table-night', label: 'Night table only', price: '$500' },
+  { id: 'table-two', label: 'Two-night table only', price: '$900' },
+  { id: 'table-week', label: 'Week table only', price: '$2,000' },
   { id: 'unsure', label: 'Not sure yet', price: 'Talk first' },
 ] as const
 
@@ -67,6 +70,7 @@ export const SPONSOR_GOALS = [
   'Customers / pipeline',
   'Community support',
   'Product in front of builders',
+  'A table in the room',
 ] as const
 
 export const SPONSOR_DECISIONS = [

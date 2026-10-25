@@ -16,25 +16,28 @@ const TONES = ['gold', 'sky', 'bronze', 'gold', 'sky'] as const
 
 export function OfferBoard({
   railLabel,
+  title,
   lead,
   applyKind,
   sibling,
   offers,
 }: {
   railLabel: string
+  title?: string
   lead: string
   applyKind: ApplyKind
   sibling?: { kind: ApplyKind; label: string }
   offers: Offer[]
 }) {
   const isPartner = applyKind === 'partner'
+  const heading = title ?? (isPartner ? 'What you get' : 'Sponsor tiers')
 
   return (
     <div>
       <section className="ed-dark-showcase">
         <div className="ed-container">
           <p className="ed-offer-rail">{railLabel}</p>
-          <h2 className="ed-section-title">{isPartner ? 'What you get' : 'Sponsor tiers'}</h2>
+          <h2 className="ed-section-title">{heading}</h2>
           <p className="ed-offer-lead">{lead}</p>
           {sibling ? (
             <p className="ed-offer-sibling">

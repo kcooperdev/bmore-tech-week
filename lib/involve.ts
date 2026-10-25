@@ -82,22 +82,22 @@ export const SPONSOR_PITCH: InvolvePitchCopy = {
   kicker: isApplyOpenNow() ? '$500 to $10,000 · Limited spots' : `Opens ${EVENT.opensOn} · $500 to $10,000`,
   title: 'This is year one. Your name can be part of how it',
   highlight: 'starts',
-  lead: 'Five nights, after 5:30, in rooms around the city. Sponsors get a table people can walk up to, not a logo buried on a wall. Tiers run from $500 to $10,000.',
+  lead: 'Five nights, after 5:30, in rooms around the city. A sponsorship is your name on the week. A table is floor space in the room. You can do one, or both. Tables are included from $1,000, or $500 on their own.',
   why: [
     {
       label: 'Why this',
       title: 'You meet people in the room',
-      body: 'Talent, founders, and operators show up for the talks and stay to talk. Your table is a place they can come say hello.',
+      body: 'Talent, founders, and operators show up for the talks and stay to talk. A table is where they can come say hello. A sponsorship is how they see you before they walk in.',
     },
     {
       label: 'What you get',
-      title: 'A night, a welcome, and a clear place',
-      body: 'Depending on the tier: logo, a mention, a table, a short welcome, or your name on a night. We will walk through it on a 30-minute call.',
+      title: 'A name on the week, or a place in the room',
+      body: 'Supporting is logo and a mention. From $1,000, a table comes with the tier. Or buy a table only. We will walk through it on a 30-minute call.',
     },
     {
       label: 'Why now',
       title: 'Year one is small on purpose',
-      body: 'There are only so many tables. The companies here now are the ones people will remember when this week is bigger.',
+      body: 'Eight tables a night. Sponsors pick first. The companies here now are the ones people will remember when this week is bigger.',
     },
   ],
   close: applyClose(
