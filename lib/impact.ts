@@ -90,11 +90,11 @@ export const CULTURE_MAP = [
   { kind: 'district', name: 'Black Arts District', place: 'Pennsylvania Avenue' },
   { kind: 'district', name: 'Bromo Arts District', place: 'Downtown' },
   { kind: 'district', name: 'Highlandtown Arts District', place: 'Southeast' },
-  { kind: 'night', name: 'Deep & MedTech Night', place: 'BioPark · Monday' },
-  { kind: 'night', name: 'Creative Tech Night', place: 'Station North · Tuesday' },
-  { kind: 'night', name: 'Hardware & Makerspace Night', place: 'Hampden · Wednesday' },
-  { kind: 'night', name: 'Founders & Startups Night', place: 'Inner Harbor · Thursday' },
-  { kind: 'night', name: 'AI Night', place: 'Citywide · Friday' },
+  { kind: 'night', name: 'Deep & MedTech Night', place: '4MLK · Monday' },
+  { kind: 'night', name: 'Creative Tech Night', place: 'TBA · Tuesday' },
+  { kind: 'night', name: 'Hardware & Makerspace Night', place: 'TBA · Wednesday' },
+  { kind: 'night', name: 'Founders & Startups Night', place: 'Spark Baltimore · Thursday' },
+  { kind: 'night', name: 'AI Night', place: '4MLK · Friday' },
 ] as const
 
 export const WEEK_PILLARS = [

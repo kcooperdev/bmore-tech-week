@@ -36,8 +36,7 @@ export default async function EventsPage() {
           <p className="cfp-kicker">Five Nights · Five Industries</p>
           <h2 className="cfp-h2">Nightly programming</h2>
           <p className="cfp-copy">
-            Doors at 5:30. Each night has an industry and a neighborhood: BioPark, Station North, Hampden, the Harbor,
-            then the finale.
+            Doors at 5:30. Monday and Friday at 4MLK. Thursday at Spark Baltimore. Tuesday and Wednesday rooms to come.
           </p>
           <ol className="cfp-nights">
             {PROGRAM_NIGHTS.map((night) => (
