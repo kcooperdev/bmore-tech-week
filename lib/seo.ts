@@ -3,7 +3,7 @@ import { EVENT, SITE_URL } from '@/lib/data'
 export const SITE_TITLE = `${EVENT.name} ${EVENT.year}`
 
 export const SITE_DESCRIPTION =
-  'Baltimore’s first official tech conference week. Five nights, five industries, 5:30 to 10PM across the city. April 26 to 30, 2027. Applications are open. Tickets go on sale Nov 1st, 2026.'
+  'Baltimore’s first official tech conference week. Five nights, 5:30 to 10PM across the city. MedTech, AI, Creative Tech, Founders, and BTW Finale. April 26 to 30, 2027. Applications are open. Tickets go on sale Nov 1st, 2026.'
 
 export const SITE_KEYWORDS = [
   'Baltimore Tech Week',
@@ -12,7 +12,8 @@ export const SITE_KEYWORDS = [
   'Baltimore night conference',
   'Baltimore startup week',
   'MedTech Baltimore',
-  'Hardware and Makerspace Baltimore',
+  'AI Night Baltimore',
+  'BTW Finale',
   'Baltimore Tech Week tickets',
   'speak at Baltimore Tech Week',
   'Baltimore MD events April 2027',

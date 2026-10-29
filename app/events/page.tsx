@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic'
 
 const title = 'Calendar & Schedule'
 const description =
-  'Explore the Baltimore Tech Week calendar. Five nights, five industries, across neighborhood venues. April 26–30, 2027.'
+  'Explore the Baltimore Tech Week calendar. MedTech, AI Night, Creative Tech, Founders, and BTW Finale. April 26–30, 2027.'
 
 export const metadata: Metadata = {
   title,
@@ -33,10 +33,10 @@ export default async function EventsPage() {
 
       <main className="cfp-main" id="main" tabIndex={-1}>
         <section className="cfp-section">
-          <p className="cfp-kicker">Five Nights · Five Industries</p>
+          <p className="cfp-kicker">Five Nights</p>
           <h2 className="cfp-h2">Nightly programming</h2>
           <p className="cfp-copy">
-            Doors at 5:30. Five nights, five industries. Rooms to be announced.
+            Doors at 5:30. Four industry nights, then BTW Finale. Rooms to be announced.
           </p>
           <ol className="cfp-nights">
             {PROGRAM_NIGHTS.map((night) => (

@@ -82,7 +82,7 @@ export default function ProgrammingPage() {
                   Room A. Produced by the Tech Week team.
                 </li>
                 <li>
-                  <strong>Closing Night.</strong> Friday, April 30, 9:00–10:00 PM,
+                  <strong>BTW Finale.</strong> Friday, April 30, 9:00–10:00 PM,
                   Room A. Produced by the Tech Week team.
                 </li>
               </ol>
@@ -221,7 +221,7 @@ export default function ProgrammingPage() {
                 <li>One event per slot. A panel is one slot with several names.</li>
                 <li>Do not stack three short talks into 90 minutes.</li>
                 <li>Monday stays lighter. Thursday can be fullest.</li>
-                <li>Friday 9:00 is Closing only.</li>
+                <li>Friday 9:00 is BTW Finale only.</li>
                 <li>AI, Cyber, UX, Dev color a room. They do not add extra nights.</li>
               </ul>
             </div>

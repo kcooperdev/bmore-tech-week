@@ -109,7 +109,7 @@ const tables: Offer[] = [
     name: 'Two-night table',
     price: '$900',
     spots: '8 tables a night',
-    fit: 'Same setup, two nights. Good if you want MedTech and Founders, or Hardware and AI.',
+    fit: 'Same setup, two nights. Good if you want MedTech and Founders, or AI and Creative Tech.',
     gets: [
       'Everything in Night table',
       'A table on two nights you choose',

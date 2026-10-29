@@ -35,7 +35,7 @@ export function WhyBaltimore() {
             Come after work. Stay if you want. Go home the same night.
           </h2>
           <p className="why-simple-lead">
-            Doors open at 5:30. Five nights, five industries, across the city. You do not need to clear your calendar
+            Doors open at 5:30. Five nights across the city. You do not need to clear your calendar
             for a full conference week. Come for one evening. Come back the next if it was worth it. That is how more
             of Baltimore gets in the room.
           </p>

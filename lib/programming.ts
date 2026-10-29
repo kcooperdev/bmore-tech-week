@@ -61,8 +61,8 @@ const TEAM_CELLS: Array<
     slot: 'late',
     room: 'a',
     kind: 'team',
-    title: 'Closing Night',
-    note: 'Produced by the Tech Week team. Recap, people, last hour together.',
+    title: 'BTW Finale',
+    note: 'Produced by the Tech Week team. Closing party for every community from the week.',
   },
   {
     day: '2027-04-30',
@@ -70,7 +70,7 @@ const TEAM_CELLS: Array<
     room: 'b',
     kind: 'dark',
     title: 'Hold',
-    note: 'Keep dark so Closing is the only 9:00 event.',
+    note: 'Keep dark so BTW Finale is the only late event.',
   },
 ]
 
@@ -163,8 +163,8 @@ export function toProgrammingMarkdown() {
 
 1. **Opening Night.** Monday, April 26, 5:30–7:00 PM, Room A  
    Produced by the Tech Week team. Welcome, week map, first room.
-2. **Closing Night.** Friday, April 30, 9:00–10:00 PM, Room A  
-   Produced by the Tech Week team. Recap, people, last hour together.
+2. **BTW Finale.** Friday, April 30, 9:00–10:00 PM, Room A  
+   Produced by the Tech Week team. Closing party for every community from the week.
 
 Room B stays dark during those two hours so the city has one opening and one close.
 
@@ -174,7 +174,7 @@ Room B stays dark during those two hours so the city has one opening and one clo
 - One event per slot. A panel is still one slot with several names.
 - Do not stack three short talks into 90 minutes.
 - Fill **7:15–8:45 PM** first. That is the attendance window.
-- Monday stays lighter. Thursday can be fullest. Friday late is Closing only.
+- Monday stays lighter. Thursday can be fullest. Friday late is BTW Finale only.
 
 ## Inventory
 

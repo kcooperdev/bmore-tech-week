@@ -21,7 +21,7 @@ export const EVENT = {
   locationName: 'Baltimore',
   region: 'MD',
   country: 'US',
-  tagline: 'Five nights. Five industries. Across Baltimore.',
+  tagline: 'Five nights. Across Baltimore.',
   ticketsStatus: 'coming soon' as const,
   submissionsOpen: true,
   speakerCallOpen: true,
@@ -135,7 +135,7 @@ export const HOW_IT_WORKS = [
   {
     step: '04',
     title: 'Come back tomorrow, if you want',
-    body: 'Five nights, five industries. You do not have to do every night. One still counts.',
+    body: 'Five nights. You do not have to do every night. One still counts.',
   },
 ] as const
 
@@ -158,7 +158,7 @@ export const VOLUNTEER_ROLES = [
 ] as const
 
 export const VISION = [
-  'Five nights. Five industries. Across Baltimore.',
+  'Five nights. Across Baltimore.',
   'Rooms in neighborhoods, not a single convention hall.',
   'Talks, workshops, and panels from people who actually work here.',
   'It should feel easy. A venue, a night, and whoever else showed up.',

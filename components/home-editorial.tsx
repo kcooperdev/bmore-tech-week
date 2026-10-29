@@ -42,11 +42,12 @@ export function HomeEditorial() {
           <p className="ed-eyebrow">April 26 to 30, 2027 · Baltimore, MD</p>
 
           <h2 id="ed-manifesto-heading" className="ed-manifesto-title">
-            Five nights. Five industries. Across <span className="ed-highlight">Baltimore</span>.
+            Five nights. Across <span className="ed-highlight">Baltimore</span>.
           </h2>
 
           <p className="ed-manifesto-sub">
-            Each evening is a different industry. Doors open at 5:30. Come for one night, or come back the next.
+            Monday through Thursday is a different industry. Friday is BTW Finale. Doors open at 5:30. Come for one
+            night, or come back the next.
           </p>
 
           <div className="ed-manifesto-cta">

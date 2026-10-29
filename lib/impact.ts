@@ -91,10 +91,10 @@ export const CULTURE_MAP = [
   { kind: 'district', name: 'Bromo Arts District', place: 'Downtown' },
   { kind: 'district', name: 'Highlandtown Arts District', place: 'Southeast' },
   { kind: 'night', name: 'Deep & MedTech Night', place: 'Monday' },
-  { kind: 'night', name: 'Creative Tech Night', place: 'Tuesday' },
-  { kind: 'night', name: 'Hardware & Makerspace Night', place: 'Wednesday' },
+  { kind: 'night', name: 'AI Night', place: 'Tuesday' },
+  { kind: 'night', name: 'Creative Tech Night', place: 'Wednesday' },
   { kind: 'night', name: 'Founders & Startups Night', place: 'Thursday' },
-  { kind: 'night', name: 'AI Night', place: 'Friday' },
+  { kind: 'night', name: 'BTW Finale', place: 'Friday' },
 ] as const
 
 export const WEEK_PILLARS = [
