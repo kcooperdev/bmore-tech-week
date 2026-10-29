@@ -112,15 +112,15 @@ export function involveLink(kind: ApplyKind) {
 
 export const STATS = [
   { value: '5:30', label: 'Doors each night' },
-  { value: '5', label: 'Neighborhoods' },
-  { value: '$15', label: 'Reserved night' },
+  { value: '5', label: 'Industries' },
+  { value: '$40', label: 'Week pass' },
 ]
 
 export const HOW_IT_WORKS = [
   {
     step: '01',
     title: 'Show up',
-    body: 'Doors open at 5:30. That night’s venue is somewhere in the city: a room, a restaurant, a studio.',
+    body: 'Doors open at 5:30. Rooms will be announced. Come for one night or stay the week.',
   },
   {
     step: '02',

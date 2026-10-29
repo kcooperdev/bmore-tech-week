@@ -321,7 +321,7 @@ export function SpeakerForm({
                 >
                   {night.name}
                   <span className="cfp-chip-sub">
-                    {night.weekday.slice(0, 3)} · {night.date} · {night.neighborhood}
+                    {night.weekday.slice(0, 3)} · {night.date}
                   </span>
                 </ChipToggle>
               ))}

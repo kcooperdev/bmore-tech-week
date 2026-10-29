@@ -46,8 +46,7 @@ export function HomeEditorial() {
           </h2>
 
           <p className="ed-manifesto-sub">
-            Each evening is a different neighborhood and a different industry. Doors open at 5:30. Come for one night,
-            or come back the next.
+            Each evening is a different industry. Doors open at 5:30. Come for one night, or come back the next.
           </p>
 
           <div className="ed-manifesto-cta">
@@ -119,7 +118,6 @@ export function HomeEditorial() {
                   <div className="ed-night-copy">
                     <p className="ed-night-meta">{night.weekday.slice(0, 3)}</p>
                     <h3 className="ed-night-name">{night.short}</h3>
-                    <p className="ed-night-place">{night.neighborhood}</p>
                   </div>
                 </Link>
               </li>

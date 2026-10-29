@@ -120,7 +120,7 @@ export const DEMO_VENUE = {
 
 export const DEMO_TICKET = {
   email: 'test.ticket@bmoretechweek.com',
-  pass: 'General Admission',
+  pass: 'General Admission week pass',
   name: 'Test Alex Kim',
   organization: 'Harbor Labs',
   role: 'Designer',

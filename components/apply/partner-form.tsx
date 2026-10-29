@@ -322,7 +322,7 @@ export function PartnerForm({ demo = false }: { demo?: boolean }) {
                   <ApplyChip key={night.iso} checked={nights.includes(night.short)} onChange={() => setNights(toggle(nights, night.short))}>
                     {night.short}
                     <span>
-                      {night.weekday.slice(0, 3)} · {night.neighborhood}
+                      {night.weekday.slice(0, 3)} · {night.date}
                     </span>
                   </ApplyChip>
                 ))}

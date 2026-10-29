@@ -425,7 +425,7 @@ export function SpeakForm({ initialFormat = '', demo = false }: { initialFormat?
                   <ApplyChip key={night.iso} checked={nights.includes(night.iso)} onChange={() => setNightsWithAny(night.iso)}>
                     {night.name}
                     <span>
-                      {night.weekday.slice(0, 3)} · {night.date} · {night.neighborhood}
+                      {night.weekday.slice(0, 3)} · {night.date}
                     </span>
                   </ApplyChip>
                 ))}

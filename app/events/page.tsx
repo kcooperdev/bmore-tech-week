@@ -36,13 +36,13 @@ export default async function EventsPage() {
           <p className="cfp-kicker">Five Nights · Five Industries</p>
           <h2 className="cfp-h2">Nightly programming</h2>
           <p className="cfp-copy">
-            Doors at 5:30. Monday and Friday at 4MLK. Thursday at Spark Baltimore. Tuesday and Wednesday rooms to come.
+            Doors at 5:30. Five nights, five industries. Rooms to be announced.
           </p>
           <ol className="cfp-nights">
             {PROGRAM_NIGHTS.map((night) => (
               <li key={night.iso}>
                 <p className="cfp-night-meta">
-                  {night.weekday} · {night.date} · {night.neighborhood}
+                  {night.weekday} · {night.date}
                 </p>
                 <h3 className="cfp-h3">{night.name}</h3>
                 <p className="cfp-tight">{night.body}</p>

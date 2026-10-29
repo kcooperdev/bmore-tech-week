@@ -10,7 +10,7 @@ import '../../styles.css'
 
 const title = 'The Week'
 const description =
-  'Five nights, five industries: MedTech at 4MLK, Creative Tech TBA, Hardware and Makerspace TBA, Founders at Spark Baltimore, and AI Night at 4MLK. April 26 to 30, 2027.'
+  'Five nights, five industries: MedTech, Creative Tech, Hardware and Makerspace, Founders, and AI Night. April 26 to 30, 2027.'
 
 export const metadata: Metadata = {
   title,
@@ -35,9 +35,8 @@ export default function WeekPage() {
             Five nights. Five industries. Across <span className="ed-highlight">Baltimore</span>.
           </h2>
           <p className="ed-manifesto-sub">
-            Monday is MedTech at 4MLK. Tuesday is creative tech, room TBA. Wednesday is hardware and makerspace, room
-            TBA. Thursday is founders at Spark Baltimore. Friday is AI Night at 4MLK. Doors at 5:30.
-            One night still counts.
+            Monday is MedTech. Tuesday is creative tech. Wednesday is hardware and makerspace. Thursday is founders.
+            Friday is AI Night. Rooms to be announced. Doors at 5:30. One night still counts.
           </p>
 
           <div className="ed-steps-grid">
@@ -67,7 +66,7 @@ export default function WeekPage() {
                   </span>
                   <div className="ed-service-copy">
                     <span className="ed-service-kicker">
-                      Night 0{idx + 1} · {night.weekday}, {night.date} · {night.neighborhood} · {EVENT.nightWindow}
+                      Night 0{idx + 1} · {night.weekday}, {night.date} · {EVENT.nightWindow}
                     </span>
                     <h3 className="ed-service-title">{night.name}</h3>
                     <p className="ed-service-lead">{night.body}</p>
