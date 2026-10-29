@@ -46,8 +46,8 @@ export function HomeEditorial() {
           </h2>
 
           <p className="ed-manifesto-sub">
-            Monday through Thursday is a different industry. Friday is BTW Finale. Doors open at 5:30. Come for one
-            night, or come back the next.
+            Monday through Thursday is a different industry. Friday is BTW Finale, an expo party. Doors open at 5:30.
+            Come for one night, or come back the next.
           </p>
 
           <div className="ed-manifesto-cta">

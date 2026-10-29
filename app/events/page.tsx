@@ -36,7 +36,7 @@ export default async function EventsPage() {
           <p className="cfp-kicker">Five Nights</p>
           <h2 className="cfp-h2">Nightly programming</h2>
           <p className="cfp-copy">
-            Doors at 5:30. Four industry nights, then BTW Finale. Rooms to be announced.
+            Doors at 5:30. Four industry nights, then BTW Finale, an expo party. Rooms to be announced.
           </p>
           <ol className="cfp-nights">
             {PROGRAM_NIGHTS.map((night) => (

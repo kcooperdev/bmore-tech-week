@@ -83,7 +83,7 @@ export default function ProgrammingPage() {
                 </li>
                 <li>
                   <strong>BTW Finale.</strong> Friday, April 30, 9:00–10:00 PM,
-                  Room A. Produced by the Tech Week team.
+                  Room A. Expo party. Produced by the Tech Week team.
                 </li>
               </ol>
               <p className="mt-2 text-sm text-neutral-600">

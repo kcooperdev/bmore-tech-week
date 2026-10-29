@@ -47,8 +47,8 @@ export const PROGRAM_NIGHTS = [
     weekday: 'Monday',
     date: 'April 26',
     neighborhood: '',
-    body: 'Healthcare, biotech, medical devices, life sciences, and deep tech.',
-    activities: ['Keynotes and presentations', 'Healthcare and life-science panels', 'Check-in and networking'],
+    body: 'The week opens on healthcare and deep tech. Biotech, devices, life sciences, and the people building between hospitals, labs, and startups.',
+    activities: ['Opening talks', 'Healthcare and life-science panels', 'Time on the floor after'],
   },
   {
     iso: '2027-04-27' as WeekDate,
@@ -57,8 +57,8 @@ export const PROGRAM_NIGHTS = [
     weekday: 'Tuesday',
     date: 'April 27',
     neighborhood: '',
-    body: 'Artificial intelligence, applied tools, and demos.',
-    activities: ['AI talks and panels', 'Applied demos', 'Check-in and networking'],
+    body: 'A night for applied AI. Tools, models, and live demos from people who shipped something, not a tour of the field.',
+    activities: ['AI talks and panels', 'Live demos', 'Time on the floor after'],
   },
   {
     iso: '2027-04-28' as WeekDate,
@@ -67,8 +67,8 @@ export const PROGRAM_NIGHTS = [
     weekday: 'Wednesday',
     date: 'April 28',
     neighborhood: '',
-    body: 'AI tools, digital art, media tech, and creative technology.',
-    activities: ['Keynotes and panels', 'Evening lounges', 'Cocktails'],
+    body: 'Creative technology as a practice. Digital art, media, design tools, and the work that lives between a studio and a product.',
+    activities: ['Talks and panels', 'Work on view', 'Open hangouts'],
   },
   {
     iso: '2027-04-29' as WeekDate,
@@ -77,8 +77,8 @@ export const PROGRAM_NIGHTS = [
     weekday: 'Thursday',
     date: 'April 29',
     neighborhood: '',
-    body: 'Startup growth, pitches, venture, and climate tech.',
-    activities: ['Main-stage pitches', 'Investor panels', 'After-hours founder mixers'],
+    body: 'Founders and the people around them. Pitches, early teams, operators, and what it takes to build a company in this city.',
+    activities: ['Main-stage pitches', 'Founder and operator panels', 'Open floor after'],
   },
   {
     iso: '2027-04-30' as WeekDate,
@@ -87,8 +87,8 @@ export const PROGRAM_NIGHTS = [
     weekday: 'Friday',
     date: 'April 30',
     neighborhood: '',
-    body: 'Closing party for every community from the week. One room. The week ends here.',
-    activities: ['Closing party', 'All communities in one room', 'Drinks and hangouts'],
+    body: 'The week closes as an expo party. Vendors around the room, every community from Monday through Thursday in one place, and a floor made for walking, not a closer on a stage.',
+    activities: ['Vendor floor', 'Community tables', 'The week in one room'],
   },
 ] as const
 

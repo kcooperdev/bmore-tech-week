@@ -35,8 +35,8 @@ export default function WeekPage() {
             Five nights. Across <span className="ed-highlight">Baltimore</span>.
           </h2>
           <p className="ed-manifesto-sub">
-            Monday is MedTech. Tuesday is AI. Wednesday is creative tech. Thursday is founders. Friday is BTW Finale.
-            Rooms to be announced. Doors at 5:30. One night still counts.
+            Monday is MedTech. Tuesday is AI. Wednesday is creative tech. Thursday is founders. Friday is BTW Finale, an
+            expo party for every community from the week. Rooms to be announced. Doors at 5:30. One night still counts.
           </p>
 
           <div className="ed-steps-grid">

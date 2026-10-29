@@ -62,7 +62,7 @@ const TEAM_CELLS: Array<
     room: 'a',
     kind: 'team',
     title: 'BTW Finale',
-    note: 'Produced by the Tech Week team. Closing party for every community from the week.',
+    note: 'Produced by the Tech Week team. Expo party: vendors, community tables, every community in the room.',
   },
   {
     day: '2027-04-30',
@@ -164,7 +164,7 @@ export function toProgrammingMarkdown() {
 1. **Opening Night.** Monday, April 26, 5:30–7:00 PM, Room A  
    Produced by the Tech Week team. Welcome, week map, first room.
 2. **BTW Finale.** Friday, April 30, 9:00–10:00 PM, Room A  
-   Produced by the Tech Week team. Closing party for every community from the week.
+   Produced by the Tech Week team. Expo party: vendors, community tables, every community in the room.
 
 Room B stays dark during those two hours so the city has one opening and one close.
 

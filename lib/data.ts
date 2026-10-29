@@ -11,8 +11,8 @@ export const EVENT = {
   nightWindow: '5:30–10PM',
   startDate: '2027-04-26',
   endDate: '2027-04-30',
-  opensOn: 'Nov 1st, 2026',
-  opensOnIso: '2026-11-01',
+  opensOn: 'Dec 1st, 2026',
+  opensOnIso: '2026-12-01',
   speakerDeadline: 'February 1, 2027',
   speakerDeadlineIso: '2027-02-01',
   speakerDecision: 'March 1',
@@ -130,7 +130,7 @@ export const HOW_IT_WORKS = [
   {
     step: '03',
     title: 'Talk to people after',
-    body: 'The room is small on purpose. VIP pass holders can also redeem drink tickets at participating spots.',
+    body: 'The room is small on purpose. Stay after the session. That is the point of a night format.',
   },
   {
     step: '04',

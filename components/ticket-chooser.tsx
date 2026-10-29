@@ -90,8 +90,8 @@ export function TicketChooser() {
                 Sponsor a <span className="ed-highlight">week</span>
               </h2>
               <p className="ed-manifesto-sub">
-                Same General Admission week pass. You pay. We give it to a student, a Per Scholas learner, or someone
-                who asked. Not VIP. Just the door.
+                Same General Admission week pass. You pay. We give it to a student, a professional, or someone who asked
+                to be in the room. Not VIP. Just the door.
               </p>
             </div>
             <div className="vip-gift-picks">
