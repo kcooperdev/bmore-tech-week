@@ -14,7 +14,7 @@ import {
 } from '@/lib/demo-data'
 
 const RUN_SHEET =
-  process.env.NEXT_PUBLIC_EVENT_OPS_URL?.trim() || 'http://localhost:3001'
+  process.env.NEXT_PUBLIC_EVENT_OPS_URL?.trim() || 'http://127.0.0.1:3000'
 
 type Lane = {
   id: string

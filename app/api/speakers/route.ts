@@ -32,6 +32,7 @@ export async function POST(request: Request) {
     await syncToEventOps({
       kind: 'speak',
       category: 'speakers',
+      sourceId: speaker.id,
       name: speaker.name,
       email: speaker.email,
       phone: speaker.phone,

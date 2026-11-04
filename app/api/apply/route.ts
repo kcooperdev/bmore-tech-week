@@ -43,6 +43,7 @@ export async function POST(request: Request) {
           : input.kind === 'ambassador'
             ? 'ambassadors'
             : 'community_partners',
+      sourceId: saved.id,
       name: saved.name,
       email: saved.email,
       organization: saved.organization,
