@@ -1,53 +1,15 @@
-import { NextResponse } from 'next/server'
-import { EVENT } from '@/lib/data'
-import { FormError, parseVenueInput } from '@/lib/validate'
-import { createVenue } from '@/lib/store'
-import { appendToSheet, venueSheetFields } from '@/lib/sheets'
-import { syncToEventOps } from '@/lib/ops-sync'
-import type { Venue } from '@/lib/models'
+import { NextResponse } from "next/server";
+import { saveVenue, SubmitError } from "@/lib/submissions";
 
 export async function POST(request: Request) {
-  if (!EVENT.submissionsOpen) {
-    return NextResponse.json({ error: 'Coming soon' }, { status: 503 })
-  }
-
-  let body: Record<string, unknown>
   try {
-    body = (await request.json()) as Record<string, unknown>
-  } catch {
-    return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
-  }
-
-  try {
-    const input = parseVenueInput(body)
-    const venue: Venue = {
-      id: crypto.randomUUID(),
-      year: '2027',
-      status: 'pending',
-      createdAt: new Date().toISOString(),
-      ...input,
+    const body = (await request.json()) as Record<string, unknown>;
+    const saved = await saveVenue(body);
+    return NextResponse.json({ ok: true, id: saved?.id });
+  } catch (error) {
+    if (error instanceof SubmitError) {
+      return NextResponse.json({ error: error.message }, { status: error.status });
     }
-    await createVenue(venue)
-    await appendToSheet('hosts', venueSheetFields(venue))
-    await syncToEventOps({
-      kind: 'venue',
-      category: 'venues',
-      name: venue.name,
-      email: venue.contactEmail,
-      contactName: venue.contactName,
-      organization: venue.address,
-      neighborhood: venue.neighborhood,
-      venueType: venue.venueType,
-      capacity: venue.capacity,
-      availableDates: venue.availableDates,
-      notes: `${venue.costType}${venue.costAmount ? ` · ${venue.costAmount}` : ''}`,
-    })
-    return NextResponse.json({ ok: true, id: venue.id })
-  } catch (err) {
-    if (err instanceof FormError) {
-      return NextResponse.json({ error: err.message }, { status: 400 })
-    }
-    console.error('[venues] create failed', err)
-    return NextResponse.json({ error: 'Could not save venue.' }, { status: 500 })
+    return NextResponse.json({ error: "Could not save venue." }, { status: 400 });
   }
 }

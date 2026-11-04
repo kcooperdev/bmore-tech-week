@@ -1,52 +1,39 @@
-import type { Metadata } from 'next'
-import { EVENT } from '@/lib/data'
-import { pageSocial } from '@/lib/seo'
-import { AMBASSADOR_MOVES, AMBASSADOR_PITCH } from '@/lib/involve'
-import { HarborTopbar } from '@/components/harbor-topbar'
-import { HarborFooter } from '@/components/harbor-footer'
-import { PageBanner } from '@/components/page-banner'
-import { InvolveClose, InvolvePitch } from '@/components/involve-pitch'
-import '../../styles.css'
+import { ApplyForm } from "@/components/ApplyForm";
+import { ambassadorFields } from "@/lib/involve";
+import { pageMeta } from "@/lib/site";
 
-const title = 'Be an Ambassador'
-const description =
-  'Baltimore hears this week from someone they trust. Get the word out for Baltimore Tech Week. April 26–30.'
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: EVENT.ambassadorsPath },
-  ...pageSocial({ title, description, path: EVENT.ambassadorsPath }),
-}
+export const metadata = pageMeta(
+  "Be an Ambassador",
+  "Help Baltimore Tech Week get the word out. Share the nights with people who already listen to you.",
+);
 
 export default function AmbassadorsPage() {
   return (
-    <div className="bmore bmore-page">
-      <HarborTopbar current="ambassadors" />
-      <PageBanner title="Be an Ambassador" kicker="Get Involved" />
-
-      <main id="main" tabIndex={-1}>
-        <InvolvePitch copy={AMBASSADOR_PITCH} />
-
-        <section className="ed-dark-showcase">
-          <div className="ed-container">
-            <h2 className="ed-section-title">How you get the word out</h2>
-            <div className="ed-steps-grid ed-three-col-grid ed-dark-steps">
-              {AMBASSADOR_MOVES.map((item, index) => (
-                <div key={item.title} className="ed-step-card">
-                  <span className="ed-step-num">0{index + 1}</span>
-                  <h3 className="ed-step-title">{item.title}</h3>
-                  <p className="ed-step-body">{item.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <InvolveClose title="Tell Baltimore about the five nights." kind="ambassador" cta={AMBASSADOR_PITCH.cta} />
-      </main>
-
-      <HarborFooter />
-    </div>
-  )
+    <main className="plain-page">
+      <div className="page-top">
+        <div className="week-wrap split">
+          <header id="main">
+            <p className="week-kicker">Get the word out</p>
+            <h1>Ambassador</h1>
+            <p className="plain-lede">
+              Help bring people out. Share events with your network and introduce more people to the community. You do not need a big following.
+            </p>
+            <ul className="side-notes">
+              <li>Start with the circle you already have. A campus Slack, a Sunday dinner, the group chat that answers.</li>
+              <li>Share the night, not a pile of graphics. Who it is for, when it is, and the ticket link.</li>
+              <li>Bring one person with you. A roommate, a classmate, someone from work.</li>
+            </ul>
+          </header>
+          <ApplyForm
+            endpoint="/api/apply"
+            extra={{ kind: "ambassador" }}
+            submitLabel="Submit"
+            successTitle="Thanks. You are on the ambassador list."
+            successBody="You can start telling people now. Share the night, the time, and the ticket link. We will write if we need anything else."
+            fields={ambassadorFields}
+          />
+        </div>
+      </div>
+    </main>
+  );
 }

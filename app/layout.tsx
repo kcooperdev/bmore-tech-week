@@ -1,102 +1,113 @@
-import { Analytics } from '@vercel/analytics/next'
-import type { Metadata, Viewport } from 'next'
-import { Figtree } from 'next/font/google'
-import { EVENT, SITE_URL } from '@/lib/data'
-import { OG_IMAGE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from '@/lib/seo'
-import { JsonLd } from '@/components/json-ld'
-import { SkipLink } from '@/components/skip-link'
-import './globals.css'
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import { Figtree, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+import "./harbor.css";
+import "./cyber.css";
+import "./apply.css";
+import { CookieNotice } from "@/components/CookieNotice";
+import { Topbar } from "@/components/Topbar";
+import { Footer } from "@/components/Footer";
+import { homeDescription, hq, site } from "@/lib/site";
 
 const figtree = Figtree({
-  subsets: ['latin'],
-  variable: '--font-figtree',
-  display: 'swap',
-})
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: SITE_TITLE,
-    template: '%s | Baltimore Tech Week',
-  },
-  description: SITE_DESCRIPTION,
-  applicationName: EVENT.name,
-  authors: [{ name: EVENT.name, url: SITE_URL }],
-  creator: EVENT.name,
-  publisher: EVENT.name,
-  category: 'technology',
-  keywords: SITE_KEYWORDS,
-  formatDetection: { email: false, address: false, telephone: false },
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: SITE_URL,
-    siteName: EVENT.name,
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: [OG_IMAGE],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: [OG_IMAGE.url],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
-    },
-  },
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '32x32' },
-      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
-    ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-  },
-  other: {
-    'event:start_time': `${EVENT.startDate}T17:30:00-04:00`,
-    'event:end_time': `${EVENT.endDate}T22:00:00-04:00`,
-    'geo.region': 'US-MD',
-    'geo.placename': 'Baltimore',
-  },
-}
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  viewportFit: 'cover',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f2b03a' },
-    { media: '(prefers-color-scheme: dark)', color: '#1a1208' },
-  ],
-}
+  themeColor: "#2f7fa8",
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: "Baltimore Tech Week 2027",
+    template: "%s · Baltimore Tech Week 2027",
+  },
+  description: homeDescription,
+  applicationName: "Baltimore Tech Week",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: site.url,
+    siteName: "Baltimore Tech Week",
+    title: "Baltimore Tech Week 2027",
+    description: homeDescription,
+    images: [{ url: "/images/harbor-sunset.jpg", alt: "Painted Baltimore harbor at sunset" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Baltimore Tech Week 2027",
+    description: homeDescription,
+    images: ["/images/harbor-sunset.jpg"],
+  },
+  icons: {
+    icon: "/images/mark-icon.png",
+    apple: "/images/apple-touch.png",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: "Baltimore Tech Week 2027",
+  description: homeDescription,
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  eventStatus: "https://schema.org/EventScheduled",
+  startDate: "2027-04-28",
+  endDate: "2027-04-30",
+  url: site.url,
+  image: `${site.url}/images/harbor-sunset.jpg`,
+  location: {
+    "@type": "Place",
+    name: `${hq.name} at ${hq.venue}`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: hq.street,
+      addressLocality: "Baltimore",
+      addressRegion: "MD",
+      postalCode: "21201",
+      addressCountry: "US",
+    },
+  },
+  organizer: {
+    "@type": "Organization",
+    name: "Baltimore Tech Week",
+    url: site.url,
+    email: site.email,
+  },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${figtree.variable} bg-background`}
-    >
-      <body className="font-sans antialiased" suppressHydrationWarning>
-        <SkipLink />
-        <JsonLd />
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+    <html lang="en" className={`${figtree.variable} ${mono.variable}`}>
+      <body className="antialiased">
+        <div className="bmore flex min-h-screen flex-col">
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-foreground"
+          >
+            Skip to content
+          </a>
+          <Topbar />
+          <div className="flex-1">{children}</div>
+          <Footer />
+          <CookieNotice />
+        </div>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
     </html>
-  )
+  );
 }
