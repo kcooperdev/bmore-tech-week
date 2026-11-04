@@ -38,11 +38,23 @@ export default async function Home({
             <div className="day-panels">
               {pillars.map((pillar) => (
                 <Link key={pillar.id} className={panelClass[pillar.id]} href={`/schedule#${pillar.id}`}>
-                  <div>
+                  <div className="day-panel-copy">
                     <p className="day-panel-day">{pillar.day}</p>
                     <h3>{pillar.name}</h3>
+                    <p className="day-panel-q">{pillar.question}</p>
                   </div>
-                  <p className="day-panel-q">{pillar.question}</p>
+                  <span className="day-panel-go" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M5 12h12M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
                 </Link>
               ))}
             </div>

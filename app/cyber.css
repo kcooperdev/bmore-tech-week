@@ -75,6 +75,8 @@
   text-shadow: none;
   background: #07141fe8;
   box-shadow: inset 0 -2px 0 #e2b13c;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .site-topbar[data-nav-tone="sunset"],
@@ -161,6 +163,10 @@
   width: 64px;
   height: 64px;
   background-image: url("/images/baltimore-mark.png");
+}
+
+.topbar-drawer-cta {
+  border-radius: 999px;
 }
 
 .editorial-flow,
@@ -412,9 +418,9 @@
 .cookie-layer {
   position: fixed;
   z-index: 70;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
+  right: 0.85rem;
+  bottom: max(0.85rem, env(safe-area-inset-bottom));
+  left: 0.85rem;
   display: flex;
   justify-content: center;
   pointer-events: none;
@@ -437,26 +443,27 @@
 .cookie-notice {
   position: relative;
   display: grid;
-  gap: 0.8rem;
-  width: min(40rem, 100%);
-  padding: 1.1rem 1.15rem 1.15rem;
+  gap: 0.55rem;
+  width: min(22.5rem, 100%);
+  padding: 0.85rem 0.9rem 0.9rem;
   background: #f3ead7;
   color: #16120c;
   border: 1.5px solid #16120c;
-  border-radius: 1.2rem;
+  border-radius: 1rem;
   pointer-events: auto;
   box-shadow: 0 16px 40px rgb(0 0 0 / 0.28);
 }
 
 .cookie-notice h2 {
-  margin: 0 0 0.25rem;
-  font-size: 1.25rem;
+  margin: 0;
+  font-size: 1rem;
   letter-spacing: -0.03em;
 }
 
 .cookie-notice p {
-  margin: 0;
-  line-height: 1.45;
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.35;
 }
 
 .cookie-notice a {
@@ -497,7 +504,41 @@
 .cookie-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+  margin-top: 0.15rem;
+}
+
+.cookie-learn,
+.cookie-prefs-link {
+  color: #16120c;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+.cookie-learn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0.35rem 0.8rem;
+  border: 1.5px solid #16120c;
+  border-radius: 999px;
+}
+
+.cookie-prefs-link {
+  min-height: 36px;
+  opacity: 0.7;
+}
+
+.cookie-notice .week-btn {
+  min-height: 36px;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.88rem;
 }
 
 .cookie-notice .week-btn-ghost {
@@ -536,14 +577,18 @@
 .day-panel-connect,
 .day-panel-build,
 .day-panel-opportunity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   min-height: 0;
-  justify-content: flex-start;
-  background: transparent;
-  color: var(--cream);
-  border: 0;
-  border-top: 1px solid #e2b13c55;
+  background: #e2b13c;
+  color: #16120c;
+  border: 1.5px solid #16120c;
+  border-radius: 1.15rem;
   box-shadow: none;
-  padding: 0.9rem 0 0;
+  padding: 1.05rem 1rem 1.05rem 1.15rem;
 }
 
 .day-panel::before,
@@ -551,21 +596,54 @@
   display: none;
 }
 
+.day-panel-copy {
+  min-width: 0;
+}
+
+.day-panel-day {
+  margin: 0;
+  color: #16120c;
+  opacity: 0.72;
+}
+
 .day-panel h3 {
-  margin-top: 0.2rem;
-  font-size: clamp(1.7rem, 2.4vw, 2.15rem);
+  margin: 0.15rem 0 0;
+  font-size: clamp(1.55rem, 4vw, 2.05rem);
+  color: #16120c;
 }
 
 .day-panel-q {
-  margin-top: 0.35rem;
+  margin: 0.3rem 0 0;
+  max-width: 18rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: #f3ead7b8;
+  line-height: 1.35;
+  color: #16120ccc;
 }
 
-.day-panel-q {
-  font-size: 1.05rem;
-  line-height: 1.35;
-  max-width: 16rem;
+.day-panel-go {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.55rem;
+  height: 2.55rem;
+  border-radius: 999px;
+  background: #16120c;
+  color: #e2b13c;
+}
+
+.day-panel-go svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.day-panel:hover {
+  background: #f4cc5c;
+}
+
+.day-panel:hover .day-panel-go {
+  color: #f4cc5c;
 }
 
 .day-list {

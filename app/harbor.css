@@ -307,7 +307,7 @@ html:has(.harbor-pin) body {
 .site-topbar[data-nav-tone="dark"] {
   color: var(--paper);
   text-shadow: none;
-  backdrop-filter: blur(14px);
+  backdrop-filter: none;
   background: #070b16e6;
 }
 
@@ -1611,12 +1611,20 @@ html:has(.harbor-pin) body {
   }
 }
 
+html.is-nav-open,
+html.is-nav-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 @media (max-width: 1040px) {
   .harbor-pin .topbar {
     opacity: 1;
     transform: none;
   }
 
+  .topbar,
+  .topbar.is-menu-open,
   .harbor-pin:not(.is-night):not(.is-past) .topbar-cta,
   .harbor-pin .topbar-burger,
   .harbor-pin .topbar-cta,
@@ -1624,17 +1632,35 @@ html:has(.harbor-pin) body {
     pointer-events: auto;
   }
 
+  .topbar {
+    padding: max(0.7rem, env(safe-area-inset-top)) 0.9rem 0.7rem;
+    gap: 0.55rem;
+  }
+
+  .topbar.is-menu-open,
+  .site-topbar.is-menu-open,
+  .site-topbar[data-nav-tone].is-menu-open {
+    z-index: 80;
+    transform: none;
+    filter: none;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
   .topbar-desktop {
-    display: none;
+    display: none !important;
   }
 
   .topbar-burger {
+    position: relative;
+    z-index: 80;
     width: 44px;
     height: 44px;
-    color: inherit;
+    flex: none;
+    color: #16120c;
     pointer-events: auto;
-    background: #070b1647;
-    border: 1px solid #f3ead738;
+    background: #e2b13c;
+    border: 1.5px solid #16120c;
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
@@ -1642,38 +1668,82 @@ html:has(.harbor-pin) body {
     padding: 0;
   }
 
+  .site-topbar[data-nav-tone="light"] .topbar-burger,
+  .site-topbar[data-nav-tone="gold"] .topbar-burger,
+  .site-topbar[data-nav-tone="sky"] .topbar-burger,
+  .site-topbar[data-nav-tone="sunset"] .topbar-burger,
+  .harbor-pin.is-past[data-nav-tone="light"] .topbar-burger,
+  .harbor-pin.is-past[data-nav-tone="gold"] .topbar-burger,
+  .harbor-pin.is-past[data-nav-tone="sky"] .topbar-burger,
+  .harbor-pin.is-past[data-nav-tone="sunset"] .topbar-burger {
+    background: #16120c14;
+    border-color: #16120c33;
+    color: var(--ink);
+  }
+
+  .topbar-burger[aria-expanded="true"] {
+    background: #e2b13c;
+    border-color: #e2b13c;
+    color: #16120c;
+  }
+
   .topbar-burger svg {
     width: 22px;
     height: 22px;
+  }
+
+  .topbar-cta {
+    min-height: 40px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.88rem;
   }
 
   .topbar-drawer-layer {
     z-index: 60;
     display: block;
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
     pointer-events: auto;
   }
 
   .topbar-drawer-backdrop {
     position: absolute;
     inset: 0;
-    background: #070b1694;
+    background: #070b16c7;
     border: 0;
   }
 
   .topbar-drawer {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
-    width: min(20.5rem, 86vw);
-    padding: max(1rem, env(safe-area-inset-top)) 1.25rem max(1.25rem, env(safe-area-inset-bottom));
+    width: min(20.5rem, calc(100vw - 4.25rem));
+    height: 100dvh;
+    padding: max(4.4rem, calc(env(safe-area-inset-top) + 3.4rem)) 1.25rem max(1.4rem, env(safe-area-inset-bottom));
     color: var(--paper);
     background: #070b16;
     display: flex;
     flex-direction: column;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .topbar-drawer-cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.7rem 1rem;
+    background: #e2b13c;
+    color: #16120c;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
   }
 
   .topbar-drawer-brand {
@@ -1722,7 +1792,7 @@ html:has(.harbor-pin) body {
   }
 
   .night-title {
-    padding: max(5.5rem, calc(env(safe-area-inset-top) + 4.25rem)) 1.25rem 4.5rem;
+    padding: max(5.5rem, calc(env(safe-area-inset-top) + 4.25rem)) 1.1rem 3.5rem;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -1735,17 +1805,114 @@ html:has(.harbor-pin) body {
   }
 
   .night-title h1 {
-    -webkit-text-stroke-width: 2.4px;
-    font-size: clamp(3rem, 15vw, 4.8rem);
+    max-width: 100%;
+    -webkit-text-stroke-width: 1.7px;
+    font-size: clamp(2.15rem, 11vw, 4.2rem);
+    letter-spacing: -0.04em;
   }
 
   .plate {
     object-position: 28% 56%;
   }
 
+  .week-wrap {
+    width: min(74rem, calc(100% - 1.6rem));
+  }
+
+  .ed-container,
+  .harbor-footer-inner {
+    padding-left: max(0.8rem, env(safe-area-inset-left));
+    padding-right: max(0.8rem, env(safe-area-inset-right));
+  }
+
+  .harbor-footer-inner {
+    padding-top: 3rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .band-paper,
+  .band-ink,
+  .band-sky {
+    padding: 2.4rem 0 2.7rem;
+  }
+
+  .week-title,
+  .plain-hero h1,
+  .page-top h1 {
+    max-width: none;
+    font-size: clamp(1.9rem, 9vw, 2.8rem);
+  }
+
+  .plain-hero,
+  .page-top {
+    padding: 5.6rem 0 0.4rem;
+  }
+
+  .plain-body {
+    padding-bottom: 3rem;
+  }
+
+  .week-lede,
+  .plain-lede {
+    font-size: 1rem;
+  }
+
+  .week-actions,
   .ed-manifesto-cta {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+  }
+
+  .week-btn,
+  .ed-manifesto-cta a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cookie-actions .week-btn {
+    width: auto;
+  }
+
+  .harbor-footer-brand {
+    font-size: clamp(1.55rem, 8vw, 2.35rem);
+  }
+
+  .day-panels {
+    margin-top: 1.6rem;
+    gap: 0.75rem;
+  }
+
+  .ed-manifesto-cta {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 720px) {
+  .harbor-footer-brand {
+    flex-wrap: wrap;
+  }
+
+  .harbor-footer-brand .btw-mark {
+    width: 52px;
+    height: 52px;
+  }
+
+  .cookie-layer {
+    left: 0.7rem;
+    right: 0.7rem;
+    bottom: max(0.7rem, env(safe-area-inset-bottom));
+  }
+
+  .cookie-notice {
+    padding: 0.8rem 0.85rem 0.85rem;
+  }
+
+  .apply-card {
+    padding: 1.1rem 0.95rem 1.15rem;
+  }
+
+  .pack-price {
+    font-size: clamp(2.4rem, 12vw, 3.2rem);
   }
 }
 

@@ -46,17 +46,43 @@ export function Topbar({
     };
   }, [scene, pathname]);
 
+  useEffect(() => {
+    if (!open) return;
+    document.documentElement.classList.add("is-nav-open");
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.documentElement.classList.remove("is-nav-open");
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <header ref={bar} className={scene ? "topbar" : "topbar site-topbar"} data-nav-tone={scene ? "night" : "dark"} inert={inertBar ? true : undefined}>
+    <header
+      ref={bar}
+      className={`${scene ? "topbar" : "topbar site-topbar"}${open ? " is-menu-open" : ""}`}
+      data-nav-tone={scene ? "night" : "dark"}
+      inert={inertBar ? true : undefined}
+    >
       <button
         type="button"
         className="topbar-burger"
         aria-expanded={open}
+        aria-controls="site-menu"
         aria-label={open ? "Close menu" : "Open menu"}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          setInvolved(false);
+          setOpen((value) => !value);
+        }}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M5 7h14M5 12h14M5 17h14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          {open ? (
+            <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          ) : (
+            <path d="M5 7h14M5 12h14M5 17h14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          )}
         </svg>
       </button>
       <nav className="topbar-links topbar-desktop" aria-label="Primary">
@@ -99,13 +125,16 @@ export function Topbar({
       {open ? (
         <div className="topbar-drawer-layer">
           <button type="button" className="topbar-drawer-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
-          <div className="topbar-drawer" role="dialog" aria-label="Menu">
+          <div className="topbar-drawer" id="site-menu" role="dialog" aria-label="Menu">
             <Link href="/" className="topbar-drawer-brand" onClick={() => setOpen(false)}>
               Baltimore
               <br />
               <span>Tech</span> Week
             </Link>
             <p className="topbar-drawer-meta">{site.dates}</p>
+            <Link href="/" className="topbar-drawer-link" aria-current={pathname === "/" ? "page" : undefined} onClick={() => setOpen(false)}>
+              Home
+            </Link>
             {nav.primary.map((item) => (
               <Link
                 key={item.href}
@@ -119,10 +148,19 @@ export function Topbar({
             ))}
             <p className="topbar-drawer-label">Get Involved</p>
             {nav.involved.map((item) => (
-              <Link key={item.href} href={item.href} className="topbar-drawer-link" onClick={() => setOpen(false)}>
+              <Link
+                key={item.href}
+                href={item.href}
+                className="topbar-drawer-link"
+                aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
                 {item.label}
               </Link>
             ))}
+            <Link className="topbar-drawer-cta" href="/sponsors" onClick={() => setOpen(false)}>
+              Sponsor
+            </Link>
           </div>
         </div>
       ) : null}

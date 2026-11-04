@@ -70,16 +70,13 @@ export function CookieNotice() {
     <div className={open ? "cookie-layer is-open" : "cookie-layer"}>
       {open ? <button type="button" className="cookie-backdrop" aria-label="Close preferences" onClick={() => setOpen(false)} /> : null}
       <aside className="cookie-notice" role="dialog" aria-labelledby="cookie-title" aria-modal={open || undefined}>
-        <Laptop size={28} strokeWidth={1.75} aria-hidden="true" />
+        {open ? <Laptop size={22} strokeWidth={1.75} aria-hidden="true" /> : null}
         <div>
-          <h2 id="cookie-title">{open ? "Cookie preferences" : "Cookie Notice"}</h2>
+          <h2 id="cookie-title">{open ? "Cookie preferences" : "Cookies"}</h2>
           {open ? (
-            <p>Essential cookies remember this choice. Analytics and marketing stay off until you turn them on. We do not sell personal information.</p>
+            <p>Essential cookies remember this choice. Analytics and marketing stay off until you turn them on.</p>
           ) : (
-            <p>
-              We use a cookie to remember this choice. We do not sell personal information.{" "}
-              <Link href="/privacy">Read the privacy policy.</Link>
-            </p>
+            <p>We use a cookie to remember this choice.</p>
           )}
         </div>
         {open ? (
@@ -120,20 +117,27 @@ export function CookieNotice() {
         ) : null}
         <div className="cookie-actions">
           {open ? (
-            <button type="button" className="week-btn week-btn-ghost" onClick={() => save(draft)}>
-              Save preferences
-            </button>
+            <>
+              <button type="button" className="week-btn week-btn-ghost" onClick={() => save(draft)}>
+                Save
+              </button>
+              <button type="button" className="week-btn" onClick={() => save(acceptAll)}>
+                Accept
+              </button>
+            </>
           ) : (
-            <button type="button" className="week-btn week-btn-ghost" onClick={() => setOpen(true)}>
-              Manage your preferences
-            </button>
+            <>
+              <Link href="/privacy" className="cookie-learn">
+                Learn more
+              </Link>
+              <button type="button" className="cookie-prefs-link" onClick={() => setOpen(true)}>
+                Preferences
+              </button>
+              <button type="button" className="week-btn" onClick={() => save(acceptAll)}>
+                Accept
+              </button>
+            </>
           )}
-          <button type="button" className="week-btn week-btn-ghost" onClick={() => save(essentialOnly)}>
-            Essential only
-          </button>
-          <button type="button" className="week-btn" onClick={() => save(acceptAll)}>
-            Accept
-          </button>
         </div>
       </aside>
     </div>
