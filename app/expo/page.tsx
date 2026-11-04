@@ -3,7 +3,7 @@ import { exhibitors, hq, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Expo",
-  "The Baltimore Tech Week Expo is at 4MLK on Wednesday and Thursday, April 28–29, 2027. Exhibitor names will be listed after they confirm.",
+  "The Baltimore Tech Week Expo is at 4MLK on Tuesday and Wednesday, April 27–28, 2027. Exhibitor names will be listed after they confirm.",
 );
 
 export default function ExpoPage() {
@@ -14,7 +14,7 @@ export default function ExpoPage() {
           <header id="main">
             <p className="week-kicker">{hq.venue}</p>
             <h1>Expo</h1>
-            <p className="plain-lede">The floor is open Wednesday and Thursday. Ask for a table if you have something people should stop and see.</p>
+            <p className="plain-lede">The floor is open Tuesday and Wednesday. Ask for a table if you have something people should stop and see.</p>
             {exhibitors.length > 0 ? (
               <ul className="hold-list">
                 {exhibitors.map((exhibitor) => (

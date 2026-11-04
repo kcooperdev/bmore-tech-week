@@ -3,7 +3,7 @@ import { formatPrice, generalAdmission, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Tickets",
-  "Baltimore Tech Week tickets are $49 for April 28–30, 2027. Three days at 4MLK. On sale later.",
+  "Baltimore Tech Week tickets are $49 for April 27–29, 2027. Three days at 4MLK. On sale later.",
 );
 
 export default function TicketsPage() {
@@ -24,12 +24,12 @@ export default function TicketsPage() {
             </p>
             <p className="pack-kicker">Three days at 4MLK.</p>
             <p className="pack-price">{formatPrice(generalAdmission.price)}</p>
-            <p className="pack-note">The building, Wednesday through Friday.</p>
+            <p className="pack-note">The building, Tuesday through Thursday.</p>
             <ul className="pack-rows">
               <li>
                 <Check size={16} strokeWidth={2.5} aria-hidden="true" />
                 <span>Days</span>
-                <span>Wed–Fri</span>
+                <span>Tue–Thu</span>
               </li>
               <li>
                 <Check size={16} strokeWidth={2.5} aria-hidden="true" />

@@ -53,7 +53,7 @@ export function HarborScene() {
       setHintOn(hint > 0.2 && !past);
       if (night > 0.8 && !announced.current) {
         announced.current = true;
-        setStatus("Baltimore Tech Week. April 28 through April 30.");
+        setStatus("Baltimore Tech Week. April 27 through April 29.");
       }
       if (night < 0.2) {
         announced.current = false;
@@ -91,7 +91,7 @@ export function HarborScene() {
     <section
       ref={pin}
       className="harbor-pin"
-      aria-label="Baltimore Tech Week. April 28 through April 30, from sunset into night."
+      aria-label="Baltimore Tech Week. April 27 through April 29, from sunset into night."
     >
       <Topbar scene />
       <div className="cycle-progress" aria-hidden="true" />
@@ -148,7 +148,7 @@ export function HarborScene() {
             </span>
           </h1>
           <p className="night-meta">
-            <time dateTime="2027-04-28/2027-04-30">{site.dates}</time>
+            <time dateTime="2027-04-27/2027-04-29">{site.dates}</time>
           </p>
         </main>
       </div>

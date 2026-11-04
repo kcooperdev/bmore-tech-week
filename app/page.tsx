@@ -4,9 +4,9 @@ import { LivePortal } from "@/components/LivePortal";
 import { pillars, site } from "@/lib/site";
 
 const panelClass = {
-  wednesday: "day-panel day-panel-connect",
-  thursday: "day-panel day-panel-build",
-  friday: "day-panel day-panel-opportunity",
+  tuesday: "day-panel day-panel-connect",
+  wednesday: "day-panel day-panel-build",
+  thursday: "day-panel day-panel-opportunity",
 } as const;
 
 export default async function Home({

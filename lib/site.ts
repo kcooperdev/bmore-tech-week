@@ -4,7 +4,7 @@ import type { Metadata } from "next";
  * Editable content for Baltimore Tech Week 2027.
  * Add confirmed sessions, exhibitors, sponsors, and partner events here.
  * Do not add a partner event until the partnership, time, and capacity are confirmed.
- * The week is Wednesday, April 28 through Friday, April 30, 2027.
+ * The week is Tuesday, April 27 through Thursday, April 29, 2027.
  * Set phase to "live" during the week to turn the homepage into the attendee view.
  */
 
@@ -14,9 +14,9 @@ export const site = {
   url: "https://bmoretechweek.com",
   email: "team@bmoretechweek.com",
   phase: "preview" as "preview" | "live",
-  liveDay: "wednesday" as DayId,
-  dates: "April 28–30, 2027",
-  when: "Wednesday–Friday",
+  liveDay: "tuesday" as DayId,
+  dates: "April 27–29, 2027",
+  when: "Tuesday–Thursday",
   where: "Baltimore, Maryland",
   tagline: "CONNECT. BUILD. OPPORTUNITY.",
   promise: "Be in the room.",
@@ -26,7 +26,7 @@ export const site = {
   passes: "Passes are $49, on sale later.",
 };
 
-export type DayId = "wednesday" | "thursday" | "friday";
+export type DayId = "tuesday" | "wednesday" | "thursday";
 export type DayPart = "morning" | "afternoon" | "evening";
 export type Place = "hq" | "partner";
 
@@ -62,9 +62,9 @@ export type Pillar = {
 
 export const pillars: Pillar[] = [
   {
-    id: "wednesday",
-    day: "Wednesday",
-    date: "April 28",
+    id: "tuesday",
+    day: "Tuesday",
+    date: "April 27",
     name: "Connect",
     question: "Who should I meet?",
     tagline: "Meet the people building Baltimore.",
@@ -106,9 +106,9 @@ export const pillars: Pillar[] = [
     ],
   },
   {
-    id: "thursday",
-    day: "Thursday",
-    date: "April 29",
+    id: "wednesday",
+    day: "Wednesday",
+    date: "April 28",
     name: "Build",
     question: "What can I create?",
     tagline: "Workshops, demos, and startups.",
@@ -150,9 +150,9 @@ export const pillars: Pillar[] = [
     ],
   },
   {
-    id: "friday",
-    day: "Friday",
-    date: "April 30",
+    id: "thursday",
+    day: "Thursday",
+    date: "April 29",
     name: "Opportunity",
     question: "Where can this take me?",
     tagline: "Jobs, funding, and a next step.",
@@ -396,4 +396,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Baltimore Tech Week is April 28–30, 2027, Wednesday through Friday, at 4MLK. For founders, operators, students, and people hiring in Baltimore. Passes are $49, on sale later.";
+  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK. For founders, operators, students, and people hiring in Baltimore. Passes are $49, on sale later.";

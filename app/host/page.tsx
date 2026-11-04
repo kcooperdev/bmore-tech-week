@@ -3,7 +3,7 @@ import { pageMeta, pillars } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Host an Event",
-  "Propose a partner event for Baltimore Tech Week, April 28–30, 2027. If it is accepted, Tech Week lists it.",
+  "Propose a partner event for Baltimore Tech Week, April 27–29, 2027. If it is accepted, Tech Week lists it.",
 );
 
 export default function HostPage() {

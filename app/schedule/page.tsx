@@ -3,7 +3,7 @@ import { hq, pageMeta, pillars, site, type Pillar } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "April 28–30, 2027. Wednesday Connect, Thursday Build, Friday Opportunity. Days at 4MLK.",
+  "April 27–29, 2027. Tuesday Connect, Wednesday Build, Thursday Opportunity. Days at 4MLK.",
 );
 
 type Row = {

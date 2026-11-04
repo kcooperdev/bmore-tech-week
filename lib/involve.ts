@@ -40,13 +40,13 @@ export const sessionTypes = [
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  { value: "2027-04-28", label: "Connect · Wed · April 28" },
-  { value: "2027-04-29", label: "Build · Thu · April 29" },
-  { value: "2027-04-30", label: "Opportunity · Fri · April 30" },
+  { value: "2027-04-27", label: "Connect · Tue · April 27" },
+  { value: "2027-04-28", label: "Build · Wed · April 28" },
+  { value: "2027-04-29", label: "Opportunity · Thu · April 29" },
   { value: "Any", label: "No preference" },
 ];
 
-export const partnerNights = ["Connect · Wednesday", "Build · Thursday", "Opportunity · Friday"];
+export const partnerNights = ["Connect · Tuesday", "Build · Wednesday", "Opportunity · Thursday"];
 
 export const speakerTopics = [
   "MedTech / Biotech",
@@ -322,9 +322,9 @@ export const sponsorFields: ApplyField[] = [
 ];
 
 export const leadDays = [
-  { value: "connect", label: "Connect · Wednesday · April 28", short: "Connect · April 28" },
-  { value: "build", label: "Build · Thursday · April 29", short: "Build · April 29" },
-  { value: "opportunity", label: "Opportunity · Friday · April 30", short: "Opportunity · April 30" },
+  { value: "connect", label: "Connect · Tuesday · April 27", short: "Connect · April 27" },
+  { value: "build", label: "Build · Wednesday · April 28", short: "Build · April 28" },
+  { value: "opportunity", label: "Opportunity · Thursday · April 29", short: "Opportunity · April 29" },
 ];
 
 export function sponsorFieldsFor(tier: string): ApplyField[] {
