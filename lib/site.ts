@@ -102,13 +102,6 @@ export const pillars: Pillar[] = [
         title: "Partner events",
         text: "",
         kind: "city",
-        places: [
-          {
-            name: "Partner events",
-            line: "",
-            href: "/around-baltimore",
-          },
-        ],
       },
     ],
   },
@@ -153,13 +146,6 @@ export const pillars: Pillar[] = [
         title: "Partner events",
         text: "",
         kind: "city",
-        places: [
-          {
-            name: "Partner events",
-            line: "",
-            href: "/around-baltimore",
-          },
-        ],
       },
     ],
   },
@@ -204,13 +190,6 @@ export const pillars: Pillar[] = [
         title: "Partner events",
         text: "",
         kind: "city",
-        places: [
-          {
-            name: "Partner events",
-            line: "",
-            href: "/around-baltimore",
-          },
-        ],
       },
     ],
   },

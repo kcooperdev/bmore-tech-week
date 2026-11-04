@@ -5,7 +5,6 @@ const paths = [
   "",
   "/schedule",
   "/expo",
-  "/around-baltimore",
   "/tickets",
   "/speak",
   "/partners",

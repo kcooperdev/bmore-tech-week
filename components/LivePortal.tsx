@@ -99,13 +99,12 @@ export function LivePortal() {
             )}
           </article>
           <article>
-            <h3>Around Baltimore</h3>
+            <h3>Partner events</h3>
             {today.some((item) => item.place === "partner") ? (
               <List items={today.filter((item) => item.place === "partner")} />
             ) : (
               <StopList stops={cityStops} />
             )}
-            <Link href="/around-baltimore">Partner events</Link>
           </article>
           <article>
             <h3>Tonight</h3>
