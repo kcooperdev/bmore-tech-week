@@ -29,23 +29,23 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Baltimore Tech Week 2027",
-    template: "%s · Baltimore Tech Week 2027",
+    default: `${site.name} ${site.year}`,
+    template: `%s · ${site.name} ${site.year}`,
   },
   description: homeDescription,
-  applicationName: "Baltimore Tech Week",
+  applicationName: site.name,
   openGraph: {
     type: "website",
     locale: "en_US",
     url: site.url,
-    siteName: "Baltimore Tech Week",
-    title: "Baltimore Tech Week 2027",
+    siteName: site.name,
+    title: `${site.name} ${site.year}`,
     description: homeDescription,
     images: [{ url: "/images/harbor-sunset.jpg", alt: "Painted Baltimore harbor at sunset" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Baltimore Tech Week 2027",
+    title: `${site.name} ${site.year}`,
     description: homeDescription,
     images: ["/images/harbor-sunset.jpg"],
   },
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: "Baltimore Tech Week 2027",
+  name: `${site.name} ${site.year}`,
   description: homeDescription,
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   eventStatus: "https://schema.org/EventScheduled",
@@ -80,7 +80,7 @@ const jsonLd = {
   },
   organizer: {
     "@type": "Organization",
-    name: "Baltimore Tech Week",
+    name: site.name,
     url: site.url,
     email: site.email,
   },

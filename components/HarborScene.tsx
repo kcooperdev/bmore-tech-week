@@ -53,7 +53,7 @@ export function HarborScene() {
       setHintOn(hint > 0.2 && !past);
       if (night > 0.8 && !announced.current) {
         announced.current = true;
-        setStatus("Baltimore Tech Week. April 27 through April 29.");
+        setStatus("Bmore Tech Fest. April 27 through April 29.");
       }
       if (night < 0.2) {
         announced.current = false;
@@ -91,7 +91,7 @@ export function HarborScene() {
     <section
       ref={pin}
       className="harbor-pin"
-      aria-label="Baltimore Tech Week. April 27 through April 29, from sunset into night."
+      aria-label="Bmore Tech Fest. April 27 through April 29, from sunset into night."
     >
       <Topbar scene />
       <div className="cycle-progress" aria-hidden="true" />
@@ -131,7 +131,7 @@ export function HarborScene() {
         <button
           className={hintOn ? "day-scroll day-scroll-cue is-on" : "day-scroll day-scroll-cue"}
           type="button"
-          aria-label="Scroll into Baltimore Tech Week"
+          aria-label="Scroll into Bmore Tech Fest"
           tabIndex={hintOn ? 0 : -1}
           onClick={scrollIn}
         >
@@ -142,9 +142,9 @@ export function HarborScene() {
         </button>
         <main className="night-title" id="main" tabIndex={-1}>
           <h1>
-            <span>Baltimore</span>
+            <span>Bmore</span>
             <span>
-              <span className="night-title-accent">Tech</span> Week
+              <span className="night-title-accent">Tech</span> Fest
             </span>
           </h1>
           <p className="night-meta">

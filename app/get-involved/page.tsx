@@ -4,13 +4,13 @@ import { pageMeta, waysIn } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Get Involved",
-  "Give a talk, partner, sponsor, or tell people about Baltimore Tech Week.",
+  "Give a talk, partner, sponsor, or tell people about Bmore Tech Fest.",
 );
 
 export default function GetInvolvedPage() {
   return (
     <main className="plain-page">
-      <PageHeader eyebrow="Applications are open" title="Get involved" lede="Give a talk, bring your people, put your name on the week, or tell someone who trusts you." />
+      <PageHeader eyebrow="Applications are open" title="Get involved" lede="Give a talk, bring your people, put your name on Bmore Tech Fest, or tell someone who trusts you." />
       <div className="plain-body">
         <div className="week-wrap">
             <ul className="path-list">

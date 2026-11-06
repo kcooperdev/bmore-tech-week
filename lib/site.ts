@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 /**
- * Editable content for Baltimore Tech Week 2027.
+ * Editable content for Bmore Tech Fest 2027.
  * Add confirmed sessions, exhibitors, sponsors, and partner events here.
  * Do not add a partner event until the partnership, time, and capacity are confirmed.
  * The week is Tuesday, April 27 through Thursday, April 29, 2027.
@@ -9,7 +9,7 @@ import type { Metadata } from "next";
  */
 
 export const site = {
-  name: "Baltimore Tech Week",
+  name: "Bmore Tech Fest",
   year: 2027,
   url: "https://bmoretechweek.com",
   email: "team@bmoretechweek.com",
@@ -18,12 +18,14 @@ export const site = {
   dates: "April 27–29, 2027",
   when: "Tuesday–Thursday",
   where: "Baltimore, Maryland",
-  tagline: "CONNECT. BUILD. OPPORTUNITY.",
+  tagline: "Bmore Connected. Bmore Built. Bmore Next.",
   promise: "Be in the room.",
+  sell: "Three days in one building with the people you keep meaning to meet. $79.",
+  ticketLine: "Three days, or one night.",
   idea: "4MLK is the HQ.",
   positioning: "Three days at 4MLK.",
   room: "Founders, operators, students, and people hiring in Baltimore.",
-  passes: "Passes are $49, on sale later.",
+  passes: "On sale later.",
 };
 
 export type DayId = "tuesday" | "wednesday" | "thursday";
@@ -53,6 +55,7 @@ export type Pillar = {
   day: string;
   date: string;
   name: string;
+  night: string;
   question: string;
   tagline: string;
   summary: string;
@@ -65,25 +68,42 @@ export const pillars: Pillar[] = [
     id: "tuesday",
     day: "Tuesday",
     date: "April 27",
-    name: "Connect",
+    name: "Bmore Connected",
+    night: "Connected Night",
     question: "Who should I meet?",
     tagline: "Meet the people building Baltimore.",
     summary: "Meet the people building Baltimore.",
     purpose: "Put a name to the work happening here.",
     stops: [
       {
-        id: "tue-open",
-        when: "10am–12pm",
+        id: "tue-doors",
+        when: "8–9:30am",
         where: "4MLK",
-        title: "Check-in and expo",
+        title: "Doors and breakfast",
         text: "",
         kind: "hq",
       },
       {
-        id: "tue-floor",
-        when: "12–4pm",
+        id: "tue-am",
+        when: "9:30am–12pm",
         where: "4MLK",
-        title: "Community and talks",
+        title: "Sessions",
+        text: "",
+        kind: "hq",
+      },
+      {
+        id: "tue-lunch",
+        when: "12–1pm",
+        where: "4MLK",
+        title: "Lunch",
+        text: "Vendors on site.",
+        kind: "pause",
+      },
+      {
+        id: "tue-pm",
+        when: "1–4pm",
+        where: "4MLK",
+        title: "Sessions",
         text: "",
         kind: "hq",
       },
@@ -96,10 +116,10 @@ export const pillars: Pillar[] = [
         kind: "pause",
       },
       {
-        id: "tue-city",
-        when: "Evening",
+        id: "tue-mixer",
+        when: "5:30pm",
         where: "",
-        title: "Partner events",
+        title: "Connected Night",
         text: "",
         kind: "city",
       },
@@ -109,26 +129,43 @@ export const pillars: Pillar[] = [
     id: "wednesday",
     day: "Wednesday",
     date: "April 28",
-    name: "Build",
+    name: "Bmore Built",
+    night: "Built Night",
     question: "What can I create?",
     tagline: "Workshops, demos, and startups.",
     summary: "Workshops, demos, and startups.",
     purpose: "Leave with something you made.",
     stops: [
       {
-        id: "wed-open",
-        when: "10am–12pm",
+        id: "wed-doors",
+        when: "8–9:30am",
         where: "4MLK",
-        title: "Coworking and expo",
+        title: "Doors and breakfast",
         text: "",
         kind: "hq",
       },
       {
-        id: "wed-floor",
-        when: "12–4pm",
+        id: "wed-am",
+        when: "9:30am–12pm",
         where: "4MLK",
-        title: "Workshops and demos",
-        text: "AI, product, data, creative tech",
+        title: "Sessions",
+        text: "",
+        kind: "hq",
+      },
+      {
+        id: "wed-lunch",
+        when: "12–1pm",
+        where: "4MLK",
+        title: "Lunch",
+        text: "Vendors on site.",
+        kind: "pause",
+      },
+      {
+        id: "wed-pm",
+        when: "1–4pm",
+        where: "4MLK",
+        title: "Sessions",
+        text: "",
         kind: "hq",
       },
       {
@@ -140,10 +177,10 @@ export const pillars: Pillar[] = [
         kind: "pause",
       },
       {
-        id: "wed-city",
-        when: "Evening",
+        id: "wed-mixer",
+        when: "5:30pm",
         where: "",
-        title: "Partner events",
+        title: "Built Night",
         text: "",
         kind: "city",
       },
@@ -153,25 +190,42 @@ export const pillars: Pillar[] = [
     id: "thursday",
     day: "Thursday",
     date: "April 29",
-    name: "Opportunity",
+    name: "Bmore Next",
+    night: "Bmore Tech Night",
     question: "Where can this take me?",
     tagline: "Jobs, funding, and a next step.",
     summary: "Jobs, funding, and a next step.",
     purpose: "A job, a cofounder, a room you go back to.",
     stops: [
       {
-        id: "thu-open",
-        when: "10am–12pm",
+        id: "thu-doors",
+        when: "8–9:30am",
         where: "4MLK",
-        title: "Coworking and employers",
+        title: "Doors and breakfast",
         text: "",
         kind: "hq",
       },
       {
-        id: "thu-floor",
-        when: "12–4pm",
+        id: "thu-am",
+        when: "9:30am–12pm",
         where: "4MLK",
-        title: "Jobs, classes, and funding",
+        title: "Sessions",
+        text: "",
+        kind: "hq",
+      },
+      {
+        id: "thu-lunch",
+        when: "12–1pm",
+        where: "4MLK",
+        title: "Lunch",
+        text: "Vendors on site.",
+        kind: "pause",
+      },
+      {
+        id: "thu-pm",
+        when: "1–4pm",
+        where: "4MLK",
+        title: "Sessions",
         text: "",
         kind: "hq",
       },
@@ -184,10 +238,10 @@ export const pillars: Pillar[] = [
         kind: "hq",
       },
       {
-        id: "thu-city",
-        when: "Evening",
+        id: "thu-mixer",
+        when: "5:30pm",
         where: "",
-        title: "Partner events",
+        title: "Bmore Tech Night",
         text: "",
         kind: "city",
       },
@@ -196,7 +250,7 @@ export const pillars: Pillar[] = [
 ];
 
 export const hq = {
-  name: "Baltimore Tech Week HQ",
+  name: "Bmore Tech Fest HQ",
   venue: "4MLK",
   street: "4 N. Martin Luther King Jr. Blvd.",
   cityLine: "Baltimore, MD 21201",
@@ -219,19 +273,20 @@ export const waysIn: { href: string; title: string; text: string }[] = [
   { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
   { href: "/partners", title: "Partner", text: "Free if you already gather people in Baltimore." },
   { href: "/sponsors", title: "Sponsor", text: "Apply by February 15. The name is confirmed March 1." },
-  { href: "/ambassadors", title: "Ambassador", text: "Share the nights with people who already listen to you." },
+  { href: "/ambassadors", title: "Ambassador", text: "Share the fest with people who already listen to you." },
 ];
 
 export const nav = {
   primary: [
     { href: "/schedule", label: "Schedule" },
-    { href: "/expo", label: "Expo" },
+    { href: "/tickets", label: "Tickets" },
   ],
   involved: [
     { href: "/speak", label: "Give a Talk" },
     { href: "/partners", label: "Partner" },
     { href: "/sponsors", label: "Sponsor" },
     { href: "/ambassadors", label: "Ambassador" },
+    { href: "/expo", label: "Ask for a table" },
   ],
 };
 
@@ -276,14 +331,19 @@ export const sponsorPackages: SponsorPackage[] = [];
 
 export const generalAdmission = {
   name: "General Admission",
-  price: 49,
+  price: 79,
+};
+
+export const eveningPass = {
+  name: "Evening Pass",
+  price: 45,
 };
 
 export const partnerFilters = [
   "All",
-  "Connect",
-  "Build",
-  "Opportunity",
+  "Bmore Connected",
+  "Bmore Built",
+  "Bmore Next",
   "Networking",
   "Startups",
   "Creative Tech",
@@ -323,7 +383,7 @@ export type ExploringVenue = {
 };
 
 /**
- * Venues in conversation. These are not confirmed Tech Week events.
+ * Venues in conversation. These are not confirmed Tech Fest events.
  * Move a venue into `partnerEvents` only after details are confirmed.
  */
 export const exploringVenues: ExploringVenue[] = [
@@ -333,7 +393,7 @@ export const exploringVenues: ExploringVenue[] = [
     neighborhood: "Downtown",
     address: "8 Market Place, Baltimore, MD 21202",
     focus: "Founders",
-    categories: ["Startups", "Connect"],
+    categories: ["Startups", "Bmore Connected"],
     possible: [
       "Founders",
       "Entrepreneurship",
@@ -348,7 +408,7 @@ export const exploringVenues: ExploringVenue[] = [
     neighborhood: "Poppleton",
     address: "1023 W Baltimore St, Baltimore, MD 21223",
     focus: "Creative tech",
-    categories: ["Creative Tech", "Build", "Community"],
+    categories: ["Creative Tech", "Bmore Built", "Community"],
     possible: [
       "Art and technology",
       "Design",
@@ -385,15 +445,15 @@ export function pageMeta(title: string, description: string): Metadata {
     title,
     description,
     openGraph: {
-      title: `${title} · Baltimore Tech Week 2027`,
+      title: `${title} · ${site.name} ${site.year}`,
       description,
     },
     twitter: {
-      title: `${title} · Baltimore Tech Week 2027`,
+      title: `${title} · ${site.name} ${site.year}`,
       description,
     },
   };
 }
 
 export const homeDescription =
-  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK. For founders, operators, students, and people hiring in Baltimore. Passes are $49, on sale later.";
+  "Be in the room. Three days in one building with the people you keep meaning to meet. Bmore Tech Fest is April 27–29, 2027 at 4MLK. $79 for the whole fest. $45 for one night.";

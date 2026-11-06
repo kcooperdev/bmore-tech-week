@@ -1,9 +1,9 @@
-import { Check, Ticket } from "lucide-react";
-import { formatPrice, generalAdmission, pageMeta, site } from "@/lib/site";
+import { TicketBoard } from "@/components/TicketBoard";
+import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Tickets",
-  "Baltimore Tech Week tickets are $49 for April 27–29, 2027. Three days at 4MLK. On sale later.",
+  "Be in the room. $79 for three days at 4MLK and all three mixers. $45 a night for Connected Night, Built Night, or Bmore Tech Night. Pick one, two, or all three.",
 );
 
 export default function TicketsPage() {
@@ -13,51 +13,9 @@ export default function TicketsPage() {
         <header className="packs-head" id="main">
           <p className="week-kicker">{site.dates}</p>
           <h1>Tickets</h1>
-          <p>One pass. Three days at 4MLK. On sale later.</p>
+          <p>{site.ticketLine}</p>
         </header>
-
-        <div className="packs-grid packs-single">
-          <article className="pack pack-ga">
-            <p className="pack-name">
-              <Ticket size={18} strokeWidth={2.25} aria-hidden="true" />
-              {generalAdmission.name}
-            </p>
-            <p className="pack-kicker">Three days at 4MLK.</p>
-            <p className="pack-price">{formatPrice(generalAdmission.price)}</p>
-            <p className="pack-note">The building, Tuesday through Thursday.</p>
-            <ul className="pack-rows">
-              <li>
-                <Check size={16} strokeWidth={2.5} aria-hidden="true" />
-                <span>Days</span>
-                <span>Tue–Thu</span>
-              </li>
-              <li>
-                <Check size={16} strokeWidth={2.5} aria-hidden="true" />
-                <span>Where</span>
-                <span>4MLK</span>
-              </li>
-              <li>
-                <Check size={16} strokeWidth={2.5} aria-hidden="true" />
-                <span>Floor</span>
-                <span>Expo</span>
-              </li>
-              <li>
-                <Check size={16} strokeWidth={2.5} aria-hidden="true" />
-                <span>Rooms</span>
-                <span>Talks and workshops</span>
-              </li>
-              <li>
-                <Check size={16} strokeWidth={2.5} aria-hidden="true" />
-                <span>Tables</span>
-                <span>Coworking</span>
-              </li>
-            </ul>
-            <button type="button" className="pack-btn" disabled>
-              Get Tickets
-            </button>
-            <p className="pack-closed">Not open yet.</p>
-          </article>
-        </div>
+        <TicketBoard />
       </div>
     </main>
   );

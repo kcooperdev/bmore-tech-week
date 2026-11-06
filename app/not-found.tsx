@@ -7,9 +7,12 @@ export default function NotFound() {
         <div className="week-wrap">
           <p className="week-kicker">404</p>
           <h1 className="week-title">That page is gone.</h1>
-          <p className="week-lede">The week has a new shape. Start from the homepage, the schedule, or tickets.</p>
+          <p className="week-lede">Bmore Tech Fest has a new shape. Start from the homepage, the schedule, or tickets.</p>
           <div className="week-actions">
-            <Link className="week-btn" href="/">
+            <Link className="week-btn" href="/tickets">
+              Tickets
+            </Link>
+            <Link className="week-btn week-btn-ghost" href="/">
               Home
             </Link>
             <Link className="week-btn week-btn-ghost" href="/schedule">

@@ -18,7 +18,7 @@ export default function PartnersPage() {
             <p className="plain-lede">Free for meetups, schools, accelerators, nonprofits, and student groups.</p>
             <ul className="side-notes">
               <li>Your logo on this page.</li>
-              <li>Your name when the week starts, and when it ends.</li>
+              <li>Your name when Bmore Tech Fest starts, and when it ends.</li>
               <li>A thank-you next to the other groups.</li>
             </ul>
           </header>

@@ -319,15 +319,37 @@
   color: #f3ead7;
 }
 
+.week-lede a {
+  color: #e2b13c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.week-lede a:hover,
+.week-lede a:focus-visible,
+.pass-line a:hover,
+.pass-line a:focus-visible {
+  text-decoration: underline;
+}
+
 .pass-line {
   margin: 0.85rem 0 0;
   color: #e2b13c;
   font-weight: 700;
 }
 
+.pass-line a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .week-actions .pass-line {
   margin: 0;
   align-self: center;
+}
+
+.band-paper .week-actions {
+  margin-top: 1rem;
 }
 
 .tier-days {
@@ -976,14 +998,11 @@
 
 .pack-rows li {
   display: grid;
-  grid-template-columns: 1rem minmax(0, 1fr) auto;
+  grid-template-columns: 1rem minmax(0, 1fr);
   gap: 0.55rem;
   align-items: center;
   padding: 0.38rem 0;
   font-size: 0.95rem;
-}
-
-.pack-rows li span:last-child {
   font-weight: 650;
 }
 
@@ -1033,6 +1052,12 @@
   box-shadow: 0 4px 0 #16120c;
 }
 
+.pack-vip .pack-btn:disabled,
+.pack-vip .pack-btn:disabled:hover {
+  background: #f7f4ee;
+  box-shadow: 0 4px 0 #e2b13c;
+}
+
 .pack-closed {
   margin: 0.7rem 0 0;
   text-align: center;
@@ -1048,6 +1073,141 @@
   max-width: 32rem;
   margin: 2.25rem auto 0;
   scroll-margin-top: 6rem;
+}
+
+.pass-board {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.pass-tabs {
+  max-width: 28rem;
+  margin: 0 auto 0.85rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pass-tabs .day-tab {
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  scroll-margin-top: 6.5rem;
+}
+
+.pass-tabs .day-tab svg {
+  margin-bottom: 0.15rem;
+}
+
+.pass-board .pack-ga {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.night-show-head {
+  text-align: center;
+  margin: 0 0 1.25rem;
+}
+
+.night-show-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: #e2b13c;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.night-show-price {
+  margin: 0.35rem 0 0;
+  color: #e2b13c;
+  font-size: clamp(3.1rem, 6vw, 4.1rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+.night-show-line {
+  margin: 0.7rem 0 0;
+  color: #f3ead7;
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.night-show-note {
+  margin: 0.55rem 0 0;
+  color: #f3ead7c7;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.night-posters {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.night-posters li {
+  min-height: 7.5rem;
+  padding: 1.15rem 1.05rem 1.2rem;
+  border: 1.5px solid #e2b13c59;
+  border-radius: 1.15rem;
+  background: #14120f;
+}
+
+.night-posters p {
+  margin: 0;
+  color: #e2b13c;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.night-posters .night-brand {
+  margin-top: 0.7rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.night-posters h3 {
+  margin: 0.55rem 0 0;
+  color: #e2b13c;
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.night-show-cta {
+  max-width: 22rem;
+  margin: 1.35rem auto 0;
+}
+
+.night-show-cta .pack-btn {
+  background: #e2b13c;
+  color: #16120c;
+  border: 1.5px solid #16120c;
+  box-shadow: 0 4px 0 #16120c;
+}
+
+.night-show-cta .pack-btn:disabled,
+.night-show-cta .pack-btn:disabled:hover {
+  background: #e2b13c;
+  box-shadow: 0 4px 0 #16120c;
+}
+
+.night-show-cta .pack-closed {
+  color: #f3ead7;
+}
+
+@media (min-width: 800px) {
+  .night-posters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 800px) {
@@ -1111,6 +1271,58 @@
 
 .day-board {
   display: grid;
+}
+
+.day-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0 0 0.35rem;
+}
+
+.day-tab {
+  appearance: none;
+  margin: 0;
+  border: 1.5px solid #e2b13c59;
+  border-radius: 1.05rem;
+  background: transparent;
+  color: #f3ead7;
+  padding: 0.7rem 0.4rem 0.65rem;
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+}
+
+.day-tab:hover {
+  border-color: #e2b13c;
+}
+
+.day-tab[aria-selected="true"] {
+  background: #e2b13c;
+  border-color: #16120c;
+  color: #16120c;
+}
+
+.day-tab-day {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.day-tab-name {
+  display: block;
+  margin-top: 0.18rem;
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.day-board.is-tabs .day-sheet {
+  border-top: 0;
+  padding-top: 1rem;
 }
 
 .day-sheet {

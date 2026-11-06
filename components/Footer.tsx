@@ -8,8 +8,8 @@ export function Footer() {
         <Link href="/" className="harbor-footer-brand">
           <span className="btw-mark" />
           <span>
-            Baltimore
-            <span>Tech Week</span>
+            Bmore
+            <span>Tech Fest</span>
           </span>
         </Link>
         <div className="harbor-footer-meta">

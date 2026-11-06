@@ -4,7 +4,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Privacy",
-  "How Baltimore Tech Week uses form answers and cookies, including GDPR and CCPA choices.",
+  "How Bmore Tech Fest uses form answers and cookies, including GDPR and CCPA choices.",
 );
 
 export default function PrivacyPage() {

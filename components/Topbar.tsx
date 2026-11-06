@@ -119,17 +119,17 @@ export function Topbar({
           </div>
         </span>
       </nav>
-      <Link className="topbar-cta" href="/sponsors" aria-current={isCurrent(pathname, "/sponsors") ? "page" : undefined}>
-        Sponsor
+      <Link className="topbar-cta" href="/tickets" aria-current={isCurrent(pathname, "/tickets") ? "page" : undefined}>
+        Tickets
       </Link>
       {open ? (
         <div className="topbar-drawer-layer">
           <button type="button" className="topbar-drawer-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
           <div className="topbar-drawer" id="site-menu" role="dialog" aria-label="Menu">
             <Link href="/" className="topbar-drawer-brand" onClick={() => setOpen(false)}>
-              Baltimore
+              Bmore
               <br />
-              <span>Tech</span> Week
+              <span>Tech</span> Fest
             </Link>
             <p className="topbar-drawer-meta">{site.dates}</p>
             <Link href="/" className="topbar-drawer-link" aria-current={pathname === "/" ? "page" : undefined} onClick={() => setOpen(false)}>
@@ -158,8 +158,8 @@ export function Topbar({
                 {item.label}
               </Link>
             ))}
-            <Link className="topbar-drawer-cta" href="/sponsors" onClick={() => setOpen(false)}>
-              Sponsor
+            <Link className="topbar-drawer-cta" href="/tickets" onClick={() => setOpen(false)}>
+              Tickets
             </Link>
           </div>
         </div>

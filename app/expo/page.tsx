@@ -1,9 +1,9 @@
 import { ApplyForm } from "@/components/ApplyForm";
-import { exhibitors, hq, pageMeta } from "@/lib/site";
+import { exhibitors, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Expo",
-  "The Baltimore Tech Week Expo is at 4MLK on Tuesday and Wednesday, April 27–28, 2027. Exhibitor names will be listed after they confirm.",
+  "The Bmore Tech Fest Expo is at 4MLK on Tuesday and Wednesday, April 27–28, 2027. Exhibitor names will be listed after they confirm.",
 );
 
 export default function ExpoPage() {
@@ -12,9 +12,9 @@ export default function ExpoPage() {
       <div className="page-top">
         <div className="week-wrap split">
           <header id="main">
-            <p className="week-kicker">{hq.venue}</p>
+            <p className="week-kicker">Ask for a table</p>
             <h1>Expo</h1>
-            <p className="plain-lede">The floor is open Tuesday and Wednesday. Ask for a table if you have something people should stop and see.</p>
+            <p className="plain-lede">The floor is open during the day Tuesday and Wednesday. Ask for a table if you have something people should stop and see. Tables are not open to request yet.</p>
             {exhibitors.length > 0 ? (
               <ul className="hold-list">
                 {exhibitors.map((exhibitor) => (

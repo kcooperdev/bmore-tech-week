@@ -40,13 +40,13 @@ export const sessionTypes = [
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  { value: "2027-04-27", label: "Connect · Tue · April 27" },
-  { value: "2027-04-28", label: "Build · Wed · April 28" },
-  { value: "2027-04-29", label: "Opportunity · Thu · April 29" },
+  { value: "2027-04-27", label: "Bmore Connected · Tue · April 27" },
+  { value: "2027-04-28", label: "Bmore Built · Wed · April 28" },
+  { value: "2027-04-29", label: "Bmore Next · Thu · April 29" },
   { value: "Any", label: "No preference" },
 ];
 
-export const partnerNights = ["Connect · Tuesday", "Build · Wednesday", "Opportunity · Thursday"];
+export const partnerNights = ["Bmore Connected · Tuesday", "Bmore Built · Wednesday", "Bmore Next · Thursday"];
 
 export const speakerTopics = [
   "MedTech / Biotech",
@@ -95,8 +95,8 @@ export const partnerChannels = [
 ];
 
 export const partnerHelp = [
-  "Share the week with our people",
-  "Host a room or satellite hang",
+  "Share Bmore Tech Fest with our people",
+  "Bring a group",
   "Bring volunteers",
   "Help with student tickets",
   "Introduce sponsors or speakers",
@@ -114,7 +114,7 @@ export const sponsorTierCopy = [
     name: "Community",
     price: "$2,500",
     spots: "Eight companies",
-    text: "Your logo on the week.",
+    text: "Your logo on Bmore Tech Fest.",
     perks: ["Logo on the site and in the program", "One mention in the attendee email", "Four passes"],
     pick: false,
     top: false,
@@ -124,7 +124,7 @@ export const sponsorTierCopy = [
     name: "Lead",
     price: "$5,000",
     spots: "One company each day",
-    text: "Your name on Connect, Build, or Opportunity.",
+    text: "Your name on Bmore Connected, Bmore Built, or Bmore Next.",
     perks: ["Everything in Community", "One company on that day", "A two-minute welcome that day", "Eight passes"],
     pick: true,
     top: false,
@@ -134,9 +134,9 @@ export const sponsorTierCopy = [
     name: "Presenting",
     price: "$10,000",
     spots: "One company",
-    text: "The week, presented by you.",
+    text: "Bmore Tech Fest, presented by you.",
     perks: [
-      "Baltimore Tech Week 2027, presented by your company",
+      "Bmore Tech Fest 2027, presented by your company",
       "Logo on the homepage",
       "A mention in the room each day",
       "Twelve passes",
@@ -233,7 +233,7 @@ export const speakFields: ApplyField[] = [
   { name: "company", label: "Company / organization", autoComplete: "organization", placeholder: "Studio, company, or independent", step: you },
   { name: "linkedinUrl", label: "LinkedIn", type: "url", placeholder: "https://linkedin.com/in/", step: you },
   { name: "websiteUrl", label: "Website", type: "url", placeholder: "https://", step: you },
-  { name: "heardAbout", label: "How did you hear about the week?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
+  { name: "heardAbout", label: "How did you hear about Bmore Tech Fest?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
   { name: "format", label: "Session type", type: "select", required: true, choices: sessionTypes, placeholder: "Choose a format", step: "The session", wide: true },
   { name: "talkTitle", label: "Session title", required: true, placeholder: "What the room is actually about", step: "The session", wide: true },
   {
@@ -259,15 +259,15 @@ export const speakFields: ApplyField[] = [
   { name: "audience", label: "Audience level", type: "radio", required: true, options: audienceLevels, step: "The session" },
   {
     name: "nights",
-    label: "Preferred night",
+    label: "Preferred day",
     type: "checks",
     required: true,
     choices: programNights,
-    hint: "Pick every night this could live.",
-    step: "Night & topics",
+    hint: "Pick every day this could live.",
+    step: "Day & topics",
   },
-  { name: "neighborhood", label: "Closest neighborhood", type: "select", choices: neighborhoods.map((item) => ({ value: item, label: item })), placeholder: "Choose a neighborhood", hint: "Helps us place the room.", step: "Night & topics", wide: true },
-  { name: "topics", label: "Topic", type: "checks", required: true, options: speakerTopics, step: "Night & topics" },
+  { name: "neighborhood", label: "Closest neighborhood", type: "select", choices: neighborhoods.map((item) => ({ value: item, label: item })), placeholder: "Choose a neighborhood", hint: "Optional.", step: "Day & topics", wide: true },
+  { name: "topics", label: "Topic", type: "checks", required: true, options: speakerTopics, step: "Day & topics" },
   { name: "spokenBefore", label: "Have you spoken before?", type: "radio", required: true, choices: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }], hint: "First rooms are welcome.", step: "Experience" },
   { name: "previousTalks", label: "Talks, articles, and links", type: "textarea", placeholder: "A meetup talk, a write-up, a deck. One per line.", step: "Experience" },
   { name: "panelist", label: "If this session isn’t selected, would you serve as a panelist?", type: "radio", required: true, choices: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }], step: "Experience" },
@@ -281,7 +281,7 @@ export const partnerFields: ApplyField[] = [
   { name: "title", label: "Your role", type: "select", required: true, options: roles, placeholder: "Choose one", step: you },
   { name: "phone", label: "Phone", type: "tel", step: you },
   { name: "pronouns", label: "Pronouns", type: "select", options: pronouns, placeholder: "Choose pronouns", step: you },
-  { name: "heardAbout", label: "How did you hear about the week?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
+  { name: "heardAbout", label: "How did you hear about Bmore Tech Fest?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
   { name: "organization", label: "Organization", required: true, autoComplete: "organization", step: "Your group" },
   { name: "type", label: "What kind of group?", type: "select", required: true, options: partnerTypes, placeholder: "Choose one", step: "Your group" },
   { name: "size", label: "About how many people?", type: "select", required: true, options: partnerSizes, placeholder: "Choose one", step: "Your group" },
@@ -289,9 +289,9 @@ export const partnerFields: ApplyField[] = [
   { name: "website", label: "Website", type: "url", placeholder: "https://", step: "Your group" },
   { name: "instagram", label: "Instagram", placeholder: "@yourgroup", step: "Your group" },
   { name: "audience", label: "Who do you gather?", type: "checks", options: gathered, step: "Your group" },
-  { name: "channels", label: "Where can you share the week?", type: "checks", required: true, options: partnerChannels, step: "How you’ll help" },
+  { name: "channels", label: "Where can you share Bmore Tech Fest?", type: "checks", required: true, options: partnerChannels, step: "How you’ll help" },
   { name: "help", label: "How do you want to help?", type: "checks", required: true, options: partnerHelp, step: "How you’ll help" },
-  { name: "nights", label: "Nights you could show up", type: "checks", options: partnerNights, hint: "Optional. Helps us plan shout-outs and rooms.", step: "How you’ll help" },
+  { name: "nights", label: "Days you could show up", type: "checks", options: partnerNights, hint: "Optional. Helps us plan shout-outs and rooms.", step: "How you’ll help" },
   { name: "notes", label: "Anything else we should know?", type: "textarea", step: "How you’ll help" },
 ];
 
@@ -300,13 +300,13 @@ export const sponsorFields: ApplyField[] = [
   { name: "email", label: "Work email", type: "email", required: true, autoComplete: "email", placeholder: "you@company.com", step: you },
   { name: "title", label: "Your role", type: "select", required: true, options: roles, placeholder: "Choose one", step: you },
   { name: "phone", label: "Phone", type: "tel", hint: "We’ll use this only if the calendar invite bounces.", step: you },
-  { name: "heardAbout", label: "How did you hear about the week?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
+  { name: "heardAbout", label: "How did you hear about Bmore Tech Fest?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
   { name: "organization", label: "Company", required: true, autoComplete: "organization", step: "Company & tier" },
   { name: "website", label: "Website", type: "url", placeholder: "https://", step: "Company & tier" },
   { name: "size", label: "Company size", type: "select", options: companySizes, placeholder: "Choose one", step: "Company & tier" },
   { name: "decision", label: "Who decides?", type: "select", required: true, options: sponsorDecisions, placeholder: "Choose one", step: "Company & tier" },
   { name: "tier", label: "Which tier are you looking at?", type: "select", required: true, choices: sponsorTiers, placeholder: "Choose a tier", hint: "You can change this on the call.", step: "Company & tier", wide: true },
-  { name: "goals", label: "What do you want out of the week?", type: "checks", required: true, options: sponsorGoals, step: "Company & tier" },
+  { name: "goals", label: "What do you want out of Bmore Tech Fest?", type: "checks", required: true, options: sponsorGoals, step: "Company & tier" },
   {
     name: "booked",
     label: "Did you book a time?",
@@ -322,9 +322,9 @@ export const sponsorFields: ApplyField[] = [
 ];
 
 export const leadDays = [
-  { value: "connect", label: "Connect · Tuesday · April 27", short: "Connect · April 27" },
-  { value: "build", label: "Build · Wednesday · April 28", short: "Build · April 28" },
-  { value: "opportunity", label: "Opportunity · Thursday · April 29", short: "Opportunity · April 29" },
+  { value: "connect", label: "Bmore Connected · Tuesday · April 27", short: "Bmore Connected · April 27" },
+  { value: "build", label: "Bmore Built · Wednesday · April 28", short: "Bmore Built · April 28" },
+  { value: "opportunity", label: "Bmore Next · Thursday · April 29", short: "Bmore Next · April 29" },
 ];
 
 export function sponsorFieldsFor(tier: string): ApplyField[] {
@@ -353,7 +353,7 @@ export const ambassadorFields: ApplyField[] = [
   { name: "organization", label: "School, workplace, or group", placeholder: "Optional", step: you },
   { name: "title", label: "What you do there", type: "select", options: roles, placeholder: "Choose one", step: you },
   { name: "phone", label: "Phone", type: "tel", step: you },
-  { name: "heardAbout", label: "How did you hear about the week?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
+  { name: "heardAbout", label: "How did you hear about Bmore Tech Fest?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
   { name: "channels", label: "Where will you share?", type: "checks", required: true, options: ambassadorChannels, step: "Get the word out" },
   { name: "reach", label: "About how many people can you reach?", type: "select", required: true, options: ambassadorReach, placeholder: "Choose one", step: "Get the word out", wide: true },
   { name: "why", label: "How will you get the word out?", type: "select", required: true, options: spreadHow, placeholder: "Choose one", step: "Get the word out", wide: true },

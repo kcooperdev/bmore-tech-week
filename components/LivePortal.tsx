@@ -65,7 +65,7 @@ export function LivePortal() {
   const nightStop = [...day.stops].reverse().find((stop) => stop.kind === "hq");
 
   return (
-    <section className="band-ink" aria-label="Happening during Tech Week">
+    <section className="band-ink" aria-label="Happening during Bmore Tech Fest">
       <div className="week-wrap">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -99,7 +99,7 @@ export function LivePortal() {
             )}
           </article>
           <article>
-            <h3>Partner events</h3>
+            <h3>Mixer</h3>
             {today.some((item) => item.place === "partner") ? (
               <List items={today.filter((item) => item.place === "partner")} />
             ) : (

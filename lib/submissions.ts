@@ -107,9 +107,9 @@ const TIER_LABEL: Record<string, string> = {
 };
 
 const LEAD_DAY: Record<string, string> = {
-  connect: "Connect (Tuesday, April 27)",
-  build: "Build (Wednesday, April 28)",
-  opportunity: "Opportunity (Thursday, April 29)",
+  connect: "Bmore Connected (Tuesday, April 27)",
+  build: "Bmore Built (Wednesday, April 28)",
+  opportunity: "Bmore Next (Thursday, April 29)",
 };
 
 async function forward(path: string, body: Record<string, unknown>) {
@@ -133,7 +133,7 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   if (takeawayLines.length < 3) throw new SubmitError("Add three takeaways, one per line");
   const nights = list(body.nights);
   const preferredNights = nights.includes("Any") ? ["Any"] : nights.filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item));
-  if (!preferredNights.length) throw new SubmitError("Select at least one night");
+  if (!preferredNights.length) throw new SubmitError("Select at least one day");
   const topics = list(body.topics);
   if (!topics.length) throw new SubmitError("Select at least one topic");
   const notes = [
@@ -237,7 +237,7 @@ export async function saveApplication(body: Record<string, unknown>) {
       list(body.audience).length ? `Audience: ${list(body.audience).join(", ")}` : "",
       `Channels: ${channels.join(", ")}`,
       `Help: ${help.join(", ")}`,
-      list(body.nights).length ? `Nights they can show: ${list(body.nights).join(", ")}` : "",
+      list(body.nights).length ? `Days they can show: ${list(body.nights).join(", ")}` : "",
       optional(body.heardAbout, "How you heard", 80) && `Heard about us: ${optional(body.heardAbout, "How you heard", 80)}`,
       optional(body.pronouns, "Pronouns", 80) && `Pronouns: ${optional(body.pronouns, "Pronouns", 80)}`,
       phone(body.phone) && `Phone: ${phone(body.phone)}`,
@@ -265,7 +265,7 @@ export async function saveApplication(body: Record<string, unknown>) {
     if (booked === "no" && !note) throw new SubmitError("Tell us a week that works");
     const label = TIER_LABEL[tier];
     const day = optional(body.day, "Day", 40);
-    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Connect, Build, or Opportunity");
+    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Bmore Connected, Bmore Built, or Bmore Next");
     const dayLabel = day && LEAD_DAY[day] ? LEAD_DAY[day] : "";
     const notes = [
       `Tier: ${label}`,

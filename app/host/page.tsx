@@ -2,8 +2,8 @@ import { ApplyForm } from "@/components/ApplyForm";
 import { pageMeta, pillars } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "Host an Event",
-  "Propose a partner event for Baltimore Tech Week, April 27–29, 2027. If it is accepted, Tech Week lists it.",
+  "Mixer venue",
+  "Offer a room for Connected Night, Built Night, or Bmore Tech Night at Bmore Tech Fest, April 27–29, 2027.",
 );
 
 export default function HostPage() {
@@ -12,16 +12,16 @@ export default function HostPage() {
       <div className="page-top">
         <div className="week-wrap split">
           <header id="main">
-            <p className="week-kicker">Partner events</p>
-            <h1>Host</h1>
-            <p className="plain-lede">You run the night. If we accept it, we list it and point people to you.</p>
+            <p className="week-kicker">Mixers</p>
+            <h1>Venue</h1>
+            <p className="plain-lede">The fest runs Connected Night, Built Night, and Bmore Tech Night. If your room fits, we will ask.</p>
           </header>
           <ApplyForm
             closed
             endpoint="/api/venues"
             submitLabel="Submit"
             successTitle="Thanks. We have the room."
-            successBody="If we accept it, we list it and point people to you."
+            successBody="If the mixer can live here, we will write you."
             fields={[
               { name: "organization", label: "Organization", required: true, autoComplete: "organization", step: "You" },
               { name: "contact", label: "Your name", required: true, autoComplete: "name", step: "You" },
@@ -45,23 +45,14 @@ export default function HostPage() {
               },
               {
                 name: "day",
-                label: "Preferred day",
+                label: "Preferred night",
                 type: "select",
                 required: true,
-                options: [...pillars.map((pillar) => `${pillar.day} — ${pillar.name}`), "No preference"],
-                step: "The room",
-              },
-              {
-                name: "time",
-                label: "Preferred time",
-                type: "select",
-                required: true,
-                options: ["Morning", "Afternoon", "Evening", "Late night"],
-                placeholder: "Choose a time",
+                options: [...pillars.map((pillar) => `${pillar.day} · ${pillar.name}`), "No preference"],
                 step: "The room",
               },
               { name: "cost", label: "Free or paid", type: "select", required: true, options: ["Free", "Paid", "Not sure"], step: "The room" },
-              { name: "concept", label: "What is the night?", type: "textarea", required: true, step: "The room" },
+              { name: "concept", label: "What should we know about the room?", type: "textarea", required: true, step: "The room" },
             ]}
           />
         </div>

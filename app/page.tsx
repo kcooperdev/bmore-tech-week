@@ -32,9 +32,16 @@ export default async function Home({
               {site.promise}
             </h2>
             <p className="week-lede">
-              {site.room} {site.positioning}
+              Three days in one building with the people you keep meaning to meet. <Link href="/tickets">$79</Link>.
             </p>
-            <p className="pass-line">{site.passes}</p>
+            <p className="pass-line">
+              <Link href="/tickets">{site.passes}</Link>
+            </p>
+            <div className="week-actions">
+              <Link className="week-btn" href="/tickets">
+                Tickets
+              </Link>
+            </div>
             <div className="day-panels">
               {pillars.map((pillar) => (
                 <Link key={pillar.id} className={panelClass[pillar.id]} href={`/schedule#${pillar.id}`}>

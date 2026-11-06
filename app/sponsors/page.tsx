@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Sponsors",
-  "Sponsor Baltimore Tech Week. Apply by February 15, 2027. Names are confirmed March 1, when the talks are chosen.",
+  "Sponsor Bmore Tech Fest. Apply by February 15, 2027. Names are confirmed March 1, when the talks are chosen.",
 );
 
 const tiers = new Set(sponsorTiers.map((tier) => tier.value));
@@ -27,7 +27,7 @@ export default async function SponsorsPage({
             <p className="week-kicker">Apply by February 15, 2027</p>
             <h1>Sponsor</h1>
             <p className="plain-lede">
-              Three ways onto the week. Apply by February 15. The name is confirmed March 1, when the talks are chosen, so it goes on the site with the schedule.
+              Three ways onto Bmore Tech Fest. Apply by February 15. The name is confirmed March 1, when the talks are chosen, so it goes on the site with the schedule.
             </p>
           </header>
           <SponsorBoard initialTier={tier} initialDay={day} />
