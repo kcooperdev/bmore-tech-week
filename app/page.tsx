@@ -32,7 +32,7 @@ export default async function Home({
               {site.promise}
             </h2>
             <p className="week-lede">
-              Three days in one building with the people you keep meaning to meet. <Link href="/tickets">$79</Link>.
+              Three days in one building with the people you keep meaning to meet. <Link href="/tickets">$99</Link>.
             </p>
             <p className="pass-line">
               <Link href="/tickets">{site.passes}</Link>

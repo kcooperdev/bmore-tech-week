@@ -27,7 +27,7 @@ export default function SchedulePage() {
           <ScheduleBoard />
 
           <div className="week-actions">
-            <p className="pass-line">$79 for the whole fest. On sale later.</p>
+            <p className="pass-line">$99 for the whole fest. On sale later.</p>
             <Link className="week-btn" href="/tickets">
               Tickets
             </Link>

@@ -20,8 +20,8 @@ export const site = {
   where: "Baltimore, Maryland",
   tagline: "Bmore Connected. Bmore Built. Bmore Next.",
   promise: "Be in the room.",
-  sell: "Three days in one building with the people you keep meaning to meet. $79.",
-  ticketLine: "Three days, or one night.",
+  sell: "Three days in one building with the people you keep meaning to meet. $99.",
+  ticketLine: "Three days. Every mixer.",
   idea: "4MLK is the HQ.",
   positioning: "Three days at 4MLK.",
   room: "Founders, operators, students, and people hiring in Baltimore.",
@@ -331,12 +331,7 @@ export const sponsorPackages: SponsorPackage[] = [];
 
 export const generalAdmission = {
   name: "General Admission",
-  price: 79,
-};
-
-export const eveningPass = {
-  name: "Evening Pass",
-  price: 45,
+  price: 99,
 };
 
 export const partnerFilters = [
@@ -456,4 +451,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Three days in one building with the people you keep meaning to meet. Bmore Tech Fest is April 27–29, 2027 at 4MLK. $79 for the whole fest. $45 for one night.";
+  "Be in the room. Three days in one building with the people you keep meaning to meet. Bmore Tech Fest is April 27–29, 2027 at 4MLK. Passes are $99, on sale later.";
