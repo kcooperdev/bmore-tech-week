@@ -252,7 +252,7 @@ export const pillars: Pillar[] = [
 export const tracks = [
   {
     name: "AI, software, and security",
-    text: "Explore AI, coding, automation, data, and cybersecurity.",
+    text: "Explore AI, automation, data, and cybersecurity.",
   },
   {
     name: "Product, design, and creative tech",
