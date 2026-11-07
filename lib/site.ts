@@ -250,26 +250,11 @@ export const pillars: Pillar[] = [
 ];
 
 export const tracks = [
-  {
-    name: "AI, software, and security",
-    text: "AI, code, data, and cybersecurity.",
-  },
-  {
-    name: "Product, design, and creative tech",
-    text: "Product, prototyping, and things people use.",
-  },
-  {
-    name: "Startups and business",
-    text: "Customers, funding, and operations.",
-  },
-  {
-    name: "Life sciences and hardware",
-    text: "MedTech, biotech, and things you can hold.",
-  },
-  {
-    name: "Careers",
-    text: "The next job, the interview, leading a room.",
-  },
+  "AI, software, and security",
+  "Product, design, and creative tech",
+  "Startups and founders",
+  "Life sciences",
+  "Careers and leadership",
 ];
 
 export const hq = {
