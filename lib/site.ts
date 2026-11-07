@@ -250,11 +250,26 @@ export const pillars: Pillar[] = [
 ];
 
 export const tracks = [
-  "AI, software, and security",
-  "Product, design, and creative tech",
-  "Startups and founders",
-  "Life sciences",
-  "Careers and leadership",
+  {
+    name: "AI, software, and security",
+    text: "Explore AI, coding, automation, data, and cybersecurity.",
+  },
+  {
+    name: "Product, design, and creative tech",
+    text: "Turn ideas into experiences people can use. Explore product design, prototyping, accessibility, and creative technology.",
+  },
+  {
+    name: "Startups and business growth",
+    text: "Move from idea to customers. Explore sales, pricing, business operations, funding readiness, and tools for growing a business.",
+  },
+  {
+    name: "Life sciences and climate tech",
+    text: "Explore MedTech, biotech, climate tech, and clean energy.",
+  },
+  {
+    name: "Careers and leadership",
+    text: "Find your path and take your next step. Build your portfolio, strengthen your interview skills, and develop as a leader.",
+  },
 ];
 
 export const hq = {

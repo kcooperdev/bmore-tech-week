@@ -260,6 +260,13 @@
   line-height: 1.2;
 }
 
+.track-grid p {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
 .tracks .week-actions {
   margin-top: 1.25rem;
 }

@@ -71,8 +71,9 @@ export default async function Home({
               <p className="tracks-lede">Talks, workshops, and panels. All three days.</p>
               <ul className="track-grid">
                 {tracks.map((track) => (
-                  <li key={track}>
-                    <h3>{track}</h3>
+                  <li key={track.name}>
+                    <h3>{track.name}</h3>
+                    {track.text ? <p>{track.text}</p> : null}
                   </li>
                 ))}
               </ul>
