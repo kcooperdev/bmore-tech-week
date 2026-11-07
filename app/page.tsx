@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { pillars, site } from "@/lib/site";
+import { pillars, site, tracks } from "@/lib/site";
 
 const panelClass = {
   tuesday: "day-panel day-panel-connect",
@@ -65,6 +65,24 @@ export default async function Home({
                 </Link>
               ))}
             </div>
+
+            <section className="tracks" aria-labelledby="tracks-title">
+              <h2 id="tracks-title">Tracks</h2>
+              <p className="tracks-lede">Talks, workshops, and panels. All three days.</p>
+              <ul className="track-grid">
+                {tracks.map((track) => (
+                  <li key={track.name}>
+                    <h3>{track.name}</h3>
+                    <p>{track.text}</p>
+                  </li>
+                ))}
+              </ul>
+              <div className="week-actions">
+                <Link className="week-btn week-btn-ghost" href="/schedule">
+                  Schedule
+                </Link>
+              </div>
+            </section>
           </div>
         </section>
       </div>
