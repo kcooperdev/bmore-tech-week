@@ -10,6 +10,7 @@ type Row = {
   title: string;
   where: string;
   detail: string;
+  pair?: string;
   href?: string;
   tone: "hq" | "pause" | "city";
 };
@@ -37,6 +38,7 @@ function rowsFor(pillar: Pillar): Row[] {
       title: stop.title,
       where: stop.where,
       detail: stop.text,
+      pair: stop.pair,
       tone: stop.kind,
     });
   }
@@ -82,8 +84,8 @@ export function ScheduleBoard() {
               aria-controls={pillar.id}
               onClick={() => open(pillar.id)}
             >
-              <span className="day-tab-day">{pillar.day}</span>
-              <span className="day-tab-name">{pillar.name.replace("Bmore ", "")}</span>
+              <span className="day-tab-day">{pillar.date}</span>
+              <span className="day-tab-name">{pillar.day}</span>
             </button>
           );
         })}
@@ -97,30 +99,40 @@ export function ScheduleBoard() {
         aria-labelledby={`tab-${active.id}`}
       >
         <header>
-          <p className="day-sheet-date">
-            {active.day} · {active.date}
-          </p>
-          <h2>{active.name}</h2>
-          <p>{active.tagline}</p>
+          <h2>
+            {active.date} · {active.day}
+          </h2>
         </header>
-        <ol className="day-rows">
-          {rows.map((row) => (
-            <li key={row.key} className={row.tone === "hq" ? undefined : `is-${row.tone}`}>
-              <time>{row.when}</time>
-              <div className="day-main">
-                {row.href ? (
-                  <Link href={row.href}>
-                    <strong>{row.title}</strong>
-                  </Link>
+        <table className="day-clock">
+          <thead>
+            <tr>
+              <th scope="col">Time</th>
+              <th scope="col">Main Stage</th>
+              <th scope="col">Workshop Studio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.key} className={row.tone === "hq" ? undefined : `is-${row.tone}`}>
+                <th scope="row">{row.when}</th>
+                {row.pair !== undefined ? (
+                  <>
+                    <td>
+                      {row.title}
+                      {row.detail ? <span className="day-detail">{row.detail}</span> : null}
+                    </td>
+                    <td>{row.pair}</td>
+                  </>
                 ) : (
-                  <strong>{row.title}</strong>
+                  <td colSpan={2}>
+                    {row.href ? <Link href={row.href}>{row.title}</Link> : row.title}
+                    {row.detail ? <span className="day-detail">{row.detail}</span> : null}
+                  </td>
                 )}
-                {row.detail ? <span className="day-detail">{row.detail}</span> : null}
-              </div>
-              <span className="day-place">{row.where}</span>
-            </li>
-          ))}
-        </ol>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </section>
     </div>
   );

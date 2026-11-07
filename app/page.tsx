@@ -1,13 +1,7 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { pillars, site, tracks } from "@/lib/site";
-
-const panelClass = {
-  tuesday: "day-panel day-panel-connect",
-  wednesday: "day-panel day-panel-build",
-  thursday: "day-panel day-panel-opportunity",
-} as const;
+import { site, tracks } from "@/lib/site";
 
 export default async function Home({
   searchParams,
@@ -41,29 +35,6 @@ export default async function Home({
               <Link className="week-btn" href="/tickets">
                 Tickets
               </Link>
-            </div>
-            <div className="day-panels">
-              {pillars.map((pillar) => (
-                <Link key={pillar.id} className={panelClass[pillar.id]} href={`/schedule#${pillar.id}`}>
-                  <div className="day-panel-copy">
-                    <p className="day-panel-day">{pillar.day}</p>
-                    <h3>{pillar.name}</h3>
-                    <p className="day-panel-q">{pillar.question}</p>
-                  </div>
-                  <span className="day-panel-go" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        d="M5 12h12M13 6l6 6-6 6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-              ))}
             </div>
 
             <section className="tracks" aria-labelledby="tracks-title">
