@@ -3,7 +3,7 @@ import { formatPrice, generalAdmission, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Tickets",
-  "Be in the room. $99 for three days at 4MLK. All panels, talks, workshops, the expo floor, and all three mixers. Breakfast, coffee, water, and one drink.",
+  "Be in the room. $99 for three days at 4MLK. All panels, talks, workshops, the expo floor, and all three mixers. Breakfast, coffee, and water.",
 );
 
 export default function TicketsPage() {
@@ -47,10 +47,6 @@ export default function TicketsPage() {
               <li>
                 <Check size={16} strokeWidth={2.5} aria-hidden="true" />
                 <span>Coffee and water all day</span>
-              </li>
-              <li>
-                <Check size={16} strokeWidth={2.5} aria-hidden="true" />
-                <span>1 drink at any mixer</span>
               </li>
             </ul>
             <button type="button" className="pack-btn" disabled>
