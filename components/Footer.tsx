@@ -42,10 +42,14 @@ export function Footer() {
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </p>
             <p>
-              <a href="https://www.instagram.com/baltimoretechweekhq">Instagram</a>
+              <a href={site.instagram} target="_blank" rel="noreferrer">
+                Instagram
+              </a>
             </p>
             <p>
-              <a href="https://www.linkedin.com/company/baltimore-tech-week-2027">LinkedIn</a>
+              <a href={site.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
             </p>
             <p>
               <Link href="/privacy">Privacy</Link>

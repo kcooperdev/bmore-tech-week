@@ -13,6 +13,8 @@ export const site = {
   year: 2027,
   url: "https://bmoretechweek.com",
   email: "team@bmoretechweek.com",
+  instagram: "https://www.instagram.com/bmoretechfest",
+  linkedin: "https://www.linkedin.com/company/bmore-tech-fest",
   phase: "preview" as "preview" | "live",
   liveDay: "tuesday" as DayId,
   dates: "April 27–29, 2027",
