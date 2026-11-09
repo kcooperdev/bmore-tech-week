@@ -34,16 +34,15 @@ export const neighborhoods = [
 
 export const sessionTypes = [
   { value: "workshop", label: "Workshop · 45–60 minutes" },
-  { value: "panel", label: "Panel Discussion · 45–60 minutes" },
   { value: "techtalk", label: "Tech Talk · 20–30 minutes" },
 ];
 
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  { value: "2027-04-27", label: "April 27 · Tuesday" },
-  { value: "2027-04-28", label: "April 28 · Wednesday" },
-  { value: "2027-04-29", label: "April 29 · Thursday" },
+  { value: "2027-04-27", label: "Tuesday · Bmore Connected · April 27" },
+  { value: "2027-04-28", label: "Wednesday · Bmore Built · April 28" },
+  { value: "2027-04-29", label: "Thursday · Bmore Next · April 29" },
   { value: "Any", label: "No preference" },
 ];
 
@@ -205,22 +204,84 @@ const you = "You";
 export const speakFields: ApplyField[] = [
   { name: "name", label: "Full name", required: true, autoComplete: "name", placeholder: "Your name", step: you },
   { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", placeholder: "you@studio.com", step: you },
-  { name: "company", label: "Company / organization", autoComplete: "organization", placeholder: "Studio, company, or independent", step: you },
-  { name: "linkedinUrl", label: "LinkedIn", type: "url", placeholder: "https://linkedin.com/in/", step: you },
-  { name: "format", label: "Session type", type: "select", required: true, choices: sessionTypes, placeholder: "Choose a format", step: "The session", wide: true },
-  { name: "nights", label: "Preferred day", type: "radio", required: true, choices: programNights, hint: "Pick the day this could live.", step: "The session" },
-  { name: "topics", label: "Track", type: "radio", required: true, options: speakerTopics, step: "The session" },
-  { name: "talkTitle", label: "Session title", required: true, placeholder: "What the room is actually about", step: "About the talk", wide: true },
+  {
+    name: "company",
+    label: "Company / organization",
+    autoComplete: "organization",
+    placeholder: "Studio, company, or independent",
+    hint: "Optional. Where you do the work.",
+    step: you,
+  },
+  {
+    name: "linkedinUrl",
+    label: "LinkedIn",
+    type: "url",
+    placeholder: "https://linkedin.com/in/",
+    hint: "Optional. Helps us put a face to the talk.",
+    step: you,
+  },
+  {
+    name: "format",
+    label: "Session type",
+    type: "radio",
+    required: true,
+    choices: sessionTypes,
+    step: "Your session",
+  },
+  {
+    name: "talkTitle",
+    label: "Session title",
+    required: true,
+    placeholder: "What the room is actually about",
+    step: "Your session",
+    wide: true,
+  },
   {
     name: "description",
     label: "Session description",
     type: "textarea",
     required: true,
-    placeholder: "The conversation, the exercise, or the story.",
-    hint: "What happens in the room, not a bio.",
-    step: "About the talk",
+    minChars: 80,
+    placeholder: "What people will do, hear, or leave with.",
+    hint: "A couple sentences on what happens in the room — not a bio.",
+    step: "Your session",
   },
-  { name: "notes", label: "Anything else we should know?", type: "textarea", hint: "Access needs, first-time speaker, or anything that helps us host you.", step: "About the talk" },
+  {
+    name: "topics",
+    label: "Track",
+    type: "radio",
+    required: true,
+    options: speakerTopics,
+    hint: "Pick the closest fit.",
+    step: "Your session",
+  },
+  {
+    name: "nights",
+    label: "Preferred day",
+    type: "radio",
+    required: true,
+    choices: programNights,
+    hint: "Pick a day, or choose no preference.",
+    step: "Day & fit",
+  },
+  {
+    name: "panelist",
+    label: "Open to a panel if we don’t take this talk?",
+    type: "radio",
+    required: true,
+    choices: [
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+    ],
+    step: "Day & fit",
+  },
+  {
+    name: "notes",
+    label: "Anything else we should know?",
+    type: "textarea",
+    placeholder: "Access needs, first-time speaker, co-presenter, timing constraints…",
+    step: "Day & fit",
+  },
 ];
 
 export const partnerFields: ApplyField[] = [

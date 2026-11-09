@@ -11,17 +11,6 @@ function choicesFor(field: ApplyField): ApplyChoice[] {
   return (field.options ?? []).map((option) => ({ value: option, label: option }));
 }
 
-function wordCount(value: string) {
-  return value.trim() ? value.trim().split(/\s+/).length : 0;
-}
-
-function lineCount(value: string) {
-  return value
-    .split("\n")
-    .map((line) => line.replace(/^\s*\d+[.)]\s*/, "").trim())
-    .filter(Boolean).length;
-}
-
 const WEB_PREFIX = "https://www.";
 const LINKEDIN_PREFIX = "https://www.linkedin.com/in/";
 
@@ -60,6 +49,7 @@ export function ApplyForm({
   const [step, setStep] = useState(0);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [drafts, setDrafts] = useState<Record<string, string>>(defaults ?? {});
   const [pending, setPending] = useState(false);
   const [done, setDone] = useState(false);
   const [picks, setPicks] = useState<Record<string, string>>(defaults ?? {});
@@ -67,6 +57,21 @@ export function ApplyForm({
   function fieldOpen(field: ApplyField, source: Record<string, string> = picks) {
     if (!field.when) return true;
     return field.when.is.includes(source[field.when.field] ?? "");
+  }
+
+  function clearFieldError(name: string) {
+    setFieldErrors((current) => {
+      if (!current[name]) return current;
+      const next = { ...current };
+      delete next[name];
+      return next;
+    });
+    setError("");
+  }
+
+  function noteDraft(name: string, value: string) {
+    setDrafts((current) => ({ ...current, [name]: value }));
+    clearFieldError(name);
   }
 
   const current = steps.length ? steps[step] : "";
@@ -116,17 +121,22 @@ export function ApplyForm({
       if (field.type === "url" && textValue && !/^https?:\/\/\S+$/i.test(textValue)) {
         next[field.name] = `${field.label} must start with http:// or https://`;
       }
-      if (field.minWords && textValue && wordCount(textValue) < field.minWords) {
-        next[field.name] = `Give this at least ${field.minWords} words`;
-      }
-      if (field.minLines && lineCount(textValue) < field.minLines) {
-        next[field.name] = `Add ${field.minLines}, one per line`;
+      if (field.minChars && textValue && textValue.length < field.minChars) {
+        next[field.name] = "Add a couple more sentences";
       }
       if (field.name === "cityDetail" && textValue && !/^[A-Za-z .'-]+,\s*[A-Za-z]{2}$/.test(textValue)) {
         next[field.name] = "Use city and state, like Frederick, MD";
       }
     }
     return next;
+  }
+
+  function focusProblem(form: HTMLFormElement, problems: Record<string, string>) {
+    const first = Object.keys(problems)[0];
+    if (!first) return;
+    const target = form.querySelector<HTMLElement>(`[name="${first}"]`);
+    target?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (target && "focus" in target) target.focus({ preventScroll: true });
   }
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -138,11 +148,14 @@ export function ApplyForm({
     setFieldErrors(problems);
     if (Object.keys(problems).length) {
       setError("Check the fields marked below.");
+      requestAnimationFrame(() => focusProblem(form, problems));
       return;
     }
     if (steps.length && step < steps.length - 1) {
       setError("");
+      setFieldErrors({});
       setStep((value) => value + 1);
+      requestAnimationFrame(() => form.querySelector(".apply-steps")?.scrollIntoView({ behavior: "smooth", block: "start" }));
       return;
     }
     placeDetail(payload);
@@ -219,21 +232,27 @@ export function ApplyForm({
           const shown = (!steps.length || field.step === current) && fieldOpen(field);
           const choices = choicesFor(field);
           const wide = field.wide || field.type === "textarea" || field.type === "checks" || field.type === "radio";
+          const draft = drafts[field.name] ?? defaults?.[field.name] ?? "";
+          const meterReady = Boolean(field.minChars && draft.trim().length >= field.minChars);
           const control =
             field.type === "textarea" ? (
               <textarea
                 name={field.name}
                 className={`apply-input${problem ? " is-invalid" : ""}`}
                 placeholder={field.placeholder}
-                rows={field.minLines ? 5 : 4}
+                rows={5}
                 defaultValue={defaults?.[field.name]}
+                onChange={(event) => noteDraft(field.name, event.target.value)}
               />
             ) : field.type === "select" ? (
               <select
                 name={field.name}
                 className={`apply-input${problem ? " is-invalid" : ""}`}
                 defaultValue={defaults?.[field.name] ?? ""}
-                onChange={(event) => setPicks((currentPicks) => ({ ...currentPicks, [field.name]: event.target.value }))}
+                onChange={(event) => {
+                  setPicks((currentPicks) => ({ ...currentPicks, [field.name]: event.target.value }));
+                  clearFieldError(field.name);
+                }}
               >
                 <option value="">{field.placeholder || "Select"}</option>
                 {choices.map((option) => (
@@ -251,6 +270,7 @@ export function ApplyForm({
                       name={field.name}
                       value={option.value}
                       defaultChecked={defaults?.[field.name] === option.value}
+                      onChange={() => clearFieldError(field.name)}
                     />
                     {option.label}
                   </label>
@@ -266,6 +286,7 @@ export function ApplyForm({
                 autoCapitalize={field.type === "url" ? "off" : undefined}
                 spellCheck={field.type === "url" ? false : undefined}
                 defaultValue={defaults?.[field.name] || urlPrefix(field) || undefined}
+                onChange={(event) => noteDraft(field.name, event.target.value)}
                 onFocus={(event) => {
                   if (field.type !== "url" || !(event.target instanceof HTMLInputElement)) return;
                   const input = event.target;
@@ -284,6 +305,7 @@ export function ApplyForm({
                   input.value = /^https?:\/\//i.test(pasted) ? pasted : prefix + pasted.replace(/^(www\.)/i, "");
                   const end = input.value.length;
                   input.setSelectionRange(end, end);
+                  noteDraft(field.name, input.value);
                 }}
                 onBlur={(event) => {
                   if (field.type !== "url" || !(event.target instanceof HTMLInputElement)) return;
@@ -293,9 +315,13 @@ export function ApplyForm({
                   if (!prefix) return;
                   if (!value || bareUrl(value)) {
                     input.value = prefix;
+                    noteDraft(field.name, prefix);
                     return;
                   }
-                  if (!/^https?:\/\//i.test(value)) input.value = prefix + value.replace(/^(www\.)/i, "");
+                  if (!/^https?:\/\//i.test(value)) {
+                    input.value = prefix + value.replace(/^(www\.)/i, "");
+                    noteDraft(field.name, input.value);
+                  }
                 }}
               />
             );
@@ -307,6 +333,11 @@ export function ApplyForm({
               </span>
               {field.hint ? <span className="apply-opt">{field.hint}</span> : null}
               {control}
+              {field.minChars && shown && draft.trim() ? (
+                <span className={`apply-meter${meterReady ? " is-ready" : ""}`} aria-live="polite">
+                  {meterReady ? "Looks good" : "Keep going — a couple more sentences"}
+                </span>
+              ) : null}
               {problem ? (
                 <span className="apply-error" role="alert">
                   {problem}

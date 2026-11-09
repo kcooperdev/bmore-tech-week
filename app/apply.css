@@ -130,6 +130,18 @@
   border-bottom-color: #8b2d1c;
 }
 
+.apply-meter {
+  display: block;
+  margin-top: 0.4rem;
+  color: rgb(22 18 12 / 0.5);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.apply-meter.is-ready {
+  color: #5a6b3a;
+}
+
 .apply-error,
 .apply-banner {
   display: block;
@@ -149,11 +161,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  max-width: 100%;
   border: 1px solid rgb(22 18 12 / 0.2);
   border-radius: 999px;
   padding: 0.4rem 0.7rem;
   font-size: 0.88rem;
   font-weight: 650;
+  line-height: 1.25;
+  text-wrap: pretty;
 }
 
 .apply-check:has(input:checked) {

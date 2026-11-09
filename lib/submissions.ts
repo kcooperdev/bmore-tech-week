@@ -58,6 +58,12 @@ function optional(value: unknown, label: string, max = 500) {
   return text(value, label, max, false);
 }
 
+function description(value: unknown) {
+  const next = text(value, "Session description", 2500);
+  if (next.length < 80) throw new SubmitError("Give the session a couple more sentences");
+  return next;
+}
+
 function phone(value: unknown) {
   const next = optional(value, "Phone", 40);
   if (!next) return "";
@@ -77,12 +83,6 @@ function siteUrl(value: unknown, label: string) {
     throw new SubmitError(`${label} must start with http:// or https://`);
   }
   if (!host.includes(".") || host === "www") throw new SubmitError(`${label} needs a full address`);
-  return next;
-}
-
-function words(value: unknown, label: string, min: number, max = 2500) {
-  const next = text(value, label, max);
-  if (next.split(/\s+/).length < min) throw new SubmitError(`${label} needs at least ${min} words`);
   return next;
 }
 
@@ -141,7 +141,7 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     title: "",
     cityState: "",
     talkTitle: text(body.talkTitle, "Session title", 140),
-    talkDescription: text(body.description, "Session description", 2500),
+    talkDescription: description(body.description),
     takeaways: "",
     format: sessionFormat(text(body.format, "Session type", 40)),
     preferredNights,
@@ -151,16 +151,16 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     spokenBefore: "",
     previousTalks: "",
     accessibility: "",
-    panelistFallback: "",
+    panelistFallback: oneOf(body.panelist, "Open to a panel", ["yes", "no"]),
     notes: optional(body.notes, "Notes", 2000),
     linkedinUrl: siteUrl(body.linkedinUrl, "LinkedIn"),
     websiteUrl: "",
   };
 
   const dayLabel: Record<string, string> = {
-    "2027-04-27": "April 27 · Tuesday",
-    "2027-04-28": "April 28 · Wednesday",
-    "2027-04-29": "April 29 · Thursday",
+    "2027-04-27": "Tuesday · Bmore Connected · April 27",
+    "2027-04-28": "Wednesday · Bmore Built · April 28",
+    "2027-04-29": "Thursday · Bmore Next · April 29",
     Any: "No preference",
   };
   const formatLabel: Record<string, string> = {
@@ -173,27 +173,18 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   if (talksSheetUrl()) {
     try {
       await appendTalksRow([
-      new Date().toISOString(),
-      payload.name,
-      payload.email,
-      payload.phone,
-      payload.company,
-      payload.title,
-      payload.cityState,
-      payload.talkTitle,
-      payload.talkDescription,
-      payload.takeaways,
-      formatLabel[payload.format] ?? payload.format,
-      payload.preferredNights.map((night) => dayLabel[night] ?? night).join(", "),
-      payload.topics.join(", "),
-      payload.audienceLevel,
-      payload.spokenBefore,
-      payload.previousTalks,
-      payload.panelistFallback,
-      payload.accessibility,
-      payload.notes,
-      payload.linkedinUrl,
-      payload.websiteUrl,
+        new Date().toISOString(),
+        payload.name,
+        payload.email,
+        payload.company,
+        payload.linkedinUrl,
+        formatLabel[payload.format] ?? payload.format,
+        payload.preferredNights.map((night) => dayLabel[night] ?? night).join(", "),
+        payload.talkTitle,
+        payload.talkDescription,
+        payload.topics.join(", "),
+        payload.panelistFallback === "yes" ? "Yes" : "No",
+        payload.notes,
       ]);
     } catch {
       throw new SubmitError("Could not save talk.", 502);
