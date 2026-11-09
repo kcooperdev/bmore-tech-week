@@ -1,4 +1,5 @@
 import type { ApplyField } from "@/lib/apply-fields";
+import { tracks } from "@/lib/site";
 
 export const pronouns = ["she / her", "he / him", "they / them", "Prefer not to say", "Something else"];
 
@@ -40,35 +41,15 @@ export const sessionTypes = [
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  { value: "2027-04-27", label: "Bmore Connected · Tue · April 27" },
-  { value: "2027-04-28", label: "Bmore Built · Wed · April 28" },
-  { value: "2027-04-29", label: "Bmore Next · Thu · April 29" },
+  { value: "2027-04-27", label: "April 27 · Tuesday" },
+  { value: "2027-04-28", label: "April 28 · Wednesday" },
+  { value: "2027-04-29", label: "April 29 · Thursday" },
   { value: "Any", label: "No preference" },
 ];
 
 export const partnerNights = ["Bmore Connected · Tuesday", "Bmore Built · Wednesday", "Bmore Next · Thursday"];
 
-export const speakerTopics = [
-  "MedTech / Biotech",
-  "Life Sciences",
-  "Deep Tech",
-  "Artificial Intelligence",
-  "Creative Technology",
-  "Digital Art / Media",
-  "UX / Design",
-  "Hardware / Manufacturing",
-  "Aerospace",
-  "Software Engineering",
-  "Cybersecurity",
-  "Product Management",
-  "Startups",
-  "Entrepreneurship",
-  "Venture / Funding",
-  "Climate / Sustainability",
-  "Careers",
-  "Community Building",
-  "Other",
-];
+export const speakerTopics = [...tracks.map((track) => track.name), "Other"];
 
 export const partnerTypes = [
   "Meetup",
@@ -260,14 +241,14 @@ export const speakFields: ApplyField[] = [
   {
     name: "nights",
     label: "Preferred day",
-    type: "checks",
+    type: "radio",
     required: true,
     choices: programNights,
-    hint: "Pick every day this could live.",
+    hint: "Pick the day this could live.",
     step: "Day & topics",
   },
   { name: "neighborhood", label: "Closest neighborhood", type: "select", choices: neighborhoods.map((item) => ({ value: item, label: item })), placeholder: "Choose a neighborhood", hint: "Optional.", step: "Day & topics", wide: true },
-  { name: "topics", label: "Topic", type: "checks", required: true, options: speakerTopics, step: "Day & topics" },
+  { name: "topics", label: "Track", type: "radio", required: true, options: speakerTopics, step: "Day & topics" },
   { name: "spokenBefore", label: "Have you spoken before?", type: "radio", required: true, choices: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }], hint: "First rooms are welcome.", step: "Experience" },
   { name: "previousTalks", label: "Talks, articles, and links", type: "textarea", placeholder: "A meetup talk, a write-up, a deck. One per line.", step: "Experience" },
   { name: "panelist", label: "If this session isn’t selected, would you serve as a panelist?", type: "radio", required: true, choices: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }], step: "Experience" },

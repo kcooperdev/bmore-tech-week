@@ -1,3 +1,6 @@
+import { speakerTopics } from "@/lib/involve";
+import { appendTalksRow, talksSheetUrl } from "@/lib/talks-sheet";
+
 const LIVE = "https://www.bmoretechweek.com";
 
 export class SubmitError extends Error {
@@ -135,7 +138,8 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   const preferredNights = nights.includes("Any") ? ["Any"] : nights.filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item));
   if (!preferredNights.length) throw new SubmitError("Select at least one day");
   const topics = list(body.topics);
-  if (!topics.length) throw new SubmitError("Select at least one topic");
+  if (!topics.length) throw new SubmitError("Select a track");
+  if (topics.some((topic) => !speakerTopics.includes(topic))) throw new SubmitError("Select a track");
   const notes = [
     optional(body.pronouns, "Pronouns", 80) && `Pronouns: ${optional(body.pronouns, "Pronouns", 80)}`,
     optional(body.yearsAround, "Tie to the city", 80) && `Around Baltimore: ${optional(body.yearsAround, "Tie to the city", 80)}`,
@@ -167,6 +171,51 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     linkedinUrl: siteUrl(body.linkedinUrl, "LinkedIn"),
     websiteUrl: siteUrl(body.websiteUrl, "Website"),
   };
+
+  const dayLabel: Record<string, string> = {
+    "2027-04-27": "April 27 · Tuesday",
+    "2027-04-28": "April 28 · Wednesday",
+    "2027-04-29": "April 29 · Thursday",
+    Any: "No preference",
+  };
+  const formatLabel: Record<string, string> = {
+    workshop: "Workshop",
+    panel: "Panel",
+    techtalk: "Tech talk",
+    fireside: "Fireside",
+  };
+
+  if (talksSheetUrl()) {
+    try {
+      await appendTalksRow([
+      new Date().toISOString(),
+      payload.name,
+      payload.email,
+      payload.phone,
+      payload.company,
+      payload.title,
+      payload.cityState,
+      payload.talkTitle,
+      payload.talkDescription,
+      payload.takeaways,
+      formatLabel[payload.format] ?? payload.format,
+      payload.preferredNights.map((night) => dayLabel[night] ?? night).join(", "),
+      payload.topics.join(", "),
+      payload.audienceLevel,
+      payload.spokenBefore,
+      payload.previousTalks,
+      payload.panelistFallback,
+      payload.accessibility,
+      payload.notes,
+      payload.linkedinUrl,
+      payload.websiteUrl,
+      ]);
+    } catch {
+      throw new SubmitError("Could not save talk.", 502);
+    }
+    return { ok: true };
+  }
+
   return forward("/api/speakers", payload);
 }
 
