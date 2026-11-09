@@ -127,49 +127,34 @@ async function forward(path: string, body: Record<string, unknown>) {
 }
 
 export async function saveSpeaker(body: Record<string, unknown>) {
-  const description = words(body.description, "Session description", 40);
-  const takeawayText = text(body.takeaways, "Takeaways", 2500);
-  const takeawayLines = takeawayText
-    .split("\n")
-    .map((line) => line.replace(/^\s*\d+[.)]\s*/, "").trim())
-    .filter(Boolean);
-  if (takeawayLines.length < 3) throw new SubmitError("Add three takeaways, one per line");
   const nights = list(body.nights);
   const preferredNights = nights.includes("Any") ? ["Any"] : nights.filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item));
-  if (!preferredNights.length) throw new SubmitError("Select at least one day");
+  if (!preferredNights.length) throw new SubmitError("Select a day");
   const topics = list(body.topics);
   if (!topics.length) throw new SubmitError("Select a track");
   if (topics.some((topic) => !speakerTopics.includes(topic))) throw new SubmitError("Select a track");
-  const notes = [
-    optional(body.pronouns, "Pronouns", 80) && `Pronouns: ${optional(body.pronouns, "Pronouns", 80)}`,
-    optional(body.yearsAround, "Tie to the city", 80) && `Around Baltimore: ${optional(body.yearsAround, "Tie to the city", 80)}`,
-    optional(body.heardAbout, "How you heard", 80) && `Heard about us: ${optional(body.heardAbout, "How you heard", 80)}`,
-    optional(body.notes, "Notes", 2000),
-  ]
-    .filter(Boolean)
-    .join("\n\n");
   const payload = {
     name: text(body.name, "Full name", 120),
     email: email(body.email),
-    phone: phone(body.phone),
+    phone: "",
     company: optional(body.company, "Company", 140),
-    title: text(body.title, "Professional title", 140),
-    cityState: text(body.cityState, "City and state", 80),
+    title: "",
+    cityState: "",
     talkTitle: text(body.talkTitle, "Session title", 140),
-    talkDescription: description,
-    takeaways: takeawayText,
+    talkDescription: text(body.description, "Session description", 2500),
+    takeaways: "",
     format: sessionFormat(text(body.format, "Session type", 40)),
     preferredNights,
-    preferredNeighborhood: optional(body.neighborhood, "Neighborhood", 80) || "Any",
+    preferredNeighborhood: "Any",
     topics,
-    audienceLevel: oneOf(body.audience, "Audience level", ["Beginner", "Intermediate", "Advanced", "General Audience"]),
-    spokenBefore: oneOf(body.spokenBefore, "Spoken before", ["yes", "no"]),
-    previousTalks: optional(body.previousTalks, "Links", 2000),
-    accessibility: optional(body.accessibility, "Accessibility", 1000),
-    panelistFallback: oneOf(body.panelist, "Panelist", ["yes", "no"]),
-    notes,
+    audienceLevel: "",
+    spokenBefore: "",
+    previousTalks: "",
+    accessibility: "",
+    panelistFallback: "",
+    notes: optional(body.notes, "Notes", 2000),
     linkedinUrl: siteUrl(body.linkedinUrl, "LinkedIn"),
-    websiteUrl: siteUrl(body.websiteUrl, "Website"),
+    websiteUrl: "",
   };
 
   const dayLabel: Record<string, string> = {

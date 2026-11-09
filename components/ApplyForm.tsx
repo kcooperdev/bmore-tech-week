@@ -300,7 +300,7 @@ export function ApplyForm({
               />
             );
           return (
-            <div key={field.name} hidden={!shown} className={`apply-field${wide ? " apply-wide" : ""}`}>
+            <div key={field.name} className={`apply-field${wide ? " apply-wide" : ""}${shown ? "" : " is-off"}`}>
               <span className="apply-label">
                 {field.label}
                 {field.required ? <span className="apply-req"> *</span> : <span className="apply-opt"> optional</span>}

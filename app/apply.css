@@ -83,6 +83,10 @@
   min-width: 0;
 }
 
+.apply-field.is-off {
+  display: none;
+}
+
 .apply-label {
   display: block;
   margin-bottom: 0.35rem;
