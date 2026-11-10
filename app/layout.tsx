@@ -50,7 +50,10 @@ export const metadata: Metadata = {
     images: ["/images/harbor-sunset.jpg"],
   },
   icons: {
-    icon: "/images/mark-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/mark-icon.png", type: "image/png", sizes: "192x192" },
+    ],
     apple: "/images/apple-touch.png",
   },
 };
