@@ -115,7 +115,9 @@ const LEAD_DAY: Record<string, string> = {
   opportunity: "Bmore Next (Thursday, April 29)",
 };
 
-async function forward(path: string, body: Record<string, unknown>) {
+type SaveResult = { ok: true; id?: string };
+
+async function forward(path: string, body: Record<string, unknown>): Promise<SaveResult> {
   const response = await fetch(`${LIVE}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -123,7 +125,7 @@ async function forward(path: string, body: Record<string, unknown>) {
   });
   const payload = (await response.json().catch(() => ({}))) as { error?: string; id?: string };
   if (!response.ok) throw new SubmitError(payload.error || "Could not save that.", response.status);
-  return payload;
+  return { ok: true, id: payload.id };
 }
 
 export async function saveSpeaker(body: Record<string, unknown>) {
@@ -189,7 +191,7 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     } catch {
       throw new SubmitError("Could not save talk.", 502);
     }
-    return { ok: true };
+    return { ok: true } satisfies SaveResult;
   }
 
   return forward("/api/speakers", payload);
