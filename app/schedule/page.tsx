@@ -4,7 +4,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "April 27–29, 2027. Tuesday, Wednesday, Thursday at 4MLK.",
+  "April 26–28, 2027. Monday, Tuesday, Wednesday at 4MLK.",
 );
 
 export default function SchedulePage() {

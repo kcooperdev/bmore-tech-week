@@ -65,8 +65,8 @@ const jsonLd = {
   description: homeDescription,
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   eventStatus: "https://schema.org/EventScheduled",
-  startDate: "2027-04-27",
-  endDate: "2027-04-29",
+  startDate: "2027-04-26",
+  endDate: "2027-04-28",
   url: site.url,
   image: `${site.url}/images/harbor-sunset.jpg`,
   location: {

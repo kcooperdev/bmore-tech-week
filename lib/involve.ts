@@ -40,13 +40,13 @@ export const sessionTypes = [
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
+  { value: "2027-04-26", label: "Monday · April 26" },
   { value: "2027-04-27", label: "Tuesday · April 27" },
   { value: "2027-04-28", label: "Wednesday · April 28" },
-  { value: "2027-04-29", label: "Thursday · April 29" },
   { value: "Any", label: "No preference" },
 ];
 
-export const partnerNights = ["Tuesday · April 27", "Wednesday · April 28", "Thursday · April 29"];
+export const partnerNights = ["Monday · April 26", "Tuesday · April 27", "Wednesday · April 28"];
 
 export const speakerTopics = [...tracks.map((track) => track.name), "Other"];
 
@@ -104,7 +104,7 @@ export const sponsorTierCopy = [
     name: "Lead",
     price: "$5,000",
     spots: "One company each day",
-    text: "Your name on Tuesday, Wednesday, or Thursday.",
+    text: "Your name on Monday, Tuesday, or Wednesday.",
     perks: ["Everything in Community", "One company on that day", "A two-minute welcome that day", "Eight passes"],
     pick: true,
     top: false,
@@ -330,9 +330,9 @@ export const sponsorFields: ApplyField[] = [
 ];
 
 export const leadDays = [
-  { value: "connect", label: "Tuesday · April 27", short: "Tuesday · April 27" },
-  { value: "build", label: "Wednesday · April 28", short: "Wednesday · April 28" },
-  { value: "opportunity", label: "Thursday · April 29", short: "Thursday · April 29" },
+  { value: "connect", label: "Monday · April 26", short: "Monday · April 26" },
+  { value: "build", label: "Tuesday · April 27", short: "Tuesday · April 27" },
+  { value: "opportunity", label: "Wednesday · April 28", short: "Wednesday · April 28" },
 ];
 
 export function sponsorFieldsFor(tier: string): ApplyField[] {

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
  * Editable content for Bmore Tech Fest 2027.
  * Add confirmed sessions, exhibitors, sponsors, and partner events here.
  * Do not add a partner event until the partnership, time, and capacity are confirmed.
- * The week is Tuesday, April 27 through Thursday, April 29, 2027.
+ * The week is Monday, April 26 through Wednesday, April 28, 2027.
  * Set phase to "live" during the week to turn the homepage into the attendee view.
  */
 
@@ -16,9 +16,9 @@ export const site = {
   instagram: "https://www.instagram.com/bmoretechfest",
   linkedin: "https://www.linkedin.com/company/bmore-tech-fest",
   phase: "preview" as "preview" | "live",
-  liveDay: "tuesday" as DayId,
-  dates: "April 27–29, 2027",
-  when: "Tuesday–Thursday",
+  liveDay: "monday" as DayId,
+  dates: "April 26–28, 2027",
+  when: "Monday–Wednesday",
   where: "Baltimore, Maryland",
   tagline: "Three days at 4MLK.",
   promise: "Be in the room.",
@@ -30,7 +30,7 @@ export const site = {
   passes: "On sale later.",
 };
 
-export type DayId = "tuesday" | "wednesday" | "thursday";
+export type DayId = "monday" | "tuesday" | "wednesday";
 export type DayPart = "morning" | "afternoon" | "evening";
 export type Place = "hq" | "partner";
 
@@ -182,15 +182,34 @@ function dayStops(prefix: string, mixer: DayStop): DayStop[] {
 
 export const pillars: Pillar[] = [
   {
-    id: "tuesday",
-    day: "Tuesday",
-    date: "April 27",
-    name: "Tuesday",
+    id: "monday",
+    day: "Monday",
+    date: "April 26",
+    name: "Monday",
     night: "Mixer",
     question: "Who should I meet?",
     tagline: "Meet the people building Baltimore.",
     summary: "Meet the people building Baltimore.",
     purpose: "Put a name to the work happening here.",
+    stops: dayStops("mon", {
+      id: "mon-mixer",
+      when: "5:30pm",
+      where: "",
+      title: "Mixer",
+      text: "",
+      kind: "city",
+    }),
+  },
+  {
+    id: "tuesday",
+    day: "Tuesday",
+    date: "April 27",
+    name: "Tuesday",
+    night: "Mixer",
+    question: "What can I create?",
+    tagline: "Workshops, demos, and startups.",
+    summary: "Workshops, demos, and startups.",
+    purpose: "Leave with something you made.",
     stops: dayStops("tue", {
       id: "tue-mixer",
       when: "5:30pm",
@@ -205,32 +224,13 @@ export const pillars: Pillar[] = [
     day: "Wednesday",
     date: "April 28",
     name: "Wednesday",
-    night: "Mixer",
-    question: "What can I create?",
-    tagline: "Workshops, demos, and startups.",
-    summary: "Workshops, demos, and startups.",
-    purpose: "Leave with something you made.",
-    stops: dayStops("wed", {
-      id: "wed-mixer",
-      when: "5:30pm",
-      where: "",
-      title: "Mixer",
-      text: "",
-      kind: "city",
-    }),
-  },
-  {
-    id: "thursday",
-    day: "Thursday",
-    date: "April 29",
-    name: "Thursday",
     night: "Closing Celebration",
     question: "Where can this take me?",
     tagline: "Jobs, funding, and a next step.",
     summary: "Jobs, funding, and a next step.",
     purpose: "A job, a cofounder, a room you go back to.",
-    stops: dayStops("thu", {
-      id: "thu-mixer",
+    stops: dayStops("wed", {
+      id: "wed-mixer",
       when: "5:30pm",
       where: "",
       title: "Closing Celebration",
@@ -458,4 +458,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Three days in one building with the people you keep meaning to meet. Bmore Tech Fest is April 27–29, 2027 at 4MLK. Passes are $99, on sale later.";
+  "Be in the room. Three days in one building with the people you keep meaning to meet. Bmore Tech Fest is April 26–28, 2027 at 4MLK. Passes are $99, on sale later.";

@@ -35,15 +35,15 @@ function list(value: unknown) {
   return one ? [one] : [];
 }
 
-/** The live database accepts the April 2027 week. The public days are April 27–29. */
+/** The live database accepts the April 2027 week. The public days are April 26–28. */
 function datesFor(value: unknown) {
   const map: Record<string, string> = {
+    monday: "2027-04-26",
     tuesday: "2027-04-27",
     wednesday: "2027-04-28",
-    thursday: "2027-04-29",
-    connect: "2027-04-27",
-    build: "2027-04-28",
-    opportunity: "2027-04-29",
+    connect: "2027-04-26",
+    build: "2027-04-27",
+    opportunity: "2027-04-28",
   };
   const dates = list(value)
     .map((item) => {
@@ -51,7 +51,7 @@ function datesFor(value: unknown) {
       return Object.entries(map).find(([day]) => key.startsWith(day))?.[1] ?? "";
     })
     .filter(Boolean);
-  return dates.length ? dates : ["2027-04-27", "2027-04-28", "2027-04-29"];
+  return dates.length ? dates : ["2027-04-26", "2027-04-27", "2027-04-28"];
 }
 
 function optional(value: unknown, label: string, max = 500) {
@@ -104,9 +104,9 @@ const TIER_LABEL: Record<string, string> = {
 };
 
 const LEAD_DAY: Record<string, string> = {
-  connect: "Tuesday, April 27",
-  build: "Wednesday, April 28",
-  opportunity: "Thursday, April 29",
+  connect: "Monday, April 26",
+  build: "Tuesday, April 27",
+  opportunity: "Wednesday, April 28",
 };
 
 type SaveResult = { ok: true; id?: string };
@@ -154,9 +154,9 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   };
 
   const dayLabel: Record<string, string> = {
+    "2027-04-26": "Monday · April 26",
     "2027-04-27": "Tuesday · April 27",
     "2027-04-28": "Wednesday · April 28",
-    "2027-04-29": "Thursday · April 29",
     Any: "No preference",
   };
   const formatLabel: Record<string, string> = {
@@ -286,7 +286,7 @@ export async function saveApplication(body: Record<string, unknown>) {
     if (booked === "no" && !note) throw new SubmitError("Tell us a week that works");
     const label = TIER_LABEL[tier];
     const day = optional(body.day, "Day", 40);
-    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Tuesday, Wednesday, or Thursday");
+    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Monday, Tuesday, or Wednesday");
     const dayLabel = day && LEAD_DAY[day] ? LEAD_DAY[day] : "";
     const notes = [
       `Tier: ${label}`,
