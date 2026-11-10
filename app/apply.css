@@ -130,18 +130,6 @@
   border-bottom-color: #8b2d1c;
 }
 
-.apply-meter {
-  display: block;
-  margin-top: 0.4rem;
-  color: rgb(22 18 12 / 0.5);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.apply-meter.is-ready {
-  color: #5a6b3a;
-}
-
 .apply-error,
 .apply-banner {
   display: block;

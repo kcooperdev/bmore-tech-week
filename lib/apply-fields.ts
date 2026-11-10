@@ -15,6 +15,5 @@ export type ApplyField = {
   hint?: string;
   step?: string;
   wide?: boolean;
-  minChars?: number;
   when?: { field: string; is: string[] };
 };

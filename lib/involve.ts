@@ -241,7 +241,6 @@ export const speakFields: ApplyField[] = [
     label: "Session description",
     type: "textarea",
     required: true,
-    minChars: 80,
     placeholder: "What people will do, hear, or leave with.",
     hint: "A couple sentences on what happens in the room — not a bio.",
     step: "Your session",

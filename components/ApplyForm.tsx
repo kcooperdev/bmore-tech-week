@@ -49,7 +49,6 @@ export function ApplyForm({
   const [step, setStep] = useState(0);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const [drafts, setDrafts] = useState<Record<string, string>>(defaults ?? {});
   const [pending, setPending] = useState(false);
   const [done, setDone] = useState(false);
   const [picks, setPicks] = useState<Record<string, string>>(defaults ?? {});
@@ -67,11 +66,6 @@ export function ApplyForm({
       return next;
     });
     setError("");
-  }
-
-  function noteDraft(name: string, value: string) {
-    setDrafts((current) => ({ ...current, [name]: value }));
-    clearFieldError(name);
   }
 
   const current = steps.length ? steps[step] : "";
@@ -120,9 +114,6 @@ export function ApplyForm({
       }
       if (field.type === "url" && textValue && !/^https?:\/\/\S+$/i.test(textValue)) {
         next[field.name] = `${field.label} must start with http:// or https://`;
-      }
-      if (field.minChars && textValue && textValue.length < field.minChars) {
-        next[field.name] = "Add a couple more sentences";
       }
       if (field.name === "cityDetail" && textValue && !/^[A-Za-z .'-]+,\s*[A-Za-z]{2}$/.test(textValue)) {
         next[field.name] = "Use city and state, like Frederick, MD";
@@ -232,8 +223,6 @@ export function ApplyForm({
           const shown = (!steps.length || field.step === current) && fieldOpen(field);
           const choices = choicesFor(field);
           const wide = field.wide || field.type === "textarea" || field.type === "checks" || field.type === "radio";
-          const draft = drafts[field.name] ?? defaults?.[field.name] ?? "";
-          const meterReady = Boolean(field.minChars && draft.trim().length >= field.minChars);
           const control =
             field.type === "textarea" ? (
               <textarea
@@ -242,7 +231,7 @@ export function ApplyForm({
                 placeholder={field.placeholder}
                 rows={5}
                 defaultValue={defaults?.[field.name]}
-                onChange={(event) => noteDraft(field.name, event.target.value)}
+                onChange={() => clearFieldError(field.name)}
               />
             ) : field.type === "select" ? (
               <select
@@ -286,7 +275,7 @@ export function ApplyForm({
                 autoCapitalize={field.type === "url" ? "off" : undefined}
                 spellCheck={field.type === "url" ? false : undefined}
                 defaultValue={defaults?.[field.name] || urlPrefix(field) || undefined}
-                onChange={(event) => noteDraft(field.name, event.target.value)}
+                onChange={() => clearFieldError(field.name)}
                 onFocus={(event) => {
                   if (field.type !== "url" || !(event.target instanceof HTMLInputElement)) return;
                   const input = event.target;
@@ -305,7 +294,7 @@ export function ApplyForm({
                   input.value = /^https?:\/\//i.test(pasted) ? pasted : prefix + pasted.replace(/^(www\.)/i, "");
                   const end = input.value.length;
                   input.setSelectionRange(end, end);
-                  noteDraft(field.name, input.value);
+                  clearFieldError(field.name);
                 }}
                 onBlur={(event) => {
                   if (field.type !== "url" || !(event.target instanceof HTMLInputElement)) return;
@@ -315,13 +304,9 @@ export function ApplyForm({
                   if (!prefix) return;
                   if (!value || bareUrl(value)) {
                     input.value = prefix;
-                    noteDraft(field.name, prefix);
                     return;
                   }
-                  if (!/^https?:\/\//i.test(value)) {
-                    input.value = prefix + value.replace(/^(www\.)/i, "");
-                    noteDraft(field.name, input.value);
-                  }
+                  if (!/^https?:\/\//i.test(value)) input.value = prefix + value.replace(/^(www\.)/i, "");
                 }}
               />
             );
@@ -333,11 +318,6 @@ export function ApplyForm({
               </span>
               {field.hint ? <span className="apply-opt">{field.hint}</span> : null}
               {control}
-              {field.minChars && shown && draft.trim() ? (
-                <span className={`apply-meter${meterReady ? " is-ready" : ""}`} aria-live="polite">
-                  {meterReady ? "Looks good" : "Keep going — a couple more sentences"}
-                </span>
-              ) : null}
               {problem ? (
                 <span className="apply-error" role="alert">
                   {problem}

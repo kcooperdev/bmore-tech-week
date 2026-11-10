@@ -58,12 +58,6 @@ function optional(value: unknown, label: string, max = 500) {
   return text(value, label, max, false);
 }
 
-function description(value: unknown) {
-  const next = text(value, "Session description", 2500);
-  if (next.length < 80) throw new SubmitError("Give the session a couple more sentences");
-  return next;
-}
-
 function phone(value: unknown) {
   const next = optional(value, "Phone", 40);
   if (!next) return "";
@@ -143,7 +137,7 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     title: "",
     cityState: "",
     talkTitle: text(body.talkTitle, "Session title", 140),
-    talkDescription: description(body.description),
+    talkDescription: text(body.description, "Session description", 2500),
     takeaways: "",
     format: sessionFormat(text(body.format, "Session type", 40)),
     preferredNights,
