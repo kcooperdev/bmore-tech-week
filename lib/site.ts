@@ -284,7 +284,6 @@ export const hq = {
 
 export const waysIn: { href: string; title: string; text: string }[] = [
   { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
-  { href: "/partners", title: "Partner", text: "Free if you already gather people in Baltimore." },
   { href: "/sponsors", title: "Sponsor", text: "Apply by February 15. The name is confirmed March 1." },
   { href: "/ambassadors", title: "Ambassador", text: "Share the fest with people who already listen to you." },
 ];
@@ -296,7 +295,6 @@ export const nav = {
   ],
   involved: [
     { href: "/speak", label: "Give a Talk" },
-    { href: "/partners", label: "Partner" },
     { href: "/sponsors", label: "Sponsor" },
     { href: "/ambassadors", label: "Ambassador" },
   ],

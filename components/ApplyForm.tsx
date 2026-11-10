@@ -171,7 +171,7 @@ export function ApplyForm({
   if (closed) {
     return (
       <div className="apply-card">
-        <button type="button" className="week-btn" disabled>
+        <button type="button" className="week-btn week-btn-closed" disabled>
           {submitLabel}
         </button>
         <p className="apply-note">Not open yet.</p>

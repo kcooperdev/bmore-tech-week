@@ -25,6 +25,7 @@ export default function AmbassadorsPage() {
             </ul>
           </header>
           <ApplyForm
+            closed
             endpoint="/api/apply"
             extra={{ kind: "ambassador" }}
             submitLabel="Submit"

@@ -6,7 +6,6 @@ const paths = [
   "/schedule",
   "/tickets",
   "/speak",
-  "/partners",
   "/sponsors",
   "/host",
   "/ambassadors",

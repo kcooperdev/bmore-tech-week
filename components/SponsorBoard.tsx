@@ -6,11 +6,19 @@ import { leadDays, sponsorFieldsFor, sponsorTierCopy } from "@/lib/involve";
 
 type Selection = { tier: string; day?: string };
 
-export function SponsorBoard({ initialTier, initialDay }: { initialTier?: string; initialDay?: string }) {
+export function SponsorBoard({
+  initialTier,
+  initialDay,
+  closed = false,
+}: {
+  initialTier?: string;
+  initialDay?: string;
+  closed?: boolean;
+}) {
   const known = new Set(sponsorTierCopy.map((item) => item.id));
   const knownDay = new Set(leadDays.map((day) => day.value));
   const starting =
-    initialTier && known.has(initialTier)
+    !closed && initialTier && known.has(initialTier)
       ? { tier: initialTier, day: initialDay && knownDay.has(initialDay) ? initialDay : undefined }
       : null;
   const [selection, setSelection] = useState<Selection | null>(starting);
@@ -25,6 +33,7 @@ export function SponsorBoard({ initialTier, initialDay }: { initialTier?: string
   }, [selection]);
 
   function open(tier: string, nextDay?: string) {
+    if (closed) return;
     setSelection({ tier, day: nextDay });
     const query = nextDay ? `?tier=${tier}&day=${nextDay}` : `?tier=${tier}`;
     window.history.replaceState(null, "", `/sponsors${query}`);
@@ -53,16 +62,23 @@ export function SponsorBoard({ initialTier, initialDay }: { initialTier?: string
               {item.pick ? (
                 <div className="tier-days">
                   {leadDays.map((option) => (
-                    <button key={option.value} type="button" className="tier-apply" onClick={() => open(item.id, option.value)}>
+                    <button
+                      key={option.value}
+                      type="button"
+                      className="tier-apply"
+                      disabled={closed}
+                      onClick={() => open(item.id, option.value)}
+                    >
                       {option.short}
                     </button>
                   ))}
                 </div>
               ) : (
-                <button type="button" className="tier-apply" onClick={() => open(item.id)}>
+                <button type="button" className="tier-apply" disabled={closed} onClick={() => open(item.id)}>
                   Get this tier
                 </button>
               )}
+              {closed ? <p className="tier-closed">Not open yet.</p> : null}
             </article>
           </li>
         ))}

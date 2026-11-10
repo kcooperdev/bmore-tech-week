@@ -30,7 +30,7 @@ export default async function SponsorsPage({
               Three ways onto Bmore Tech Fest. Apply by February 15. The name is confirmed March 1, when the talks are chosen, so it goes on the site with the schedule.
             </p>
           </header>
-          <SponsorBoard initialTier={tier} initialDay={day} />
+          <SponsorBoard closed initialTier={tier} initialDay={day} />
         </div>
       </div>
     </main>

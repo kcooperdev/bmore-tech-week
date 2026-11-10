@@ -177,6 +177,18 @@
   border-color: #16120c;
 }
 
+.apply-card .week-btn-closed,
+.apply-card .week-btn-closed:hover,
+.apply-card .week-btn-closed:disabled,
+.apply-card .week-btn-closed:disabled:hover {
+  background: #cfc6b5;
+  color: #5c564c;
+  border-color: #b7ae9d;
+  opacity: 1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 @media (min-width: 700px) {
   .apply-card {
     padding: 1.6rem 1.6rem 1.45rem;

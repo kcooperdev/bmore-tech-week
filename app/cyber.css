@@ -444,6 +444,24 @@
   color: #16120c;
 }
 
+.tier-apply:disabled,
+.tier-apply:disabled:hover,
+.tier-card.is-pick .tier-apply:disabled,
+.tier-card.is-pick .tier-apply:disabled:hover {
+  background: #cfc6b5;
+  color: #5c564c;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.tier-closed {
+  margin: 0.55rem 0 0;
+  text-align: center;
+  font-size: 0.86rem;
+  font-weight: 650;
+  color: rgb(22 18 12 / 0.55);
+}
+
 .tier-dialog {
   width: min(44rem, calc(100vw - 2rem));
   max-height: min(44rem, calc(100vh - 2rem));

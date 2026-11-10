@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       { source: "/events", destination: "/schedule", permanent: true },
       { source: "/speakers", destination: "/speak", permanent: true },
       { source: "/apply/speak", destination: "/speak", permanent: true },
-      { source: "/apply/partner", destination: "/partners", permanent: true },
+      { source: "/apply/partner", destination: "/get-involved", permanent: false },
       { source: "/apply/sponsor", destination: "/sponsors", permanent: true },
       { source: "/apply/ambassador", destination: "/ambassadors", permanent: true },
       { source: "/ambassador", destination: "/ambassadors", permanent: true },
@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       { source: "/the-week", destination: "/schedule", permanent: true },
       { source: "/volunteer", destination: "/get-involved", permanent: true },
       { source: "/expo", destination: "/get-involved", permanent: false },
+      { source: "/partners", destination: "/get-involved", permanent: false },
     ];
   },
   async headers() {
