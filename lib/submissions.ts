@@ -104,9 +104,9 @@ const TIER_LABEL: Record<string, string> = {
 };
 
 const LEAD_DAY: Record<string, string> = {
-  connect: "Bmore Connected (Tuesday, April 27)",
-  build: "Bmore Built (Wednesday, April 28)",
-  opportunity: "Bmore Next (Thursday, April 29)",
+  connect: "Tuesday, April 27",
+  build: "Wednesday, April 28",
+  opportunity: "Thursday, April 29",
 };
 
 type SaveResult = { ok: true; id?: string };
@@ -154,9 +154,9 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   };
 
   const dayLabel: Record<string, string> = {
-    "2027-04-27": "Tuesday · Bmore Connected · April 27",
-    "2027-04-28": "Wednesday · Bmore Built · April 28",
-    "2027-04-29": "Thursday · Bmore Next · April 29",
+    "2027-04-27": "Tuesday · April 27",
+    "2027-04-28": "Wednesday · April 28",
+    "2027-04-29": "Thursday · April 29",
     Any: "No preference",
   };
   const formatLabel: Record<string, string> = {
@@ -286,7 +286,7 @@ export async function saveApplication(body: Record<string, unknown>) {
     if (booked === "no" && !note) throw new SubmitError("Tell us a week that works");
     const label = TIER_LABEL[tier];
     const day = optional(body.day, "Day", 40);
-    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Bmore Connected, Bmore Built, or Bmore Next");
+    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Tuesday, Wednesday, or Thursday");
     const dayLabel = day && LEAD_DAY[day] ? LEAD_DAY[day] : "";
     const notes = [
       `Tier: ${label}`,

@@ -48,7 +48,7 @@ export default function HostPage() {
                 label: "Preferred night",
                 type: "select",
                 required: true,
-                options: [...pillars.map((pillar) => `${pillar.day} · ${pillar.name}`), "No preference"],
+                options: [...pillars.map((pillar) => `${pillar.day} · ${pillar.date}`), "No preference"],
                 step: "The room",
               },
               { name: "cost", label: "Free or paid", type: "select", required: true, options: ["Free", "Paid", "Not sure"], step: "The room" },

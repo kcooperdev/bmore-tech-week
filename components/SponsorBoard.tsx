@@ -97,7 +97,7 @@ export function SponsorBoard({
           <>
             <div className="tier-dialog-bar">
               <div>
-                <h2 id="sponsor-form-title">{day ? `${picked.name} · ${day.short.split(" · ")[0]}` : picked.name}</h2>
+                <h2 id="sponsor-form-title">{day ? `${picked.name} · ${day.short}` : picked.name}</h2>
                 <p>{picked.price}</p>
               </div>
               <button type="button" className="tier-dialog-close" onClick={close}>

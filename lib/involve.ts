@@ -40,13 +40,13 @@ export const sessionTypes = [
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  { value: "2027-04-27", label: "Tuesday · Bmore Connected · April 27" },
-  { value: "2027-04-28", label: "Wednesday · Bmore Built · April 28" },
-  { value: "2027-04-29", label: "Thursday · Bmore Next · April 29" },
+  { value: "2027-04-27", label: "Tuesday · April 27" },
+  { value: "2027-04-28", label: "Wednesday · April 28" },
+  { value: "2027-04-29", label: "Thursday · April 29" },
   { value: "Any", label: "No preference" },
 ];
 
-export const partnerNights = ["Bmore Connected · Tuesday", "Bmore Built · Wednesday", "Bmore Next · Thursday"];
+export const partnerNights = ["Tuesday · April 27", "Wednesday · April 28", "Thursday · April 29"];
 
 export const speakerTopics = [...tracks.map((track) => track.name), "Other"];
 
@@ -104,7 +104,7 @@ export const sponsorTierCopy = [
     name: "Lead",
     price: "$5,000",
     spots: "One company each day",
-    text: "Your name on Bmore Connected, Bmore Built, or Bmore Next.",
+    text: "Your name on Tuesday, Wednesday, or Thursday.",
     perks: ["Everything in Community", "One company on that day", "A two-minute welcome that day", "Eight passes"],
     pick: true,
     top: false,
@@ -330,9 +330,9 @@ export const sponsorFields: ApplyField[] = [
 ];
 
 export const leadDays = [
-  { value: "connect", label: "Bmore Connected · Tuesday · April 27", short: "Bmore Connected · April 27" },
-  { value: "build", label: "Bmore Built · Wednesday · April 28", short: "Bmore Built · April 28" },
-  { value: "opportunity", label: "Bmore Next · Thursday · April 29", short: "Bmore Next · April 29" },
+  { value: "connect", label: "Tuesday · April 27", short: "Tuesday · April 27" },
+  { value: "build", label: "Wednesday · April 28", short: "Wednesday · April 28" },
+  { value: "opportunity", label: "Thursday · April 29", short: "Thursday · April 29" },
 ];
 
 export function sponsorFieldsFor(tier: string): ApplyField[] {
