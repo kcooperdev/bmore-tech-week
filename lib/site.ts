@@ -272,7 +272,6 @@ export const hq = {
     "https://www.google.com/maps/search/?api=1&query=4+N+Martin+Luther+King+Jr+Blvd+Baltimore+MD+21201",
   holds: [
     "Registration and check-in",
-    "Expo",
     "Coworking",
     "Main programming",
     "Workshops",
@@ -300,7 +299,6 @@ export const nav = {
     { href: "/partners", label: "Partner" },
     { href: "/sponsors", label: "Sponsor" },
     { href: "/ambassadors", label: "Ambassador" },
-    { href: "/expo", label: "Ask for a table" },
   ],
 };
 

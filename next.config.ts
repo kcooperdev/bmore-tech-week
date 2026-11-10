@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
       { source: "/about", destination: "/schedule", permanent: true },
       { source: "/the-week", destination: "/schedule", permanent: true },
       { source: "/volunteer", destination: "/get-involved", permanent: true },
+      { source: "/expo", destination: "/get-involved", permanent: false },
     ];
   },
   async headers() {
