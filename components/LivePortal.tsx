@@ -70,7 +70,7 @@ export function LivePortal() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="week-kicker">Today · {day.day}</p>
-            <h2 className="week-title">{day.name}</h2>
+            <h2 className="week-title">{day.date}</h2>
           </div>
           <div className="flex flex-wrap gap-4 text-sm">
             <Link href={`/schedule#${day.id}`} className="underline underline-offset-4">

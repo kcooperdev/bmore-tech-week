@@ -59,25 +59,9 @@ export function SponsorBoard({
                   <li key={perk}>{perk}</li>
                 ))}
               </ul>
-              {item.pick ? (
-                <div className="tier-days">
-                  {leadDays.map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      className="tier-apply"
-                      disabled={closed}
-                      onClick={() => open(item.id, option.value)}
-                    >
-                      {option.short}
-                    </button>
-                  ))}
-                </div>
-              ) : (
-                <button type="button" className="tier-apply" disabled={closed} onClick={() => open(item.id)}>
-                  Get this tier
-                </button>
-              )}
+              <button type="button" className="tier-apply" disabled={closed} onClick={() => open(item.id)}>
+                Get this tier
+              </button>
               {closed ? <p className="tier-closed">Not open yet.</p> : null}
             </article>
           </li>
