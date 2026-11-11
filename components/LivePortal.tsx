@@ -99,7 +99,7 @@ export function LivePortal() {
             )}
           </article>
           <article>
-            <h3>Mixer</h3>
+            <h3>After 5:30</h3>
             {today.some((item) => item.place === "partner") ? (
               <List items={today.filter((item) => item.place === "partner")} />
             ) : (

@@ -3,12 +3,12 @@ import { site } from "@/lib/site";
 
 const paths = [
   "",
+  "/about",
   "/schedule",
   "/tickets",
   "/speak",
   "/sponsors",
   "/host",
-  "/ambassadors",
   "/get-involved",
   "/conduct",
   "/privacy",

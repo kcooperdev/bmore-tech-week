@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { ScheduleBoard } from "@/components/ScheduleBoard";
 import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "April 26–28, 2027. Monday, Tuesday, Wednesday at 4MLK.",
+  "Bmore Tech Fest runs April 26–28, 2027 at 4MLK, Baltimore. Full schedule goes up when speakers are announced.",
 );
 
 export default function SchedulePage() {
@@ -13,23 +12,28 @@ export default function SchedulePage() {
       <header className="plain-hero" id="main">
         <div className="week-wrap schedule-intro">
           <div>
-            <p className="week-kicker">{site.dates}</p>
+            <p className="week-kicker">
+              {site.dates} · 4MLK, Baltimore
+            </p>
             <h1>Schedule</h1>
           </div>
           <p className="plain-lede">
-            One building. Mixers at 5:30pm. Talks go up when booked.
+            Monday through Wednesday at 4MLK. Daytime talks, panels, and workshops. Networking events after 5:30.
           </p>
         </div>
       </header>
 
       <div className="plain-body">
-        <div className="week-wrap">
-          <ScheduleBoard />
+        <div className="week-wrap narrow-copy">
+          <p>
+            The full timetable goes up when speakers and rooms are locked. Session titles will land here as they are
+            confirmed.
+          </p>
 
           <div className="week-actions">
-            <p className="pass-line">$99 for the whole fest. On sale later.</p>
+            <p className="pass-line">$99 conference pass. Join the list before tickets open.</p>
             <Link className="week-btn" href="/tickets">
-              Tickets
+              Join the list
             </Link>
           </div>
         </div>

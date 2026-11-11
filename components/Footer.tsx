@@ -52,6 +52,9 @@ export function Footer() {
               </a>
             </p>
             <p>
+              <Link href="/about">About</Link>
+            </p>
+            <p>
               <Link href="/privacy">Privacy</Link>
             </p>
             <p>

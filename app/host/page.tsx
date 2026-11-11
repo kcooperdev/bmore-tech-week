@@ -2,8 +2,8 @@ import { ApplyForm } from "@/components/ApplyForm";
 import { pageMeta, pillars } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "Mixer venue",
-  "Offer a room for an evening mixer at Bmore Tech Fest, April 26–28, 2027.",
+  "Networking venue",
+  "Offer a room for a networking event after 5:30 at Bmore Tech Fest, April 26–28, 2027.",
 );
 
 export default function HostPage() {
@@ -12,16 +12,16 @@ export default function HostPage() {
       <div className="page-top">
         <div className="week-wrap split">
           <header id="main">
-            <p className="week-kicker">Mixers</p>
+            <p className="week-kicker">After 5:30</p>
             <h1>Venue</h1>
-            <p className="plain-lede">Mixers run Monday, Tuesday, and Wednesday at 5:30pm. If your room fits, we will ask.</p>
+            <p className="plain-lede">Networking events run Monday, Tuesday, and Wednesday after 5:30. If your room fits, we will ask.</p>
           </header>
           <ApplyForm
             closed
             endpoint="/api/venues"
             submitLabel="Submit"
             successTitle="Thanks. We have the room."
-            successBody="If the mixer can live here, we will write you."
+            successBody="If the networking event can live here, we will write you."
             fields={[
               { name: "organization", label: "Organization", required: true, autoComplete: "organization", step: "You" },
               { name: "contact", label: "Your name", required: true, autoComplete: "name", step: "You" },

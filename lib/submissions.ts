@@ -98,9 +98,10 @@ function sessionFormat(value: string) {
 const SPONSOR_CALL = "https://tidycal.com/bmore-tech-week/30-minute-meeting";
 
 const TIER_LABEL: Record<string, string> = {
-  community: "Community ($2,500)",
-  lead: "Lead ($5,000)",
-  presenting: "Presenting ($10,000)",
+  founding: "Founding ($1,000)",
+  community: "Founding ($1,000)",
+  lead: "Lead ($2,500)",
+  presenting: "Presenting ($5,000)",
 };
 
 const LEAD_DAY: Record<string, string> = {
@@ -206,7 +207,7 @@ export async function saveVenue(body: Record<string, unknown>) {
   const payload = {
     name: text(body.venue, "Venue", 120),
     neighborhood: "Downtown",
-    address: `${street} — ${when} — ${concept}`.slice(0, 200),
+    address: `${street} / ${when} / ${concept}`.slice(0, 200),
     capacity,
     availableDates: datesFor(body.day),
     venueType: "hybrid",

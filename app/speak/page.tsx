@@ -1,13 +1,13 @@
 import { ApplyForm } from "@/components/ApplyForm";
 import { speakFields } from "@/lib/involve";
-import { pageMeta } from "@/lib/site";
+import { pageMeta, speakExamples } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Give a Talk",
-  "Apply to give a workshop or tech talk at Bmore Tech Fest. Deadline February 1, 2027. Decisions March 1.",
+  "Share what you’ve learned at Bmore Tech Fest. Pitch a talk, panel, or workshop. First-time speakers welcome. Deadline February 1, 2027.",
 );
 
-const formats = new Set(["workshop", "techtalk"]);
+const formats = new Set(["workshop", "techtalk", "panel"]);
 
 export default async function SpeakPage({
   searchParams,
@@ -23,29 +23,28 @@ export default async function SpeakPage({
         <div className="week-wrap split">
           <header id="main">
             <p className="week-kicker">Deadline February 1, 2027 · Decisions March 1</p>
-            <h1>Give a Talk</h1>
+            <h1>Share what you’ve learned</h1>
             <p className="plain-lede">
-              Workshops and tech talks from people who do the work here. First-time speakers are welcome. You do not need a touring deck.
+              Built something, changed careers, led a team through a tough decision, or learned something you wish someone
+              had told you sooner? Pitch a talk, panel, or workshop for Bmore Tech Fest.
             </p>
+            <h2 className="side-title">Example sessions</h2>
             <ul className="side-notes">
-              <li>
-                <strong>Workshop · 45–60 minutes</strong>
-                Interactive. Teach a practical skill.
-              </li>
-              <li>
-                <strong>Tech talk · 20–30 minutes</strong>
-                Something you built, learned, or are arguing for.
-              </li>
+              {speakExamples.map((example) => (
+                <li key={example}>{example}</li>
+              ))}
             </ul>
+            <h2 className="side-title">First-time speakers are welcome</h2>
             <p className="plain-lede">
-              We want a story from the work, a thing people can use, and a point of view. Not a product demo, a sales
-              pitch, or a recruiting session. If we do not take the talk, we may ask you to sit on a panel.
+              We care more about practical experience than professional speaking experience. We’re looking for builders,
+              founders, engineers, researchers, creators, and operators who have something useful to teach. Start with
+              one thing you know from experience, and tell us who it helps.
             </p>
           </header>
           <ApplyForm
             endpoint="/api/speakers"
             defaults={format ? { format } : undefined}
-            submitLabel="Submit application"
+            submitLabel="Submit a session proposal"
             successTitle="Thanks. We have your session."
             successBody="We read every application. If it fits a day, we will write you. Decisions go out by March 1."
             fields={speakFields}

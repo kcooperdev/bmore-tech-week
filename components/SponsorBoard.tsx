@@ -52,8 +52,6 @@ export function SponsorBoard({
               {item.pick ? <p className="tier-flag">Most sponsors</p> : <p className="tier-flag tier-flag-empty" aria-hidden="true" />}
               <p className="tier-name">{item.name}</p>
               <p className="tier-price">{item.price}</p>
-              <p className="tier-spots">{item.spots}</p>
-              <p>{item.text}</p>
               <ul className="tier-perks">
                 {item.perks.map((perk) => (
                   <li key={perk}>{perk}</li>

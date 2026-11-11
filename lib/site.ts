@@ -22,13 +22,51 @@ export const site = {
   where: "Baltimore, Maryland",
   tagline: "Three days at 4MLK.",
   promise: "Be in the room.",
-  sell: "Three days in one building with the people you keep meaning to meet. $99.",
-  ticketLine: "Three days. Every mixer.",
-  idea: "4MLK is the HQ.",
+  sell: "Three days with the people you keep meaning to meet. Leave with a collaboration, a hire, or a next step.",
+  ticketLine: "$99 conference pass · April 26–28, 2027 · 4MLK, Baltimore",
+  idea: "Three days at 4MLK.",
   positioning: "Three days at 4MLK.",
-  room: "Founders, operators, students, and people hiring in Baltimore.",
-  passes: "On sale later.",
+  room: "Founders, engineers, designers, researchers, students, and tech leaders from Baltimore and across the DMV.",
+  passes: "Join the list",
+  foundingYear:
+    "2027 is year one. If you’re here now, you’re helping shape what Bmore Tech Fest becomes.",
+  whyHeadline: "Baltimore has the talent. This is the gathering.",
+  whyLede:
+    "Baltimore is home to founders, engineers, researchers, designers, creators, students, and entrepreneurs building every day. Bmore Tech Fest brings those communities together for three days of learning, collaboration, and opportunity.",
+  heroLine: "Talks. Workshops. Community. Opportunity.",
 };
+
+/** Founder story. Lives on About. Keep the homepage short. */
+export const founderStory = [
+  "Khalif Cooper is the founder of Bmore Tech Fest. Originally from Philadelphia, he has been coming to Baltimore since childhood. It became a second home, and the city where he built his career and community.",
+  "He didn’t study computer science. He graduated with a theatre degree. His introduction to technology came while working as a food server at a tech conference. Watching founders, engineers, and entrepreneurs discuss what they were building sparked something in him.",
+  "He bought a used laptop on eBay and started teaching himself.",
+  "Over the next decade, curiosity became a career. He worked as a software engineer, helped people break into tech, spoke at events, built communities, and grew a technology network from zero to more than 1,200 people, rooted in Baltimore.",
+  "Along the way, one thing became clear. Baltimore already has builders: engineers, founders, designers, researchers, students, creators. They are not always in the same room.",
+  "Bmore Tech Fest exists to bring those communities together. More engineers. More founders. More companies. More builders. More opportunities. More technology in Baltimore.",
+  "Khalif believes Baltimore will be the next major tech hub in the United States because of the people already here, not because someone imported the idea.",
+  "Technology changed his life. Bmore Tech Fest exists because he believes it can change someone else’s too.",
+];
+
+export const festTargets = [
+  "300+ attendees",
+  "30 sessions",
+  "3 days",
+  "Multiple tracks",
+  "Networking events after 5:30",
+  "Hands-on workshops",
+];
+
+export const speakExamples = [
+  "How we built our first AI product",
+  "Lessons from scaling engineering teams",
+  "Building a startup in Baltimore",
+  "Breaking into tech without a CS degree",
+  "Cybersecurity challenges every company faces",
+  "Product design lessons from real products",
+  "Growing a technical creator brand",
+  "Startup funding mistakes to avoid",
+];
 
 export type DayId = "monday" | "tuesday" | "wednesday";
 export type DayPart = "morning" | "afternoon" | "evening";
@@ -186,16 +224,16 @@ export const pillars: Pillar[] = [
     day: "Monday",
     date: "April 26",
     name: "Monday",
-    night: "Mixer",
+    night: "Networking",
     question: "Who should I meet?",
     tagline: "Meet the people building Baltimore.",
     summary: "Meet the people building Baltimore.",
     purpose: "Put a name to the work happening here.",
     stops: dayStops("mon", {
       id: "mon-mixer",
-      when: "5:30pm",
+      when: "After 5:30",
       where: "",
-      title: "Mixer",
+      title: "Networking event",
       text: "",
       kind: "city",
     }),
@@ -205,16 +243,16 @@ export const pillars: Pillar[] = [
     day: "Tuesday",
     date: "April 27",
     name: "Tuesday",
-    night: "Mixer",
+    night: "Networking",
     question: "What can I create?",
     tagline: "Workshops, demos, and startups.",
     summary: "Workshops, demos, and startups.",
     purpose: "Leave with something you made.",
     stops: dayStops("tue", {
       id: "tue-mixer",
-      when: "5:30pm",
+      when: "After 5:30",
       where: "",
-      title: "Mixer",
+      title: "Networking event",
       text: "",
       kind: "city",
     }),
@@ -231,7 +269,7 @@ export const pillars: Pillar[] = [
     purpose: "A job, a cofounder, a room you go back to.",
     stops: dayStops("wed", {
       id: "wed-mixer",
-      when: "5:30pm",
+      when: "After 5:30",
       where: "",
       title: "Closing Celebration",
       text: "",
@@ -243,25 +281,77 @@ export const pillars: Pillar[] = [
 export const tracks = [
   {
     name: "AI, software, and security",
-    text: "Explore AI, automation, data, and cybersecurity.",
+    text: "How teams build, ship, and secure the tools people use.",
   },
   {
     name: "Product, design, and creative tech",
-    text: "Turn ideas into experiences people can use. Explore product design, prototyping, accessibility, and creative technology.",
+    text: "How ideas become products and experiences people want to use.",
   },
   {
     name: "Startups and business growth",
-    text: "Move from idea to customers. Explore sales, pricing, business operations, funding readiness, and tools for growing a business.",
+    text: "What founders learn from finding customers, building teams, and growing a business.",
   },
   {
     name: "Life sciences and climate tech",
-    text: "Explore MedTech, biotech, climate tech, and clean energy.",
+    text: "How researchers and founders turn discoveries into practical solutions.",
   },
   {
     name: "Careers and leadership",
-    text: "Find your path and take your next step. Build your portfolio, strengthen your interview skills, and develop as a leader.",
+    text: "How people get into tech, change direction, and learn to lead teams.",
   },
 ];
+
+export const aboutSections = [
+  {
+    id: "baltimore",
+    title: "Built in Baltimore",
+    text: "From cybersecurity and healthcare innovation to AI, research, startups, and creative technology, Baltimore is home to builders solving real problems. Bmore Tech Fest is where those communities meet.",
+  },
+  {
+    id: "people",
+    title: "Find your people",
+    text: "Meet founders building in Baltimore, engineers working on problems you care about, and people who can tell you what it’s actually like to move into a new role. Come with a question, an idea, or a project you want to talk through.",
+  },
+  {
+    id: "venue",
+    title: "In the heart of downtown",
+    text: "We take over 4MLK, a downtown hub for innovation and entrepreneurship. Catch a talk, try something hands-on in a workshop, then keep the conversation going between sessions, with the city right outside the door.",
+  },
+  {
+    id: "founding",
+    title: "Founding year",
+    text: "Bmore Tech Fest launches April 26–28, 2027. We’re bringing builders, founders, engineers, creators, researchers, and future leaders together for three days downtown. If you’re here now, you’re helping shape what this becomes.",
+  },
+];
+
+export const passIncludes = [
+  "Meet future collaborators and people you keep meaning to know",
+  "Discover startup, hiring, and partnership opportunities",
+  "Learn practical skills in talks, panels, and hands-on workshops",
+  "Access to networking events after 5:30",
+  "Breakfast, coffee, and refreshments",
+];
+
+export const sponsorAudience = [
+  "Founders",
+  "Software engineers",
+  "Product managers",
+  "Designers",
+  "Students",
+  "Career changers",
+  "Startup operators",
+  "AI builders",
+  "Technology leaders",
+  "Cybersecurity professionals",
+];
+
+/** Confirmed founding supporters only. Add a name when the partnership is real. */
+export const foundingSupporters: { name: string; role: string }[] = [
+  { name: "4MLK", role: "Venue partner" },
+];
+
+export const scheduleExperiences =
+  "Talks, hands-on workshops, founder conversations, career sessions, and networking events after 5:30, with room between blocks to meet someone new.";
 
 export const hq = {
   name: "Bmore Tech Fest HQ",
@@ -285,7 +375,6 @@ export const hq = {
 export const waysIn: { href: string; title: string; text: string }[] = [
   { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
   { href: "/sponsors", title: "Sponsor", text: "Apply by February 15. The name is confirmed March 1." },
-  { href: "/ambassadors", title: "Ambassador", text: "Share the fest with people who already listen to you." },
 ];
 
 export const nav = {
@@ -296,7 +385,6 @@ export const nav = {
   involved: [
     { href: "/speak", label: "Give a Talk" },
     { href: "/sponsors", label: "Sponsor" },
-    { href: "/ambassadors", label: "Ambassador" },
   ],
 };
 
@@ -458,4 +546,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Three days in one building with the people you keep meaning to meet. Bmore Tech Fest is April 26–28, 2027 at 4MLK. Passes are $99, on sale later.";
+  "Be in the room. Three days with the people you keep meaning to meet: founders, engineers, designers, researchers, students, and tech leaders from Baltimore and across the DMV. Leave with a collaboration, a hire, or a next step. Be part of year one.";

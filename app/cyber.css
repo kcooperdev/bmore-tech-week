@@ -219,12 +219,18 @@
   margin-top: 2.75rem;
 }
 
-.tracks h2 {
+.tracks h2,
+.week-title-sm {
   margin: 0;
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 0.95;
+}
+
+.home-beat {
+  padding-top: 3.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .tracks-lede {
@@ -233,6 +239,181 @@
   font-size: 1.02rem;
   font-weight: 500;
   line-height: 1.4;
+}
+
+.notify-form {
+  margin-top: 1.35rem;
+  max-width: 34rem;
+}
+
+.notify-label {
+  display: block;
+  margin: 0 0 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.notify-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.notify-row input {
+  flex: 1 1 14rem;
+  min-height: 2.85rem;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid #16120c;
+  background: #fffdf8;
+  color: #16120c;
+  font: inherit;
+}
+
+.notify-error,
+.notify-done {
+  margin: 0.7rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.notify-error {
+  color: #8a1f1f;
+}
+
+.schedule-shape {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.schedule-shape li {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(244 239 230 / 0.16);
+}
+
+.schedule-shape strong {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.schedule-shape span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  opacity: 0.86;
+}
+
+.mixer-note {
+  margin-top: 2.5rem;
+  max-width: 36rem;
+}
+
+.mixer-note h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.mixer-note p {
+  margin: 0.55rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+
+.pack-line {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.pack-includes-title {
+  margin: 1.25rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.pack .notify-form {
+  margin-top: 1.5rem;
+}
+
+.credit-line {
+  margin: 1rem 0 0;
+  max-width: 34rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  opacity: 0.78;
+}
+
+.supporter-list,
+.audience-list,
+.target-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1.15rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.supporter-list li,
+.audience-list li,
+.target-list li {
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.supporter-list strong {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.supporter-list span {
+  opacity: 0.78;
+}
+
+.audience-list {
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.45rem 1rem;
+}
+
+.sponsor-why {
+  margin: 2rem 0 2.25rem;
+  max-width: 42rem;
+}
+
+.sponsor-why h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.sponsor-why > p {
+  margin: 0.55rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+
+.founder-story {
+  margin-top: 2.5rem;
+}
+
+.packs-head .credit-line,
+.packs-head .pass-line {
+  margin-top: 0.85rem;
+}
+
+.pack .target-list {
+  margin-top: 0.85rem;
 }
 
 .track-grid {
@@ -652,10 +833,17 @@
   }
 }
 
+.side-title {
+  margin: 1.75rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
 .side-notes {
   display: grid;
   gap: 0.95rem;
-  margin: 1.4rem 0 0;
+  margin: 0.85rem 0 0;
   padding: 0;
   list-style: none;
 }

@@ -38,7 +38,7 @@ export function InquiryForm({
     const data = new FormData(event.currentTarget);
     const lines = fields.map((field) => {
       const value = String(data.get(field.name) ?? "").trim();
-      return `${field.label}: ${value || "—"}`;
+      return `${field.label}: ${value || "-"}`;
     });
     const message = lines.join("\n");
     setPreview(message);

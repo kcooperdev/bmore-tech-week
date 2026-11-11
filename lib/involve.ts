@@ -35,6 +35,7 @@ export const neighborhoods = [
 export const sessionTypes = [
   { value: "workshop", label: "Workshop · 45–60 minutes" },
   { value: "techtalk", label: "Tech Talk · 20–30 minutes" },
+  { value: "panel", label: "Panel · 40–50 minutes" },
 ];
 
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
@@ -83,42 +84,47 @@ export const partnerHelp = [
 ];
 
 export const sponsorTiers = [
-  { value: "community", label: "Community · $2,500" },
-  { value: "lead", label: "Lead · $5,000" },
-  { value: "presenting", label: "Presenting · $10,000" },
+  { value: "founding", label: "Founding · $1,000" },
+  { value: "lead", label: "Lead · $2,500" },
+  { value: "presenting", label: "Presenting · $5,000" },
 ];
 
 export const sponsorTierCopy = [
   {
-    id: "community",
-    name: "Community",
-    price: "$2,500",
-    spots: "Eight companies",
-    text: "Your logo on Bmore Tech Fest.",
-    perks: ["Logo on the site and in the program", "One mention in the attendee email", "Four passes"],
+    id: "founding",
+    name: "Founding",
+    price: "$1,000",
+    perks: [
+      "Logo on the site and sponsor signage at 4MLK",
+      "Featured thank-you in the pre-event attendee email",
+      "Four passes",
+    ],
     pick: false,
     top: false,
   },
   {
     id: "lead",
     name: "Lead",
-    price: "$5,000",
-    spots: "One company each day",
-    text: "Your name on Monday, Tuesday, or Wednesday.",
-    perks: ["Everything in Community", "One company on that day", "A two-minute welcome that day", "Eight passes"],
+    price: "$2,500",
+    perks: [
+      "Everything in Founding",
+      "Own a day: exclusive Lead sponsor for Monday, Tuesday, or Wednesday",
+      "Dedicated sponsor table that day",
+      "Thank-you by name during the opening welcome that day",
+      "Eight passes",
+    ],
     pick: true,
     top: false,
   },
   {
     id: "presenting",
     name: "Presenting",
-    price: "$10,000",
-    spots: "One company",
-    text: "Bmore Tech Fest, presented by you.",
+    price: "$5,000",
     perks: [
-      "Bmore Tech Fest 2027, presented by your company",
+      "Everything in Founding",
       "Logo on the homepage",
-      "A mention in the room each day",
+      "Dedicated sponsor table all three days",
+      "Thank-you by name during the opening welcome each day",
       "Twelve passes",
     ],
     pick: false,
@@ -242,7 +248,7 @@ export const speakFields: ApplyField[] = [
     type: "textarea",
     required: true,
     placeholder: "What people will do, hear, or leave with.",
-    hint: "A couple sentences on what happens in the room — not a bio.",
+    hint: "A couple sentences on what happens in the room, not a bio.",
     step: "Your session",
   },
   {
