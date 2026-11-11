@@ -4,7 +4,6 @@ import {
   festTargets,
   formatPrice,
   generalAdmission,
-  hq,
   pageMeta,
   passIncludes,
   site,
@@ -53,13 +52,6 @@ export default function TicketsPage() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className="pack-line">
-              At {hq.venue} downtown.{" "}
-              <a href={hq.mapsUrl} target="_blank" rel="noreferrer">
-                Directions
-              </a>
-              .
-            </p>
             <TicketNotify
               label="Be first to know when tickets are released"
               buttonLabel="Join the list"

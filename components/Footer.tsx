@@ -15,11 +15,7 @@ export function Footer() {
         <div className="harbor-footer-meta">
           <div>
             <p>{site.idea}</p>
-            <p>
-              {site.dates}
-              <br />
-              {site.when}
-            </p>
+            <p>{site.dates}</p>
           </div>
           <div>
             <p>

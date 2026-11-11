@@ -18,7 +18,7 @@ export default function SchedulePage() {
             <h1>Schedule</h1>
           </div>
           <p className="plain-lede">
-            Monday through Wednesday at 4MLK. Daytime talks, panels, and workshops. Networking events after 5:30.
+            Three days at 4MLK. Daytime talks, panels, and workshops. Networking events after 5:30.
           </p>
         </div>
       </header>

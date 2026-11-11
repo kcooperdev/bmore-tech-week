@@ -30,8 +30,6 @@ export default async function Home({
               Three days with Baltimore’s founders, engineers, creators, researchers, operators, and future leaders from
               across the DMV. Leave with a collaboration, a hire, or a next step.
             </p>
-            <p className="pass-line">{site.heroLine}</p>
-            <p className="pass-line">{site.foundingYear}</p>
             <div className="week-actions">
               <a className="week-btn" href="#ticket-updates">
                 Join the list

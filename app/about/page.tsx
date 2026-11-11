@@ -8,9 +8,6 @@ export const metadata = pageMeta(
 );
 
 export default function AboutPage() {
-  const beforePull = founderStory.paragraphs.slice(0, 5);
-  const afterPull = founderStory.paragraphs.slice(5);
-
   return (
     <main className="plain-page story-page">
       <header className="plain-hero" id="main">
@@ -33,17 +30,7 @@ export default function AboutPage() {
             {founderStory.title}
           </StoryReveal>
 
-          {beforePull.map((paragraph, index) => (
-            <StoryReveal as="p" key={paragraph.slice(0, 48)} delay={Math.min(index * 35, 140)}>
-              {paragraph}
-            </StoryReveal>
-          ))}
-
-          <StoryReveal as="blockquote" className="story-pull" delay={40}>
-            <p>{founderStory.pull}</p>
-          </StoryReveal>
-
-          {afterPull.map((paragraph, index) => (
+          {founderStory.paragraphs.map((paragraph, index) => (
             <StoryReveal as="p" key={paragraph.slice(0, 48)} delay={Math.min(index * 35, 140)}>
               {paragraph}
             </StoryReveal>
