@@ -26,9 +26,9 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --font-display: var(--font-display);
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Figtree", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -52,7 +52,9 @@
   --border: #1f7ea355;
   --input: #102433;
   --ring: #f4c15a;
-  --font-display: var(--font-sans), system-ui, sans-serif;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Figtree", ui-sans-serif, system-ui, sans-serif;
 }
 
 .dark {
@@ -84,7 +86,6 @@
   html {
     overflow-x: hidden;
     scroll-behavior: smooth;
-    --font-display: var(--font-sans), system-ui, sans-serif;
   }
   @media (prefers-reduced-motion: reduce) {
     html {

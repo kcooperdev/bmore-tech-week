@@ -1,6 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Figtree, JetBrains_Mono } from "next/font/google";
+import "@fontsource/figtree/400.css";
+import "@fontsource/figtree/500.css";
+import "@fontsource/figtree/600.css";
+import "@fontsource/figtree/700.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/700.css";
 import "./globals.css";
 import "./harbor.css";
 import "./cyber.css";
@@ -9,18 +15,6 @@ import { CookieNotice } from "@/components/CookieNotice";
 import { Topbar } from "@/components/Topbar";
 import { Footer } from "@/components/Footer";
 import { homeDescription, hq, site } from "@/lib/site";
-
-const figtree = Figtree({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
 
 export const viewport: Viewport = {
   themeColor: "#2f7fa8",
@@ -95,7 +89,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${figtree.variable} ${mono.variable}`}>
+    <html lang="en">
       <body className="antialiased">
         <div className="bmore flex min-h-screen flex-col">
           <a

@@ -300,7 +300,7 @@ export async function saveApplication(body: Record<string, unknown>) {
       organization: text(body.organization, "Company", 160),
       role: text(body.title, "Role", 120),
       website: siteUrl(body.website, "Website"),
-      pass: `Sponsor · ${label.split(" (")[0]}${dayLabel ? ` · ${dayLabel.split(" (")[0]}` : ""}`,
+      pass: `Sponsor · ${label.split(" (")[0]}`,
       notes,
     });
   }
