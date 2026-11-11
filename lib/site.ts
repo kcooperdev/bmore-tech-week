@@ -373,7 +373,7 @@ export const hq = {
 
 export const waysIn: { href: string; title: string; text: string }[] = [
   { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
-  { href: "/sponsors", title: "Sponsor", text: "Apply by February 15. The name is confirmed March 1." },
+  { href: "/sponsors", title: "Sponsor", text: "Apply by February 15." },
 ];
 
 export const nav = {

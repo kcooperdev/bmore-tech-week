@@ -104,12 +104,6 @@ const TIER_LABEL: Record<string, string> = {
   presenting: "Presenting ($5,000)",
 };
 
-const LEAD_DAY: Record<string, string> = {
-  connect: "Monday, April 26",
-  build: "Tuesday, April 27",
-  opportunity: "Wednesday, April 28",
-};
-
 type SaveResult = { ok: true; id?: string };
 
 async function forward(path: string, body: Record<string, unknown>): Promise<SaveResult> {
@@ -286,12 +280,8 @@ export async function saveApplication(body: Record<string, unknown>) {
     const note = optional(body.notes, "Notes", 2000);
     if (booked === "no" && !note) throw new SubmitError("Tell us a week that works");
     const label = TIER_LABEL[tier];
-    const day = optional(body.day, "Day", 40);
-    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Monday, Tuesday, or Wednesday");
-    const dayLabel = day && LEAD_DAY[day] ? LEAD_DAY[day] : "";
     const notes = [
       `Tier: ${label}`,
-      dayLabel && `Day: ${dayLabel}`,
       optional(body.size, "Company size", 40) && `Company size: ${optional(body.size, "Company size", 40)}`,
       `Goals: ${goals.join(", ")}`,
       `Decision: ${text(body.decision, "Decision", 80)}`,

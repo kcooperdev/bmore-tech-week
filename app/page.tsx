@@ -81,7 +81,6 @@ export default async function Home({
             <h2 id="supporters-title" className="week-title week-title-sm">
               Founding supporters
             </h2>
-            <p className="week-lede">Names go up when the partnership is real.</p>
             <ul className="supporter-list">
               {foundingSupporters.map((supporter) => (
                 <li key={supporter.name}>

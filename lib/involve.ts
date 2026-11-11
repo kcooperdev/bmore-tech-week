@@ -95,7 +95,8 @@ export const sponsorTierCopy = [
     name: "Founding",
     price: "$1,000",
     perks: [
-      "Logo on the site and sponsor signage at 4MLK",
+      "Logo on the sponsors page",
+      "Sponsor signage at 4MLK",
       "Featured thank-you in the pre-event attendee email",
       "Four passes",
     ],
@@ -107,11 +108,11 @@ export const sponsorTierCopy = [
     name: "Lead",
     price: "$2,500",
     perks: [
-      "Everything in Founding",
-      "Own a day: exclusive Lead sponsor for Monday, Tuesday, or Wednesday",
-      "Dedicated sponsor table that day",
-      "Thank-you by name during the opening welcome that day",
-      "Eight passes",
+      "Logo on the sponsors page",
+      "Sponsor signage at 4MLK",
+      "Featured thank-you in the pre-event attendee email",
+      "Dedicated sponsor table",
+      "Six passes",
     ],
     pick: true,
     top: false,
@@ -121,11 +122,13 @@ export const sponsorTierCopy = [
     name: "Presenting",
     price: "$5,000",
     perks: [
-      "Everything in Founding",
       "Logo on the homepage",
+      "Logo on the sponsors page",
+      "Sponsor signage at 4MLK",
+      "Featured thank-you in the pre-event attendee email",
       "Dedicated sponsor table all three days",
       "Thank-you by name during the opening welcome each day",
-      "Twelve passes",
+      "Ten passes",
     ],
     pick: false,
     top: true,
@@ -335,25 +338,8 @@ export const sponsorFields: ApplyField[] = [
   { name: "notes", label: "Anything the call should cover?", type: "textarea", placeholder: "If you still need a time, say which week works.", step: "Book a call" },
 ];
 
-export const leadDays = [
-  { value: "connect", label: "Monday · April 26", short: "Monday · April 26" },
-  { value: "build", label: "Tuesday · April 27", short: "Tuesday · April 27" },
-  { value: "opportunity", label: "Wednesday · April 28", short: "Wednesday · April 28" },
-];
-
-export function sponsorFieldsFor(tier: string): ApplyField[] {
-  if (tier !== "lead") return sponsorFields;
-  const dayField: ApplyField = {
-    name: "day",
-    label: "Which day?",
-    type: "select",
-    required: true,
-    choices: leadDays.map(({ value, label }) => ({ value, label })),
-    step: "Company & tier",
-    wide: true,
-  };
-  const tierIndex = sponsorFields.findIndex((field) => field.name === "tier");
-  return [...sponsorFields.slice(0, tierIndex + 1), dayField, ...sponsorFields.slice(tierIndex + 1)];
+export function sponsorFieldsFor(_tier: string): ApplyField[] {
+  return sponsorFields;
 }
 
 export const ambassadorFields: ApplyField[] = [
