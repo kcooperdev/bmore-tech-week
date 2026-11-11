@@ -37,16 +37,20 @@ export const site = {
 };
 
 /** Founder story. Lives on About. Keep the homepage short. */
-export const founderStory = [
-  "Khalif Cooper is the founder of Bmore Tech Fest. Originally from Philadelphia, he has been coming to Baltimore since childhood. It became a second home, and the city where he built his career and community.",
-  "He didn’t study computer science. He graduated with a theatre degree. His introduction to technology came while working as a food server at a tech conference. Watching founders, engineers, and entrepreneurs discuss what they were building sparked something in him.",
-  "He bought a used laptop on eBay and started teaching himself.",
-  "Over the next decade, curiosity became a career. He worked as a software engineer, helped people break into tech, spoke at events, built communities, and grew a technology network from zero to more than 1,200 people, rooted in Baltimore.",
-  "Along the way, one thing became clear. Baltimore already has builders: engineers, founders, designers, researchers, students, creators. They are not always in the same room.",
-  "Bmore Tech Fest exists to bring those communities together. More engineers. More founders. More companies. More builders. More opportunities. More technology in Baltimore.",
-  "Khalif believes Baltimore will be the next major tech hub in the United States because of the people already here, not because someone imported the idea.",
-  "Technology changed his life. Bmore Tech Fest exists because he believes it can change someone else’s too.",
-];
+export const founderStory = {
+  title: "Why Bmore Tech Fest exists",
+  pull: "Baltimore already has builders. They are not always in the same room.",
+  paragraphs: [
+    "Khalif Cooper is the founder of Bmore Tech Fest. Originally from Philadelphia, he has been coming to Baltimore since childhood.",
+    "He didn’t study computer science. He graduated with a theatre degree. His introduction to technology came while working as a food server at a tech conference. Watching founders, engineers, and entrepreneurs discuss what they were building sparked something in him.",
+    "He bought a used laptop on eBay and started teaching himself.",
+    "Over the next decade, curiosity became a career. He worked as a software engineer, helped people break into tech, spoke at events, built communities, and grew a technology network from zero to more than 1,200 people, rooted in Baltimore.",
+    "Along the way, one thing became clear. Baltimore already has builders: engineers, founders, designers, researchers, students, creators. They are not always in the same room.",
+    "Bmore Tech Fest exists to bring those communities together. More engineers. More founders. More companies. More builders. More opportunities. More technology in Baltimore.",
+    "Khalif believes Baltimore will be the next major tech hub in the United States because of the people already here, not because someone imported the idea.",
+    "Technology changed his life. Bmore Tech Fest exists because he believes it can change someone else’s too.",
+  ],
+};
 
 export const festTargets = [
   "300+ attendees",

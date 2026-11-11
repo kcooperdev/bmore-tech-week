@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { StoryReveal } from "@/components/StoryReveal";
 import { aboutSections, founderStory, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
@@ -7,42 +8,74 @@ export const metadata = pageMeta(
 );
 
 export default function AboutPage() {
+  const beforePull = founderStory.paragraphs.slice(0, 5);
+  const afterPull = founderStory.paragraphs.slice(5);
+
   return (
-    <main className="plain-page">
+    <main className="plain-page story-page">
       <header className="plain-hero" id="main">
         <div className="week-wrap">
           <p className="week-kicker">
             {site.name} · {site.dates}
           </p>
-          <h1>About</h1>
-          <p className="plain-lede">Why this fest exists, who it’s for, and where it happens.</p>
+          <StoryReveal as="h1" className="story-hero-display">
+            The full story
+          </StoryReveal>
+          <StoryReveal as="p" className="plain-lede story-hero-lede" delay={90}>
+            How Khalif Cooper got here, and why this fest brings Baltimore’s builders into one room.
+          </StoryReveal>
         </div>
       </header>
 
       <div className="plain-body">
-        <div className="week-wrap narrow-copy">
-          <section className="founder-story" aria-labelledby="founder-story">
-            <h2 id="founder-story">Why Bmore Tech Fest exists</h2>
-            {founderStory.map((paragraph) => (
-              <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-            ))}
-          </section>
+        <article className="week-wrap story-essay" aria-labelledby="founder-story">
+          <StoryReveal as="h2" id="founder-story" className="story-essay-title">
+            {founderStory.title}
+          </StoryReveal>
 
-          {aboutSections.map((section) => (
-            <section key={section.id} aria-labelledby={section.id}>
-              <h2 id={section.id}>{section.title}</h2>
-              <p>{section.text}</p>
-            </section>
+          {beforePull.map((paragraph, index) => (
+            <StoryReveal as="p" key={paragraph.slice(0, 48)} delay={Math.min(index * 35, 140)}>
+              {paragraph}
+            </StoryReveal>
           ))}
 
-          <div className="week-actions">
+          <StoryReveal as="blockquote" className="story-pull" delay={40}>
+            <p>{founderStory.pull}</p>
+          </StoryReveal>
+
+          {afterPull.map((paragraph, index) => (
+            <StoryReveal as="p" key={paragraph.slice(0, 48)} delay={Math.min(index * 35, 140)}>
+              {paragraph}
+            </StoryReveal>
+          ))}
+        </article>
+
+        <div className="week-wrap story-rest">
+          <StoryReveal as="p" className="story-rest-kicker">
+            About the fest
+          </StoryReveal>
+          <div className="story-beats">
+            {aboutSections.map((section, index) => (
+              <StoryReveal
+                as="section"
+                key={section.id}
+                delay={index * 60}
+                aria-labelledby={section.id}
+              >
+                <h2 id={section.id}>{section.title}</h2>
+                <p>{section.text}</p>
+              </StoryReveal>
+            ))}
+          </div>
+
+          <StoryReveal className="week-actions" delay={100}>
             <Link className="week-btn" href="/tickets">
               Join the list
             </Link>
             <Link className="week-btn week-btn-ghost" href="/#tracks">
               Explore the tracks
             </Link>
-          </div>
+          </StoryReveal>
         </div>
       </div>
     </main>
