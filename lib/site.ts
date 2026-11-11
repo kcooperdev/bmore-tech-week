@@ -328,7 +328,6 @@ export const passIncludes = [
   "Meet future collaborators and people you keep meaning to know",
   "Discover startup, hiring, and partnership opportunities",
   "Learn practical skills in talks, panels, and hands-on workshops",
-  "Access to networking events after 5:30",
   "Breakfast, coffee, and refreshments",
 ];
 
