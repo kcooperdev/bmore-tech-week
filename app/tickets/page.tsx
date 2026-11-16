@@ -1,7 +1,5 @@
 import { Check, Ticket } from "lucide-react";
-import { TicketNotify } from "@/components/TicketNotify";
 import {
-  festTargets,
   formatPrice,
   generalAdmission,
   pageMeta,
@@ -46,16 +44,6 @@ export default function TicketsPage() {
                 </li>
               ))}
             </ul>
-            <h2 className="pack-includes-title">What we’re building toward</h2>
-            <ul className="target-list">
-              {festTargets.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <TicketNotify
-              label="Be first to know when tickets are released"
-              buttonLabel="Join the list"
-            />
           </article>
         </div>
       </div>

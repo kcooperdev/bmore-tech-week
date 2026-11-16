@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { TicketNotify } from "@/components/TicketNotify";
 import { foundingSupporters, site, tracks } from "@/lib/site";
 
 export default async function Home({
@@ -31,9 +30,9 @@ export default async function Home({
               across the DMV. Leave with a collaboration, a hire, or a next step.
             </p>
             <div className="week-actions">
-              <a className="week-btn" href="#ticket-updates">
-                Join the list
-              </a>
+              <Link className="week-btn" href="/tickets">
+                Tickets
+              </Link>
               <a className="week-btn week-btn-ghost" href="#tracks">
                 Explore the tracks
               </a>
@@ -87,17 +86,6 @@ export default async function Home({
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-
-        <section className="band-paper" aria-labelledby="ticket-updates-title" id="ticket-updates">
-          <div className="week-wrap">
-            <h2 id="ticket-updates-title" className="week-title week-title-sm">
-              Three days at Bmore Tech Fest
-            </h2>
-            <p className="week-lede">{site.ticketLine}</p>
-            <p className="pass-line">Be first to know when tickets open. Be part of year one.</p>
-            <TicketNotify label="Join the list" buttonLabel="Join the list" />
           </div>
         </section>
       </div>
