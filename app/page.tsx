@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { foundingSupporters, site, tracks } from "@/lib/site";
+import { UpdatesModal } from "@/components/UpdatesModal";
+import { site } from "@/lib/site";
 
 export default async function Home({
   searchParams,
@@ -14,81 +14,12 @@ export default async function Home({
   return (
     <>
       <HarborScene />
-      <div className="editorial-flow">
-        {live ? <LivePortal /> : null}
-
-        <section className="band-paper" aria-labelledby="week-promise">
-          <div className="week-wrap">
-            <p className="week-kicker">
-              {site.name} · {site.dates} · 4MLK, Baltimore
-            </p>
-            <h2 id="week-promise" className="week-title">
-              {site.promise}
-            </h2>
-            <p className="week-lede">
-              Three days with Baltimore’s founders, engineers, creators, researchers, operators, and future leaders from
-              across the DMV. Leave with a collaboration, a hire, or a next step.
-            </p>
-            <div className="week-actions">
-              <Link className="week-btn" href="/tickets">
-                Tickets
-              </Link>
-              <a className="week-btn week-btn-ghost" href="#tracks">
-                Explore the tracks
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="band-paper home-beat" aria-labelledby="why-title">
-          <div className="week-wrap">
-            <h2 id="why-title" className="week-title week-title-sm">
-              {site.whyHeadline}
-            </h2>
-            <p className="week-lede">{site.whyLede}</p>
-            <p className="pass-line">
-              <Link href="/about">The full story</Link>
-            </p>
-          </div>
-        </section>
-
-        <section className="band-paper" aria-labelledby="tracks-title" id="tracks">
-          <div className="week-wrap">
-            <h2 id="tracks-title" className="week-title week-title-sm">
-              Explore the tracks
-            </h2>
-            <ul className="track-grid">
-              {tracks.map((track) => (
-                <li key={track.name}>
-                  <h3>{track.name}</h3>
-                  {track.text ? <p>{track.text}</p> : null}
-                </li>
-              ))}
-            </ul>
-            <div className="week-actions">
-              <Link className="week-btn week-btn-ghost" href="/schedule">
-                See the week
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="band-paper" aria-labelledby="supporters-title" id="supporters">
-          <div className="week-wrap">
-            <h2 id="supporters-title" className="week-title week-title-sm">
-              Founding supporters
-            </h2>
-            <ul className="supporter-list">
-              {foundingSupporters.map((supporter) => (
-                <li key={supporter.name}>
-                  <strong>{supporter.name}</strong>
-                  <span>{supporter.role}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      </div>
+      <UpdatesModal />
+      {live ? (
+        <div className="editorial-flow">
+          <LivePortal />
+        </div>
+      ) : null}
     </>
   );
 }

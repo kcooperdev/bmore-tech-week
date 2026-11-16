@@ -3,7 +3,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "Bmore Tech Fest runs April 26–28, 2027 at 4MLK, Baltimore. Full schedule goes up when speakers are announced.",
+  "Bmore Tech Fest runs April 26–28, 2027 at 4MLK, Baltimore. Full timetable coming soon.",
 );
 
 export default function SchedulePage() {
@@ -18,7 +18,7 @@ export default function SchedulePage() {
             <h1>Schedule</h1>
           </div>
           <p className="plain-lede">
-            Three days at 4MLK. Daytime talks, panels, and workshops. Networking events after 5:30.
+            Sessions run 9 a.m.–5 p.m. Networking events after 5:30.
           </p>
         </div>
       </header>
@@ -31,9 +31,12 @@ export default function SchedulePage() {
           </p>
 
           <div className="week-actions">
-            <p className="pass-line">$99 conference pass. Join the list before tickets open.</p>
+            <p className="pass-line">{site.passNote}</p>
             <Link className="week-btn" href="/tickets">
-              Join the list
+              {site.passes}
+            </Link>
+            <Link className="week-btn week-btn-ghost" href="/speak">
+              Apply to speak
             </Link>
           </div>
         </div>

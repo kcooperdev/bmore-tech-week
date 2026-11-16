@@ -1,5 +1,7 @@
-import { speakerTopics } from "@/lib/involve";
+import { themeByDayValue } from "@/lib/involve";
 import { appendTalksRow, talksSheetUrl } from "@/lib/talks-sheet";
+import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
+import { speakProgramDays } from "@/lib/site";
 
 const LIVE = "https://www.bmoretechweek.com";
 
@@ -88,9 +90,7 @@ function oneOf(value: unknown, label: string, allowed: string[]) {
 
 function sessionFormat(value: string) {
   const next = value.toLowerCase();
-  if (next === "panel" || next.startsWith("panel")) return "panel";
   if (next === "workshop" || next.startsWith("workshop")) return "workshop";
-  if (next === "fireside" || next.startsWith("fireside")) return "fireside";
   if (next === "techtalk" || next.startsWith("tech")) return "techtalk";
   throw new SubmitError("Session type is invalid");
 }
@@ -119,11 +119,16 @@ async function forward(path: string, body: Record<string, unknown>): Promise<Sav
 
 export async function saveSpeaker(body: Record<string, unknown>) {
   const nights = list(body.nights);
-  const preferredNights = nights.includes("Any") ? ["Any"] : nights.filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item));
-  if (!preferredNights.length) throw new SubmitError("Select a day");
-  const topics = list(body.topics);
-  if (!topics.length) throw new SubmitError("Select a track");
-  if (topics.some((topic) => !speakerTopics.includes(topic))) throw new SubmitError("Select a track");
+  const preferred = nights[0] ?? "";
+  const either = preferred === "either";
+  const preferredNights = either
+    ? speakProgramDays.map((day) => day.value)
+    : nights.filter((item) => Boolean(themeByDayValue[item])).slice(0, 1);
+  if (!preferredNights.length) throw new SubmitError("Select a preferred day");
+  const topics = either
+    ? speakProgramDays.map((day) => day.theme)
+    : preferredNights.map((day) => themeByDayValue[day]).filter(Boolean);
+  if (!topics.length) throw new SubmitError("Select a preferred day");
   const payload = {
     name: text(body.name, "Full name", 120),
     email: email(body.email),
@@ -142,23 +147,19 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     spokenBefore: "",
     previousTalks: "",
     accessibility: "",
-    panelistFallback: oneOf(body.panelist, "Open to a panel", ["yes", "no"]),
+    panelistFallback: oneOf(body.panelist, "Panel fallback", ["yes", "no"]),
     notes: optional(body.notes, "Notes", 2000),
     linkedinUrl: siteUrl(body.linkedinUrl, "LinkedIn"),
     websiteUrl: "",
   };
 
   const dayLabel: Record<string, string> = {
-    "2027-04-26": "Monday · April 26",
-    "2027-04-27": "Tuesday · April 27",
-    "2027-04-28": "Wednesday · April 28",
-    Any: "No preference",
+    ...Object.fromEntries(speakProgramDays.map((day) => [day.value, day.shortLabel])),
+    either: "Either day",
   };
   const formatLabel: Record<string, string> = {
     workshop: "Workshop",
-    panel: "Panel",
     techtalk: "Tech talk",
-    fireside: "Fireside",
   };
 
   if (talksSheetUrl()) {
@@ -170,7 +171,9 @@ export async function saveSpeaker(body: Record<string, unknown>) {
         payload.company,
         payload.linkedinUrl,
         formatLabel[payload.format] ?? payload.format,
-        payload.preferredNights.map((night) => dayLabel[night] ?? night).join(", "),
+        either
+          ? dayLabel.either
+          : payload.preferredNights.map((night) => dayLabel[night] ?? night).join(", "),
         payload.talkTitle,
         payload.talkDescription,
         payload.topics.join(", "),
@@ -220,6 +223,44 @@ export async function saveTicket(body: Record<string, unknown>) {
     pass: text(body.pass, "Pass", 120, false) || "Updates list",
     name: text(body.name, "Name", 120, false),
   };
+
+  if (isSupabaseConfigured()) {
+    const { error } = await getSupabase()
+      .from("ticket_interest")
+      .upsert(
+        {
+          email: payload.email,
+          pass: payload.pass,
+          name: payload.name || null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "email" },
+      );
+    if (error) throw new SubmitError("Could not save email.", 502);
+    return { ok: true } satisfies SaveResult;
+  }
+
+  const webhook = process.env.GOOGLE_SHEETS_WEBHOOK_URL?.trim();
+  if (webhook) {
+    const response = await fetch(webhook, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        secret: process.env.GOOGLE_SHEETS_SECRET?.trim() || undefined,
+        type: "ticket_interest",
+        ...payload,
+      }),
+    });
+    if (!response.ok) throw new SubmitError("Could not save email.", 502);
+    return { ok: true } satisfies SaveResult;
+  }
+
+  // Local/dev only: send to production. Never forward when we are production
+  // (that used to loop /api/tickets → /api/tickets).
+  if (process.env.VERCEL_ENV === "production") {
+    throw new SubmitError("Ticket list storage is not configured.", 503);
+  }
+
   return forward("/api/tickets", payload);
 }
 

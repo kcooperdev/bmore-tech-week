@@ -1,15 +1,10 @@
-import { Check, Ticket } from "lucide-react";
-import {
-  formatPrice,
-  generalAdmission,
-  pageMeta,
-  passIncludes,
-  site,
-} from "@/lib/site";
+import { Check } from "lucide-react";
+import { TicketNotify } from "@/components/TicketNotify";
+import { pageMeta, passIncludes, site } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "Tickets",
-  "Three days at Bmore Tech Fest. $99 conference pass · April 26–28, 2027 · 4MLK, Baltimore. Join the list before tickets open.",
+  "Join the list",
+  "Join the Bmore Tech Fest list for April 26–28, 2027 at 4MLK, Baltimore. We’ll write when passes open. No ticket sales yet.",
 );
 
 export default function TicketsPage() {
@@ -18,24 +13,18 @@ export default function TicketsPage() {
       <div className="week-wrap packs">
         <header className="packs-head" id="main">
           <p className="week-kicker">{site.dates} · 4MLK, Baltimore</p>
-          <h1>Three days at Bmore Tech Fest</h1>
+          <h1>Join the list</h1>
           <p>
             Meet founders, engineers, creators, students, and technology leaders from across Baltimore and the DMV.
             Spend three days exploring ideas, getting hands-on in workshops, and talking shop with people you could work
             with, learn from, or build alongside.
           </p>
-          <p className="pass-line">Be part of year one.</p>
+          <p className="pass-line">Be part of year one. {site.passNote}</p>
         </header>
 
         <div className="packs-grid packs-single">
           <article className="pack pack-ga">
-            <p className="pack-name">
-              <Ticket size={18} strokeWidth={2.25} aria-hidden="true" />
-              {generalAdmission.name}
-            </p>
-            <p className="pack-price">{formatPrice(generalAdmission.price)}</p>
-            <p className="pack-line">{site.ticketLine}</p>
-            <h2 className="pack-includes-title">What happens when you’re in the room</h2>
+            <p className="pack-name">What happens when you’re in the room</p>
             <ul className="pack-rows">
               {passIncludes.map((item) => (
                 <li key={item}>
@@ -44,6 +33,10 @@ export default function TicketsPage() {
                 </li>
               ))}
             </ul>
+            <TicketNotify
+              label="No ticket sales yet. Leave your email and we’ll write when passes open."
+              buttonLabel={site.passes}
+            />
           </article>
         </div>
       </div>

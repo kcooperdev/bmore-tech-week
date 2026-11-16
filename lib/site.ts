@@ -23,11 +23,12 @@ export const site = {
   tagline: "Three days at 4MLK.",
   promise: "Be in the room.",
   sell: "Three days with the people you keep meaning to meet. Leave with a collaboration, a hire, or a next step.",
-  ticketLine: "$99 conference pass · April 26–28, 2027 · 4MLK, Baltimore",
+  ticketLine: "April 26–28, 2027 · 4MLK, Baltimore",
   idea: "Three days at 4MLK.",
   positioning: "Three days at 4MLK.",
   room: "Founders, engineers, designers, researchers, students, and tech leaders from Baltimore and across the DMV.",
   passes: "Join the list",
+  passNote: "Passes will be $99 when tickets open. No sales yet. Join the list.",
   whyHeadline: "Baltimore has the talent. This is the gathering.",
   whyLede:
     "Baltimore is home to founders, engineers, researchers, designers, creators, students, and entrepreneurs building every day. Bmore Tech Fest brings those communities together for three days of learning, collaboration, and opportunity.",
@@ -57,16 +58,33 @@ export const festTargets = [
   "Hands-on workshops",
 ];
 
-export const speakExamples = [
-  "How we built our first AI product",
-  "Lessons from scaling engineering teams",
-  "Building a startup in Baltimore",
-  "Breaking into tech without a CS degree",
-  "Cybersecurity challenges every company faces",
-  "Product design lessons from real products",
-  "Growing a technical creator brand",
-  "Startup funding mistakes to avoid",
-];
+/** Speaker programming days. Apply to speak only covers these two days. */
+export const speakProgramDays = [
+  {
+    id: "tuesday" as const,
+    value: "2027-04-27",
+    day: "Tuesday",
+    date: "April 27",
+    theme: "AI & Building Tech",
+    hours: "9 a.m.–5 p.m.",
+    label: "Tuesday, April 27 · AI & Building Tech · 9 a.m.–5 p.m.",
+    shortLabel: "Tuesday · AI & Building Tech",
+    description:
+      "Opening keynote, technical talks, and hands-on workshops spanning AI, cybersecurity, biotech, medtech, and software engineering, plus a live startup pitch competition.",
+  },
+  {
+    id: "wednesday" as const,
+    value: "2027-04-28",
+    day: "Wednesday",
+    date: "April 28",
+    theme: "Careers & Startups",
+    hours: "9 a.m.–5 p.m.",
+    label: "Wednesday, April 28 · Careers & Startups · 9 a.m.–5 p.m.",
+    shortLabel: "Wednesday · Careers & Startups",
+    description:
+      "Talks and workshops on career growth, interview stories, and founder pitches, plus panels on hiring, fundraising, and building a startup in Baltimore.",
+  },
+] as const;
 
 export type DayId = "monday" | "tuesday" | "wednesday";
 export type DayPart = "morning" | "afternoon" | "evening";
@@ -242,12 +260,13 @@ export const pillars: Pillar[] = [
     id: "tuesday",
     day: "Tuesday",
     date: "April 27",
-    name: "Tuesday",
+    name: "AI & Building Tech",
     night: "Networking",
-    question: "What can I create?",
-    tagline: "Workshops, demos, and startups.",
-    summary: "Workshops, demos, and startups.",
-    purpose: "Leave with something you made.",
+    question: "What can I build?",
+    tagline: "AI & Building Tech · 9 a.m.–5 p.m.",
+    summary:
+      "Opening keynote, technical talks, and hands-on workshops spanning AI, cybersecurity, biotech, medtech, and software engineering, plus a live startup pitch competition.",
+    purpose: "Ship something, test something, or pitch something.",
     stops: dayStops("tue", {
       id: "tue-mixer",
       when: "After 5:30",
@@ -261,11 +280,12 @@ export const pillars: Pillar[] = [
     id: "wednesday",
     day: "Wednesday",
     date: "April 28",
-    name: "Wednesday",
+    name: "Careers & Startups",
     night: "Closing Celebration",
     question: "Where can this take me?",
-    tagline: "Jobs, funding, and a next step.",
-    summary: "Jobs, funding, and a next step.",
+    tagline: "Careers & Startups · 9 a.m.–5 p.m.",
+    summary:
+      "Talks and workshops on career growth, interview stories, and founder pitches, plus panels on hiring, fundraising, and building a startup in Baltimore.",
     purpose: "A job, a cofounder, a room you go back to.",
     stops: dayStops("wed", {
       id: "wed-mixer",
@@ -278,28 +298,10 @@ export const pillars: Pillar[] = [
   },
 ];
 
-export const tracks = [
-  {
-    name: "AI, software, and security",
-    text: "How teams build, ship, and secure the tools people use.",
-  },
-  {
-    name: "Product, design, and creative tech",
-    text: "How ideas become products and experiences people want to use.",
-  },
-  {
-    name: "Startups and business growth",
-    text: "What founders learn from finding customers, building teams, and growing a business.",
-  },
-  {
-    name: "Life sciences and climate tech",
-    text: "How researchers and founders turn discoveries into practical solutions.",
-  },
-  {
-    name: "Careers and leadership",
-    text: "How people get into tech, change direction, and learn to lead teams.",
-  },
-];
+export const tracks = speakProgramDays.map((day) => ({
+  name: day.theme,
+  text: day.description,
+}));
 
 export const aboutSections = [
   {
@@ -377,10 +379,7 @@ export const waysIn: { href: string; title: string; text: string }[] = [
 ];
 
 export const nav = {
-  primary: [
-    { href: "/schedule", label: "Schedule" },
-    { href: "/tickets", label: "Tickets" },
-  ],
+  primary: [{ href: "/schedule", label: "Schedule" }],
   involved: [
     { href: "/speak", label: "Give a Talk" },
     { href: "/sponsors", label: "Sponsor" },

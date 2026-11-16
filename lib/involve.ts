@@ -1,5 +1,5 @@
 import type { ApplyField } from "@/lib/apply-fields";
-import { tracks } from "@/lib/site";
+import { speakProgramDays, tracks } from "@/lib/site";
 
 export const pronouns = ["she / her", "he / him", "they / them", "Prefer not to say", "Something else"];
 
@@ -35,21 +35,25 @@ export const neighborhoods = [
 export const sessionTypes = [
   { value: "workshop", label: "Workshop · 45–60 minutes" },
   { value: "techtalk", label: "Tech Talk · 20–30 minutes" },
-  { value: "panel", label: "Panel · 40–50 minutes" },
 ];
 
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  { value: "2027-04-26", label: "Monday · April 26" },
-  { value: "2027-04-27", label: "Tuesday · April 27" },
-  { value: "2027-04-28", label: "Wednesday · April 28" },
-  { value: "Any", label: "No preference" },
+  ...speakProgramDays.map((day) => ({
+    value: day.value,
+    label: `${day.day}, ${day.date} · ${day.hours}`,
+  })),
+  { value: "either", label: "Either day / no preference" },
 ];
 
 export const partnerNights = ["Monday · April 26", "Tuesday · April 27", "Wednesday · April 28"];
 
 export const speakerTopics = [...tracks.map((track) => track.name), "Other"];
+
+export const themeByDayValue: Record<string, string> = Object.fromEntries(
+  speakProgramDays.map((day) => [day.value, day.theme]),
+);
 
 export const partnerTypes = [
   "Meetup",
@@ -251,16 +255,6 @@ export const speakFields: ApplyField[] = [
     type: "textarea",
     required: true,
     placeholder: "What people will do, hear, or leave with.",
-    hint: "A couple sentences on what happens in the room, not a bio.",
-    step: "Your session",
-  },
-  {
-    name: "topics",
-    label: "Track",
-    type: "radio",
-    required: true,
-    options: speakerTopics,
-    hint: "Pick the closest fit.",
     step: "Your session",
   },
   {
@@ -269,17 +263,16 @@ export const speakFields: ApplyField[] = [
     type: "radio",
     required: true,
     choices: programNights,
-    hint: "Pick a day, or choose no preference.",
     step: "Day & fit",
   },
   {
     name: "panelist",
-    label: "Open to a panel if we don’t take this talk?",
+    label: "If we can’t take this session, can we add you to a panel?",
     type: "radio",
     required: true,
     choices: [
-      { value: "yes", label: "Yes" },
-      { value: "no", label: "No" },
+      { value: "yes", label: "Yes, consider me for a panel" },
+      { value: "no", label: "No, only this session" },
     ],
     step: "Day & fit",
   },

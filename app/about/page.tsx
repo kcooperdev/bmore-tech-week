@@ -57,10 +57,13 @@ export default function AboutPage() {
 
           <StoryReveal className="week-actions" delay={100}>
             <Link className="week-btn" href="/tickets">
-              Join the list
+              {site.passes}
             </Link>
-            <Link className="week-btn week-btn-ghost" href="/#tracks">
-              Explore the tracks
+            <Link className="week-btn week-btn-ghost" href="/speak">
+              Apply to speak
+            </Link>
+            <Link className="week-btn week-btn-ghost" href="/sponsors">
+              Sponsor
             </Link>
           </StoryReveal>
         </div>

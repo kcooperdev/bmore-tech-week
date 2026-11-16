@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { currentNavTone } from "@/lib/nav-tone";
-import { nav, site } from "@/lib/site";
+import { nav } from "@/lib/site";
 
 function isCurrent(pathname: string, href: string) {
   const path = href.split("#")[0];
@@ -20,13 +20,11 @@ export function Topbar({
 }) {
   const pathname = usePathname();
   const bar = useRef<HTMLElement>(null);
-  const [open, setOpen] = useState(false);
   const [involved, setInvolved] = useState(false);
   const [lastPath, setLastPath] = useState(pathname);
 
   if (lastPath !== pathname) {
     setLastPath(pathname);
-    setOpen(false);
     setInvolved(false);
   }
 
@@ -46,46 +44,14 @@ export function Topbar({
     };
   }, [scene, pathname]);
 
-  useEffect(() => {
-    if (!open) return;
-    document.documentElement.classList.add("is-nav-open");
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.documentElement.classList.remove("is-nav-open");
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
   return (
     <header
       ref={bar}
-      className={`${scene ? "topbar" : "topbar site-topbar"}${open ? " is-menu-open" : ""}`}
+      className={scene ? "topbar" : "topbar site-topbar"}
       data-nav-tone={scene ? "night" : "dark"}
       inert={inertBar ? true : undefined}
     >
-      <button
-        type="button"
-        className="topbar-burger"
-        aria-expanded={open}
-        aria-controls="site-menu"
-        aria-label={open ? "Close menu" : "Open menu"}
-        onClick={() => {
-          setInvolved(false);
-          setOpen((value) => !value);
-        }}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          {open ? (
-            <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          ) : (
-            <path d="M5 7h14M5 12h14M5 17h14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          )}
-        </svg>
-      </button>
-      <nav className="topbar-links topbar-desktop" aria-label="Primary">
+      <nav className="topbar-links" aria-label="Primary">
         <span className="topbar-corner-item">
           <Link className="harbor-link" href="/" aria-current={pathname === "/" ? "page" : undefined}>
             Home
@@ -119,51 +85,6 @@ export function Topbar({
           </div>
         </span>
       </nav>
-      <Link className="topbar-cta" href="/tickets" aria-current={isCurrent(pathname, "/tickets") ? "page" : undefined}>
-        Tickets
-      </Link>
-      {open ? (
-        <div className="topbar-drawer-layer">
-          <button type="button" className="topbar-drawer-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
-          <div className="topbar-drawer" id="site-menu" role="dialog" aria-label="Menu">
-            <Link href="/" className="topbar-drawer-brand" onClick={() => setOpen(false)}>
-              Bmore
-              <br />
-              <span>Tech</span> Fest
-            </Link>
-            <p className="topbar-drawer-meta">{site.dates}</p>
-            <Link href="/" className="topbar-drawer-link" aria-current={pathname === "/" ? "page" : undefined} onClick={() => setOpen(false)}>
-              Home
-            </Link>
-            {nav.primary.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="topbar-drawer-link"
-                aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <p className="topbar-drawer-label">Get Involved</p>
-            {nav.involved.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="topbar-drawer-link"
-                aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link className="topbar-drawer-cta" href="/tickets" onClick={() => setOpen(false)}>
-              Tickets
-            </Link>
-          </div>
-        </div>
-      ) : null}
     </header>
   );
 }

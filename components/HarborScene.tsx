@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Topbar } from "@/components/Topbar";
 import { currentNavTone } from "@/lib/nav-tone";
 import { site } from "@/lib/site";
 
@@ -93,7 +93,6 @@ export function HarborScene() {
       className="harbor-pin"
       aria-label="Bmore Tech Fest. April 26 through April 28, from sunset into night."
     >
-      <Topbar scene />
       <div className="cycle-progress" aria-hidden="true" />
       <p className="sr-only" aria-live="polite">
         {status}
@@ -116,7 +115,7 @@ export function HarborScene() {
           fill
           priority
           sizes="100vw"
-          quality={78}
+          quality={75}
         />
         <Image
           className="plate plate-night"
@@ -124,7 +123,7 @@ export function HarborScene() {
           alt=""
           fill
           sizes="100vw"
-          quality={78}
+          quality={75}
           aria-hidden
         />
         <div className="plate-veil" />
@@ -142,15 +141,24 @@ export function HarborScene() {
         </button>
         <main className="night-title" id="main" tabIndex={-1}>
           <h1>
-            <span>Bmore</span>
-            <span>
-              <span className="night-title-accent">Tech</span> Fest
-            </span>
+            Bmore <span className="night-title-accent">Tech</span> Fest
           </h1>
           <p className="night-meta">
             <time dateTime="2027-04-26/2027-04-28">{site.dates}</time>
+            <span className="night-meta-place">4MLK in Baltimore, MD</span>
+            <span className="night-meta-line">{site.promise}</span>
           </p>
         </main>
+        <nav className="harbor-fork" aria-label="Choose a path">
+          <Link className="harbor-fork-pane harbor-fork-list" href="/sponsors">
+            <span className="harbor-fork-label">Sponsor</span>
+            <span className="harbor-fork-hint">Put your company in the room</span>
+          </Link>
+          <Link className="harbor-fork-pane harbor-fork-speak" href="/speak">
+            <span className="harbor-fork-label">Apply to speak</span>
+            <span className="harbor-fork-hint">Share what you’re building</span>
+          </Link>
+        </nav>
       </div>
     </section>
   );

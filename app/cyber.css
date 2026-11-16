@@ -49,17 +49,6 @@
   background-image: url("/images/baltimore-mark-ink.png");
 }
 
-.harbor-pin .topbar {
-  opacity: 1;
-  transform: none;
-}
-
-@media (min-width: 1041px) {
-  .harbor-pin:not(.is-night):not(.is-past) .topbar-desktop,
-  .harbor-pin:not(.is-night):not(.is-past) .topbar-cta {
-    opacity: var(--title);
-  }
-}
 
 .site-topbar,
 .site-topbar[data-nav-tone="light"],
@@ -241,6 +230,122 @@
   line-height: 1.4;
 }
 
+.updates-dialog {
+  width: min(26rem, calc(100vw - 1.75rem));
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #16120c;
+}
+
+.updates-dialog::backdrop {
+  background: rgb(7 11 20 / 0.72);
+}
+
+.updates-dialog-card {
+  position: relative;
+  padding: 1.45rem 1.35rem 1.2rem;
+  border: 1.5px solid #16120c;
+  background: #f3ead7;
+}
+
+.updates-dialog-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+  border: 1.5px solid #16120c;
+  background: #e2b13c;
+  color: #16120c;
+  cursor: pointer;
+}
+
+.updates-dialog-close svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.updates-dialog-kicker {
+  margin: 0 2.2rem 0.45rem 0;
+  color: #6b4a08;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.updates-dialog h2 {
+  margin: 0;
+  max-width: 16rem;
+  font-size: clamp(1.65rem, 5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.updates-dialog-copy {
+  margin: 0.7rem 0 0;
+  max-width: 22rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.updates-dialog-form {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.15rem;
+}
+
+.updates-dialog-form input {
+  width: 100%;
+  min-height: 2.85rem;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid #16120c;
+  background: #fffdf8;
+  color: #16120c;
+  font: inherit;
+}
+
+.updates-dialog-form .week-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.updates-dialog-done,
+.updates-dialog-error {
+  margin: 1.1rem 0 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.updates-dialog-error {
+  color: #8a1f1f;
+}
+
+.updates-dialog-skip {
+  display: block;
+  width: 100%;
+  margin-top: 0.85rem;
+  padding: 0.45rem;
+  border: 0;
+  background: transparent;
+  color: rgb(22 18 12 / 0.62);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  cursor: pointer;
+}
+
 .notify-form {
   margin-top: 1.35rem;
   max-width: 34rem;
@@ -341,6 +446,36 @@
 
 .pack .notify-form {
   margin-top: 1.5rem;
+}
+
+.pack-ga .notify-label {
+  color: #16120c;
+}
+
+.pack-ga .notify-row input {
+  border-color: #16120c;
+  background: #fffdf8;
+}
+
+.pack-ga .week-btn {
+  background: #16120c;
+  color: #f3ead7;
+  border-color: #16120c;
+}
+
+.pack-ga .week-btn:hover {
+  background: #2a241c;
+  color: #f3ead7;
+  border-color: #2a241c;
+}
+
+.pack-ga .notify-done,
+.pack-ga .notify-error {
+  color: #16120c;
+}
+
+.pack-ga .notify-error {
+  color: #6b1515;
 }
 
 .credit-line {
@@ -990,6 +1125,13 @@
   font-weight: 650;
 }
 
+.speak-days span {
+  display: block;
+  margin-top: 0.35rem;
+  opacity: 0.86;
+  font-weight: 500;
+}
+
 .who-grid {
   margin-top: 1.75rem;
 }
@@ -1244,9 +1386,6 @@
 }
 
 .harbor-footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   color: var(--ink);
 }
 
@@ -1265,10 +1404,17 @@
   color: #0e3d56;
 }
 
+.harbor-footer-lede,
+.harbor-footer-promise,
 .harbor-footer-link,
 .harbor-footer-meta,
 .harbor-footer-meta a {
   color: var(--ink);
+}
+
+.harbor-footer-promise,
+.harbor-footer-label {
+  color: #0e3d56;
 }
 
 .harbor-footer-link:hover,
@@ -1280,6 +1426,7 @@
   border-top-color: #1a120c47;
 }
 
+.harbor-footer-link,
 .harbor-footer-meta a {
   border-bottom-color: #1a120c66;
 }
