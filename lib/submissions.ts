@@ -95,7 +95,7 @@ function sessionFormat(value: string) {
   throw new SubmitError("Session type is invalid");
 }
 
-const SPONSOR_CALL = "https://tidycal.com/bmore-tech-week/30-minute-meeting";
+const SPONSOR_CALL = "https://calendar.app.google/mmFcLTUaw1GUHSUj7";
 
 const TIER_LABEL: Record<string, string> = {
   founding: "Founding ($1,000)",

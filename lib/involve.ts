@@ -100,7 +100,6 @@ export const sponsorTierCopy = [
     price: "$1,000",
     perks: [
       "Logo on the sponsors page",
-      "Sponsor signage at 4MLK",
       "Featured thank-you in the pre-event attendee email",
       "Four passes",
     ],
@@ -113,9 +112,9 @@ export const sponsorTierCopy = [
     price: "$2,500",
     perks: [
       "Logo on the sponsors page",
+      "Logo on badges",
       "Sponsor signage at 4MLK",
       "Featured thank-you in the pre-event attendee email",
-      "Dedicated sponsor table",
       "Six passes",
     ],
     pick: true,
@@ -126,12 +125,11 @@ export const sponsorTierCopy = [
     name: "Presenting",
     price: "$5,000",
     perks: [
-      "Logo on the homepage",
       "Logo on the sponsors page",
+      "Logo on badges",
       "Sponsor signage at 4MLK",
+      "Dedicated sponsor table on two days",
       "Featured thank-you in the pre-event attendee email",
-      "Dedicated sponsor table all three days",
-      "Thank-you by name during the opening welcome each day",
       "Ten passes",
     ],
     pick: false,

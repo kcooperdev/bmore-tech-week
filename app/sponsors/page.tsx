@@ -1,32 +1,21 @@
 import { SponsorBoard } from "@/components/SponsorBoard";
-import { sponsorTiers } from "@/lib/involve";
 import { pageMeta, sponsorAudience } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Sponsors",
-  "Sponsor Bmore Tech Fest. Reach founders, engineers, students, and tech leaders from Baltimore and the DMV. Applications open soon. Deadline February 15, 2027.",
+  "Sponsor Bmore Tech Fest. Reach founders, engineers, students, and tech leaders from Baltimore and the DMV. Book a call. Deadline February 15, 2027.",
 );
 
-const tiers = new Set(sponsorTiers.map((tier) => tier.value));
-
-export default async function SponsorsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ tier?: string; day?: string }>;
-}) {
-  const params = await searchParams;
-  const tier = tiers.has(params.tier ?? "") ? params.tier : undefined;
-
+export default function SponsorsPage() {
   return (
     <main className="plain-page">
       <div className="page-top">
         <div className="week-wrap">
           <header id="main">
-            <p className="week-kicker">Applications open soon · Deadline February 15, 2027</p>
+            <p className="week-kicker">Book a call · Deadline February 15, 2027</p>
             <h1>Sponsor</h1>
             <p className="plain-lede">
-              Sponsors buy the audience, not a logo wall. Put your company in front of founders, engineers, students, and
-              tech leaders from Baltimore and the DMV. Review the tiers below. Applications are not open yet.
+              Put your company in front of founders, engineers, students, and tech leaders from Baltimore and the DMV.
             </p>
           </header>
 
@@ -39,7 +28,7 @@ export default async function SponsorsPage({
             </ul>
           </section>
 
-          <SponsorBoard closed initialTier={tier} />
+          <SponsorBoard />
         </div>
       </div>
     </main>

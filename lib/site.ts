@@ -15,6 +15,7 @@ export const site = {
   email: "team@bmoretechweek.com",
   instagram: "https://www.instagram.com/bmoretechfest",
   linkedin: "https://www.linkedin.com/company/bmore-tech-fest",
+  sponsorCall: "https://calendar.app.google/mmFcLTUaw1GUHSUj7",
   phase: "preview" as "preview" | "live",
   liveDay: "monday" as DayId,
   dates: "April 26–28, 2027",
