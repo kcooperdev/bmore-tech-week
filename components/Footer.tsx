@@ -16,7 +16,10 @@ export function Footer() {
           <p className="harbor-footer-lede">
             {site.dates}
             <span aria-hidden="true"> · </span>
-            {hq.venue}, Baltimore
+            <a href={hq.website} target="_blank" rel="noreferrer">
+              {hq.venue}
+            </a>
+            , Baltimore
           </p>
           <p className="harbor-footer-promise">{site.promise}</p>
         </div>
@@ -25,7 +28,9 @@ export function Footer() {
           <div>
             <p className="harbor-footer-label">Venue</p>
             <p>
-              {hq.venue}
+              <a href={hq.website} target="_blank" rel="noreferrer">
+                {hq.venue}
+              </a>
               <br />
               {hq.street}
               <br />

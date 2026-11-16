@@ -287,6 +287,17 @@ html:has(.harbor-pin) body {
   font-weight: 600;
 }
 
+.night-meta-place a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgb(243 234 215 / 0.45);
+  text-underline-offset: 0.18em;
+}
+
+.night-meta-place a:hover {
+  text-decoration-color: var(--gold);
+}
+
 .night-meta-line {
   color: rgb(243 234 215 / 0.9);
   font-weight: 550;

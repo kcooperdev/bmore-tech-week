@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { currentNavTone } from "@/lib/nav-tone";
-import { site } from "@/lib/site";
+import { hq, site } from "@/lib/site";
 
 function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
@@ -145,7 +145,12 @@ export function HarborScene() {
           </h1>
           <p className="night-meta">
             <time dateTime="2027-04-26/2027-04-28">{site.dates}</time>
-            <span className="night-meta-place">4MLK in Baltimore, MD</span>
+            <span className="night-meta-place">
+              <a href={hq.website} target="_blank" rel="noreferrer">
+                4MLK
+              </a>{" "}
+              in Baltimore, MD
+            </span>
             <span className="night-meta-line">{site.promise}</span>
           </p>
         </main>
