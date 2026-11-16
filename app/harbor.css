@@ -288,13 +288,16 @@ html:has(.harbor-pin) body {
 }
 
 .night-meta-place a {
+  pointer-events: auto;
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: rgb(243 234 215 / 0.45);
+  text-decoration-color: rgb(243 234 215 / 0.55);
   text-underline-offset: 0.18em;
+  cursor: pointer;
 }
 
 .night-meta-place a:hover {
+  color: var(--gold);
   text-decoration-color: var(--gold);
 }
 
