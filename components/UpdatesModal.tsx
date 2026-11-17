@@ -1,16 +1,74 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef } from "react";
 import { site } from "@/lib/site";
 
 const KEY = "btw-updates-modal";
+const KIT_UID = "f6f157d08e";
+const KIT_SRC = `https://bmore-tech-fest.kit.com/${KIT_UID}/index.js`;
 
 export function UpdatesModal() {
   const dialog = useRef<HTMLDialogElement>(null);
-  const input = useRef<HTMLInputElement>(null);
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "saving" | "done" | "error">("idle");
-  const [error, setError] = useState("");
+  const formMount = useRef<HTMLDivElement>(null);
+  const mountToken = useRef(0);
+
+  function clearKitForm() {
+    const mount = formMount.current;
+    mountToken.current += 1;
+    if (mount) mount.replaceChildren();
+
+    document
+      .querySelectorAll(`script[data-uid="${KIT_UID}"], .formkit-form[data-uid="${KIT_UID}"]`)
+      .forEach((node) => {
+        if (mount?.contains(node)) return;
+        if (node.parentElement === mount) return;
+        // Only remove orphans left outside the live mount.
+        if (!mount || !mount.contains(node)) node.remove();
+      });
+
+    if (Array.isArray(window.__sv_forms)) {
+      window.__sv_forms = window.__sv_forms.filter((entry) => {
+        const node = entry?.element;
+        return node instanceof Element && document.contains(node);
+      });
+    }
+  }
+
+  function loadKitForm() {
+    const mount = formMount.current;
+    if (!mount) return;
+
+    clearKitForm();
+    const token = mountToken.current;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.dataset.uid = KIT_UID;
+    script.dataset.btwKit = "updates";
+    script.src = `${KIT_SRC}?v=${token}`;
+    mount.appendChild(script);
+
+    // If Kit is slow or a prior clear races the download, retry once while this open is current.
+    window.setTimeout(() => {
+      if (token !== mountToken.current) return;
+      if (mount.querySelector(`.formkit-form[data-uid="${KIT_UID}"]`)) return;
+      if (!mount.contains(script)) {
+        const retry = document.createElement("script");
+        retry.async = true;
+        retry.dataset.uid = KIT_UID;
+        retry.dataset.btwKit = "updates";
+        retry.src = `${KIT_SRC}?v=${token}-retry`;
+        mount.appendChild(retry);
+      }
+    }, 1200);
+  }
+
+  function openModal() {
+    const node = dialog.current;
+    if (!node) return;
+    if (!node.open) node.showModal();
+    loadKitForm();
+  }
 
   useEffect(() => {
     try {
@@ -19,14 +77,12 @@ export function UpdatesModal() {
       return;
     }
 
-    const timer = window.setTimeout(() => {
-      const node = dialog.current;
-      if (!node || node.open) return;
-      node.showModal();
-      input.current?.focus();
-    }, 700);
-
-    return () => window.clearTimeout(timer);
+    const timer = window.setTimeout(openModal, 700);
+    return () => {
+      window.clearTimeout(timer);
+      clearKitForm();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- land once
   }, []);
 
   function dismiss() {
@@ -35,33 +91,8 @@ export function UpdatesModal() {
     } catch {
       /* ignore */
     }
+    clearKitForm();
     dialog.current?.close();
-  }
-
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setStatus("saving");
-    setError("");
-    try {
-      const response = await fetch("/api/tickets", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, pass: "Updates list" }),
-      });
-      const payload = (await response.json().catch(() => ({}))) as { error?: string };
-      if (!response.ok) throw new Error(payload.error || "Could not save that email.");
-      setStatus("done");
-      setEmail("");
-      try {
-        localStorage.setItem(KEY, "joined");
-      } catch {
-        /* ignore */
-      }
-      window.setTimeout(() => dialog.current?.close(), 1600);
-    } catch (err) {
-      setStatus("error");
-      setError(err instanceof Error ? err.message : "Could not save that email.");
-    }
   }
 
   return (
@@ -76,6 +107,7 @@ export function UpdatesModal() {
       onClick={(event) => {
         if (event.target === dialog.current) dismiss();
       }}
+      onClose={clearKitForm}
     >
       <div className="updates-dialog-card">
         <button type="button" className="updates-dialog-close" aria-label="Close" onClick={dismiss}>
@@ -84,39 +116,16 @@ export function UpdatesModal() {
           </svg>
         </button>
 
-        <p className="updates-dialog-kicker">{site.name} · {site.year}</p>
+        <p className="updates-dialog-kicker">
+          {site.name} · {site.year}
+        </p>
         <h2 id="updates-title">Stay in the loop</h2>
         <p className="updates-dialog-copy">
           Get updates, announcements, and a note when tickets go on sale. No spam, just what matters for{" "}
           {site.dates}.
         </p>
 
-        {status === "done" ? (
-          <p className="updates-dialog-done" role="status">
-            You’re on the list. We’ll write when there’s news.
-          </p>
-        ) : (
-          <form className="updates-dialog-form" onSubmit={submit}>
-            <label className="sr-only" htmlFor="updates-email">
-              Email
-            </label>
-            <input
-              ref={input}
-              id="updates-email"
-              type="email"
-              name="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="you@company.com"
-            />
-            <button type="submit" className="week-btn" disabled={status === "saving"}>
-              {status === "saving" ? "Saving…" : "Get updates"}
-            </button>
-            {status === "error" ? <p className="updates-dialog-error">{error}</p> : null}
-          </form>
-        )}
+        <div ref={formMount} className="updates-dialog-form updates-kit-form" />
 
         <button type="button" className="updates-dialog-skip" onClick={dismiss}>
           Not now
@@ -124,4 +133,10 @@ export function UpdatesModal() {
       </div>
     </dialog>
   );
+}
+
+declare global {
+  interface Window {
+    __sv_forms?: Array<{ element?: Element | null }>;
+  }
 }
