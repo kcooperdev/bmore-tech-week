@@ -32,6 +32,7 @@ export default async function SpeakPage({
             submitLabel="Submit a session proposal"
             successTitle="Thanks. We have your session."
             successBody="We read every application. If it fits a day, we will write you. Decisions go out by March 1."
+            note="Speaking at Bmore Tech Fest is voluntary. We’re unable to offer speaker fees for the 2027 conference."
             fields={speakFields}
           />
         </div>

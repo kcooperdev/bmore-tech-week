@@ -32,6 +32,7 @@ export function ApplyForm({
   submitLabel,
   successTitle,
   successBody,
+  note,
   closed = false,
   defaults,
 }: {
@@ -42,6 +43,7 @@ export function ApplyForm({
   submitLabel: string;
   successTitle: string;
   successBody: string;
+  note?: string;
   closed?: boolean;
   defaults?: Record<string, string>;
 }) {
@@ -342,6 +344,7 @@ export function ApplyForm({
           {pending ? "Sending…" : steps.length && step < steps.length - 1 ? "Continue" : submitLabel}
         </button>
       </div>
+      {note ? <p className="apply-note">* {note}</p> : null}
     </form>
   );
 }
