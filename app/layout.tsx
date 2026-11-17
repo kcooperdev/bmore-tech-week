@@ -16,7 +16,10 @@ import { Footer } from "@/components/Footer";
 import { homeDescription, hq, site } from "@/lib/site";
 
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#2f7fa8",
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {

@@ -33,9 +33,9 @@ export function HarborScene() {
 
     const paint = (progress: number) => {
       const travel = clamp(progress);
-      const night = clamp((travel - 0.16) / 0.52);
-      const title = clamp((travel - 0.42) / 0.34);
-      const hint = clamp(1 - travel / 0.22);
+      const night = clamp((travel - 0.08) / 0.62);
+      const title = clamp((travel - 0.28) / 0.45);
+      const hint = clamp(1 - travel / 0.18);
       const copy = night > 0.45 ? "#f3ead7" : "#16120c";
       el.style.setProperty("--day", String(1 - night));
       el.style.setProperty("--night", String(night));
@@ -45,12 +45,12 @@ export function HarborScene() {
       el.style.setProperty("--copy", copy);
       document.documentElement.style.setProperty("--copy", copy);
       el.classList.toggle("is-night", night > 0.5);
-      const past = el.getBoundingClientRect().bottom <= 48;
+      const past = el.getBoundingClientRect().bottom <= window.innerHeight + 1;
       el.classList.toggle("is-past", past);
       el.dataset.navTone = past ? currentNavTone() : "night";
       document.documentElement.style.background = night > 0.5 ? "#070b16" : "#1a4d6a";
       theme?.setAttribute("content", night > 0.5 ? "#070b16" : "#2f7fa8");
-      setHintOn(hint > 0.2 && !past);
+      setHintOn(hint > 0.2 && travel < 0.92);
       if (night > 0.8 && !announced.current) {
         announced.current = true;
         setStatus("Bmore Tech Fest. April 26 through April 28.");
@@ -67,8 +67,8 @@ export function HarborScene() {
     }
 
     const onScroll = () => {
-      const distance = el.offsetHeight / 2;
-      const progress = distance <= 0 ? 0 : clamp(-el.getBoundingClientRect().top / distance);
+      const travel = Math.max(1, el.offsetHeight - window.innerHeight);
+      const progress = clamp(-el.getBoundingClientRect().top / travel);
       paint(progress);
     };
 
@@ -84,7 +84,10 @@ export function HarborScene() {
   function scrollIn() {
     const el = pin.current;
     if (!el) return;
-    window.scrollTo({ top: el.offsetTop + el.offsetHeight / 2, behavior: "smooth" });
+    window.scrollTo({
+      top: el.offsetTop + Math.max(0, el.offsetHeight - window.innerHeight),
+      behavior: "smooth",
+    });
   }
 
   return (

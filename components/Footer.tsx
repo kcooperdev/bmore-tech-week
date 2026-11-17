@@ -19,7 +19,7 @@ export function Footer() {
             <a href={hq.website} target="_blank" rel="noreferrer">
               {hq.venue}
             </a>
-            , Baltimore
+            {", Baltimore"}
           </p>
           <p className="harbor-footer-promise">{site.promise}</p>
         </div>

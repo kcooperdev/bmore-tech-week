@@ -231,12 +231,29 @@
 }
 
 .updates-dialog {
-  width: min(26rem, calc(100vw - 1.75rem));
+  width: min(26rem, calc(100vw - 1.5rem));
+  max-width: calc(100vw - 1.5rem);
   margin: auto;
   padding: 0;
   border: 0;
   background: transparent;
   color: #16120c;
+}
+
+@media (max-width: 639px) {
+  .updates-dialog {
+    width: calc(100vw - 1.25rem);
+    max-width: calc(100vw - 1.25rem);
+  }
+
+  .updates-dialog-card {
+    padding: 1.25rem 1.1rem 1.05rem;
+  }
+
+  .updates-dialog h2 {
+    max-width: none;
+    padding-right: 2.4rem;
+  }
 }
 
 .updates-dialog::backdrop {
@@ -1434,13 +1451,13 @@
 }
 
 .page-top {
-  padding: 7.25rem 0 4.5rem;
+  padding: max(4.5rem, calc(env(safe-area-inset-top) + 3rem)) 0 4.5rem;
 }
 
 .page-top h1 {
   margin: 0.15rem 0 0;
   max-width: 12ch;
-  font-size: clamp(2.7rem, 6vw, 4.4rem);
+  font-size: clamp(2.2rem, 8vw, 4.4rem);
   font-weight: 650;
   letter-spacing: -0.045em;
   line-height: 0.92;
