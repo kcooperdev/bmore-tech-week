@@ -7,7 +7,7 @@ export default function NotFound() {
         <div className="week-wrap">
           <p className="week-kicker">404</p>
           <h1 className="week-title">That page is gone.</h1>
-          <p className="week-lede">Bmore Tech Fest has a new shape. Start from the homepage, the schedule, or the list.</p>
+          <p className="week-lede">Bmore Tech Week has a new shape. Start from the homepage, the schedule, or the list.</p>
           <div className="week-actions">
             <Link className="week-btn" href="/">
               Home

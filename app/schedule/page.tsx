@@ -3,7 +3,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "Bmore Tech Fest runs April 26–28, 2027 at 4MLK, Baltimore. Full timetable coming soon.",
+  "Bmore Tech Week runs April 26–28, 2027 at 4MLK, Baltimore. Full timetable coming soon.",
 );
 
 export default function SchedulePage() {

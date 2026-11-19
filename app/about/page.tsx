@@ -4,7 +4,7 @@ import { aboutSections, founderStory, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "About",
-  "Why Bmore Tech Fest exists. Built in Baltimore. Three days at 4MLK, April 26–28, 2027.",
+  "Why Bmore Tech Week exists. Built in Baltimore. Three days at 4MLK, April 26–28, 2027.",
 );
 
 export default function AboutPage() {
@@ -19,7 +19,7 @@ export default function AboutPage() {
             The full story
           </StoryReveal>
           <StoryReveal as="p" className="plain-lede story-hero-lede" delay={90}>
-            How Khalif Cooper got here, and why this fest brings Baltimore’s builders into one room.
+            How Khalif Cooper got here, and why this week brings Baltimore’s builders into one room.
           </StoryReveal>
         </div>
       </header>
@@ -39,7 +39,7 @@ export default function AboutPage() {
 
         <div className="week-wrap story-rest">
           <StoryReveal as="p" className="story-rest-kicker">
-            About the fest
+            About the week
           </StoryReveal>
           <div className="story-beats">
             {aboutSections.map((section, index) => (

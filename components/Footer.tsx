@@ -10,7 +10,7 @@ export function Footer() {
             <span className="btw-mark" />
             <span>
               Bmore
-              <span>Tech Fest</span>
+              <span>Tech Week</span>
             </span>
           </Link>
           <p className="harbor-footer-lede">

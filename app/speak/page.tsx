@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Give a Talk",
-  "Apply to speak at Bmore Tech Fest. Pitch a workshop or tech talk. Deadline February 1, 2027.",
+  "Apply to speak at Bmore Tech Week. Pitch a workshop or tech talk. Deadline February 1, 2027.",
 );
 
 const formats = new Set(["workshop", "techtalk"]);
@@ -32,7 +32,7 @@ export default async function SpeakPage({
             submitLabel="Submit a session proposal"
             successTitle="Thanks. We have your session."
             successBody="We read every application. If it fits a day, we will write you. Decisions go out by March 1."
-            note="Speaking at Bmore Tech Fest is voluntary. We’re unable to offer speaker fees for the 2027 conference."
+            note="Speaking at Bmore Tech Week is voluntary. We’re unable to offer speaker fees for the 2027 conference."
             fields={speakFields}
           />
         </div>

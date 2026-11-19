@@ -4,7 +4,7 @@ import { pageMeta, passIncludes, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Join the list",
-  "Join the Bmore Tech Fest list for April 26–28, 2027 at 4MLK, Baltimore. We’ll write when passes open. No ticket sales yet.",
+  "Join the Bmore Tech Week list for April 26–28, 2027 at 4MLK, Baltimore. We’ll write when passes open. No ticket sales yet.",
 );
 
 export default function TicketsPage() {

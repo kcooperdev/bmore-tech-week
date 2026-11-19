@@ -3,7 +3,7 @@ import { pageMeta, sponsorAudience } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Sponsors",
-  "Sponsor Bmore Tech Fest. Reach founders, engineers, students, and tech leaders from Baltimore and the DMV. Book a call. Deadline February 15, 2027.",
+  "Sponsor Bmore Tech Week. Reach founders, engineers, students, and tech leaders from Baltimore and the DMV. Book a call. Deadline February 15, 2027.",
 );
 
 export default function SponsorsPage() {

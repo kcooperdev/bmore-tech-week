@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 /**
- * Editable content for Bmore Tech Fest 2027.
+ * Editable content for Bmore Tech Week 2027.
  * Add confirmed sessions, exhibitors, sponsors, and partner events here.
  * Do not add a partner event until the partnership, time, and capacity are confirmed.
  * The week is Monday, April 26 through Wednesday, April 28, 2027.
@@ -9,7 +9,7 @@ import type { Metadata } from "next";
  */
 
 export const site = {
-  name: "Bmore Tech Fest",
+  name: "Bmore Tech Week",
   year: 2027,
   url: "https://bmoretechweek.com",
   email: "team@bmoretechweek.com",
@@ -32,25 +32,25 @@ export const site = {
   passNote: "Passes will be $99 when tickets open. No sales yet. Join the list.",
   whyHeadline: "Baltimore has the talent. This is the gathering.",
   whyLede:
-    "Baltimore is home to founders, engineers, researchers, designers, creators, students, and entrepreneurs building every day. Bmore Tech Fest brings those communities together for three days of learning, collaboration, and opportunity.",
+    "Baltimore is home to founders, engineers, researchers, designers, creators, students, and entrepreneurs building every day. Bmore Tech Week brings those communities together for three days of learning, collaboration, and opportunity.",
 };
 
 /** Founder story. Lives on About. Keep the homepage short. */
 export const founderStory = {
-  title: "Why Bmore Tech Fest exists",
+  title: "Why Bmore Tech Week exists",
   paragraphs: [
-    "Khalif Cooper is the founder of Bmore Tech Fest. Originally from Philadelphia, he has been coming to Baltimore since childhood.",
+    "Khalif Cooper is the founder of Bmore Tech Week. Originally from Philadelphia, he has been coming to Baltimore since childhood.",
     "He didn’t study computer science. He graduated with a theatre degree. His introduction to technology came while working as a food server at a tech conference. Watching founders, engineers, and entrepreneurs discuss what they were building sparked something in him.",
     "He bought a used laptop on eBay and started teaching himself.",
     "Over the next decade, curiosity became a career. He worked as a software engineer, helped people break into tech, spoke at events, built communities, and grew a technology network from zero to more than 1,200 people, rooted in Baltimore.",
     "Along the way, one thing became clear. Baltimore already has builders: engineers, founders, designers, researchers, students, creators.",
-    "Bmore Tech Fest exists to bring those communities together. More engineers. More founders. More companies. More builders. More opportunities. More technology in Baltimore.",
+    "Bmore Tech Week exists to bring those communities together. More engineers. More founders. More companies. More builders. More opportunities. More technology in Baltimore.",
     "Khalif believes Baltimore will be the next major tech hub in the United States because of the people already here, not because someone imported the idea.",
-    "Technology changed his life. Bmore Tech Fest exists because he believes it can change someone else’s too.",
+    "Technology changed his life. Bmore Tech Week exists because he believes it can change someone else’s too.",
   ],
 };
 
-export const festTargets = [
+export const weekTargets = [
   "300+ attendees",
   "30 sessions",
   "3 days",
@@ -308,7 +308,7 @@ export const aboutSections = [
   {
     id: "baltimore",
     title: "Built in Baltimore",
-    text: "From cybersecurity and healthcare innovation to AI, research, startups, and creative technology, Baltimore is home to builders solving real problems. Bmore Tech Fest is where those communities meet.",
+    text: "From cybersecurity and healthcare innovation to AI, research, startups, and creative technology, Baltimore is home to builders solving real problems. Bmore Tech Week is where those communities meet.",
   },
   {
     id: "people",
@@ -323,7 +323,7 @@ export const aboutSections = [
   {
     id: "founding",
     title: "Founding year",
-    text: "Bmore Tech Fest launches April 26–28, 2027. We’re bringing builders, founders, engineers, creators, researchers, and future leaders together for three days downtown. If you’re here now, you’re helping shape what this becomes.",
+    text: "Bmore Tech Week launches April 26–28, 2027. We’re bringing builders, founders, engineers, creators, researchers, and future leaders together for three days downtown. If you’re here now, you’re helping shape what this becomes.",
   },
 ];
 
@@ -356,7 +356,7 @@ export const scheduleExperiences =
   "Talks, hands-on workshops, founder conversations, career sessions, and networking events after 5:30, with room between blocks to meet someone new.";
 
 export const hq = {
-  name: "Bmore Tech Fest HQ",
+  name: "Bmore Tech Week HQ",
   venue: "4MLK",
   street: "4 N. Martin Luther King Jr. Blvd.",
   cityLine: "Baltimore, MD 21201",
@@ -473,7 +473,7 @@ export type ExploringVenue = {
 };
 
 /**
- * Venues in conversation. These are not confirmed Tech Fest events.
+ * Venues in conversation. These are not confirmed Tech Week events.
  * Move a venue into `partnerEvents` only after details are confirmed.
  */
 export const exploringVenues: ExploringVenue[] = [
