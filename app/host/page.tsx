@@ -3,7 +3,7 @@ import { pageMeta, pillars } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Networking venue",
-  "Offer a room for a networking event after 5:30 at Bmore Tech Week, April 26–28, 2027.",
+  "Offer a room for a partner-hosted evening event during Bmore Tech Week, April 26–28, 2027.",
 );
 
 export default function HostPage() {
@@ -14,7 +14,7 @@ export default function HostPage() {
           <header id="main">
             <p className="week-kicker">After 5:30</p>
             <h1>Venue</h1>
-            <p className="plain-lede">Networking events run Monday, Tuesday, and Wednesday after 5:30. If your room fits, we will ask.</p>
+            <p className="plain-lede">Networking events run Monday, Tuesday, and Wednesday evenings. If your room fits, we will ask.</p>
           </header>
           <ApplyForm
             closed

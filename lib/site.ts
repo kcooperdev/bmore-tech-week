@@ -8,6 +8,14 @@ import type { Metadata } from "next";
  * Set phase to "live" during the week to turn the homepage into the attendee view.
  */
 
+export const sponsorCallUrl = "https://calendar.app.google/C69vNmaccTAaAgbf7";
+
+/** All-access pass checkout. Set NEXT_PUBLIC_TICKET_URL (Luma / Eventbrite / Stripe) before launch. */
+export const ticketUrl = process.env.NEXT_PUBLIC_TICKET_URL?.trim() || "";
+
+/** Shown on greyed ticket CTAs while checkout is closed. */
+export const ticketsSoonLabel = "Tickets on sale soon";
+
 export const site = {
   name: "Bmore Tech Week",
   year: 2027,
@@ -15,26 +23,23 @@ export const site = {
   email: "team@bmoretechweek.com",
   instagram: "https://www.instagram.com/bmoretechfest",
   linkedin: "https://www.linkedin.com/company/bmore-tech-fest",
-  sponsorCall: "https://calendar.app.google/mmFcLTUaw1GUHSUj7",
   phase: "preview" as "preview" | "live",
   liveDay: "monday" as DayId,
   dates: "April 26–28, 2027",
   when: "",
   where: "Baltimore, Maryland",
-  tagline: "Three days at 4MLK.",
-  promise: "Be in the room.",
-  sell: "Three days with the people you keep meaning to meet. Leave with a collaboration, a hire, or a next step.",
-  ticketLine: "April 26–28, 2027 · 4MLK, Baltimore",
-  idea: "Three days at 4MLK.",
-  positioning: "Three days at 4MLK.",
+  tagline: "Three days of tech in Baltimore, MD.",
+  promise: "Three days of tech in Baltimore.",
+  sell: "Monday night kickoff. Two days at the Baltimore Build Summit. Wednesday closing event.",
+  ticketLine: "All-access pass · $75 · April 26–28, 2027 · Baltimore, MD",
+  idea: "Three days of tech in Baltimore, MD.",
+  positioning: "Three days of tech in Baltimore, MD.",
   room: "Founders, engineers, designers, researchers, students, and tech leaders from Baltimore and across the DMV.",
-  passes: "Join the list",
-  passNote: "Passes will be $99 when tickets open. No sales yet. Join the list.",
+  passes: "Get the pass",
   whyHeadline: "Baltimore has the talent. This is the gathering.",
   whyLede:
     "Baltimore is home to founders, engineers, researchers, designers, creators, students, and entrepreneurs building every day. Bmore Tech Week brings those communities together for three days of learning, collaboration, and opportunity.",
 };
-
 /** Founder story. Lives on About. Keep the homepage short. */
 export const founderStory = {
   title: "Why Bmore Tech Week exists",
@@ -50,7 +55,7 @@ export const founderStory = {
   ],
 };
 
-export const weekTargets = [
+export const festTargets = [
   "300+ attendees",
   "30 sessions",
   "3 days",
@@ -59,33 +64,16 @@ export const weekTargets = [
   "Hands-on workshops",
 ];
 
-/** Speaker programming days. Apply to speak only covers these two days. */
-export const speakProgramDays = [
-  {
-    id: "tuesday" as const,
-    value: "2027-04-27",
-    day: "Tuesday",
-    date: "April 27",
-    theme: "AI & Building Tech",
-    hours: "9 a.m.–5 p.m.",
-    label: "Tuesday, April 27 · AI & Building Tech · 9 a.m.–5 p.m.",
-    shortLabel: "Tuesday · AI & Building Tech",
-    description:
-      "Opening keynote, technical talks, and hands-on workshops spanning AI, cybersecurity, biotech, medtech, and software engineering, plus a live startup pitch competition.",
-  },
-  {
-    id: "wednesday" as const,
-    value: "2027-04-28",
-    day: "Wednesday",
-    date: "April 28",
-    theme: "Careers & Startups",
-    hours: "9 a.m.–5 p.m.",
-    label: "Wednesday, April 28 · Careers & Startups · 9 a.m.–5 p.m.",
-    shortLabel: "Wednesday · Careers & Startups",
-    description:
-      "Talks and workshops on career growth, interview stories, and founder pitches, plus panels on hiring, fundraising, and building a startup in Baltimore.",
-  },
-] as const;
+export const speakExamples = [
+  "How we built our first AI product",
+  "Lessons from scaling engineering teams",
+  "Building a startup in Baltimore",
+  "Breaking into tech without a CS degree",
+  "Cybersecurity challenges every company faces",
+  "Product design lessons from real products",
+  "Growing a technical creator brand",
+  "Startup funding mistakes to avoid",
+];
 
 export type DayId = "monday" | "tuesday" | "wednesday";
 export type DayPart = "morning" | "afternoon" | "evening";
@@ -243,37 +231,38 @@ export const pillars: Pillar[] = [
     day: "Monday",
     date: "April 26",
     name: "Monday",
-    night: "Networking",
+    night: "Kickoff Party",
     question: "Who should I meet?",
-    tagline: "Meet the people building Baltimore.",
-    summary: "Meet the people building Baltimore.",
-    purpose: "Put a name to the work happening here.",
-    stops: dayStops("mon", {
-      id: "mon-mixer",
-      when: "After 5:30",
-      where: "",
-      title: "Networking event",
-      text: "",
-      kind: "city",
-    }),
+    tagline: "Bmore Tech Week Kickoff Party.",
+    summary: "Meet fellow attendees, speakers, and people from Baltimore’s tech community.",
+    purpose: "Kick off the week with Baltimore’s tech community.",
+    stops: [
+      {
+        id: "mon-kickoff",
+        when: "Evening",
+        where: "",
+        title: "Bmore Tech Week Kickoff Party",
+        text: "Meet fellow attendees, speakers, and people from Baltimore’s tech community.",
+        kind: "city",
+      },
+    ],
   },
   {
     id: "tuesday",
     day: "Tuesday",
     date: "April 27",
-    name: "AI & Building Tech",
-    night: "Networking",
-    question: "What can I build?",
-    tagline: "AI & Building Tech · 9 a.m.–5 p.m.",
-    summary:
-      "Opening keynote, technical talks, and hands-on workshops spanning AI, cybersecurity, biotech, medtech, and software engineering, plus a live startup pitch competition.",
-    purpose: "Ship something, test something, or pitch something.",
+    name: "Tuesday",
+    night: "Partner events",
+    question: "What can I create?",
+    tagline: "Baltimore Build Summit · AI & Building Tech.",
+    summary: "Hands-on workshops and talks on applied AI, software engineering, cybersecurity, creative tech, and product management.",
+    purpose: "Learn how teams build, secure, and launch products.",
     stops: dayStops("tue", {
       id: "tue-mixer",
-      when: "After 5:30",
+      when: "Evening",
       where: "",
-      title: "Networking event",
-      text: "",
+      title: "Partner-hosted events*",
+      text: "Check the schedule for where it’s happening.",
       kind: "city",
     }),
   },
@@ -281,28 +270,97 @@ export const pillars: Pillar[] = [
     id: "wednesday",
     day: "Wednesday",
     date: "April 28",
-    name: "Careers & Startups",
-    night: "Closing Celebration",
+    name: "Wednesday",
+    night: "Closing Event",
     question: "Where can this take me?",
-    tagline: "Careers & Startups · 9 a.m.–5 p.m.",
-    summary:
-      "Talks and workshops on career growth, interview stories, and founder pitches, plus panels on hiring, fundraising, and building a startup in Baltimore.",
-    purpose: "A job, a cofounder, a room you go back to.",
+    tagline: "Baltimore Build Summit · Careers & Startups.",
+    summary: "Sessions on career growth, hiring, leadership, startup funding, and turning an idea into a business.",
+    purpose: "Leave with a next step for your career or company.",
     stops: dayStops("wed", {
-      id: "wed-mixer",
-      when: "After 5:30",
+      id: "wed-close",
+      when: "Evening",
       where: "",
-      title: "Closing Celebration",
-      text: "",
+      title: "Bmore Tech Week Closing Event",
+      text: "Wrap the week with fellow attendees, speakers, and Baltimore’s tech community.",
       kind: "city",
     }),
   },
 ];
 
-export const tracks = speakProgramDays.map((day) => ({
-  name: day.theme,
-  text: day.description,
-}));
+/** High-level week outline for the public schedule page. */
+export const weekOutline = [
+  {
+    when: "Monday evening",
+    event: "Bmore Tech Week Kickoff Party",
+    expect: "Meet fellow attendees, speakers, and people from Baltimore’s tech community.",
+  },
+  {
+    when: "Tuesday, 9 a.m.–5 p.m.",
+    event: "Baltimore Build Summit · AI & Building Tech",
+    expect:
+      "Hands-on workshops and talks on applied AI, software engineering, cybersecurity, creative tech, and product management. Learn how teams build, secure, and launch products.",
+  },
+  {
+    when: "Wednesday, 9 a.m.–5 p.m.",
+    event: "Baltimore Build Summit · Careers & Startups",
+    expect:
+      "Sessions on career growth, hiring, leadership, startup funding, and turning an idea into a business.",
+  },
+  {
+    when: "Evenings throughout the week",
+    event: "Partner-hosted events*",
+    expect: "Check the schedule for where each one’s happening.",
+  },
+  {
+    when: "Wednesday evening",
+    event: "Bmore Tech Week Closing Event",
+    expect: "Wrap the week with fellow attendees, speakers, and Baltimore’s tech community. Included with your pass.",
+  },
+];
+
+export const partnerEventsNote =
+  "*BTW partner events set their own prices — some are free, some aren’t.";
+
+/** Speaker application topic choices. Not the public homepage story. */
+export const tracks = [
+  {
+    name: "AI, software, and security",
+    text: "How teams build, ship, and secure the tools people use.",
+  },
+  {
+    name: "Product, design, and creative tech",
+    text: "How ideas become products and experiences people want to use.",
+  },
+  {
+    name: "Startups and business growth",
+    text: "What founders learn from finding customers, building teams, and growing a business.",
+  },
+  {
+    name: "Life sciences and climate tech",
+    text: "How researchers and founders turn discoveries into practical solutions.",
+  },
+  {
+    name: "Careers and leadership",
+    text: "How people get into tech, change direction, and learn to lead teams.",
+  },
+];
+
+export const buildSummit = {
+  name: "Baltimore Build Summit",
+  lede: "Two full days of hands-on workshops, tech talks, and conversations that move from building products to building careers and companies.",
+  days: [
+    {
+      when: "Tuesday · April 27",
+      name: "AI & Building Tech",
+      text: "Applied AI, software engineering, cybersecurity, creative tech, and product management. Learn how teams build, secure, and launch products.",
+    },
+    {
+      when: "Wednesday · April 28",
+      name: "Careers & Startups",
+      text: "Career growth, hiring, leadership, startup funding, and turning an idea into a business.",
+    },
+  ],
+};
 
 export const aboutSections = [
   {
@@ -328,10 +386,13 @@ export const aboutSections = [
 ];
 
 export const passIncludes = [
-  "Meet future collaborators and people you keep meaning to know",
-  "Discover startup, hiring, and partnership opportunities",
-  "Learn practical skills in talks, panels, and hands-on workshops",
-  "Breakfast, coffee, and refreshments",
+  "Entry to the Monday night kickoff party",
+  "Both full days of the Baltimore Build Summit",
+  "Access to all summit talks and workshops",
+  "Breakfast both summit days with coffee, donuts, and fruit",
+  "A professional headshot",
+  "Access to résumé review clinics",
+  "Entry to the Wednesday Bmore Tech Week closing event",
 ];
 
 export const sponsorAudience = [
@@ -353,14 +414,13 @@ export const foundingSupporters: { name: string; role: string }[] = [
 ];
 
 export const scheduleExperiences =
-  "Talks, hands-on workshops, founder conversations, career sessions, and networking events after 5:30, with room between blocks to meet someone new.";
+  "Kickoff Monday night, then two summit days of workshops and talks, with partner-hosted events in the evenings.";
 
 export const hq = {
   name: "Bmore Tech Week HQ",
   venue: "4MLK",
   street: "4 N. Martin Luther King Jr. Blvd.",
   cityLine: "Baltimore, MD 21201",
-  website: "https://www.4mlk.com/",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=4+N+Martin+Luther+King+Jr+Blvd+Baltimore+MD+21201",
   holds: [
@@ -381,7 +441,9 @@ export const waysIn: { href: string; title: string; text: string }[] = [
 ];
 
 export const nav = {
-  primary: [{ href: "/schedule", label: "Schedule" }],
+  primary: [
+    { href: "/schedule", label: "Schedule" },
+  ],
   involved: [
     { href: "/speak", label: "Give a Talk" },
     { href: "/sponsors", label: "Sponsor" },
@@ -425,11 +487,52 @@ export type SponsorPackage = {
  * Approved sponsorship packages.
  * Add a package only after the price and benefits are signed off.
  */
-export const sponsorPackages: SponsorPackage[] = [];
+export const sponsorPackages: SponsorPackage[] = [
+  {
+    id: "badge",
+    name: "Attendee Badge Sponsor",
+    price: "$500",
+    summary: "Put your company in front of every attendee for the week.",
+    includes: [
+      "Logo on attendee badges",
+      "Logo on the sponsor page",
+      "1 full conference pass",
+    ],
+  },
+  {
+    id: "community",
+    name: "Community Sponsor",
+    price: "$1,000",
+    summary: "Shared recognition across the summit and the week.",
+    includes: [
+      "Logo on attendee badges",
+      "Logo on the sponsor page",
+      "Logo on shared summit signage",
+      "Recognition in an attendee email",
+      "2 full conference passes",
+    ],
+  },
+  {
+    id: "day",
+    name: "Summit Day Sponsor",
+    price: "$2,500 per day",
+    summary: "Featured day placement, opening remarks, and a dedicated table.",
+    includes: [
+      "Logo on attendee badges",
+      "Logo on the sponsor page",
+      "Logo on shared summit signage",
+      "Recognition in an attendee email",
+      "Featured logo on the selected day’s agenda and signage",
+      "Recognition during opening remarks",
+      "Dedicated table that day",
+      "4 full conference passes",
+    ],
+  },
+];
 
 export const generalAdmission = {
-  name: "General Admission",
-  price: 99,
+  name: "All-access pass",
+  price: 75,
 };
 
 export const partnerFilters = [
@@ -546,4 +649,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Three days with the people you keep meaning to meet: founders, engineers, designers, researchers, students, and tech leaders from Baltimore and across the DMV. Leave with a collaboration, a hire, or a next step. Be part of year one.";
+  "Bmore Tech Week 2027. Three days of tech in Baltimore, MD. Monday night kickoff, two days at the Baltimore Build Summit, and a Wednesday closing event. All-access pass · $75.";

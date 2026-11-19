@@ -189,39 +189,6 @@
   box-shadow: none;
 }
 
-@media (max-width: 699px) {
-  .apply-steps {
-    gap: 0.35rem;
-  }
-
-  .apply-step {
-    flex: 1 1 auto;
-    justify-content: center;
-    padding: 0.4rem 0.55rem;
-    font-size: 0.74rem;
-  }
-
-  .apply-checks {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .apply-check {
-    width: 100%;
-    border-radius: 0.85rem;
-  }
-
-  .apply-actions {
-    flex-direction: column;
-  }
-
-  .apply-actions .week-btn,
-  .apply-actions .week-btn-ghost {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
 @media (min-width: 700px) {
   .apply-card {
     padding: 1.6rem 1.6rem 1.45rem;

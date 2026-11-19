@@ -4,7 +4,7 @@ import { aboutSections, founderStory, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "About",
-  "Why Bmore Tech Week exists. Built in Baltimore. Three days at 4MLK, April 26–28, 2027.",
+  "Why Bmore Tech Week exists. Built in Baltimore. Three days of tech, April 26–28, 2027.",
 );
 
 export default function AboutPage() {
@@ -57,13 +57,10 @@ export default function AboutPage() {
 
           <StoryReveal className="week-actions" delay={100}>
             <Link className="week-btn" href="/tickets">
-              {site.passes}
+              Get the pass
             </Link>
-            <Link className="week-btn week-btn-ghost" href="/speak">
-              Apply to speak
-            </Link>
-            <Link className="week-btn week-btn-ghost" href="/sponsors">
-              Sponsor
+            <Link className="week-btn week-btn-ghost" href="/#summit">
+              Baltimore Build Summit
             </Link>
           </StoryReveal>
         </div>

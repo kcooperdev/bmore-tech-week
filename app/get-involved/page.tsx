@@ -10,7 +10,11 @@ export const metadata = pageMeta(
 export default function GetInvolvedPage() {
   return (
     <main className="plain-page">
-      <PageHeader eyebrow="Applications are open" title="Get involved" lede="Give a talk, or put your name on Bmore Tech Week." />
+      <PageHeader
+        eyebrow="Applications are open"
+        title="Get involved"
+        lede="Two simple ways in: give a talk, or sponsor the week."
+      />
       <div className="plain-body">
         <div className="week-wrap">
             <ul className="path-list">

@@ -1,5 +1,5 @@
 import type { ApplyField } from "@/lib/apply-fields";
-import { speakProgramDays, tracks } from "@/lib/site";
+import { tracks } from "@/lib/site";
 
 export const pronouns = ["she / her", "he / him", "they / them", "Prefer not to say", "Something else"];
 
@@ -40,20 +40,22 @@ export const sessionTypes = [
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  ...speakProgramDays.map((day) => ({
-    value: day.value,
-    label: `${day.day}, ${day.date} · ${day.hours}`,
-  })),
-  { value: "either", label: "Either day / no preference" },
+  { value: "2027-04-26", label: "Monday · April 26" },
+  { value: "2027-04-27", label: "Tuesday · April 27" },
+  { value: "2027-04-28", label: "Wednesday · April 28" },
+  { value: "Any", label: "No preference" },
+];
+
+/** Summit speaking days on the live Give a Talk flow. */
+export const speakDays = [
+  { value: "2027-04-27", label: "Tuesday, April 27 · 9 a.m.–5 p.m." },
+  { value: "2027-04-28", label: "Wednesday, April 28 · 9 a.m.–5 p.m." },
+  { value: "Any", label: "Either day / no preference" },
 ];
 
 export const partnerNights = ["Monday · April 26", "Tuesday · April 27", "Wednesday · April 28"];
 
 export const speakerTopics = [...tracks.map((track) => track.name), "Other"];
-
-export const themeByDayValue: Record<string, string> = Object.fromEntries(
-  speakProgramDays.map((day) => [day.value, day.theme]),
-);
 
 export const partnerTypes = [
   "Meetup",
@@ -88,49 +90,51 @@ export const partnerHelp = [
 ];
 
 export const sponsorTiers = [
-  { value: "founding", label: "Founding · $1,000" },
-  { value: "lead", label: "Lead · $2,500" },
-  { value: "presenting", label: "Presenting · $5,000" },
+  { value: "badge", label: "Attendee Badge Sponsor · $500" },
+  { value: "community", label: "Community Sponsor · $1,000" },
+  { value: "day", label: "Summit Day Sponsor · $2,500" },
 ];
 
 export const sponsorTierCopy = [
   {
-    id: "founding",
-    name: "Founding",
-    price: "$1,000",
+    id: "badge",
+    name: "Attendee Badge Sponsor",
+    price: "$500",
     perks: [
-      "Logo on the sponsors page",
-      "Featured thank-you in the pre-event attendee email",
-      "Four passes",
+      "Logo on attendee badges",
+      "Logo on the sponsor page",
+      "1 full conference pass",
     ],
     pick: false,
     top: false,
   },
   {
-    id: "lead",
-    name: "Lead",
-    price: "$2,500",
+    id: "community",
+    name: "Community Sponsor",
+    price: "$1,000",
     perks: [
-      "Logo on the sponsors page",
-      "Logo on badges",
-      "Sponsor signage at 4MLK",
-      "Featured thank-you in the pre-event attendee email",
-      "Six passes",
+      "Logo on attendee badges",
+      "Logo on the sponsor page",
+      "Logo on shared summit signage",
+      "Recognition in an attendee email",
+      "2 full conference passes",
     ],
     pick: true,
     top: false,
   },
   {
-    id: "presenting",
-    name: "Presenting",
-    price: "$5,000",
+    id: "day",
+    name: "Summit Day Sponsor",
+    price: "$2,500 per day",
     perks: [
-      "Logo on the sponsors page",
-      "Logo on badges",
-      "Sponsor signage at 4MLK",
-      "Dedicated sponsor table on two days",
-      "Featured thank-you in the pre-event attendee email",
-      "Ten passes",
+      "Logo on attendee badges",
+      "Logo on the sponsor page",
+      "Logo on shared summit signage",
+      "Recognition in an attendee email",
+      "Featured logo on the selected day’s agenda and signage",
+      "Recognition during opening remarks",
+      "Dedicated table that day",
+      "4 full conference passes",
     ],
     pick: false,
     top: true,
@@ -260,7 +264,7 @@ export const speakFields: ApplyField[] = [
     label: "Preferred day",
     type: "radio",
     required: true,
-    choices: programNights,
+    choices: speakDays,
     step: "Day & fit",
   },
   {

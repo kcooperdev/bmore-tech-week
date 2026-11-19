@@ -32,9 +32,9 @@ export function ApplyForm({
   submitLabel,
   successTitle,
   successBody,
-  note,
   closed = false,
   defaults,
+  note,
 }: {
   id?: string;
   endpoint: string;
@@ -43,9 +43,9 @@ export function ApplyForm({
   submitLabel: string;
   successTitle: string;
   successBody: string;
-  note?: string;
   closed?: boolean;
   defaults?: Record<string, string>;
+  note?: string;
 }) {
   const steps = [...new Set(fields.map((field) => field.step).filter(Boolean))] as string[];
   const [step, setStep] = useState(0);
@@ -344,7 +344,7 @@ export function ApplyForm({
           {pending ? "Sending…" : steps.length && step < steps.length - 1 ? "Continue" : submitLabel}
         </button>
       </div>
-      {note ? <p className="apply-note">* {note}</p> : null}
+      {note ? <p className="apply-footnote">* {note}</p> : null}
     </form>
   );
 }

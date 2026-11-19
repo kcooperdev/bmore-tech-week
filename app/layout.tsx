@@ -12,14 +12,12 @@ import "./harbor.css";
 import "./cyber.css";
 import "./apply.css";
 import { CookieNotice } from "@/components/CookieNotice";
+import { Topbar } from "@/components/Topbar";
 import { Footer } from "@/components/Footer";
 import { homeDescription, hq, site } from "@/lib/site";
 
 export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
   themeColor: "#2f7fa8",
-  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -100,6 +98,7 @@ export default function RootLayout({
           >
             Skip to content
           </a>
+          <Topbar />
           <div className="flex-1">{children}</div>
           <Footer />
           <CookieNotice />

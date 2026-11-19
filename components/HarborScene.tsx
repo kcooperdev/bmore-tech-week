@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { Topbar } from "@/components/Topbar";
 import { currentNavTone } from "@/lib/nav-tone";
-import { hq, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
@@ -33,9 +33,9 @@ export function HarborScene() {
 
     const paint = (progress: number) => {
       const travel = clamp(progress);
-      const night = clamp((travel - 0.08) / 0.62);
-      const title = clamp((travel - 0.28) / 0.45);
-      const hint = clamp(1 - travel / 0.18);
+      const night = clamp((travel - 0.16) / 0.52);
+      const title = clamp((travel - 0.42) / 0.34);
+      const hint = clamp(1 - travel / 0.22);
       const copy = night > 0.45 ? "#f3ead7" : "#16120c";
       el.style.setProperty("--day", String(1 - night));
       el.style.setProperty("--night", String(night));
@@ -45,12 +45,12 @@ export function HarborScene() {
       el.style.setProperty("--copy", copy);
       document.documentElement.style.setProperty("--copy", copy);
       el.classList.toggle("is-night", night > 0.5);
-      const past = el.getBoundingClientRect().bottom <= window.innerHeight + 1;
+      const past = el.getBoundingClientRect().bottom <= 48;
       el.classList.toggle("is-past", past);
       el.dataset.navTone = past ? currentNavTone() : "night";
       document.documentElement.style.background = night > 0.5 ? "#070b16" : "#1a4d6a";
       theme?.setAttribute("content", night > 0.5 ? "#070b16" : "#2f7fa8");
-      setHintOn(hint > 0.2 && travel < 0.92);
+      setHintOn(hint > 0.2 && !past);
       if (night > 0.8 && !announced.current) {
         announced.current = true;
         setStatus("Bmore Tech Week. April 26 through April 28.");
@@ -67,8 +67,8 @@ export function HarborScene() {
     }
 
     const onScroll = () => {
-      const travel = Math.max(1, el.offsetHeight - window.innerHeight);
-      const progress = clamp(-el.getBoundingClientRect().top / travel);
+      const distance = el.offsetHeight / 2;
+      const progress = distance <= 0 ? 0 : clamp(-el.getBoundingClientRect().top / distance);
       paint(progress);
     };
 
@@ -84,10 +84,7 @@ export function HarborScene() {
   function scrollIn() {
     const el = pin.current;
     if (!el) return;
-    window.scrollTo({
-      top: el.offsetTop + Math.max(0, el.offsetHeight - window.innerHeight),
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: el.offsetTop + el.offsetHeight / 2, behavior: "smooth" });
   }
 
   return (
@@ -96,6 +93,7 @@ export function HarborScene() {
       className="harbor-pin"
       aria-label="Bmore Tech Week. April 26 through April 28, from sunset into night."
     >
+      <Topbar scene />
       <div className="cycle-progress" aria-hidden="true" />
       <p className="sr-only" aria-live="polite">
         {status}
@@ -118,7 +116,7 @@ export function HarborScene() {
           fill
           priority
           sizes="100vw"
-          quality={75}
+          quality={78}
         />
         <Image
           className="plate plate-night"
@@ -126,7 +124,7 @@ export function HarborScene() {
           alt=""
           fill
           sizes="100vw"
-          quality={75}
+          quality={78}
           aria-hidden
         />
         <div className="plate-veil" />
@@ -144,29 +142,15 @@ export function HarborScene() {
         </button>
         <main className="night-title" id="main" tabIndex={-1}>
           <h1>
-            Bmore <span className="night-title-accent">Tech</span> Week
+            <span>Bmore</span>
+            <span>
+              <span className="night-title-accent">Tech</span> Week
+            </span>
           </h1>
           <p className="night-meta">
             <time dateTime="2027-04-26/2027-04-28">{site.dates}</time>
-            <span className="night-meta-place">
-              <a href={hq.website} target="_blank" rel="noreferrer">
-                4MLK
-              </a>{" "}
-              in Baltimore, MD
-            </span>
-            <span className="night-meta-line">{site.promise}</span>
           </p>
         </main>
-        <nav className="harbor-fork" aria-label="Choose a path">
-          <Link className="harbor-fork-pane harbor-fork-list" href="/sponsors">
-            <span className="harbor-fork-label">Sponsor</span>
-            <span className="harbor-fork-hint">Put your company in the room</span>
-          </Link>
-          <Link className="harbor-fork-pane harbor-fork-speak" href="/speak">
-            <span className="harbor-fork-label">Apply to speak</span>
-            <span className="harbor-fork-hint">Share what you’re building</span>
-          </Link>
-        </nav>
       </div>
     </section>
   );
