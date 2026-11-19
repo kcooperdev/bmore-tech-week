@@ -10,7 +10,7 @@ import {
 
 export const metadata = pageMeta(
   "Tickets",
-  `Three days of tech in Baltimore. All-access pass · $75 · ${site.dates}. Kickoff, Baltimore Build Summit, and Wednesday closing event.`,
+  `Three days of tech in Baltimore. All-access pass · $75 · ${site.dates}. Monday night kickoff and two days at the Baltimore Build Summit.`,
 );
 
 export default function TicketsPage() {

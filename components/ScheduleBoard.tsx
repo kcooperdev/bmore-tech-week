@@ -99,9 +99,9 @@ export function ScheduleBoard() {
         aria-labelledby={`tab-${active.id}`}
       >
         <header>
-          <h2>
-            {active.date} · {active.day}
-          </h2>
+          <p className="day-sheet-date">{active.date}</p>
+          <h2>{active.day}</h2>
+          <p>{active.tagline}</p>
         </header>
         <table className="day-clock">
           <thead>
