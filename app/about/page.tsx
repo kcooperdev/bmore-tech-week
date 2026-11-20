@@ -56,8 +56,8 @@ export default function AboutPage() {
           </div>
 
           <StoryReveal className="week-actions" delay={100}>
-            <Link className="week-btn" href="/tickets">
-              Get the pass
+            <Link className="week-btn" href="/tickets#pass-list">
+              Join the list
             </Link>
             <Link className="week-btn week-btn-ghost" href="/#summit">
               Bmore Build Summit

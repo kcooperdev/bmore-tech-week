@@ -13,8 +13,42 @@ export const sponsorCallUrl = "https://calendar.app.google/C69vNmaccTAaAgbf7";
 /** All-access pass checkout. Set NEXT_PUBLIC_TICKET_URL (Luma / Eventbrite / Stripe) before launch. */
 export const ticketUrl = process.env.NEXT_PUBLIC_TICKET_URL?.trim() || "";
 
-/** Shown on greyed ticket CTAs while checkout is closed. */
+/** Primary nav CTA while checkout is closed (disabled). */
 export const ticketsSoonLabel = "Tickets on sale soon";
+export const ticketsSoonHint = "All-access pass · $75 when tickets open";
+export const speakersAnnounce = "Speakers announced February 2027";
+
+/** Flip on when community “Fund a seat” should show again. */
+export const communitySponsorLive = false;
+
+/** Grassroots community sponsor amounts. Every $50 funds one student or laid-off pass. */
+export const communitySponsorAmounts = [25, 50, 75, 100, 150, 200, 250] as const;
+export const communitySponsorSeatCost = 50;
+
+export const communitySponsorCopy = {
+  kicker: "Community Sponsor",
+  title: "Fund a seat",
+  lede: "Every $50 puts a student or a laid-off neighbor in the room at Bmore Tech Week.",
+  belief:
+    "Not everyone has $500, $1,000, or $5,000+ to give a conference. We’re building this for Baltimore, so give what you can, from $25 up. The community starts with us first. Opportunities get made when we pull resources together, little by little.",
+  cta: "Become a community sponsor",
+  note: "We’ll send you how to give. No checkout on this page yet.",
+};
+
+export const sponsorPaths = [
+  {
+    href: "/community",
+    title: "Join the movement",
+    text: "Community sponsor. Give $25–$250 and fund a seat for someone who needs it.",
+    tone: "community" as const,
+  },
+  {
+    href: "/corporate",
+    title: "Sponsor as a company",
+    text: "Corporate packages from $500. Logos, tables, and brand in the room.",
+    tone: "corporate" as const,
+  },
+] as const;
 
 export const site = {
   name: "Bmore Tech Week",
@@ -28,17 +62,19 @@ export const site = {
   dates: "April 26–28, 2027",
   when: "",
   where: "Baltimore, Maryland",
-  tagline: "Three days of tech in Baltimore, MD.",
-  promise: "Three days of tech in Baltimore.",
-  sell: "Monday night kickoff. Two days at the Bmore Build Summit.",
+  tagline: "Baltimore’s builders, in one room.",
+  promise: "Baltimore’s builders, in one room.",
+  sell: "Three days. $75. Monday night kickoff, then two days at the Bmore Build Summit. Leave with a hire, a collaborator, or a next step.",
   ticketLine: "All-access pass · $75 · April 26–28, 2027 · Baltimore, MD",
-  idea: "Three days of tech in Baltimore, MD.",
-  positioning: "Three days of tech in Baltimore, MD.",
+  idea: "Baltimore already has the builders. This is the gathering.",
+  positioning: "Baltimore’s builders, in one room.",
   room: "Founders, engineers, designers, researchers, students, and tech leaders from Baltimore and across the DMV.",
   passes: "Get the pass",
   whyHeadline: "Baltimore has the talent. This is the gathering.",
   whyLede:
     "Baltimore is home to founders, engineers, researchers, designers, creators, students, and entrepreneurs building every day. Bmore Tech Week brings those communities together for three days of learning, collaboration, and opportunity.",
+  founderBeat:
+    "He learned tech waiting tables at a conference. This week exists so the next person doesn’t wait for permission.",
 };
 /** Founder story. Lives on About. Keep the homepage short. */
 export const founderStory = {
@@ -309,18 +345,36 @@ export const tracks = [
 
 export const buildSummit = {
   name: "Bmore Build Summit",
+  kicker: "Inside Bmore Tech Week",
+  promise: "Two days to build, learn, and leave with a next step.",
   lede: "Two full days of hands-on workshops, tech talks, and conversations that move from building products to building careers and companies.",
+  venue: "4MLK · Baltimore, MD",
+  dates: "April 27–28, 2027",
+  price: "$75 all-access pass",
+  included: "Included with your Bmore Tech Week pass",
+  taglinePair: ["Build fast", "Stay human"],
   days: [
     {
+      id: "build",
       when: "Tuesday · April 27",
+      hours: "9 a.m.–5 p.m.",
       name: "AI & Building Tech",
       text: "Applied AI, software engineering, cybersecurity, creative tech, and product management. Learn how teams build, secure, and launch products.",
+      focus: ["Applied AI", "Engineering", "Security", "Product"],
     },
     {
+      id: "grow",
       when: "Wednesday · April 28",
+      hours: "9 a.m.–5 p.m.",
       name: "Careers & Startups",
       text: "Career growth, hiring, leadership, startup funding, and turning an idea into a business.",
+      focus: ["Careers", "Hiring", "Founders", "Funding"],
     },
+  ],
+  outcomes: [
+    "Leave with a collaborator, a hire lead, or a clearer next step",
+    "Hands-on workshops and practical tech talks — not TED cosplay",
+    "Breakfast both days, résumé clinics, and a professional headshot",
   ],
 };
 
@@ -398,7 +452,13 @@ export const hq = {
 
 export const waysIn: { href: string; title: string; text: string }[] = [
   { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
-  { href: "/sponsors", title: "Sponsor", text: "Apply by February 15." },
+  {
+    href: "/sponsors",
+    title: "Sponsor",
+    text: communitySponsorLive
+      ? "Community gifts from $25, or company packages from $500."
+      : "Company packages from $500. Logos, tables, and brand in the room.",
+  },
 ];
 
 export const nav = {
@@ -461,8 +521,8 @@ export const sponsorPackages: SponsorPackage[] = [
     ],
   },
   {
-    id: "community",
-    name: "Community Sponsor",
+    id: "supporting",
+    name: "Supporting Sponsor",
     price: "$1,000",
     summary: "Shared recognition across the summit and the week.",
     includes: [
@@ -610,4 +670,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Bmore Tech Week 2027. Three days of tech in Baltimore, MD. Monday night kickoff and two days at the Bmore Build Summit. All-access pass · $75.";
+  "Bmore Tech Week 2027. Baltimore’s builders, in one room. Three days · $75 · April 26–28 in Baltimore. Speakers announced February 2027.";

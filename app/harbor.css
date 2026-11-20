@@ -156,6 +156,9 @@ html:has(.harbor-pin) body {
 }
 
 .night-meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.45rem;
   color: var(--gold);
   margin: 1.2rem 0 0;
 }
@@ -166,7 +169,18 @@ html:has(.harbor-pin) body {
   letter-spacing: -0.02em;
   font-size: clamp(1.02rem, 2vw, 1.2rem);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.15;
+  text-align: right;
+}
+
+.night-meta-place {
+  opacity: 0.92;
+}
+
+.night-meta-line {
+  max-width: 16rem;
+  color: #f3ead7;
+  font-weight: 650;
 }
 
 .day-scroll-cue {

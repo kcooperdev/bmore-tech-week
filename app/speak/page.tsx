@@ -23,8 +23,11 @@ export default async function SpeakPage({
         <div className="week-wrap speak-flow">
           <header id="main">
             <p className="week-kicker">Deadline February 1, 2027 · Decisions March 1</p>
-            <h1>Share what you’ve learned</h1>
-            <p className="plain-lede">Pitch a workshop or tech talk.</p>
+            <h1>Teach what you know</h1>
+            <p className="plain-lede">
+              Pitch a workshop or tech talk in the room that’s gathering Baltimore’s builders. First-time
+              speakers welcome.
+            </p>
           </header>
           <ApplyForm
             endpoint="/api/speakers"

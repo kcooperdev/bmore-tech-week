@@ -1,39 +1,40 @@
-import { SponsorBoard } from "@/components/SponsorBoard";
-import { pageMeta, sponsorAudience } from "@/lib/site";
+import Link from "next/link";
+import { communitySponsorLive, pageMeta, sponsorPaths } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "Sponsors",
-  "Sponsor Bmore Tech Week. Reach founders, engineers, students, and tech leaders from Baltimore and the DMV. Apply by February 15, 2027.",
+  "Sponsor",
+  "Sponsor Bmore Tech Week as a person in the movement, or as a company with a package.",
 );
 
 export default function SponsorsPage() {
+  const paths = communitySponsorLive
+    ? sponsorPaths
+    : sponsorPaths.filter((path) => path.tone !== "community");
+
   return (
     <main className="plain-page">
       <div className="page-top">
         <div className="week-wrap">
           <header id="main">
-            <p className="week-kicker">Apply by February 15, 2027</p>
-            <h1>Sponsor</h1>
+            <p className="week-kicker">Sponsor</p>
+            <h1>{communitySponsorLive ? "Two ways to show up" : "Sponsor the week"}</h1>
             <p className="plain-lede">
-              Put your company in front of founders, engineers, students, and tech leaders from Baltimore and the DMV.
-              Apply by February 15.
+              {communitySponsorLive
+                ? "People fund seats. Companies underwrite the week. Same movement, different roles."
+                : "Company packages from $500. Logos, tables, and brand in the room."}
             </p>
           </header>
 
-          <section className="sponsor-why" aria-labelledby="who-attends">
-            <h2 id="who-attends">Who’s in the room</h2>
-            <p>
-              Our packages are built for companies that want direct access to the people building here, without
-              enterprise pricing.
-            </p>
-            <ul className="audience-list">
-              {sponsorAudience.map((role) => (
-                <li key={role}>{role}</li>
-              ))}
-            </ul>
-          </section>
-
-          <SponsorBoard />
+          <ul className="path-list sponsor-paths">
+            {paths.map((path) => (
+              <li key={path.href}>
+                <Link href={path.href} className="sponsor-path">
+                  <strong>{path.title}</strong>
+                  <span>{path.text}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </main>

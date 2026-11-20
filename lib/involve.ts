@@ -91,7 +91,7 @@ export const partnerHelp = [
 
 export const sponsorTiers = [
   { value: "badge", label: "Attendee Badge Sponsor · $500" },
-  { value: "community", label: "Community Sponsor · $1,000" },
+  { value: "supporting", label: "Supporting Sponsor · $1,000" },
   { value: "day", label: "Summit Day Sponsor · $2,500" },
 ];
 
@@ -109,8 +109,8 @@ export const sponsorTierCopy = [
     top: false,
   },
   {
-    id: "community",
-    name: "Community Sponsor",
+    id: "supporting",
+    name: "Supporting Sponsor",
     price: "$1,000",
     perks: [
       "Logo on attendee badges",

@@ -706,7 +706,7 @@ packageSlide({
 packageSlide({
   tag: "MOST SPONSORS",
   tagBg: C.blue,
-  name: "Community Sponsor",
+  name: "Supporting Sponsor",
   price: "$1,000",
   blurb: "Shared recognition across the summit and the week.",
   perks: communityPerks,
@@ -859,7 +859,7 @@ packageSlide({
     valign: "middle",
     margin: 0,
   });
-  s.addText("Community Sponsor — $1,000", {
+  s.addText("Supporting Sponsor — $1,000", {
     x: 0.85,
     y: 2.6,
     w: 5.3,

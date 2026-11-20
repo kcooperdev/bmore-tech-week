@@ -1,16 +1,19 @@
 import { Check, Ticket } from "lucide-react";
+import { PassInterest } from "@/components/PassInterest";
 import {
   formatPrice,
   generalAdmission,
   pageMeta,
   passIncludes,
   site,
+  speakersAnnounce,
   ticketUrl,
+  ticketsSoonHint,
 } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Tickets",
-  `Three days of tech in Baltimore. All-access pass · $75 · ${site.dates}. Monday night kickoff and two days at the Bmore Build Summit.`,
+  `${site.promise} All-access pass · $75 · ${site.dates}. ${speakersAnnounce}.`,
 );
 
 export default function TicketsPage() {
@@ -21,8 +24,9 @@ export default function TicketsPage() {
       <div className="week-wrap packs">
         <header className="packs-head" id="main">
           <p className="week-kicker">{site.dates} · Baltimore, MD</p>
-          <h1>{site.name} {site.year}</h1>
+          <h1>{site.promise}</h1>
           <p>{site.sell}</p>
+          <p className="home-speakers-note">{speakersAnnounce}</p>
         </header>
 
         <div className="packs-grid packs-single">
@@ -42,18 +46,14 @@ export default function TicketsPage() {
               ))}
             </ul>
             {checkout ? (
-              <a
-                className="pack-btn"
-                href={checkout}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="pack-btn" href={checkout} target="_blank" rel="noreferrer">
                 Get the pass
               </a>
             ) : (
-              <a className="pack-btn" href={`mailto:${site.email}?subject=All-access%20pass`}>
-                Get the pass
-              </a>
+              <div className="pack-waitlist">
+                <p className="pack-waitlist-label">{ticketsSoonHint}</p>
+                <PassInterest id="pass-list" />
+              </div>
             )}
           </article>
         </div>

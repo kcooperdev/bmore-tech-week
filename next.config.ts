@@ -4,10 +4,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/events", destination: "/schedule", permanent: true },
+      { source: "/summit", destination: "/", permanent: true },
+      { source: "/build-summit", destination: "/", permanent: true },
+      { source: "/bmore-build-summit", destination: "/", permanent: true },
+      { source: "/build", destination: "/", permanent: false },
       { source: "/speakers", destination: "/speak", permanent: true },
       { source: "/apply/speak", destination: "/speak", permanent: true },
       { source: "/apply/partner", destination: "/get-involved", permanent: false },
       { source: "/apply/sponsor", destination: "/sponsors", permanent: true },
+      { source: "/sponsor", destination: "/sponsors", permanent: true },
+      { source: "/sponsor/community", destination: "/sponsors", permanent: false },
+      { source: "/sponsor/corporate", destination: "/corporate", permanent: true },
       { source: "/apply/ambassador", destination: "/get-involved", permanent: false },
       { source: "/ambassador", destination: "/get-involved", permanent: false },
       { source: "/ambassadors", destination: "/get-involved", permanent: false },

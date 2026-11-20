@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ScheduleBoard } from "@/components/ScheduleBoard";
-import { pageMeta, site } from "@/lib/site";
+import { pageMeta, site, speakersAnnounce } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  `${site.name} runs ${site.dates} in Baltimore, MD. Monday night kickoff and two days at the Bmore Build Summit.`,
+  `${site.name} runs ${site.dates} in Baltimore, MD. ${speakersAnnounce}.`,
 );
 
 export default function SchedulePage() {
@@ -22,11 +22,12 @@ export default function SchedulePage() {
 
       <div className="plain-body">
         <div className="week-wrap">
+          <p className="home-speakers-note">{speakersAnnounce}</p>
           <ScheduleBoard />
 
           <div className="week-actions">
             <Link className="week-btn" href="/tickets">
-              Get the all-access pass
+              Join the list
             </Link>
           </div>
         </div>

@@ -149,6 +149,7 @@ export function HarborScene() {
           </h1>
           <p className="night-meta">
             <time dateTime="2027-04-26/2027-04-28">{site.dates}</time>
+            <span className="night-meta-place">Baltimore, MD</span>
           </p>
         </main>
       </div>

@@ -99,7 +99,8 @@ const SPONSOR_CALL = "https://calendar.app.google/C69vNmaccTAaAgbf7";
 
 const TIER_LABEL: Record<string, string> = {
   badge: "Attendee Badge Sponsor ($500)",
-  community: "Community Sponsor ($1,000)",
+  supporting: "Supporting Sponsor ($1,000)",
+  community: "Supporting Sponsor ($1,000)",
   day: "Summit Day Sponsor ($2,500 per day)",
 };
 
