@@ -4,7 +4,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  `${site.name} runs ${site.dates} in Baltimore, MD. Monday night kickoff and two days at the Baltimore Build Summit.`,
+  `${site.name} runs ${site.dates} in Baltimore, MD. Monday night kickoff and two days at the Bmore Build Summit.`,
 );
 
 export default function SchedulePage() {

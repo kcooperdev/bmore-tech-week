@@ -411,8 +411,8 @@ pptx.title = "Bmore Tech Week 2027 — Sponsorship Deck";
 
   const days = [
     { x: 0.55, tag: "MON · APR 26 · EVENING", tagColor: C.teal, head: "Kickoff Party", sub: "Kickoff", body: "Monday evening kickoff to open the week." },
-    { x: 4.7, tag: "TUE · APR 27 · 9 AM–5 PM", tagColor: C.orange, head: "Baltimore Build Summit", sub: "AI & Building Tech", body: "Talks, workshops, and panels for attendees." },
-    { x: 8.85, tag: "WED · APR 28 · 9 AM–5 PM", tagColor: C.blue, head: "Baltimore Build Summit", sub: "Careers & Startups", body: "Talks, workshops, and panels, followed by the Closing Celebration that evening." },
+    { x: 4.7, tag: "TUE · APR 27 · 9 AM–5 PM", tagColor: C.orange, head: "Bmore Build Summit", sub: "AI & Building Tech", body: "Talks, workshops, and panels for attendees." },
+    { x: 8.85, tag: "WED · APR 28 · 9 AM–5 PM", tagColor: C.blue, head: "Bmore Build Summit", sub: "Careers & Startups", body: "Talks, workshops, and panels, followed by the Closing Celebration that evening." },
   ];
   for (const d of days) {
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
@@ -719,7 +719,7 @@ packageSlide({
   tagBg: "111111",
   name: "Summit Day Sponsor",
   price: "$2,500 per day",
-  blurb: "Be the featured sponsor for one day of the Baltimore Build Summit.",
+  blurb: "Be the featured sponsor for one day of the Bmore Build Summit.",
   perks: dayPerks,
   cardFill: C.orange,
   textColor: C.navy,

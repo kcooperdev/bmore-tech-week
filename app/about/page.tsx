@@ -60,7 +60,7 @@ export default function AboutPage() {
               Get the pass
             </Link>
             <Link className="week-btn week-btn-ghost" href="/#summit">
-              Baltimore Build Summit
+              Bmore Build Summit
             </Link>
           </StoryReveal>
         </div>

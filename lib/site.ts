@@ -30,7 +30,7 @@ export const site = {
   where: "Baltimore, Maryland",
   tagline: "Three days of tech in Baltimore, MD.",
   promise: "Three days of tech in Baltimore.",
-  sell: "Monday night kickoff. Two days at the Baltimore Build Summit.",
+  sell: "Monday night kickoff. Two days at the Bmore Build Summit.",
   ticketLine: "All-access pass · $75 · April 26–28, 2027 · Baltimore, MD",
   idea: "Three days of tech in Baltimore, MD.",
   positioning: "Three days of tech in Baltimore, MD.",
@@ -264,7 +264,7 @@ export const pillars: Pillar[] = [
     name: "Tuesday",
     night: "",
     question: "What can I create?",
-    tagline: "Baltimore Build Summit · AI & Building Tech.",
+    tagline: "Bmore Build Summit · AI & Building Tech.",
     summary: "Hands-on workshops and talks on applied AI, software engineering, cybersecurity, creative tech, and product management.",
     purpose: "Learn how teams build, secure, and launch products.",
     stops: dayStops("tue"),
@@ -276,7 +276,7 @@ export const pillars: Pillar[] = [
     name: "Wednesday",
     night: "",
     question: "Where can this take me?",
-    tagline: "Baltimore Build Summit · Careers & Startups.",
+    tagline: "Bmore Build Summit · Careers & Startups.",
     summary: "Sessions on career growth, hiring, leadership, startup funding, and turning an idea into a business.",
     purpose: "Leave with a next step for your career or company.",
     stops: dayStops("wed"),
@@ -308,7 +308,7 @@ export const tracks = [
 ];
 
 export const buildSummit = {
-  name: "Baltimore Build Summit",
+  name: "Bmore Build Summit",
   lede: "Two full days of hands-on workshops, tech talks, and conversations that move from building products to building careers and companies.",
   days: [
     {
@@ -349,7 +349,7 @@ export const aboutSections = [
 
 export const passIncludes = [
   "Entry to the Monday night kickoff party",
-  "Both full days of the Baltimore Build Summit",
+  "Both full days of the Bmore Build Summit",
   "Access to all summit talks and workshops",
   "Breakfast both summit days with coffee, donuts, and fruit",
   "A professional headshot",
@@ -610,4 +610,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Bmore Tech Week 2027. Three days of tech in Baltimore, MD. Monday night kickoff and two days at the Baltimore Build Summit. All-access pass · $75.";
+  "Bmore Tech Week 2027. Three days of tech in Baltimore, MD. Monday night kickoff and two days at the Bmore Build Summit. All-access pass · $75.";
