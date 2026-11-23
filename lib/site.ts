@@ -372,7 +372,6 @@ export const waysIn: { href: string; title: string; text: string }[] = [
 
 export const nav = {
   primary: [
-    { href: "/schedule", label: "Schedule" },
     { href: "/about", label: "About" },
   ],
   involved: [
