@@ -82,7 +82,7 @@ export const founderStory = {
     "He was working as a food server at a tech conference when he discovered technology as a career. A theatre grad, he taught himself from a laptop, showed up at events, and put his work in front of people. When there wasn’t a path, he built one.",
     "He’d spent almost every summer in Baltimore growing up, drawn to the culture. More than five years ago a job brought him here for good. Living and building in the city, he recognized the same thing he’d seen in Atlanta: the builders are already here.",
     "That belief shaped the work that followed. Helping people break into tech. Building community. Growing a Baltimore-rooted network past 1,200 people. And now, gathering the room for three days each spring.",
-    "His motto is simple. It’s never too late to build. Never too old to build. The key is to keep showing up.",
+    "His motto is simple. It’s never too late to start. Never too old to build. The key is to keep showing up.",
     "Bmore Tech Week exists so engineers, founders, designers, researchers, students, and creators can meet, connect, and build community around tech in Baltimore. The talent is already here. This is the gathering.",
   ],
 };
