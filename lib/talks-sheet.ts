@@ -5,7 +5,7 @@ const HEADERS = [
   "Company Name",
   "Linkedin",
   "Bio",
-  "Headshot",
+  "Headshot URL",
   "Spoken before",
   "Past talks",
   "First-time speaker",

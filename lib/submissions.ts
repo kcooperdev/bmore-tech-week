@@ -135,7 +135,7 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     title: "",
     cityState: "",
     bio: text(body.bio, "Short bio", 2000),
-    headshotUrl: siteUrl(body.headshotUrl, "Headshot link"),
+    headshotUrl: text(body.headshotUrl, "Headshot", 500),
     talkTitle: text(body.talkTitle, "Session title", 140),
     talkDescription: text(body.description, "Session description", 2500),
     takeaways: "",

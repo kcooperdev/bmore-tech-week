@@ -7,7 +7,7 @@ const COLS = [
   "Company Name",
   "Linkedin",
   "Bio",
-  "Headshot",
+  "Headshot URL",
   "Spoken before",
   "Past talks",
   "First-time speaker",
@@ -28,6 +28,7 @@ const ALIASES = {
   "Open to a panel": ["Open to a panel", "Panelist"],
   "Past talks": ["Past talks", "Links", "Examples"],
   "First-time speaker": ["First-time speaker", "First time"],
+  "Headshot URL": ["Headshot URL", "Headshot"],
   Notes: ["Notes", "Accessibility"],
 };
 const LEGACY = [

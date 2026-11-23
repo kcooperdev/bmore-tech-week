@@ -24,6 +24,10 @@ function bareUrl(value: string) {
   return text === WEB_PREFIX || text === LINKEDIN_PREFIX || text === "https://" || text === "http://" || text === "https://www";
 }
 
+function hasFileFields(fields: ApplyField[]) {
+  return fields.some((field) => field.type === "file");
+}
+
 export function ApplyForm({
   id,
   endpoint,
@@ -54,6 +58,7 @@ export function ApplyForm({
   const [pending, setPending] = useState(false);
   const [done, setDone] = useState(false);
   const [picks, setPicks] = useState<Record<string, string>>(defaults ?? {});
+  const [fileNames, setFileNames] = useState<Record<string, string>>({});
 
   function fieldOpen(field: ApplyField, source: Record<string, string> = picks) {
     if (!field.when) return true;
@@ -80,6 +85,9 @@ export function ApplyForm({
     for (const field of fields) {
       if (field.type === "checks") {
         payload[field.name] = data.getAll(field.name).map(String);
+      } else if (field.type === "file") {
+        const value = data.get(field.name);
+        payload[field.name] = value instanceof File && value.size > 0 ? value : null;
       } else {
         const text = String(data.get(field.name) ?? "").trim();
         payload[field.name] = field.type === "url" && bareUrl(text) ? "" : text;
@@ -106,6 +114,26 @@ export function ApplyForm({
       const watched = field.when ? String(payload[field.when.field] ?? "") : "";
       if (field.when && !field.when.is.includes(watched)) continue;
       const value = payload[field.name];
+
+      if (field.type === "file") {
+        const file = value instanceof File ? value : null;
+        if (field.required && !file) {
+          next[field.name] = "Add a photo";
+          continue;
+        }
+        if (!file) continue;
+        const maxMb = field.maxMb ?? 5;
+        if (file.size > maxMb * 1024 * 1024) {
+          next[field.name] = `Photo must be ${maxMb} MB or smaller`;
+          continue;
+        }
+        const type = (file.type || "").toLowerCase();
+        if (type && !type.startsWith("image/")) {
+          next[field.name] = "Upload a photo file";
+        }
+        continue;
+      }
+
       const raw = Array.isArray(value) ? "" : String(value ?? "").trim();
       const textValue = field.type === "url" && bareUrl(raw) ? "" : raw;
       const empty = Array.isArray(value) ? value.length === 0 : !textValue;
@@ -134,6 +162,26 @@ export function ApplyForm({
     if (target && "focus" in target) target.focus({ preventScroll: true });
   }
 
+  function toRequestBody(payload: Record<string, unknown>) {
+    if (!hasFileFields(fields)) {
+      return {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      };
+    }
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(payload)) {
+      if (value instanceof File) {
+        formData.append(key, value, value.name);
+      } else if (Array.isArray(value)) {
+        for (const item of value) formData.append(key, String(item));
+      } else if (value != null && value !== "") {
+        formData.append(key, String(value));
+      }
+    }
+    return { body: formData };
+  }
+
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (closed) return;
@@ -156,10 +204,10 @@ export function ApplyForm({
     placeDetail(payload);
     setPending(true);
     setError("");
+    const request = toRequestBody(payload);
     void fetch(endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      ...request,
     })
       .then(async (response) => {
         const body = (await response.json().catch(() => ({}))) as { error?: string };
@@ -226,7 +274,12 @@ export function ApplyForm({
           const problem = fieldErrors[field.name];
           const shown = (!steps.length || field.step === current) && fieldOpen(field);
           const choices = choicesFor(field);
-          const wide = field.wide || field.type === "textarea" || field.type === "checks" || field.type === "radio";
+          const wide =
+            field.wide ||
+            field.type === "textarea" ||
+            field.type === "checks" ||
+            field.type === "radio" ||
+            field.type === "file";
           const control =
             field.type === "textarea" ? (
               <textarea
@@ -274,6 +327,25 @@ export function ApplyForm({
                   </label>
                 ))}
               </span>
+            ) : field.type === "file" ? (
+              <label className={`apply-file${problem ? " is-invalid" : ""}`}>
+                <input
+                  name={field.name}
+                  type="file"
+                  accept={field.accept || "image/*"}
+                  className="sr-only"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    setFileNames((currentNames) => ({
+                      ...currentNames,
+                      [field.name]: file?.name || "",
+                    }));
+                    clearFieldError(field.name);
+                  }}
+                />
+                <span className="apply-file-btn">Choose photo</span>
+                <span className="apply-file-name">{fileNames[field.name] || "No file chosen"}</span>
+              </label>
             ) : (
               <input
                 name={field.name}

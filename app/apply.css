@@ -130,6 +130,44 @@
   border-bottom-color: #8b2d1c;
 }
 
+.apply-file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1rem;
+  width: 100%;
+  margin-top: 0.15rem;
+  padding: 0.7rem 0 0.55rem;
+  border-bottom: 1.5px solid rgb(22 18 12 / 0.22);
+  cursor: pointer;
+}
+
+.apply-file.is-invalid {
+  border-bottom-color: #8b2d1c;
+}
+
+.apply-file-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.4rem;
+  padding: 0.45rem 0.95rem;
+  border: 1.5px solid #16120c;
+  border-radius: 999px;
+  background: #e2b13c;
+  color: #16120c;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.apply-file-name {
+  color: rgb(22 18 12 / 0.62);
+  font-size: 0.9rem;
+  font-weight: 550;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
 .apply-error,
 .apply-banner {
   display: block;
