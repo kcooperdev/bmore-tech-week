@@ -32,8 +32,8 @@ export const communitySponsorCopy = {
   lede: "Every $50 puts a student or a laid-off neighbor in the room at Bmore Tech Week.",
   belief:
     "Not everyone has $500, $1,000, or $5,000+ to give a conference. We’re building this for Baltimore, so give what you can, from $25 up. The community starts with us first. Opportunities get made when we pull resources together, little by little.",
-  cta: "Become a community sponsor",
-  note: "We’ll send you how to give. No checkout on this page yet.",
+  cta: "Checkout coming soon",
+  note: "Checkout will be added soon. You can still pick an amount to see how many seats it funds.",
 };
 
 export const sponsorPaths = [

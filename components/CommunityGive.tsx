@@ -5,7 +5,6 @@ import {
   communitySponsorAmounts,
   communitySponsorCopy,
   communitySponsorSeatCost,
-  site,
 } from "@/lib/site";
 
 function seatsFor(amount: number) {
@@ -25,11 +24,6 @@ function seatLabel(seats: number) {
 export function CommunityGive() {
   const [amount, setAmount] = useState<(typeof communitySponsorAmounts)[number]>(50);
   const seats = seatsFor(amount);
-  const subject = encodeURIComponent(`Community Sponsor · $${amount}`);
-  const body = encodeURIComponent(
-    `Hi Bmore Tech Week team,\n\nI want to be a Community Sponsor at $${amount}.\n\nName:\nEmail:\n\nThanks.`,
-  );
-  const mailto = `mailto:${site.email}?subject=${subject}&body=${body}`;
 
   return (
     <div className="community-give">
@@ -63,9 +57,9 @@ export function CommunityGive() {
         {seatLabel(seats)}
       </p>
       <p className="community-give-label">3. Join the movement</p>
-      <a className="week-btn" href={mailto}>
+      <button type="button" className="week-btn week-btn-closed" disabled aria-disabled="true">
         {communitySponsorCopy.cta}
-      </a>
+      </button>
       <p className="community-give-note">{communitySponsorCopy.note}</p>
     </div>
   );
