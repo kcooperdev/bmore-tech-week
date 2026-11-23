@@ -6,11 +6,16 @@ const COLS = [
   "Email",
   "Company Name",
   "Linkedin",
+  "Bio",
+  "Headshot",
+  "Spoken before",
+  "Past talks",
+  "First-time speaker",
   "Session Type",
   "Day",
   "Session title",
   "Session Description",
-  "Track",
+  "Category",
   "Open to a panel",
   "Notes",
 ];
@@ -19,7 +24,10 @@ const ALIASES = {
   Linkedin: ["Linkedin", "LinkedIn"],
   "Session Type": ["Session Type", "Format"],
   "Session Description": ["Session Description", "Description"],
+  Category: ["Category", "Track"],
   "Open to a panel": ["Open to a panel", "Panelist"],
+  "Past talks": ["Past talks", "Links", "Examples"],
+  "First-time speaker": ["First-time speaker", "First time"],
   Notes: ["Notes", "Accessibility"],
 };
 const LEGACY = [
@@ -45,7 +53,7 @@ const LEGACY = [
   "LinkedIn",
   "Website",
 ];
-const WIDTHS = [160, 160, 220, 180, 220, 130, 170, 260, 420, 220, 140, 260];
+const WIDTHS = [160, 160, 220, 180, 220, 320, 220, 120, 260, 140, 130, 170, 260, 420, 220, 140, 260];
 
 function json(output) {
   return ContentService.createTextOutput(JSON.stringify(output)).setMimeType(

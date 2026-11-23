@@ -64,11 +64,16 @@ export default async function Home({
             <p className="week-lede">{buildSummit.lede}</p>
             <p className="home-speakers-note">{speakersAnnounce}</p>
             <ul className="summit-grid">
-              {buildSummit.days.map((day) => (
-                <li key={day.name}>
-                  <p className="summit-when">{day.when}</p>
-                  <h3>{day.name}</h3>
-                  <p>{day.text}</p>
+              {buildSummit.tracks.map((track) => (
+                <li key={track.id}>
+                  <p className="summit-when">{track.label}</p>
+                  <h3>{track.name}</h3>
+                  <p>{track.text}</p>
+                  <ul className="summit-focus">
+                    {track.focus.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>

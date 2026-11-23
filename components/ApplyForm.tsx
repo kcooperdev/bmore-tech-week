@@ -93,7 +93,9 @@ export function ApplyForm({
       if (!field.when) continue;
       const watched = String(payload[field.when.field] ?? "");
       const detail = String(payload[field.name] ?? "").trim();
-      if (field.when.is.includes(watched) && detail) payload[field.when.field] = detail;
+      if (field.when.merge && field.when.is.includes(watched) && detail) {
+        payload[field.when.field] = detail;
+      }
       if (!field.when.is.includes(watched)) payload[field.name] = "";
     }
   }
@@ -261,7 +263,12 @@ export function ApplyForm({
                       name={field.name}
                       value={option.value}
                       defaultChecked={defaults?.[field.name] === option.value}
-                      onChange={() => clearFieldError(field.name)}
+                      onChange={(event) => {
+                        if (field.type === "radio") {
+                          setPicks((currentPicks) => ({ ...currentPicks, [field.name]: event.target.value }));
+                        }
+                        clearFieldError(field.name);
+                      }}
                     />
                     {option.label}
                   </label>

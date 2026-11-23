@@ -121,7 +121,12 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   const nights = list(body.nights);
   const preferredNights = nights.includes("Any") ? ["Any"] : nights.filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item));
   if (!preferredNights.length) throw new SubmitError("Select a day");
-  const topics = list(body.topics).filter((topic) => speakerTopics.includes(topic));
+  const topic = oneOf(body.topic, "Category", speakerTopics);
+  const spokenBefore = oneOf(body.spokenBefore, "Have you spoken before?", ["yes", "no"]);
+  const previousTalks =
+    spokenBefore === "yes" ? text(body.previousTalks, "Examples of past talks", 2500) : "";
+  const firstTimeSpeaker =
+    spokenBefore === "no" ? oneOf(body.firstTimeSpeaker, "Are you a first-time speaker?", ["yes", "no"]) : "";
   const payload = {
     name: text(body.name, "Full name", 120),
     email: email(body.email),
@@ -129,16 +134,19 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     company: optional(body.company, "Company", 140),
     title: "",
     cityState: "",
+    bio: text(body.bio, "Short bio", 2000),
+    headshotUrl: siteUrl(body.headshotUrl, "Headshot link"),
     talkTitle: text(body.talkTitle, "Session title", 140),
     talkDescription: text(body.description, "Session description", 2500),
     takeaways: "",
     format: sessionFormat(text(body.format, "Session type", 40)),
     preferredNights,
     preferredNeighborhood: "Any",
-    topics,
+    topics: [topic],
     audienceLevel: "",
-    spokenBefore: "",
-    previousTalks: "",
+    spokenBefore,
+    previousTalks,
+    firstTimeSpeaker,
     accessibility: "",
     panelistFallback: oneOf(body.panelist, "Panel preference", ["yes", "no"]),
     notes: optional(body.notes, "Notes", 2000),
@@ -157,6 +165,7 @@ export async function saveSpeaker(body: Record<string, unknown>) {
     techtalk: "Tech talk",
     fireside: "Fireside",
   };
+  const yesNo = (value: string) => (value === "yes" ? "Yes" : value === "no" ? "No" : "");
 
   if (talksSheetUrl()) {
     try {
@@ -166,11 +175,16 @@ export async function saveSpeaker(body: Record<string, unknown>) {
         payload.email,
         payload.company,
         payload.linkedinUrl,
+        payload.bio,
+        payload.headshotUrl,
+        yesNo(payload.spokenBefore),
+        payload.previousTalks,
+        yesNo(payload.firstTimeSpeaker),
         formatLabel[payload.format] ?? payload.format,
         payload.preferredNights.map((night) => dayLabel[night] ?? night).join(", "),
         payload.talkTitle,
         payload.talkDescription,
-        payload.topics.join(", "),
+        topic,
         payload.panelistFallback === "yes" ? "Yes" : "No",
         payload.notes,
       ]);

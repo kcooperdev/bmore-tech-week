@@ -1,5 +1,5 @@
 import type { ApplyField } from "@/lib/apply-fields";
-import { tracks } from "@/lib/site";
+import { buildSummit } from "@/lib/site";
 
 export const pronouns = ["she / her", "he / him", "they / them", "Prefer not to say", "Something else"];
 
@@ -55,7 +55,8 @@ export const speakDays = [
 
 export const partnerNights = ["Monday · April 26", "Tuesday · April 27", "Wednesday · April 28"];
 
-export const speakerTopics = [...tracks.map((track) => track.name), "Other"];
+/** Summit focus categories for Give a Talk. No “Other”. */
+export const speakerTopics = buildSummit.tracks.flatMap((track) => track.focus);
 
 export const partnerTypes = [
   "Meetup",
@@ -174,7 +175,7 @@ function cityDetail(parent: string, step: string): ApplyField {
     label: "City and state",
     required: true,
     placeholder: "Frederick, MD",
-    when: { field: parent, is: cityFollowUps },
+    when: { field: parent, is: cityFollowUps, merge: true },
     step,
     wide: true,
   };
@@ -236,11 +237,69 @@ export const speakFields: ApplyField[] = [
     step: you,
   },
   {
+    name: "bio",
+    label: "Short bio",
+    type: "textarea",
+    required: true,
+    placeholder: "A few sentences about you and the work you do.",
+    hint: "Used if you’re selected for the speaker lineup.",
+    step: you,
+  },
+  {
+    name: "headshotUrl",
+    label: "Headshot link",
+    type: "url",
+    placeholder: "https://",
+    hint: "Optional. Link to a photo we can use (Drive, Dropbox, personal site).",
+    step: you,
+  },
+  {
+    name: "spokenBefore",
+    label: "Have you spoken before?",
+    type: "radio",
+    required: true,
+    choices: [
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+    ],
+    step: you,
+  },
+  {
+    name: "previousTalks",
+    label: "Examples of past talks",
+    type: "textarea",
+    required: true,
+    placeholder: "Links or titles of talks, panels, or workshops you’ve done.",
+    when: { field: "spokenBefore", is: ["yes"] },
+    step: you,
+  },
+  {
+    name: "firstTimeSpeaker",
+    label: "Are you a first-time speaker?",
+    type: "radio",
+    required: true,
+    choices: [
+      { value: "yes", label: "Yes, I’m a first-time speaker" },
+      { value: "no", label: "No" },
+    ],
+    when: { field: "spokenBefore", is: ["no"] },
+    step: you,
+  },
+  {
     name: "format",
     label: "Session type",
     type: "radio",
     required: true,
     choices: sessionTypes,
+    step: "Your session",
+  },
+  {
+    name: "topic",
+    label: "Category",
+    type: "radio",
+    required: true,
+    choices: speakerTopics.map((topic) => ({ value: topic, label: topic })),
+    hint: "Pick the category that best fits your session.",
     step: "Your session",
   },
   {
@@ -282,7 +341,7 @@ export const speakFields: ApplyField[] = [
     name: "notes",
     label: "Anything else we should know?",
     type: "textarea",
-    placeholder: "Access needs, first-time speaker, co-presenter, timing constraints…",
+    placeholder: "Access needs, co-presenter, timing constraints…",
     step: "Day & fit",
   },
 ];

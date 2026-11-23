@@ -411,8 +411,8 @@ pptx.title = "Bmore Tech Week 2027 — Sponsorship Deck";
 
   const days = [
     { x: 0.55, tag: "MON · APR 26 · EVENING", tagColor: C.teal, head: "Kickoff Party", sub: "Kickoff", body: "Monday evening kickoff to open the week." },
-    { x: 4.7, tag: "TUE · APR 27 · 9 AM–5 PM", tagColor: C.orange, head: "Bmore Build Summit", sub: "AI & Building Tech", body: "Talks, workshops, and panels for attendees." },
-    { x: 8.85, tag: "WED · APR 28 · 9 AM–5 PM", tagColor: C.blue, head: "Bmore Build Summit", sub: "Careers & Startups", body: "Talks, workshops, and panels, followed by the Closing Celebration that evening." },
+    { x: 4.7, tag: "TUE · APR 27 · 9 AM–5 PM", tagColor: C.orange, head: "Bmore Build Summit", sub: "Both tracks", body: "The Age of AI and Careers & Startups. Talks, workshops, and panels." },
+    { x: 8.85, tag: "WED · APR 28 · 9 AM–5 PM", tagColor: C.blue, head: "Bmore Build Summit", sub: "Both tracks", body: "The Age of AI and Careers & Startups continue with talks, workshops, and panels." },
   ];
   for (const d of days) {
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {

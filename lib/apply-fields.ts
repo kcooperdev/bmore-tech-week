@@ -15,5 +15,6 @@ export type ApplyField = {
   hint?: string;
   step?: string;
   wide?: boolean;
-  when?: { field: string; is: string[] };
+  /** Show this field only when another field matches. Set merge to fold the value into the watched field on submit (city detail). */
+  when?: { field: string; is: string[]; merge?: boolean };
 };

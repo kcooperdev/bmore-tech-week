@@ -10,7 +10,6 @@ type Row = {
   title: string;
   where: string;
   detail: string;
-  pair?: string;
   href?: string;
   tone: "hq" | "pause" | "city";
 };
@@ -38,7 +37,6 @@ function rowsFor(pillar: Pillar): Row[] {
       title: stop.title,
       where: stop.where,
       detail: stop.text,
-      pair: stop.pair,
       tone: stop.kind,
     });
   }
@@ -102,33 +100,24 @@ export function ScheduleBoard() {
           <p className="day-sheet-date">{active.date}</p>
           <h2>{active.day}</h2>
           <p>{active.tagline}</p>
+          <p className="day-sheet-summary">{active.summary}</p>
         </header>
+
         <table className="day-clock">
           <thead>
             <tr>
               <th scope="col">Time</th>
-              <th scope="col">Main Stage</th>
-              <th scope="col">Workshop Studio</th>
+              <th scope="col">What’s on</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row) => (
               <tr key={row.key} className={row.tone === "hq" ? undefined : `is-${row.tone}`}>
                 <th scope="row">{row.when}</th>
-                {row.pair !== undefined ? (
-                  <>
-                    <td>
-                      {row.title}
-                      {row.detail ? <span className="day-detail">{row.detail}</span> : null}
-                    </td>
-                    <td>{row.pair}</td>
-                  </>
-                ) : (
-                  <td colSpan={2}>
-                    {row.href ? <Link href={row.href}>{row.title}</Link> : row.title}
-                    {row.detail ? <span className="day-detail">{row.detail}</span> : null}
-                  </td>
-                )}
+                <td>
+                  {row.href ? <Link href={row.href}>{row.title}</Link> : row.title}
+                  {row.detail ? <span className="day-detail">{row.detail}</span> : null}
+                </td>
               </tr>
             ))}
           </tbody>

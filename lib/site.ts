@@ -147,128 +147,34 @@ export type Pillar = {
   stops: DayStop[];
 };
 
-function dayStops(prefix: string, mixer?: DayStop): DayStop[] {
-  const stops: DayStop[] = [
+/** Shared Tue/Wed outline. Full session lineup coming soon. */
+function summitDayStops(prefix: string): DayStop[] {
+  return [
     {
-      id: `${prefix}-doors`,
-      when: "8–9am",
+      id: `${prefix}-morning`,
+      when: "9am–12pm",
       where: "4MLK",
-      title: "Check-in and breakfast",
-      pair: "",
+      title: "Sessions",
       text: "",
       kind: "hq",
-    },
-    {
-      id: `${prefix}-am1`,
-      when: "9–9:50am",
-      where: "4MLK",
-      title: "Tech talk",
-      pair: "Workshop",
-      text: "",
-      kind: "hq",
-    },
-    {
-      id: `${prefix}-am2`,
-      when: "9:50–10:40am",
-      where: "4MLK",
-      title: "Panel",
-      pair: "Workshop",
-      text: "",
-      kind: "hq",
-    },
-    {
-      id: `${prefix}-am-break`,
-      when: "10:40–11am",
-      where: "4MLK",
-      title: "Break",
-      pair: "Break",
-      text: "",
-      kind: "pause",
-    },
-    {
-      id: `${prefix}-am3`,
-      when: "11–11:50am",
-      where: "4MLK",
-      title: "Panel",
-      pair: "Workshop",
-      text: "",
-      kind: "hq",
-    },
-    {
-      id: `${prefix}-lunch-go`,
-      when: "11:50am–12pm",
-      where: "4MLK",
-      title: "Lunch transition",
-      pair: "Lunch transition",
-      text: "",
-      kind: "pause",
     },
     {
       id: `${prefix}-lunch`,
       when: "12–1pm",
       where: "4MLK",
-      title: "Lunch",
-      pair: "Lunch",
-      text: "Vendors on site.",
-      kind: "pause",
-    },
-    {
-      id: `${prefix}-pm1`,
-      when: "1–1:50pm",
-      where: "4MLK",
-      title: "Tech talk",
-      pair: "Workshop",
-      text: "",
-      kind: "hq",
-    },
-    {
-      id: `${prefix}-pm2`,
-      when: "1:50–2:40pm",
-      where: "4MLK",
-      title: "Panel",
-      pair: "Workshop",
-      text: "",
-      kind: "hq",
-    },
-    {
-      id: `${prefix}-pm-break`,
-      when: "2:40–3pm",
-      where: "4MLK",
-      title: "Break",
-      pair: "Break",
+      title: "Lunch break",
       text: "",
       kind: "pause",
     },
     {
-      id: `${prefix}-pm3`,
-      when: "3–3:50pm",
+      id: `${prefix}-afternoon`,
+      when: "1–5pm",
       where: "4MLK",
-      title: "Panel",
-      pair: "Workshop",
-      text: "",
-      kind: "hq",
-    },
-    {
-      id: `${prefix}-pm4`,
-      when: "3:50–4:40pm",
-      where: "4MLK",
-      title: "Tech talk",
-      pair: "Workshop",
-      text: "",
-      kind: "hq",
-    },
-    {
-      id: `${prefix}-wrap`,
-      when: "4:40–5pm",
-      where: "4MLK",
-      title: "Daily wrap-up",
-      pair: "Daily wrap-up",
+      title: "Sessions",
       text: "",
       kind: "hq",
     },
   ];
-  if (mixer) stops.push(mixer);
-  return stops;
 }
 
 export const pillars: Pillar[] = [
@@ -300,10 +206,10 @@ export const pillars: Pillar[] = [
     name: "Tuesday",
     night: "",
     question: "What can I create?",
-    tagline: "Bmore Build Summit · AI & Building Tech.",
-    summary: "Hands-on workshops and talks on applied AI, software engineering, cybersecurity, creative tech, and product management.",
-    purpose: "Learn how teams build, secure, and launch products.",
-    stops: dayStops("tue"),
+    tagline: "Bmore Build Summit · 9am–5pm",
+    summary: "Both tracks run today. Session lineup coming soon.",
+    purpose: "Build, learn, and leave with a next step.",
+    stops: summitDayStops("tue"),
   },
   {
     id: "wednesday",
@@ -312,10 +218,10 @@ export const pillars: Pillar[] = [
     name: "Wednesday",
     night: "",
     question: "Where can this take me?",
-    tagline: "Bmore Build Summit · Careers & Startups.",
-    summary: "Sessions on career growth, hiring, leadership, startup funding, and turning an idea into a business.",
-    purpose: "Leave with a next step for your career or company.",
-    stops: dayStops("wed"),
+    tagline: "Bmore Build Summit · 9am–5pm",
+    summary: "Both tracks continue today. Session lineup coming soon.",
+    purpose: "Leave with a next step for your career, product, or company.",
+    stops: summitDayStops("wed"),
   },
 ];
 
@@ -347,28 +253,31 @@ export const buildSummit = {
   name: "Bmore Build Summit",
   kicker: "Inside Bmore Tech Week",
   promise: "Two days to build, learn, and leave with a next step.",
-  lede: "Two full days of hands-on workshops, tech talks, and conversations that move from building products to building careers and companies.",
+  lede: "Both tracks run on Tuesday, April 27, and Wednesday, April 28, 2027 during Bmore Tech Week.",
   venue: "4MLK · Baltimore, MD",
   dates: "April 27–28, 2027",
   price: "$75 all-access pass",
   included: "Included with your Bmore Tech Week pass",
   taglinePair: ["Build fast", "Stay human"],
-  days: [
+  tracks: [
     {
-      id: "build",
-      when: "Tuesday · April 27",
-      hours: "9 a.m.–5 p.m.",
-      name: "AI & Building Tech",
-      text: "Applied AI, software engineering, cybersecurity, creative tech, and product management. Learn how teams build, secure, and launch products.",
-      focus: ["Applied AI", "Engineering", "Security", "Product"],
+      id: "ai",
+      label: "Track 1",
+      name: "The Age of AI",
+      text: "See how people are using AI in software engineering, product and design, cybersecurity, and health and life sciences. Learn from real projects and get hands-on practice applying AI to an idea of your own.",
+      focus: ["Software Engineering", "Product & Design", "Cybersecurity", "Health & Life Sciences"],
     },
     {
-      id: "grow",
-      when: "Wednesday · April 28",
-      hours: "9 a.m.–5 p.m.",
+      id: "careers",
+      label: "Track 2",
       name: "Careers & Startups",
-      text: "Career growth, hiring, leadership, startup funding, and turning an idea into a business.",
-      focus: ["Careers", "Hiring", "Founders", "Funding"],
+      text: "Hear from hiring teams and founders about what it takes to get hired, grow your tech career, or launch a startup. Get practical advice on landing your first customers and finding funding.",
+      focus: [
+        "Hiring & Recruiting",
+        "Career Development",
+        "Startup Launch & Customer Growth",
+        "Startup Funding & Investment",
+      ],
     },
   ],
   outcomes: [
@@ -464,6 +373,7 @@ export const waysIn: { href: string; title: string; text: string }[] = [
 export const nav = {
   primary: [
     { href: "/schedule", label: "Schedule" },
+    { href: "/about", label: "About" },
   ],
   involved: [
     { href: "/speak", label: "Give a Talk" },
