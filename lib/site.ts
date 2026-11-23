@@ -79,7 +79,7 @@ export const founderStory = {
   title: "Why Bmore Tech Week exists",
   paragraphs: [
     "Khalif Cooper founded Bmore Tech Week after growing up in Philadelphia and living in Atlanta, where he watched a city become a tech powerhouse over fifteen-plus years.",
-    "He didn’t come up through computer science. A theatre grad who found tech while serving at a conference, he taught himself from a laptop, showed up at events, and put his work in front of people until the path opened.",
+    "A theatre grad who found tech while serving at a conference, he taught himself from a laptop, showed up at events, and put his work in front of people. When there wasn’t a path, he built one.",
     "He’d spent almost every summer in Baltimore growing up, drawn to the culture. More than five years ago a job brought him here for good. Living and building in the city, he recognized the same thing he’d seen in Atlanta: the builders are already here.",
     "That belief shaped the work that followed. Helping people break into tech. Building community. Growing a Baltimore-rooted network past 1,200 people. And now, gathering the room for three days each spring.",
     "His motto is simple. It’s never too late to build. Never too old to build. The key is to keep showing up.",
