@@ -44,11 +44,6 @@ export default async function Home({
               {buildSummit.name}
             </h2>
             <p className="week-lede">{buildSummit.lede}</p>
-            <ul className="summit-outcomes" aria-label="What you get">
-              {buildSummit.outcomes.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
             <ul className="summit-grid">
               {buildSummit.tracks.map((track) => (
                 <li key={track.id}>

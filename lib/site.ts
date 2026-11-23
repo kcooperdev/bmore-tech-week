@@ -251,8 +251,8 @@ export const tracks = [
 export const buildSummit = {
   name: "Bmore Build Summit",
   kicker: "Included with your pass",
-  promise: "Two days to build, learn, and leave with a next step.",
-  lede: "Two full days, April 27–28. Run both tracks: apply AI to real work, then get practical on careers, hiring, and startups. Same pass. Same room. More ways in.",
+  promise: "Two days. Two tracks. One room.",
+  lede: "April 27–28. Move between The Age of AI and Careers & Startups all day. Build with AI in the morning, talk careers and startups in the afternoon, or flip it. Your pass covers both.",
   venue: "4MLK · Baltimore, MD",
   dates: "April 27–28, 2027",
   price: "$75 all-access pass",
@@ -278,11 +278,6 @@ export const buildSummit = {
         "Startup Funding & Investment",
       ],
     },
-  ],
-  outcomes: [
-    "Leave with a collaborator, a hire lead, or a clearer next step",
-    "Hands-on workshops and practical talks, not TED cosplay",
-    "Breakfast both days, résumé clinics, and a professional headshot",
   ],
 };
 
