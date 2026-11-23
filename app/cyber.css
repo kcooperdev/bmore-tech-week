@@ -1078,6 +1078,30 @@
   line-height: 1.35;
 }
 
+.summit-outcomes {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 36rem;
+}
+
+.summit-outcomes li {
+  margin: 0;
+  padding: 0;
+  color: #f3ead7;
+  font-size: 0.95rem;
+  font-weight: 550;
+  line-height: 1.35;
+}
+
+.summit-outcomes li::before {
+  content: "·";
+  margin-right: 0.45rem;
+  color: #e2b13c;
+}
+
 .summit-when {
   margin: 0 0 0.35rem !important;
   font-size: 0.72rem !important;

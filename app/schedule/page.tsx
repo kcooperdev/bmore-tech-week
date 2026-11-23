@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { ScheduleBoard } from "@/components/ScheduleBoard";
-import { buildSummit, pageMeta, site, speakersAnnounce } from "@/lib/site";
+import { buildSummit, pageMeta, site, speakersAnnounce, ticketsSoonLabel } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
@@ -30,9 +29,9 @@ export default function SchedulePage() {
           <ScheduleBoard />
 
           <div className="week-actions">
-            <Link className="week-btn" href="/tickets">
-              Join the list
-            </Link>
+            <button type="button" className="week-btn week-btn-closed" disabled>
+              {ticketsSoonLabel}
+            </button>
           </div>
         </div>
       </div>

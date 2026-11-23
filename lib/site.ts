@@ -17,9 +17,10 @@ export const ticketUrl = process.env.NEXT_PUBLIC_TICKET_URL?.trim() || "";
 export const ticketsSoonLabel = "Tickets on sale soon";
 export const ticketsSoonHint = "All-access pass · $75 when tickets open";
 export const speakersAnnounce = "Speakers announced February 2027";
+export const speakDeadlineLabel = "Deadline February 1, 2027";
 
 /** Flip on when community “Fund a seat” should show again. */
-export const communitySponsorLive = false;
+export const communitySponsorLive = true;
 
 /** Grassroots community sponsor amounts. Every $50 funds one student or laid-off pass. */
 export const communitySponsorAmounts = [25, 50, 75, 100, 150, 200, 250] as const;
@@ -64,11 +65,13 @@ export const site = {
   where: "Baltimore, Maryland",
   tagline: "Baltimore’s builders, in one room.",
   promise: "Baltimore’s builders, in one room.",
-  sell: "Three days. $75. Monday night kickoff, then two days at the Bmore Build Summit. Leave with a hire, a collaborator, or a next step.",
+  sell: "Three days. One $75 pass. Kick off Monday night, then two days at the Bmore Build Summit for AI, careers, and startups, so you leave with a hire, a collaborator, or a clearer next step.",
   ticketLine: "All-access pass · $75 · April 26–28, 2027 · Baltimore, MD",
   idea: "Baltimore already has the builders. This is the gathering.",
   positioning: "Baltimore’s builders, in one room.",
-  room: "Founders, engineers, designers, researchers, students, and tech leaders from Baltimore and across the DMV.",
+  room: "The people building here now: founders shipping products, engineers solving hard problems, designers shaping what ships, students breaking in, and leaders hiring the next wave across Baltimore and the DMV.",
+  roomHeadline: "Walk in with your people already in the room",
+  roomKicker: "Who you’ll meet",
   passes: "Get the pass",
   whyHeadline: "Baltimore has the talent. This is the gathering.",
   whyLede:
@@ -247,9 +250,9 @@ export const tracks = [
 
 export const buildSummit = {
   name: "Bmore Build Summit",
-  kicker: "Inside Bmore Tech Week",
+  kicker: "Included with your pass",
   promise: "Two days to build, learn, and leave with a next step.",
-  lede: "Both tracks run on Tuesday, April 27, and Wednesday, April 28, 2027 during Bmore Tech Week.",
+  lede: "Two full days, April 27–28. Run both tracks: apply AI to real work, then get practical on careers, hiring, and startups. Same pass. Same room. More ways in.",
   venue: "4MLK · Baltimore, MD",
   dates: "April 27–28, 2027",
   price: "$75 all-access pass",
@@ -260,14 +263,14 @@ export const buildSummit = {
       id: "ai",
       label: "Track 1",
       name: "The Age of AI",
-      text: "See how people are using AI in software engineering, product and design, cybersecurity, and health and life sciences. Learn from real projects and get hands-on practice applying AI to an idea of your own.",
+      text: "See how teams use AI in software, product, cybersecurity, and life sciences, then practice on an idea of your own.",
       focus: ["Software Engineering", "Product & Design", "Cybersecurity", "Health & Life Sciences"],
     },
     {
       id: "careers",
       label: "Track 2",
       name: "Careers & Startups",
-      text: "Hear from hiring teams and founders about what it takes to get hired, grow your tech career, or launch a startup. Get practical advice on landing your first customers and finding funding.",
+      text: "Hear from hiring teams and founders on getting hired, growing in tech, landing customers, and finding funding.",
       focus: [
         "Hiring & Recruiting",
         "Career Development",
@@ -278,7 +281,7 @@ export const buildSummit = {
   ],
   outcomes: [
     "Leave with a collaborator, a hire lead, or a clearer next step",
-    "Hands-on workshops and practical tech talks — not TED cosplay",
+    "Hands-on workshops and practical talks, not TED cosplay",
     "Breakfast both days, résumé clinics, and a professional headshot",
   ],
 };
@@ -349,6 +352,7 @@ export const nav = {
   ],
   involved: [
     { href: "/speak", label: "Give a Talk" },
+    ...(communitySponsorLive ? [{ href: "/community", label: "Fund a Seat" }] : []),
     { href: "/sponsors", label: "Sponsor" },
   ],
 };
@@ -552,4 +556,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Bmore Tech Week 2027. Baltimore’s builders, in one room. Three days · $75 · April 26–28 in Baltimore. Speakers announced February 2027.";
+  "Bmore Tech Week 2027. Baltimore’s builders, in one room. Three days · $75 all-access pass · April 26–28 in Baltimore. Speakers announced February 2027.";

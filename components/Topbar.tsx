@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { currentNavTone } from "@/lib/nav-tone";
-import { nav, site, ticketsSoonLabel } from "@/lib/site";
+import { nav, site } from "@/lib/site";
 
 function isCurrent(pathname: string, href: string) {
   const path = href.split("#")[0];
@@ -119,9 +119,6 @@ export function Topbar({
           </div>
         </span>
       </nav>
-      <button type="button" className="topbar-cta is-soon" disabled aria-disabled="true">
-        {ticketsSoonLabel}
-      </button>
       {open ? (
         <div className="topbar-drawer-layer">
           <button type="button" className="topbar-drawer-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
@@ -158,9 +155,6 @@ export function Topbar({
                 {item.label}
               </Link>
             ))}
-            <button type="button" className="topbar-drawer-cta is-soon" disabled aria-disabled="true">
-              {ticketsSoonLabel}
-            </button>
           </div>
         </div>
       ) : null}

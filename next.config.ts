@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       { source: "/apply/partner", destination: "/get-involved", permanent: false },
       { source: "/apply/sponsor", destination: "/sponsors", permanent: true },
       { source: "/sponsor", destination: "/sponsors", permanent: true },
-      { source: "/sponsor/community", destination: "/sponsors", permanent: false },
+      { source: "/sponsor/community", destination: "/community", permanent: true },
       { source: "/sponsor/corporate", destination: "/corporate", permanent: true },
       { source: "/apply/ambassador", destination: "/get-involved", permanent: false },
       { source: "/ambassador", destination: "/get-involved", permanent: false },

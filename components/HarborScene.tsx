@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Topbar } from "@/components/Topbar";
 import { currentNavTone } from "@/lib/nav-tone";
-import { site } from "@/lib/site";
+import { site, ticketsSoonLabel } from "@/lib/site";
 
 function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
@@ -151,6 +151,9 @@ export function HarborScene() {
             <time dateTime="2027-04-26/2027-04-28">{site.dates}</time>
             <span className="night-meta-place">Baltimore, MD</span>
           </p>
+          <button type="button" className="night-cta is-soon" disabled aria-disabled="true">
+            {ticketsSoonLabel}
+          </button>
         </main>
       </div>
     </section>

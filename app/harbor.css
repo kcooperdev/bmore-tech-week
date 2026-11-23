@@ -177,6 +177,42 @@ html:has(.harbor-pin) body {
   opacity: 0.92;
 }
 
+.night-cta {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.15rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.25rem;
+  border: 1.5px solid #e2b13c;
+  border-radius: 999px;
+  background: #e2b13c;
+  color: #16120c;
+  font-family: var(--font-sans), Figtree, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.night-cta:hover {
+  background: #f4cc5c;
+  border-color: #f4cc5c;
+  color: #16120c;
+}
+
+.night-cta.is-soon,
+.night-cta.is-soon:hover,
+.night-cta.is-soon:disabled {
+  background: #cfc6b5;
+  color: #5c564c;
+  border-color: #b7ae9d;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .night-meta-line {
   max-width: 16rem;
   color: #f3ead7;
@@ -1833,6 +1869,10 @@ html.is-nav-open body {
   .night-title h1 > span,
   .night-meta {
     text-align: center;
+  }
+
+  .night-title {
+    align-items: center;
   }
 
   .night-title h1 {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { StoryReveal } from "@/components/StoryReveal";
-import { founderStory, pageMeta, site } from "@/lib/site";
+import { founderStory, pageMeta, site, ticketsSoonLabel } from "@/lib/site";
 
 export const metadata = pageMeta(
   "About",
@@ -34,9 +34,9 @@ export default function AboutPage() {
 
         <div className="week-wrap story-rest">
           <StoryReveal className="week-actions" delay={100}>
-            <Link className="week-btn" href="/tickets#pass-list">
-              Join the list
-            </Link>
+            <button type="button" className="week-btn week-btn-closed" disabled>
+              {ticketsSoonLabel}
+            </button>
             <Link className="week-btn week-btn-ghost" href="/#summit">
               Bmore Build Summit
             </Link>
