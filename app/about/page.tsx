@@ -16,9 +16,6 @@ export default function AboutPage() {
           <StoryReveal as="h1" className="story-hero-display">
             {site.idea}
           </StoryReveal>
-          <StoryReveal as="p" className="plain-lede story-hero-lede" delay={90}>
-            {site.founderBeat}
-          </StoryReveal>
         </div>
       </header>
 

@@ -94,7 +94,6 @@ export default async function Home({
             <h2 id="founder-beat" className="week-title week-title-sm">
               {site.idea}
             </h2>
-            <p className="week-lede">{site.founderBeat}</p>
             <div className="week-actions">
               <Link className="week-btn week-btn-ghost" href="/about">
                 Read the full story
