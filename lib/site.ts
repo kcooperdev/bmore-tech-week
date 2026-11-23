@@ -287,29 +287,6 @@ export const buildSummit = {
   ],
 };
 
-export const aboutSections = [
-  {
-    id: "baltimore",
-    title: "Built in Baltimore",
-    text: "From cybersecurity and healthcare innovation to AI, research, startups, and creative technology, Baltimore is home to builders solving real problems. Bmore Tech Week is where those communities meet.",
-  },
-  {
-    id: "people",
-    title: "Find your people",
-    text: "Meet founders building in Baltimore, engineers working on problems you care about, and people who can tell you what it’s actually like to move into a new role. Come with a question, an idea, or a project you want to talk through.",
-  },
-  {
-    id: "venue",
-    title: "In the heart of downtown",
-    text: "We take over 4MLK, a downtown hub for innovation and entrepreneurship. Catch a talk, try something hands-on in a workshop, then keep the conversation going between sessions, with the city right outside the door.",
-  },
-  {
-    id: "founding",
-    title: "Founding year",
-    text: "Bmore Tech Week launches April 26–28, 2027. We’re bringing builders, founders, engineers, creators, researchers, and future leaders together for three days downtown. If you’re here now, you’re helping shape what this becomes.",
-  },
-];
-
 export const passIncludes = [
   "Entry to the Monday night kickoff party",
   "Both full days of the Bmore Build Summit",

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { StoryReveal } from "@/components/StoryReveal";
-import { aboutSections, founderStory, pageMeta, site } from "@/lib/site";
+import { founderStory, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "About",
@@ -36,23 +36,6 @@ export default function AboutPage() {
         </article>
 
         <div className="week-wrap story-rest">
-          <StoryReveal as="p" className="story-rest-kicker">
-            About the week
-          </StoryReveal>
-          <div className="story-beats">
-            {aboutSections.map((section, index) => (
-              <StoryReveal
-                as="section"
-                key={section.id}
-                delay={index * 60}
-                aria-labelledby={section.id}
-              >
-                <h2 id={section.id}>{section.title}</h2>
-                <p>{section.text}</p>
-              </StoryReveal>
-            ))}
-          </div>
-
           <StoryReveal className="week-actions" delay={100}>
             <Link className="week-btn" href="/tickets#pass-list">
               Join the list
