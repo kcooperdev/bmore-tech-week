@@ -93,7 +93,7 @@ export const partnerHelp = [
 export const sponsorTiers = [
   { value: "badge", label: "Attendee Badge Sponsor · $500" },
   { value: "supporting", label: "Supporting Sponsor · $1,000" },
-  { value: "day", label: "Summit Day Sponsor · $2,500" },
+  { value: "day", label: "Presenting Sponsor · $2,500" },
 ];
 
 export const sponsorTierCopy = [
@@ -117,7 +117,7 @@ export const sponsorTierCopy = [
       "Logo on attendee badges",
       "Logo on the sponsor page",
       "Logo on shared summit signage",
-      "Recognition in an attendee email",
+      "Dedicated callout & link in 1 organizer-sent attendee email",
       "2 full conference passes",
     ],
     pick: true,
@@ -125,16 +125,18 @@ export const sponsorTierCopy = [
   },
   {
     id: "day",
-    name: "Summit Day Sponsor",
-    price: "$2,500 per day",
+    name: "Presenting Sponsor",
+    price: "$2,500",
     perks: [
       "Logo on attendee badges",
       "Logo on the sponsor page",
       "Logo on shared summit signage",
-      "Recognition in an attendee email",
-      "Featured logo on the selected day’s agenda and signage",
+      "Dedicated callout & link in 1 organizer-sent attendee email",
+      "Featured logo on both days’ agenda and signage",
       "Recognition during opening remarks",
-      "Dedicated table that day",
+      "Dedicated table both summit days",
+      "Opt-in attendee lead list (names and emails of attendees who consent)",
+      "On-site lead capture at your table via QR check-in",
       "4 full conference passes",
     ],
     pick: false,

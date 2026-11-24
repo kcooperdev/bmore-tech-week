@@ -15,7 +15,7 @@ export function SponsorBoard({
       {sponsorTierCopy.map((item) => (
         <li key={item.id}>
           <article className={item.top ? "tier-card is-top" : item.pick ? "tier-card is-pick" : "tier-card"}>
-            {item.pick ? <p className="tier-flag">Most sponsors</p> : <p className="tier-flag tier-flag-empty" aria-hidden="true" />}
+            {item.pick ? <p className="tier-flag">Most Popular</p> : <p className="tier-flag tier-flag-empty" aria-hidden="true" />}
             <p className="tier-name">{item.name}</p>
             <p className="tier-price">{item.price}</p>
             <ul className="tier-perks">

@@ -101,7 +101,7 @@ const TIER_LABEL: Record<string, string> = {
   badge: "Attendee Badge Sponsor ($500)",
   supporting: "Supporting Sponsor ($1,000)",
   community: "Supporting Sponsor ($1,000)",
-  day: "Summit Day Sponsor ($2,500 per day)",
+  day: "Presenting Sponsor ($2,500)",
 };
 
 type SaveResult = { ok: true; id?: string };

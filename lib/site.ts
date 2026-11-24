@@ -412,27 +412,32 @@ export const sponsorPackages: SponsorPackage[] = [
       "Logo on attendee badges",
       "Logo on the sponsor page",
       "Logo on shared summit signage",
-      "Recognition in an attendee email",
+      "Dedicated callout & link in 1 organizer-sent attendee email",
       "2 full conference passes",
     ],
   },
   {
     id: "day",
-    name: "Summit Day Sponsor",
-    price: "$2,500 per day",
-    summary: "Featured day placement, opening remarks, and a dedicated table.",
+    name: "Presenting Sponsor",
+    price: "$2,500",
+    summary: "Featured across both summit days, a dedicated table, and the opt-in attendee lead list.",
     includes: [
       "Logo on attendee badges",
       "Logo on the sponsor page",
       "Logo on shared summit signage",
-      "Recognition in an attendee email",
-      "Featured logo on the selected day’s agenda and signage",
+      "Dedicated callout & link in 1 organizer-sent attendee email",
+      "Featured logo on both days’ agenda and signage",
       "Recognition during opening remarks",
-      "Dedicated table that day",
+      "Dedicated table both summit days",
+      "Opt-in attendee lead list (names and emails of attendees who consent)",
+      "On-site lead capture at your table via QR check-in",
       "4 full conference passes",
     ],
   },
 ];
+
+export const sponsorLeadPrivacyNote =
+  "To protect attendee privacy, we never distribute unconsented email lists. Sponsor lead sharing is limited to attendees who explicitly opt in during registration or voluntarily check in at a sponsor table.";
 
 export const generalAdmission = {
   name: "All-access pass",

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SponsorBoard } from "@/components/SponsorBoard";
-import { communitySponsorLive, pageMeta, sponsorAudience } from "@/lib/site";
+import { communitySponsorLive, pageMeta, sponsorAudience, sponsorLeadPrivacyNote } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Corporate Sponsor",
@@ -34,6 +34,8 @@ export default function CorporateSponsorPage() {
           </section>
 
           <SponsorBoard />
+
+          <p className="sponsor-privacy-note">{sponsorLeadPrivacyNote}</p>
 
           {communitySponsorLive ? (
             <p className="community-switch">

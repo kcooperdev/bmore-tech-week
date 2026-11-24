@@ -34,7 +34,7 @@ const communityPerks = [
   "Logo on attendee badges",
   "Logo on the sponsor page",
   "Logo on shared summit signage",
-  "Recognition in an attendee email",
+  "Dedicated callout & link in 1 organizer-sent attendee email",
   "2 full conference passes",
 ];
 
@@ -42,10 +42,12 @@ const dayPerks = [
   "Logo on attendee badges",
   "Logo on the sponsor page",
   "Logo on shared summit signage",
-  "Recognition in an attendee email",
-  "Featured logo on the selected day’s agenda and signage",
+  "Dedicated callout & link in 1 organizer-sent attendee email",
+  "Featured logo on both days’ agenda and signage",
   "Recognition during opening remarks",
-  "Dedicated table that day",
+  "Dedicated table both summit days",
+  "Opt-in attendee lead list (names and emails of attendees who consent)",
+  "On-site lead capture at your table via QR check-in",
   "4 full conference passes",
 ];
 
@@ -704,7 +706,7 @@ packageSlide({
 
 // 7. Community
 packageSlide({
-  tag: "MOST SPONSORS",
+  tag: "MOST POPULAR",
   tagBg: C.blue,
   name: "Supporting Sponsor",
   price: "$1,000",
@@ -713,13 +715,13 @@ packageSlide({
   cardFill: C.green,
 });
 
-// 8. Summit Day
+// 8. Presenting
 packageSlide({
-  tag: "FEATURED DAY",
+  tag: "BOTH SUMMIT DAYS",
   tagBg: "111111",
-  name: "Summit Day Sponsor",
-  price: "$2,500 per day",
-  blurb: "Be the featured sponsor for one day of the Bmore Build Summit.",
+  name: "Presenting Sponsor",
+  price: "$2,500",
+  blurb: "Be the featured sponsor across both days of the Bmore Build Summit.",
   perks: dayPerks,
   cardFill: C.orange,
   textColor: C.navy,
@@ -734,23 +736,24 @@ packageSlide({
   title(s, "Compare the three sponsor packages");
 
   const rows = [
-    ["Benefit", "Attendee Badge\n$500", "Community\n$1,000", "Summit Day\n$2,500/day"],
+    ["Benefit", "Attendee Badge\n$500", "Supporting\n$1,000", "Presenting\n$2,500"],
     [
       "Logo & recognition",
       "Logo on badges\nLogo on sponsor page",
-      "Logo on badges\nLogo on sponsor page\nShared summit signage\nEmail recognition",
-      "Logo on badges\nLogo on sponsor page\nShared summit signage\nEmail recognition\nFeatured day logo",
+      "Logo on badges\nLogo on sponsor page\nShared summit signage\nDedicated email callout",
+      "Logo on badges\nLogo on sponsor page\nShared summit signage\nDedicated email callout\nFeatured both days",
     ],
     ["Speaking", "—", "—", "Opening remarks"],
-    ["Exhibitor table", "—", "—", "Dedicated table"],
+    ["Exhibitor table", "—", "—", "Table both days + QR"],
+    ["Lead list", "—", "—", "Opt-in names & emails"],
     ["Passes", "1 pass", "2 passes", "4 passes"],
   ];
   const fills = [C.blue, C.orange, C.green, C.greenDeep];
   const textColors = [C.white, C.navy, C.white, C.white];
   const colW = [2.6, 3.0, 3.3, 3.4];
   let x = 0.55;
-  const y = 1.7;
-  const rowH = [0.85, 1.85, 0.7, 0.7, 0.7];
+  const y = 1.55;
+  const rowH = [0.75, 1.55, 0.58, 0.58, 0.58, 0.58];
 
   for (let r = 0; r < rows.length; r++) {
     let cx = x;
