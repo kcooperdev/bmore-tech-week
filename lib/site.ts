@@ -79,13 +79,15 @@ export const site = {
 };
 /** Founder story. Lives on About. Keep the homepage short. */
 export const founderStory = {
-  title: "Why Bmore Tech Week exists",
+  title: "Why Bmore Tech Week Exists",
+  name: "Khalif Cooper",
+  linkedin: "https://www.linkedin.com/in/kcooperdev",
   paragraphs: [
-    "Khalif Cooper founded Bmore Tech Week after growing up in Philadelphia and living in Atlanta, where he watched a city become a tech powerhouse over fifteen-plus years.",
-    "He was working as a food server at a tech conference when he discovered technology as a career. A theatre grad, he taught himself from a laptop, showed up at events, and put his work in front of people. When there wasn’t a path, he built one.",
-    "He’d spent almost every summer in Baltimore growing up, drawn to the culture. More than five years ago a job brought him here for good. Living and building in the city, he recognized the same thing he’d seen in Atlanta: the builders are already here.",
-    "That belief shaped the work that followed. Helping people break into tech. Building community. Growing a Baltimore-rooted network past 1,200 people. And now, gathering the room for three days each spring.",
-    "His motto is simple. It’s never too late to start. Never too old to build. The key is to keep showing up.",
+    "Khalif Cooper founded Bmore Tech Week after growing up in Philadelphia and living in Atlanta, where he watched the city transform into a tech powerhouse over more than fifteen years.",
+    "He discovered technology as a career while working as a food server at a tech conference. A theater grad with no formal background in the field, he taught himself from a laptop, showed up at events, and put his work in front of people. When there wasn’t a path, he built one.",
+    "Having spent nearly every summer in Baltimore growing up, he had long been drawn to the city’s culture. More than five years ago, a job brought him here for good. While living and building locally, he recognized the same potential he had seen in Atlanta: the builders are already here.",
+    "That belief shaped everything that followed: helping people break into tech, building community, and growing a Baltimore-rooted network past 1,200 people. Now, that work culminates in gathering the ecosystem for three days each spring.",
+    "His motto is simple: It’s never too late to start, and you’re never too old to build. The key is to keep showing up.",
     "Bmore Tech Week exists so engineers, founders, designers, researchers, students, and creators can meet, connect, and build community around tech in Baltimore. The talent is already here. This is the gathering.",
   ],
 };

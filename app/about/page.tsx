@@ -7,6 +7,19 @@ export const metadata = pageMeta(
   `${site.idea} Why Bmore Tech Week exists. Three days of tech in Baltimore, ${site.dates}.`,
 );
 
+function withNameLink(paragraph: string) {
+  const name = founderStory.name;
+  if (!paragraph.startsWith(name)) return paragraph;
+  return (
+    <>
+      <a href={founderStory.linkedin} target="_blank" rel="noreferrer">
+        {name}
+      </a>
+      {paragraph.slice(name.length)}
+    </>
+  );
+}
+
 export default function AboutPage() {
   return (
     <main className="plain-page story-page">
@@ -27,9 +40,16 @@ export default function AboutPage() {
 
           {founderStory.paragraphs.map((paragraph, index) => (
             <StoryReveal as="p" key={paragraph.slice(0, 48)} delay={Math.min(index * 35, 140)}>
-              {paragraph}
+              {index === 0 ? withNameLink(paragraph) : paragraph}
             </StoryReveal>
           ))}
+
+          <StoryReveal as="p" className="story-founder-credit" delay={160}>
+            {founderStory.name} ·{" "}
+            <a href={founderStory.linkedin} target="_blank" rel="noreferrer">
+              Connect on LinkedIn
+            </a>
+          </StoryReveal>
         </article>
 
         <div className="week-wrap story-rest">
