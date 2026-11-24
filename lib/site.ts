@@ -81,7 +81,7 @@ export const site = {
 export const founderStory = {
   title: "Why Bmore Tech Week Exists",
   name: "Khalif Cooper",
-  linkedin: "https://www.linkedin.com/in/kcooperdev",
+  linkedin: "https://www.linkedin.com/in/kcooperdev/",
   paragraphs: [
     "Khalif Cooper founded Bmore Tech Week after growing up in Philadelphia and living in Atlanta, where he watched the city transform into a tech powerhouse over more than fifteen years.",
     "He discovered technology as a career while working as a food server at a tech conference. A theater grad with no formal background in the field, he taught himself from a laptop, showed up at events, and put his work in front of people. When there wasn’t a path, he built one.",
