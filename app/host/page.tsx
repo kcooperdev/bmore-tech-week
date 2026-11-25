@@ -1,9 +1,9 @@
 import { ApplyForm } from "@/components/ApplyForm";
-import { pageMeta, pillars } from "@/lib/site";
+import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "Networking venue",
-  "Offer a room for a partner-hosted evening event during Bmore Tech Week, April 26–28, 2027.",
+  "Host a Room",
+  "Offer a room for a partner-hosted evening on Tuesday, April 27, 2027 during Bmore Tech Week.",
 );
 
 export default function HostPage() {
@@ -12,16 +12,18 @@ export default function HostPage() {
       <div className="page-top">
         <div className="week-wrap split">
           <header id="main">
-            <p className="week-kicker">After 5:30</p>
-            <h1>Venue</h1>
-            <p className="plain-lede">Networking events run Monday, Tuesday, and Wednesday evenings. If your room fits, we will ask.</p>
+            <p className="week-kicker">Tuesday · April 27 · After 5:30</p>
+            <h1>Host a Room</h1>
+            <p className="plain-lede">
+              We’re recruiting partner venues for Tuesday evening only.
+            </p>
           </header>
           <ApplyForm
             closed
             endpoint="/api/venues"
             submitLabel="Submit"
             successTitle="Thanks. We have the room."
-            successBody="If the networking event can live here, we will write you."
+            successBody="If a Tuesday partner evening can live here, we will write you."
             fields={[
               { name: "organization", label: "Organization", required: true, autoComplete: "organization", step: "You" },
               { name: "contact", label: "Your name", required: true, autoComplete: "name", step: "You" },
@@ -45,10 +47,10 @@ export default function HostPage() {
               },
               {
                 name: "day",
-                label: "Preferred night",
+                label: "Night",
                 type: "select",
                 required: true,
-                options: [...pillars.map((pillar) => `${pillar.day} · ${pillar.date}`), "No preference"],
+                options: ["Tuesday · April 27"],
                 step: "The room",
               },
               { name: "cost", label: "Free or paid", type: "select", required: true, options: ["Free", "Paid", "Not sure"], step: "The room" },

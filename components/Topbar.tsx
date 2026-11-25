@@ -21,13 +21,11 @@ export function Topbar({
   const pathname = usePathname();
   const bar = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
-  const [involved, setInvolved] = useState(false);
   const [lastPath, setLastPath] = useState(pathname);
 
   if (lastPath !== pathname) {
     setLastPath(pathname);
     setOpen(false);
-    setInvolved(false);
   }
 
   useEffect(() => {
@@ -72,10 +70,7 @@ export function Topbar({
         aria-expanded={open}
         aria-controls="site-menu"
         aria-label={open ? "Close menu" : "Open menu"}
-        onClick={() => {
-          setInvolved(false);
-          setOpen((value) => !value);
-        }}
+        onClick={() => setOpen((value) => !value)}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true">
           {open ? (
@@ -98,26 +93,6 @@ export function Topbar({
             </Link>
           </span>
         ))}
-        <span className="topbar-corner-item topbar-dropdown">
-          <button
-            type="button"
-            className="harbor-link topbar-dropdown-btn"
-            aria-expanded={involved}
-            onClick={() => setInvolved((value) => !value)}
-          >
-            Get Involved
-            <svg className="topbar-caret" viewBox="0 0 12 12" aria-hidden="true">
-              <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </button>
-          <div className={involved ? "topbar-dropdown-menu is-open" : "topbar-dropdown-menu"} role="menu">
-            {nav.involved.map((item) => (
-              <Link key={item.href} role="menuitem" className="topbar-dropdown-item" href={item.href}>
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </span>
       </nav>
       {open ? (
         <div className="topbar-drawer-layer">
@@ -133,18 +108,6 @@ export function Topbar({
               Home
             </Link>
             {nav.primary.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="topbar-drawer-link"
-                aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <p className="topbar-drawer-label">Get Involved</p>
-            {nav.involved.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

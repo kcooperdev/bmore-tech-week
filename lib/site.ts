@@ -39,7 +39,7 @@ export const communitySponsorCopy = {
 export const sponsorPaths = [
   {
     href: "/community",
-    title: "Join the movement",
+    title: "Fund a Seat",
     text: "Community sponsor. Give $25–$250 and fund a seat for someone who needs it.",
     tone: "community" as const,
   },
@@ -63,19 +63,24 @@ export const site = {
   dates: "April 26–28, 2027",
   when: "",
   where: "Baltimore, Maryland",
-  tagline: "Baltimore’s builders, in one room.",
-  promise: "Baltimore’s builders, in one room.",
-  sell: "Three days. One $75 pass. Kick off Monday night, then two days at the Bmore Build Summit for AI, careers, and startups, so you leave with a hire, a collaborator, or a clearer next step.",
+  tagline: "Where technology’s next chapter gets built.",
+  promise: "Where technology’s next chapter gets built.",
+  headline: "Where Technology’s Next Chapter Gets Built.",
+  sell: "Three days bringing together the people building, securing, and transforming the future of technology.",
   ticketLine: "All-access pass · $75 · April 26–28, 2027 · Baltimore, MD",
-  idea: "Baltimore already has the builders. This is the gathering.",
-  positioning: "Baltimore’s builders, in one room.",
-  room: "The people building here now: founders shipping products, engineers solving hard problems, designers shaping what ships, students breaking in, and leaders hiring the next wave across Baltimore and the DMV.",
-  roomHeadline: "Walk in with your people already in the room",
+  idea: "More than a conference. A gathering of builders.",
+  positioning: "A regional technology conference for GovTech, AI, and cybersecurity.",
+  room: "Bring together the people shaping what’s next across government technology, artificial intelligence, and cybersecurity.",
+  roomHeadline: "The people shaping what’s next.",
   roomKicker: "Who you’ll meet",
+  identityTitle: "More than a conference. A gathering of builders.",
+  identityLede:
+    "Bmore Tech Week brings together the people, ideas, and companies shaping the future of technology. Through technical talks, panels, hands-on workshops, and meaningful connections, we’re creating a space for the region’s technology community to learn, collaborate, and build.",
   passes: "Get the pass",
-  whyHeadline: "Baltimore has the talent. This is the gathering.",
+  whyHeadline: "A serious regional technology conference.",
   whyLede:
-    "Baltimore is home to founders, engineers, researchers, designers, creators, students, and entrepreneurs building every day. Bmore Tech Week brings those communities together for three days of learning, collaboration, and opportunity.",
+    "Bmore Tech Week is built for the people building, securing, and transforming technology, with the energy of a culture-forward gathering and the technical depth of a developer conference.",
+  venueShort: "4MLK, Baltimore",
 };
 /** Founder story. Lives on About. Keep the homepage short. */
 export const founderStory = {
@@ -88,7 +93,7 @@ export const founderStory = {
     "Having spent nearly every summer in Baltimore growing up, he had long been drawn to the city’s culture. More than five years ago, a job brought him here for good. While living and building locally, he recognized the same potential he had seen in Atlanta: the builders are already here.",
     "That belief shaped everything that followed: helping people break into tech, building community, and growing a Baltimore-rooted network past 1,200 people. Now, that work culminates in gathering the ecosystem for three days each spring.",
     "His motto is simple: It’s never too late to start, and you’re never too old to build. The key is to keep showing up.",
-    "Bmore Tech Week exists so engineers, founders, designers, researchers, students, and creators can meet, connect, and build community around tech in Baltimore. The talent is already here. This is the gathering.",
+    "Bmore Tech Week exists so the people building GovTech, AI, and cybersecurity can meet, collaborate, and push the work forward in Baltimore, for the region.",
   ],
 };
 
@@ -96,20 +101,20 @@ export const festTargets = [
   "300+ attendees",
   "30 sessions",
   "3 days",
-  "Multiple tracks",
-  "Networking events after 5:30",
+  "Three technology pillars",
+  "Bmore Build Summit",
   "Hands-on workshops",
 ];
 
 export const speakExamples = [
-  "How we built our first AI product",
-  "Lessons from scaling engineering teams",
-  "Building a startup in Baltimore",
-  "Breaking into tech without a CS degree",
-  "Cybersecurity challenges every company faces",
-  "Product design lessons from real products",
-  "Growing a technical creator brand",
-  "Startup funding mistakes to avoid",
+  "Modernizing legacy systems in government",
+  "Shipping generative AI into production",
+  "Threat intelligence for critical infrastructure",
+  "Cloud security patterns that actually hold",
+  "Building a GovTech company that sells",
+  "AI engineering beyond the demo",
+  "Zero-trust architecture for public systems",
+  "What VCs look for in AI and cyber founders",
 ];
 
 export type DayId = "monday" | "tuesday" | "wednesday";
@@ -184,18 +189,18 @@ export const pillars: Pillar[] = [
     day: "Monday",
     date: "April 26",
     name: "Monday",
-    night: "Kickoff Party",
+    night: "Kickoff Night",
     question: "Who should I meet?",
-    tagline: "Bmore Tech Week Kickoff Party.",
-    summary: "Meet fellow attendees, speakers, and people from Baltimore’s tech community.",
-    purpose: "Kick off the week with Baltimore’s tech community.",
+    tagline: "Kickoff Night.",
+    summary: "Open the week with attendees, speakers, and the region’s technology community.",
+    purpose: "Kick off Bmore Tech Week.",
     stops: [
       {
         id: "mon-kickoff",
         when: "Evening",
         where: "",
-        title: "Bmore Tech Week Kickoff Party",
-        text: "Meet fellow attendees, speakers, and people from Baltimore’s tech community.",
+        title: "Kickoff Night",
+        text: "Open the week with attendees, speakers, and the region’s technology community.",
         kind: "city",
       },
     ],
@@ -205,104 +210,129 @@ export const pillars: Pillar[] = [
     day: "Tuesday",
     date: "April 27",
     name: "Tuesday",
-    night: "",
-    question: "What can I create?",
+    night: "Partner evenings",
+    question: "What can we build?",
     tagline: "Bmore Build Summit · 9am–5pm",
-    summary: "Both tracks run today. Session lineup coming soon.",
-    purpose: "Build, learn, and leave with a next step.",
-    stops: summitDayStops("tue"),
+    summary: "GovTech, AI, and cybersecurity by day. Optional partner-hosted evenings after 5:30.",
+    purpose: "Technical talks, panels, and workshops across three pillars.",
+    stops: [
+      ...summitDayStops("tue"),
+      {
+        id: "tue-evening",
+        when: "Evening",
+        where: "",
+        title: "Partner evenings",
+        text: "Optional partner-hosted networking around the city.",
+        kind: "city",
+      },
+    ],
   },
   {
     id: "wednesday",
     day: "Wednesday",
     date: "April 28",
     name: "Wednesday",
-    night: "",
-    question: "Where can this take me?",
+    night: "Closing Night",
+    question: "What comes next?",
     tagline: "Bmore Build Summit · 9am–5pm",
-    summary: "Both tracks continue today. Session lineup coming soon.",
-    purpose: "Leave with a next step for your career, product, or company.",
-    stops: summitDayStops("wed"),
+    summary: "GovTech, AI, and cybersecurity continue, then Closing Night.",
+    purpose: "Finish the summit, then close the week together.",
+    stops: [
+      ...summitDayStops("wed"),
+      {
+        id: "wed-closing",
+        when: "Evening",
+        where: "",
+        title: "Closing Night",
+        text: "Close the week with attendees, speakers, and the region’s technology community.",
+        kind: "city",
+      },
+    ],
   },
 ];
 
-/** Speaker application topic choices. Not the public homepage story. */
-export const tracks = [
+/** Three technology pillars that run through the Bmore Build Summit. */
+export const techPillars = [
   {
-    name: "AI, software, and security",
-    text: "How teams build, ship, and secure the tools people use.",
+    id: "govtech",
+    label: "GovTech",
+    name: "GovTech",
+    text: "The future of government technology, public-sector innovation, civic technology, federal systems, and digital transformation.",
+    focus: [
+      "Public-sector innovation",
+      "Civic technology",
+      "Federal systems",
+      "Digital transformation",
+    ],
   },
   {
-    name: "Product, design, and creative tech",
-    text: "How ideas become products and experiences people want to use.",
+    id: "ai",
+    label: "Artificial Intelligence",
+    name: "Artificial Intelligence",
+    text: "AI engineering, generative AI, intelligent automation, AI applications, and the future of building with AI.",
+    focus: [
+      "AI engineering",
+      "Generative AI",
+      "Intelligent automation",
+      "Building with AI",
+    ],
   },
   {
-    name: "Startups and business growth",
-    text: "What founders learn from finding customers, building teams, and growing a business.",
+    id: "cyber",
+    label: "Cybersecurity",
+    name: "Cybersecurity",
+    text: "Cyber defense, threat intelligence, security engineering, cloud security, and protecting critical infrastructure.",
+    focus: [
+      "Cyber defense",
+      "Threat intelligence",
+      "Security engineering",
+      "Cloud security",
+    ],
   },
-  {
-    name: "Life sciences and climate tech",
-    text: "How researchers and founders turn discoveries into practical solutions.",
-  },
-  {
-    name: "Careers and leadership",
-    text: "How people get into tech, change direction, and learn to lead teams.",
-  },
-];
+] as const;
+
+/** @deprecated Use techPillars. Kept for any leftover imports. */
+export const tracks = techPillars.map((pillar) => ({
+  name: pillar.name,
+  text: pillar.text,
+}));
 
 export const buildSummit = {
   name: "Bmore Build Summit",
-  kicker: "Included with your pass",
-  promise: "Two days. Two tracks. One room.",
-  lede: "April 27–28. Move between The Age of AI and Careers & Startups all day. Build with AI in the morning, talk careers and startups in the afternoon, or flip it. Your pass covers both.",
+  kicker: "The main conference · Included with your pass",
+  promise: "Two days. Three pillars. One summit.",
+  lede: "April 27–28 at 4MLK. The main two-day conference inside Bmore Tech Week: technical talks, panels, and workshops across GovTech, artificial intelligence, and cybersecurity. Including founders and investors building across those pillars.",
   venue: "4MLK · Baltimore, MD",
   dates: "April 27–28, 2027",
   price: "$75 all-access pass",
   included: "Included with your Bmore Tech Week pass",
-  taglinePair: ["Build fast", "Stay human"],
-  tracks: [
-    {
-      id: "ai",
-      label: "Track 1",
-      name: "The Age of AI",
-      text: "See how teams use AI in software, product, cybersecurity, and life sciences, then practice on an idea of your own.",
-      focus: ["Software Engineering", "Product & Design", "Cybersecurity", "Health & Life Sciences"],
-    },
-    {
-      id: "careers",
-      label: "Track 2",
-      name: "Careers & Startups",
-      text: "Hear from hiring teams and founders on getting hired, growing in tech, landing customers, and finding funding.",
-      focus: [
-        "Hiring & Recruiting",
-        "Career Development",
-        "Startup Launch & Customer Growth",
-        "Startup Funding & Investment",
-      ],
-    },
-  ],
+  taglinePair: ["Build", "Secure", "Transform"],
+  /** Alias so existing maps keep working; these are pillars, not parallel tracks. */
+  tracks: techPillars.map((pillar) => ({
+    id: pillar.id,
+    label: pillar.label,
+    name: pillar.name,
+    text: pillar.text,
+    focus: [...pillar.focus],
+  })),
 };
 
 export const passIncludes = [
-  "Entry to the Monday night kickoff party",
+  "Entry to Monday Kickoff Night",
   "Both full days of the Bmore Build Summit",
-  "Access to all summit talks and workshops",
+  "Access to all summit talks and workshops across three pillars",
   "Breakfast both summit days with coffee, donuts, and fruit",
+  "Entry to Wednesday Closing Night",
   "A professional headshot",
-  "Access to résumé review clinics",
 ];
 
 export const sponsorAudience = [
-  "Founders",
-  "Software engineers",
-  "Product managers",
-  "Designers",
-  "Students",
-  "Career changers",
-  "Startup operators",
-  "AI builders",
-  "Technology leaders",
+  "Government technology leaders",
+  "AI engineers and practitioners",
   "Cybersecurity professionals",
+  "Software engineers and technical architects",
+  "Founders building GovTech, AI, and cybersecurity companies",
+  "Investors and technology executives",
 ];
 
 /** Confirmed founding supporters only. Add a name when the partnership is real. */
@@ -311,7 +341,7 @@ export const foundingSupporters: { name: string; role: string }[] = [
 ];
 
 export const scheduleExperiences =
-  "Kickoff Monday night, then two summit days of workshops and talks.";
+  "Kickoff Night on Monday, Bmore Build Summit Tuesday–Wednesday across GovTech, AI, and cybersecurity, partner evenings on Tuesday, and Closing Night on Wednesday.";
 
 export const hq = {
   name: "Bmore Tech Week HQ",
@@ -333,7 +363,7 @@ export const hq = {
 };
 
 export const waysIn: { href: string; title: string; text: string }[] = [
-  { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
+  { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. Sessions across GovTech, AI, and cybersecurity." },
   {
     href: "/sponsors",
     title: "Sponsor",
@@ -345,12 +375,10 @@ export const waysIn: { href: string; title: string; text: string }[] = [
 
 export const nav = {
   primary: [
-    { href: "/about", label: "About" },
-  ],
-  involved: [
-    { href: "/speak", label: "Give a Talk" },
-    ...(communitySponsorLive ? [{ href: "/community", label: "Fund a Seat" }] : []),
+    { href: "/schedule", label: "Schedule" },
+    { href: "/speak", label: "Speak" },
     { href: "/sponsors", label: "Sponsor" },
+    { href: "/host", label: "Host an Event" },
   ],
 };
 
@@ -447,9 +475,10 @@ export const generalAdmission = {
 export const partnerFilters = [
   "All",
   "Networking",
+  "GovTech",
+  "AI",
+  "Cybersecurity",
   "Startups",
-  "Creative Tech",
-  "Careers",
   "Community",
 ] as const;
 
@@ -509,15 +538,13 @@ export const exploringVenues: ExploringVenue[] = [
     name: "1023 W Baltimore St Art Gallery",
     neighborhood: "Poppleton",
     address: "1023 W Baltimore St, Baltimore, MD 21223",
-    focus: "Creative tech",
-    categories: ["Creative Tech", "Community"],
+    focus: "Community gathering",
+    categories: ["Community", "Networking"],
     possible: [
-      "Art and technology",
-      "Design",
-      "Creative technology",
-      "Digital experiences",
-      "Creator technology",
-      "Interactive showcases",
+      "Community gathering",
+      "Networking",
+      "Creative showcases",
+      "After-hours programming",
     ],
   },
   {
@@ -558,4 +585,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Bmore Tech Week 2027. Baltimore’s builders, in one room. Three days · $75 all-access pass · April 26–28 in Baltimore. Speakers announced February 2027.";
+  "Bmore Tech Week 2027: a regional technology conference for GovTech, AI, and cybersecurity. Three days · $75 all-access pass · April 26–28 in Baltimore. Speakers announced February 2027.";

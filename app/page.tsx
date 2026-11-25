@@ -2,7 +2,13 @@ import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
 import { UpdatesModal } from "@/components/UpdatesModal";
-import { buildSummit, speakDeadlineLabel, sponsorAudience, site } from "@/lib/site";
+import {
+  buildSummit,
+  site,
+  speakDeadlineLabel,
+  sponsorAudience,
+  techPillars,
+} from "@/lib/site";
 
 export default async function Home({
   searchParams,
@@ -19,42 +25,38 @@ export default async function Home({
       <div className="editorial-flow">
         {live ? <LivePortal /> : null}
 
-        <section className="band-paper" aria-labelledby="week-promise">
+        <section className="band-ink" aria-labelledby="identity-title">
           <div className="week-wrap">
-            <p className="week-kicker">
-              {site.dates} · Baltimore, MD · All-access pass $75
-            </p>
-            <h2 id="week-promise" className="week-title">
-              {site.promise}
+            <p className="week-kicker week-kicker-on-ink">Conference</p>
+            <h2 id="identity-title" className="week-title week-title-on-ink">
+              {site.identityTitle}
             </h2>
-            <p className="week-lede">{site.sell}</p>
-            <p className="home-speakers-note">{speakDeadlineLabel}</p>
+            <p className="week-lede week-lede-on-ink">{site.identityLede}</p>
+            <p className="home-speakers-note home-speakers-note-on-ink">{speakDeadlineLabel}</p>
             <div className="week-actions">
-              <Link className="week-btn week-btn-ghost" href="/speak">
+              <Link className="week-btn week-btn-on-ink" href="/speak">
                 Apply to speak
+              </Link>
+              <Link className="week-btn week-btn-ghost-on-ink" href="/schedule">
+                See the schedule
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="band-paper" aria-labelledby="summit-title" id="summit">
+        <section className="band-paper" aria-labelledby="pillars-title" id="summit">
           <div className="week-wrap">
             <p className="week-kicker">{buildSummit.kicker}</p>
-            <h2 id="summit-title" className="week-title week-title-sm">
+            <h2 id="pillars-title" className="week-title week-title-sm">
               {buildSummit.name}
             </h2>
             <p className="week-lede">{buildSummit.lede}</p>
-            <ul className="summit-grid">
-              {buildSummit.tracks.map((track) => (
-                <li key={track.id}>
-                  <p className="summit-when">{track.label}</p>
-                  <h3>{track.name}</h3>
-                  <p>{track.text}</p>
-                  <ul className="summit-focus">
-                    {track.focus.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+            <ul className="pillar-grid">
+              {techPillars.map((pillar) => (
+                <li key={pillar.id}>
+                  <p className="pillar-label">{pillar.label}</p>
+                  <h3>{pillar.name}</h3>
+                  <p>{pillar.text}</p>
                 </li>
               ))}
             </ul>
@@ -66,14 +68,16 @@ export default async function Home({
           </div>
         </section>
 
-        <section className="band-paper home-beat" aria-labelledby="who-room">
-          <div className="week-wrap">
-            <p className="week-kicker">{site.roomKicker}</p>
-            <h2 id="who-room" className="week-title week-title-sm">
-              {site.roomHeadline}
-            </h2>
-            <p className="week-lede">{site.room}</p>
-            <ul className="audience-list home-audience">
+        <section className="band-ink home-beat" aria-labelledby="who-room">
+          <div className="week-wrap home-audience-layout">
+            <div className="home-audience-intro">
+              <p className="week-kicker">{site.roomKicker}</p>
+              <h2 id="who-room" className="week-title week-title-sm week-title-on-ink">
+                {site.roomHeadline}
+              </h2>
+              <p className="week-lede week-lede-on-ink">{site.room}</p>
+            </div>
+            <ul className="home-audience">
               {sponsorAudience.map((role) => (
                 <li key={role}>{role}</li>
               ))}

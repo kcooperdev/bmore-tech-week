@@ -3,7 +3,6 @@ import { communitySponsorLive, site } from "@/lib/site";
 
 const paths = [
   "",
-  "/about",
   "/schedule",
   "/tickets",
   "/speak",

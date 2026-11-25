@@ -114,7 +114,7 @@ const pptx = new PptxGenJS();
 pptx.defineLayout({ name: "WIDE", width: 13.333, height: 7.5 });
 pptx.layout = "WIDE";
 pptx.author = "Bmore Tech Week";
-pptx.title = "Bmore Tech Week 2027 — Sponsorship Deck";
+pptx.title = "Bmore Tech Week 2027 Sponsorship Deck";
 
 // 1. Cover
 {
@@ -365,10 +365,10 @@ pptx.title = "Bmore Tech Week 2027 — Sponsorship Deck";
   });
 
   const segs = [
-    { x: 5.2, y: 3.9, t: "Engineers", d: "Full-stack developers, cybersecurity, AI practitioners, and systems engineers." },
-    { x: 9.0, y: 3.9, t: "Product & Design", d: "Product managers, UX researchers, and designers shaping modern experiences." },
-    { x: 5.2, y: 5.35, t: "Startup Founders", d: "Early-stage and scaling entrepreneurs building in the Baltimore metro area." },
-    { x: 9.0, y: 5.35, t: "Students", d: "Emerging technical talent from regional universities and CS programs." },
+    { x: 5.2, y: 3.9, t: "GovTech leaders", d: "Public-sector innovators, civic technologists, and federal systems builders." },
+    { x: 9.0, y: 3.9, t: "AI practitioners", d: "AI engineers, automation builders, and teams shipping generative AI." },
+    { x: 5.2, y: 5.35, t: "Cybersecurity", d: "Security engineers, threat intel, and cloud defense professionals." },
+    { x: 9.0, y: 5.35, t: "Founders & investors", d: "GovTech, AI, and cyber founders, plus VCs and technology executives." },
   ];
   for (const seg of segs) {
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
@@ -409,12 +409,12 @@ pptx.title = "Bmore Tech Week 2027 — Sponsorship Deck";
   const s = pptx.addSlide();
   s.addShape(pptx.shapes.RECTANGLE, { x: 0, y: 0, w: 13.333, h: 7.5, fill: { color: C.navy } });
   eyebrow(s, "AGENDA OVERVIEW");
-  title(s, "Three days of connection and hands-on learning");
+  title(s, "Three days. One week. Three technology pillars.");
 
   const days = [
-    { x: 0.55, tag: "MON · APR 26 · EVENING", tagColor: C.teal, head: "Kickoff Party", sub: "Kickoff", body: "Monday evening kickoff to open the week." },
-    { x: 4.7, tag: "TUE · APR 27 · 9 AM–5 PM", tagColor: C.orange, head: "Bmore Build Summit", sub: "Both tracks", body: "The Age of AI and Careers & Startups. Talks, workshops, and panels." },
-    { x: 8.85, tag: "WED · APR 28 · 9 AM–5 PM", tagColor: C.blue, head: "Bmore Build Summit", sub: "Both tracks", body: "The Age of AI and Careers & Startups continue with talks, workshops, and panels." },
+    { x: 0.55, tag: "MON · APR 26 · EVENING", tagColor: C.teal, head: "Kickoff Night", sub: "Open the week", body: "Monday evening kickoff with attendees, speakers, and the region’s tech community." },
+    { x: 4.7, tag: "TUE · APR 27", tagColor: C.orange, head: "Summit + evenings", sub: "Three pillars", body: "Bmore Build Summit by day. Optional partner-hosted evenings after 5:30." },
+    { x: 8.85, tag: "WED · APR 28", tagColor: C.blue, head: "Summit + Closing", sub: "Three pillars", body: "Bmore Build Summit by day. Closing Night to end the week." },
   ];
   for (const d of days) {
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
@@ -594,7 +594,7 @@ pptx.title = "Bmore Tech Week 2027 — Sponsorship Deck";
     margin: 0,
   });
   s.addText(
-    "In February 2026, Khalif Cooper organized an entire Baltimore tech week in just 21 days.\n\nThe overwhelming response—754+ registrations across seven events—revealed intense community hunger for connection and led directly to the launch of Bmore Tech Week.",
+    "In February 2026, Khalif Cooper organized an entire Baltimore tech week in just 21 days.\n\nThe overwhelming response (754+ registrations across seven events) revealed intense community hunger for connection and led directly to the launch of Bmore Tech Week.",
     {
       x: 6.8,
       y: 3.25,
@@ -743,9 +743,9 @@ packageSlide({
       "Logo on badges\nLogo on sponsor page\nShared summit signage\nDedicated email callout",
       "Logo on badges\nLogo on sponsor page\nShared summit signage\nDedicated email callout\nFeatured both days",
     ],
-    ["Speaking", "—", "—", "Opening remarks"],
-    ["Exhibitor table", "—", "—", "Table both days + QR"],
-    ["Lead list", "—", "—", "Opt-in names & emails"],
+    ["Speaking", "-", "-", "Opening remarks"],
+    ["Exhibitor table", "-", "-", "Table both days + QR"],
+    ["Lead list", "-", "-", "Opt-in names & emails"],
     ["Passes", "1 pass", "2 passes", "4 passes"],
   ];
   const fills = [C.blue, C.orange, C.green, C.greenDeep];
@@ -862,7 +862,7 @@ packageSlide({
     valign: "middle",
     margin: 0,
   });
-  s.addText("Supporting Sponsor — $1,000", {
+  s.addText("Supporting Sponsor · $1,000", {
     x: 0.85,
     y: 2.6,
     w: 5.3,

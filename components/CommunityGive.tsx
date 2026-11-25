@@ -56,7 +56,7 @@ export function CommunityGive() {
       <p className="community-impact" aria-live="polite">
         {seatLabel(seats)}
       </p>
-      <p className="community-give-label">3. Join the movement</p>
+      <p className="community-give-label">3. Checkout</p>
       <button type="button" className="week-btn week-btn-closed" disabled aria-disabled="true">
         {communitySponsorCopy.cta}
       </button>

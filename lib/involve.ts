@@ -1,5 +1,5 @@
 import type { ApplyField } from "@/lib/apply-fields";
-import { buildSummit } from "@/lib/site";
+import { techPillars } from "@/lib/site";
 
 export const pronouns = ["she / her", "he / him", "they / them", "Prefer not to say", "Something else"];
 
@@ -53,10 +53,10 @@ export const speakDays = [
   { value: "Any", label: "Either day / no preference" },
 ];
 
-export const partnerNights = ["Monday · April 26", "Tuesday · April 27", "Wednesday · April 28"];
+export const partnerNights = ["Tuesday · April 27"];
 
-/** Summit focus categories for Give a Talk. No “Other”. */
-export const speakerTopics = buildSummit.tracks.flatMap((track) => track.focus);
+/** Summit pillar categories for Give a Talk. No “Other”. */
+export const speakerTopics = techPillars.map((pillar) => pillar.name);
 
 export const partnerTypes = [
   "Meetup",

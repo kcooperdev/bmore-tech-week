@@ -4,7 +4,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Give a Talk",
-  "Pitch a workshop or tech talk at Bmore Tech Week. First-time speakers welcome. Deadline February 1, 2027.",
+  "Pitch a workshop or tech talk at Bmore Tech Week across GovTech, AI, and cybersecurity. Deadline February 1, 2027.",
 );
 
 const formats = new Set(["workshop", "techtalk"]);
@@ -23,10 +23,10 @@ export default async function SpeakPage({
         <div className="week-wrap speak-flow">
           <header id="main">
             <p className="week-kicker">Deadline February 1, 2027 · Decisions March 1</p>
-            <h1>Teach what you know</h1>
+            <h1>Share the work</h1>
             <p className="plain-lede">
-              Pitch a workshop or tech talk in the room that’s gathering Baltimore’s builders. First-time
-              speakers welcome.
+              Pitch a workshop or tech talk for the Bmore Build Summit across GovTech, artificial
+              intelligence, and cybersecurity.
             </p>
           </header>
           <ApplyForm

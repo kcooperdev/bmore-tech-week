@@ -3,7 +3,7 @@ import { communitySponsorLive, pageMeta, sponsorPaths } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Sponsor",
-  "Sponsor Bmore Tech Week as a person in the movement, or as a company with a package.",
+  "Fund a seat for someone who needs it, or sponsor Bmore Tech Week as a company.",
 );
 
 export default function SponsorsPage() {
@@ -20,7 +20,7 @@ export default function SponsorsPage() {
             <h1>{communitySponsorLive ? "Two ways to show up" : "Sponsor the week"}</h1>
             <p className="plain-lede">
               {communitySponsorLive
-                ? "People fund seats. Companies underwrite the week. Same movement, different roles."
+                ? "People fund seats. Companies underwrite the week. Two ways to show up."
                 : "Company packages from $500. Logos, tables, and brand in the room."}
             </p>
           </header>

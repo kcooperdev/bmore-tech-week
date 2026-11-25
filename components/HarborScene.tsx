@@ -141,19 +141,30 @@ export function HarborScene() {
           </svg>
         </button>
         <main className="night-title" id="main" tabIndex={-1}>
-          <h1>
-            <span>Bmore</span>
-            <span>
-              <span className="night-title-accent">Tech</span> Week
-            </span>
-          </h1>
-          <p className="night-meta">
-            <time dateTime="2027-04-26/2027-04-28">{site.dates}</time>
-            <span className="night-meta-place">Baltimore, MD</span>
-          </p>
-          <button type="button" className="night-cta is-soon" disabled aria-disabled="true">
-            {ticketsSoonLabel}
-          </button>
+          <div className="night-title-inner">
+            <p className="night-eyebrow">
+              <time dateTime="2027-04-26/2027-04-28">{site.dates}</time>
+              <span aria-hidden="true"> · </span>
+              <span>Baltimore, MD</span>
+            </p>
+            <h1>
+              <span>Bmore</span>
+              <span>
+                <span className="night-title-accent">Tech</span> Week
+              </span>
+            </h1>
+            <p className="night-headline">{site.headline}</p>
+            <p className="night-pillars" aria-label="Technology pillars">
+              <span>GovTech</span>
+              <span aria-hidden="true">·</span>
+              <span>AI</span>
+              <span aria-hidden="true">·</span>
+              <span>Cybersecurity</span>
+            </p>
+            <button type="button" className="night-cta is-soon" disabled aria-disabled="true">
+              {ticketsSoonLabel}
+            </button>
+          </div>
         </main>
       </div>
     </section>
