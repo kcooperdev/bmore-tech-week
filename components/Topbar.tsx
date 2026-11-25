@@ -21,20 +21,18 @@ export function Topbar({
   const pathname = usePathname();
   const bar = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
-  const [lastPath, setLastPath] = useState(pathname);
-
-  if (lastPath !== pathname) {
-    setLastPath(pathname);
-    setOpen(false);
-  }
+  const [tone, setTone] = useState(scene ? "night" : "dark");
 
   useEffect(() => {
-    if (scene) return;
-    const el = bar.current;
-    if (!el) return;
-    const paint = () => {
-      el.dataset.navTone = currentNavTone();
-    };
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (scene) {
+      setTone("night");
+      return;
+    }
+    const paint = () => setTone(currentNavTone());
     paint();
     window.addEventListener("scroll", paint, { passive: true });
     window.addEventListener("resize", paint);
@@ -61,8 +59,8 @@ export function Topbar({
     <header
       ref={bar}
       className={`${scene ? "topbar" : "topbar site-topbar"}${open ? " is-menu-open" : ""}`}
-      data-nav-tone={scene ? "night" : "dark"}
-      inert={inertBar ? true : undefined}
+      data-nav-tone={tone}
+      inert={inertBar || undefined}
     >
       <button
         type="button"

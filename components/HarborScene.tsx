@@ -16,9 +16,14 @@ export function HarborScene() {
   const [reduced, setReduced] = useState(false);
   const [mode, setMode] = useState<"sunset" | "night">("night");
   const [hintOn, setHintOn] = useState(true);
+  const [isNight, setIsNight] = useState(false);
+  const [isPast, setIsPast] = useState(false);
+  const [navTone, setNavTone] = useState("night");
   const [status, setStatus] = useState("");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const sync = () => setReduced(media.matches);
     sync();
@@ -37,6 +42,11 @@ export function HarborScene() {
       const title = clamp((travel - 0.42) / 0.34);
       const hint = clamp(1 - travel / 0.22);
       const copy = night > 0.45 ? "#f3ead7" : "#16120c";
+      const past = el.getBoundingClientRect().bottom <= 48;
+      const nextNight = night > 0.5;
+      const nextTone = past ? currentNavTone() : "night";
+      const nextHint = hint > 0.2 && !past;
+
       el.style.setProperty("--day", String(1 - night));
       el.style.setProperty("--night", String(night));
       el.style.setProperty("--title", String(title));
@@ -44,18 +54,19 @@ export function HarborScene() {
       el.style.setProperty("--progress", String(travel));
       el.style.setProperty("--copy", copy);
       document.documentElement.style.setProperty("--copy", copy);
-      el.classList.toggle("is-night", night > 0.5);
-      const past = el.getBoundingClientRect().bottom <= 48;
-      el.classList.toggle("is-past", past);
-      el.dataset.navTone = past ? currentNavTone() : "night";
-      document.documentElement.style.background = night > 0.5 ? "#070b16" : "#1a4d6a";
-      theme?.setAttribute("content", night > 0.5 ? "#070b16" : "#2f7fa8");
-      setHintOn(hint > 0.2 && !past);
+      document.documentElement.style.background = nextNight ? "#070b16" : "#1a4d6a";
+      theme?.setAttribute("content", nextNight ? "#070b16" : "#2f7fa8");
+
+      setIsNight((value) => (value === nextNight ? value : nextNight));
+      setIsPast((value) => (value === past ? value : past));
+      setNavTone((value) => (value === nextTone ? value : nextTone));
+      setHintOn((value) => (value === nextHint ? value : nextHint));
+
       if (night > 0.8 && !announced.current) {
         announced.current = true;
         setStatus("Bmore Tech Week. April 26 through April 28.");
       }
-      if (night < 0.2) {
+      if (night < 0.2 && announced.current) {
         announced.current = false;
         setStatus("");
       }
@@ -87,10 +98,19 @@ export function HarborScene() {
     window.scrollTo({ top: el.offsetTop + el.offsetHeight / 2, behavior: "smooth" });
   }
 
+  const pinClass = [
+    "harbor-pin",
+    isNight ? "is-night" : "",
+    isPast ? "is-past" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <section
       ref={pin}
-      className="harbor-pin"
+      className={pinClass}
+      data-nav-tone={navTone}
       aria-label="Bmore Tech Week. April 26 through April 28, from sunset into night."
     >
       <Topbar scene />
@@ -98,7 +118,7 @@ export function HarborScene() {
       <p className="sr-only" aria-live="polite">
         {status}
       </p>
-      {reduced ? (
+      {mounted && reduced ? (
         <div className="mode-toggle">
           <button type="button" aria-pressed={mode === "sunset"} onClick={() => setMode("sunset")}>
             Sunset
@@ -125,7 +145,7 @@ export function HarborScene() {
           fill
           sizes="100vw"
           quality={78}
-          aria-hidden
+          aria-hidden={true}
         />
         <div className="plate-veil" />
         <button
