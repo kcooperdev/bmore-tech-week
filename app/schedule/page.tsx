@@ -15,10 +15,6 @@ export default function SchedulePage() {
             <p className="week-kicker">{site.dates} · Baltimore, MD</p>
             <h1>Schedule</h1>
           </div>
-          <p className="plain-lede">
-            Monday: Kickoff Night. Tuesday–Wednesday: {buildSummit.name}. Tuesday evening:
-            community-hosted events. Wednesday evening: Closing Night. {buildSummit.lede}
-          </p>
         </div>
       </header>
 
