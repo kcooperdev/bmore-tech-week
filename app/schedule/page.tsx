@@ -16,8 +16,8 @@ export default function SchedulePage() {
             <h1>Schedule</h1>
           </div>
           <p className="plain-lede">
-            Monday: Kickoff Night. Tuesday–Wednesday: {buildSummit.name}. Tuesday evening: partner
-            nights. Wednesday evening: Closing Night. {buildSummit.lede}
+            Monday: Kickoff Night. Tuesday–Wednesday: {buildSummit.name}. Tuesday evening:
+            community-hosted events. Wednesday evening: Closing Night. {buildSummit.lede}
           </p>
         </div>
       </header>

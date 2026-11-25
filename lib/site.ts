@@ -210,10 +210,10 @@ export const pillars: Pillar[] = [
     day: "Tuesday",
     date: "April 27",
     name: "Tuesday",
-    night: "Partner evenings",
+    night: "Hosted events",
     question: "What can we build?",
     tagline: "Bmore Build Summit · 9am–5pm",
-    summary: "GovTech, AI, and cybersecurity by day. Optional partner-hosted evenings after 5:30.",
+    summary: "GovTech, AI, and cybersecurity by day. Community-hosted events around the city after 5:30.",
     purpose: "Technical talks, panels, and workshops across three pillars.",
     stops: [
       ...summitDayStops("tue"),
@@ -221,8 +221,8 @@ export const pillars: Pillar[] = [
         id: "tue-evening",
         when: "Evening",
         where: "",
-        title: "Partner evenings",
-        text: "Optional partner-hosted networking around the city.",
+        title: "Hosted events",
+        text: "Community-hosted gatherings at venues across the city.",
         kind: "city",
       },
     ],
@@ -341,7 +341,7 @@ export const foundingSupporters: { name: string; role: string }[] = [
 ];
 
 export const scheduleExperiences =
-  "Kickoff Night on Monday, Bmore Build Summit Tuesday–Wednesday across GovTech, AI, and cybersecurity, partner evenings on Tuesday, and Closing Night on Wednesday.";
+  "Kickoff Night on Monday, Bmore Build Summit Tuesday–Wednesday across GovTech, AI, and cybersecurity, community-hosted events Tuesday evening, and Closing Night on Wednesday.";
 
 export const hq = {
   name: "Bmore Tech Week HQ",

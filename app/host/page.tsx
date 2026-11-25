@@ -2,8 +2,8 @@ import { ApplyForm } from "@/components/ApplyForm";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "Host a Room",
-  "Offer a room for a partner-hosted evening on Tuesday, April 27, 2027 during Bmore Tech Week.",
+  "Host an Event",
+  "Host your own event at your venue on Tuesday evening, April 27, 2027 during Bmore Tech Week.",
 );
 
 export default function HostPage() {
@@ -12,27 +12,45 @@ export default function HostPage() {
       <div className="page-top">
         <div className="week-wrap split">
           <header id="main">
-            <p className="week-kicker">Tuesday · April 27 · After 5:30</p>
-            <h1>Host a Room</h1>
+            <p className="week-kicker">Tuesday · April 27 · Evening · Your venue</p>
+            <h1>Host an Event</h1>
             <p className="plain-lede">
-              We’re recruiting partner venues for Tuesday evening only.
+              Run your own gathering on Tuesday evening at a venue you control. Meetups, demos,
+              dinners, office hours, after-hours hangs. You host it. We help put it on the week’s map.
             </p>
           </header>
           <ApplyForm
             closed
             endpoint="/api/venues"
-            submitLabel="Submit"
-            successTitle="Thanks. We have the room."
-            successBody="If a Tuesday partner evening can live here, we will write you."
+            submitLabel="Submit your event"
+            successTitle="Thanks. We have your event."
+            successBody="If it fits Tuesday evening, we will write you about listing it."
             fields={[
-              { name: "organization", label: "Organization", required: true, autoComplete: "organization", step: "You" },
+              { name: "organization", label: "Organization or group", required: true, autoComplete: "organization", step: "You" },
               { name: "contact", label: "Your name", required: true, autoComplete: "name", step: "You" },
               { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", step: "You" },
-              { name: "venue", label: "Venue", required: true, step: "The room" },
-              { name: "address", label: "Address", required: true, step: "The room" },
+              {
+                name: "concept",
+                label: "What event are you hosting?",
+                type: "textarea",
+                required: true,
+                placeholder: "What people will do, who it’s for, and why it belongs in the week",
+                step: "Your event",
+                wide: true,
+              },
+              {
+                name: "day",
+                label: "When",
+                type: "select",
+                required: true,
+                options: ["Tuesday · April 27 · Evening"],
+                step: "Your event",
+              },
+              { name: "venue", label: "Venue name", required: true, step: "Your venue" },
+              { name: "address", label: "Venue address", required: true, step: "Your venue" },
               {
                 name: "capacity",
-                label: "How many people?",
+                label: "About how many people?",
                 type: "select",
                 required: true,
                 choices: [
@@ -43,18 +61,16 @@ export default function HostPage() {
                   { value: "400", label: "300+" },
                 ],
                 placeholder: "Choose a size",
-                step: "The room",
+                step: "Your venue",
               },
               {
-                name: "day",
-                label: "Night",
+                name: "cost",
+                label: "Free or paid for attendees?",
                 type: "select",
                 required: true,
-                options: ["Tuesday · April 27"],
-                step: "The room",
+                options: ["Free", "Paid", "Not sure yet"],
+                step: "Your venue",
               },
-              { name: "cost", label: "Free or paid", type: "select", required: true, options: ["Free", "Paid", "Not sure"], step: "The room" },
-              { name: "concept", label: "What should we know about the room?", type: "textarea", required: true, step: "The room" },
             ]}
           />
         </div>
